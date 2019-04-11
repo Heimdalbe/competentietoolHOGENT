@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+//if logged in as sollicitant
+{
+    <li><a asp-area="" asp-controller="Home" asp-action="About">Vacatures</a></li>
+    <li><a asp-area="" asp-controller="Home" asp-action="About">Jouw ingevulde profielen</a></li>
+}
+else 
+//should be something like @if (SignInManager.IsSignedIn(Werkgever))
+{
+    // if logged in as werkgever
+}
