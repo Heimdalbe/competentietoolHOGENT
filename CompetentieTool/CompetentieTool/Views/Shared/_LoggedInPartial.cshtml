@@ -1,7 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using CompetentieTool.Models.Identities
 
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 //if logged in as sollicitant
