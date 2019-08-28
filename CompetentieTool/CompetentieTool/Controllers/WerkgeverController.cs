@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CompetentieTool.Controllers
 {
-    public class SollicitantController : Controller
+    public class WerkgeverController : Controller
     {
-        public IActionResult Index()
+        //[Authorize(Roles = "Werkgever")]
+        public IActionResult Profielen()
         {
             return View();
         }

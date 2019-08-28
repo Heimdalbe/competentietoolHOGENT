@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CompetentieTool.Controllers
 {
-    public class SollicitantController : Controller
+    public class AdminController : Controller
     {
+        [Authorize(Roles="Admin")]
         public IActionResult Index()
         {
             return View();

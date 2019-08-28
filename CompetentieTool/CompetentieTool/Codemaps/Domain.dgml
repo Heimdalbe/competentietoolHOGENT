@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph DataVirtualized="True" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="(@1 @3 Type=Output)" Category="CodeSchema_Class" Bounds="-380.729359887863,188.725567804822,98.8133333333333,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Output" />
+    <Node Id="(@1 @3 Type=Output)" Category="CodeSchema_Class" Bounds="40,205.333599361314,98.8133333333333,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Output" />
     <Node Id="(@1 @3 Type=VraagCasus Member=.ctor)" Category="CodeSchema_Method" Bounds="-321.836485960445,-144.608002220516,96.9733333333333,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="VraagCasus" UseManualLocation="True" />
-    <Node Id="@10" Category="CodeSchema_Class" Bounds="-69.2976932211967,78.725567804822,144.646666666667,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="VraagInschaling" />
-    <Node Id="@11" Category="CodeSchema_Class" Bounds="-220.287693221197,78.725567804822,120.626666666667,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="VraagOpen" />
+    <Node Id="@10" Category="CodeSchema_Class" Bounds="336.302885760455,72.6678782696576,144.646666666667,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="VraagInschaling" />
+    <Node Id="@11" Category="CodeSchema_Class" Bounds="185.675279298321,72.6678781540576,120.626666666667,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="VraagOpen" />
     <Node Id="@12" Category="CodeSchema_Property" Bounds="-321.836485960445,-88.6480022205164,93.0090614540482,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Vignet" UseManualLocation="True" />
-    <Node Id="@2" Category="CodeSchema_Assembly" AssemblyTimestamp="04/11/2019 08:29:37" Bounds="-420.686039887863,-1.23111277277801,688.655026666667,254.9133611552" CodeSchemaProperty_StrongName="CompetentieTool, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" FilePath="$(c29e6058-6259-4e81-ab69-c1b8f2f5870f.OutputPath)" Group="Expanded" Label="CompetentieTool.dll">
+    <Node Id="@2" Category="CodeSchema_Assembly" AssemblyTimestamp="04/11/2019 08:29:37" Bounds="-13.8369744838122,-7.33212242394238,686.761555293066,277.665722247656" CodeSchemaProperty_StrongName="CompetentieTool, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" FilePath="$(c29e6058-6259-4e81-ab69-c1b8f2f5870f.OutputPath)" Group="Expanded" Label="CompetentieTool.dll">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
-    <Node Id="@4" Category="CodeSchema_Namespace" Bounds="-400.729359887863,38.725567804822,648.741666666667,195" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="8" Group="Expanded" Label="CompetentieTool‎.Domain" />
-    <Node Id="@5" Category="CodeSchema_Class" Bounds="-374.349359887863,133.725567804822,116.75,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Aanvulling" />
-    <Node Id="@6" Category="CodeSchema_Class" Bounds="-380.729359887863,78.725567804822,129.51,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Competentie" />
-    <Node Id="@7" Category="CodeSchema_Interface" Bounds="-207.30102655453,133.725567804822,94.6533333333333,25" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="IVraag" />
-    <Node Id="@8" Category="CodeSchema_Class" Bounds="119.245640112137,133.725567804822,95.5599999999998,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Vignet" />
-    <Node Id="@9" Category="CodeSchema_Class" Bounds="106.03897344547,78.725567804822,121.973333333333,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="2" Group="Collapsed" Label="VraagCasus" />
+    <Node Id="@4" Category="CodeSchema_Namespace" Bounds="6.16302551618777,32.6678778072576,646.761555293066,217.665721785256" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="8" Group="Expanded" Label="CompetentieTool‎.Domain" />
+    <Node Id="@5" Category="CodeSchema_Class" Bounds="46.126796048752,150.167378330596,116.75,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Aanvulling" />
+    <Node Id="@6" Category="CodeSchema_Class" Bounds="26.1630255161877,72.6678780384576,129.51,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Competentie" />
+    <Node Id="@7" Category="CodeSchema_Interface" Bounds="283.273752216637,127.65088712068,94.6533333333333,25" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="IVraag" UseManualLocation="True" />
+    <Node Id="@8" Category="CodeSchema_Class" Bounds="530.09349629218,141.159681191003,95.5599999999999,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Vignet" />
+    <Node Id="@9" Category="CodeSchema_Class" Bounds="510.951247475922,72.6678781540576,121.973333333333,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="2" Group="Collapsed" Label="VraagCasus" />
   </Nodes>
   <Links>
-    <Link Source="@10" Target="@7" Category="Implements" Bounds="-113.927520751953,103.72550201416,79.9077072143555,26.962776184082" Weight="1" />
-    <Link Source="@11" Target="@7" Category="Implements" Bounds="-159.974365234375,103.72550201416,0,20.5000381469727" Weight="1" />
+    <Link Source="@10" Target="@7" Category="Implements" Bounds="356.089233575088,97.6508871206806,34.7767582183303,24.5249842141792" Weight="1" />
+    <Link Source="@11" Target="@7" Category="Implements" Bounds="265.192126641903,97.6508871206806,38.2044885179333,24.8239283792895" Weight="1" />
     <Link Source="@12" Target="@8" Category="References" IsSourceVirtualized="True" Weight="4">
       <Category Ref="CodeSchema_ReturnTypeLink" />
     </Link>
@@ -31,15 +31,15 @@
     <Link Source="@4" Target="@7" Category="Contains" FetchingParent="@4" />
     <Link Source="@4" Target="@8" Category="Contains" FetchingParent="@4" />
     <Link Source="@4" Target="@9" Category="Contains" FetchingParent="@4" />
-    <Link Source="@6" Target="@5" Category="References" Bounds="-315.974365234375,103.72550201416,0,21.0000457763672" IsSourceVirtualized="True" Weight="4">
+    <Link Source="@6" Target="@5" Category="References" Bounds="93.0805059379403,97.6508871206806,7.6698869759832,43.6872149681922" IsSourceVirtualized="True" Weight="4">
       <Category Ref="CodeSchema_ReturnTypeLink" />
     </Link>
-    <Link Source="@6" Target="@7" Category="References" Bounds="-280.519805908203,103.72550201416,76.6029815673828,27.0075149536133" IsSourceVirtualized="True" Weight="4">
+    <Link Source="@6" Target="@7" Category="References" Bounds="145.366519066146,97.6508871206806,130.219870350017,29.8776006731952" IsSourceVirtualized="True" Weight="4">
       <Category Ref="CodeSchema_ReturnTypeLink" />
     </Link>
     <Link Source="@9" Target="(@1 @3 Type=VraagCasus Member=.ctor)" Category="Contains" FetchingParent="@9" />
     <Link Source="@9" Target="@12" Category="Contains" FetchingParent="@9" />
-    <Link Source="@9" Target="@7" Category="Implements" Bounds="-103.300178527832,101.357269287109,210.087829589844,35.3359375" Weight="1" />
+    <Link Source="@9" Target="@7" Category="Implements" Bounds="386.151118999833,97.6508871206806,130.909040975404,29.8382600387261" Weight="1" />
   </Links>
   <Categories>
     <Category Id="CodeSchema_Assembly" Label="Assembly" BasedOn="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Assembly" NavigationActionLabel="Assemblies" />
