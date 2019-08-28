@@ -8,7 +8,12 @@ namespace CompetentieTool.Controllers
 {
     public class SollicitantController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Vacatures()
+        {
+            return View();
+        }
+
+        public IActionResult Uitnodigingen()
         {
             return View();
         }

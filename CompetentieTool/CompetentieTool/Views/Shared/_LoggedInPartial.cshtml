@@ -3,18 +3,14 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-@if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.FindByEmailAsync(SignInManager.Context.User.Identity.Name).Result, "Sollicitant"))
+@if (SignInManager.IsSignedIn(User))
 //if logged in as sollicitant
 {
-    <li><a asp-area="" asp-controller="Home" asp-action="About">Vacatures</a></li>
-    <li><a asp-area="" asp-controller="Home" asp-action="About">Jouw ingevulde profielen</a></li>
+    <li><a asp-area="" asp-controller="Sollicitant" asp-action="Vacatures">Vacatures</a></li>
+    <li><a asp-area="" asp-controller="Sollicitant" asp-action="Uitnodigingen">Uitnodigingen</a></li>
 }
-@if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.FindByEmailAsync(SignInManager.Context.User.Identity.Name).Result, "Werkgever") && SignInManager.IsSignedIn(User))
+else 
+//should be something like @if (SignInManager.IsSignedIn(Werkgever))
 {
-    <li><a asp-area="" asp-controller="Home" asp-action="About">Uitnodigingen</a></li>
-    <li><a asp-area="" asp-controller="Werkgever" asp-action="Profielen">Profielen</a></li>
-}
-@if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.FindByEmailAsync(SignInManager.Context.User.Identity.Name).Result, "Admin") && SignInManager.IsSignedIn(User))
-{
-    <li><a asp-area="" asp-controller="Home" asp-action="About">Admin</a></li>
+    // if logged in as werkgever
 }
