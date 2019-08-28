@@ -39,9 +39,9 @@ namespace CompetentieTool.Data
                     Email = "aaa@aa.aa",
                     Voornaam = "aa",
                     Achternaam = "aa",
-                    Straat = "aa straat",
-                    Stad = "aa stad",
-                    Postcode = "1000"
+                    Adres= "aa straat 1",
+                    Gemeente = "aa stad",
+                    Postcode = 1000
                 };
 
                 var result = await userManager.CreateAsync(user);
@@ -60,9 +60,9 @@ namespace CompetentieTool.Data
                     Email = "bbb@bb.bb",
                     Voornaam = "bb",
                     Achternaam = "bb",
-                    Straat = "bb straat",
-                    Stad = "bb stad",
-                    Postcode = "1000"
+                    Adres = "bb straat 20",
+                    Gemeente = "bb stad",
+                    Postcode = 1000
                 };
 
                 var result = await userManager.CreateAsync(user);
