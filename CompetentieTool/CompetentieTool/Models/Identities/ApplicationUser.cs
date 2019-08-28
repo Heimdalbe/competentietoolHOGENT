@@ -1,4 +1,5 @@
-﻿using CompetentieTool.Models.ViewModels;
+﻿using CompetentieTool.Areas.Identity.Pages.Account;
+using CompetentieTool.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace CompetentieTool.Models.Identities
         public ApplicationUser() : base() { }
         
         public int GebruikersID { get; set; }
+        public string Username { get; set; }
         public string Emailadres { get; set; }
         public string Achternaam { get; set; }
         public string Voornaam { get; set; }
@@ -37,6 +39,21 @@ namespace CompetentieTool.Models.Identities
             Gemeente = viewmodel.Gemeente;
             Postcode = viewmodel.Postcode;
             Adres = viewmodel.Adres;
+        }
+
+        public void SetGegevens(RegisterModel.InputModel input)
+        {
+            Username = input.Username;
+            Achternaam = input.Achternaam;
+            Voornaam = input.Voornaam;
+            GeboorteDatum = input.Geboortedatum;
+            Emailadres = input.Email;
+            Gsm = input.GsmNummer;
+            Geslacht = input.Geslacht;
+            Nationaliteit = input.Nationaliteit;
+            Gemeente = input.Gemeente;
+            Postcode = input.Postcode;
+            Adres = input.Straat + " " +input.Huisnummer;
         }
     }
 }

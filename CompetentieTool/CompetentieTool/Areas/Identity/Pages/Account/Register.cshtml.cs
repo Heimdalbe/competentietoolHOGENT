@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
 
 namespace CompetentieTool.Areas.Identity.Pages.Account
 {
@@ -40,20 +41,60 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [BindProperty]
+            public string Type { get; set; }
+
+            [Required(ErrorMessage = "Gebruikersnaam is verplicht in te vullen")]
+            [Display(Name = "Gebruikersnaam")]
+            [Remote("checkUsernameValidate", "Lid", ErrorMessage = "Deze gebruikersnaam is al in gebruik.")]
+            public string Username { get; set; }
+
+            [Required(ErrorMessage = "Voornaam is verplicht in te vullen")]
+            public string Voornaam { get; set; }
+
+            [Required(ErrorMessage = "Familienaam is verplicht in te vullen")]
+            public string Achternaam { get; set; }
+
+            [Required(ErrorMessage = "Geboortedatum is verplicht in te vullen")]
+            [DataType(DataType.Date)]
+            public DateTime Geboortedatum { get; set; }
+
+            [Required(ErrorMessage = "Huisnummer is verplicht in te vullen")]
+            public int Huisnummer { get; set; }
+
+            [Required(ErrorMessage = "Straat is verplicht in te vullen")]
+            public string Straat { get; set; }
+
+            [Required(ErrorMessage = "Postcode is verplicht in te vullen")]
+            public int Postcode { get; set; }
+
+            [Required(ErrorMessage = "Gemeente is verplicht in te vullen")]
+            public string Gemeente { get; set; }
+
+            [Required(ErrorMessage = "Nationaliteit is verplicht in te vullen")]
+            public string Nationaliteit { get; set; }
+
+            [Required(ErrorMessage = "Geslacht is verplicht in te vullen")]
+            public string Geslacht { get; set; }
+
+            [Display(Name = "Gsm nummer")]
+            [RegularExpression(@"^\+32[0-9]{9}$", ErrorMessage = "Een gsm nummer is van de vorm: +32470253698")]
+            public string GsmNummer { get; set; }
+
+            [Required(ErrorMessage = "Email is verplicht in te vullen")]
             [Display(Name = "Email")]
+            [EmailAddress(ErrorMessage = "Dit is geen geldig emailadres")]
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "Het {0} moet minstens {2} en maximaal {1} karakters lang zijn.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Wachtwoord")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Wachwoord bevestigen")]
+            [Compare("Password", ErrorMessage = "Het wachwoord en de wachwoord bevestiging komen niet overeen.")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -68,6 +109,8 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                user.SetGegevens(Input);
+                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, Input.Type));
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

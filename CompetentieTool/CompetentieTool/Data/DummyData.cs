@@ -21,6 +21,8 @@ namespace CompetentieTool.Data
             string desc2 = "";
             string id2 = "";
 
+
+
             string password = "P@ssw00rd!!";
 
             if (await roleManager.FindByIdAsync(role1) == null)
@@ -39,7 +41,7 @@ namespace CompetentieTool.Data
                     Email = "aaa@aa.aa",
                     Voornaam = "aa",
                     Achternaam = "aa",
-                    Adres= "aa straat 1",
+                    Adres = "aa straat",
                     Gemeente = "aa stad",
                     Postcode = 1000
                 };
@@ -60,7 +62,7 @@ namespace CompetentieTool.Data
                     Email = "bbb@bb.bb",
                     Voornaam = "bb",
                     Achternaam = "bb",
-                    Adres = "bb straat 20",
+                    Adres = "bb straat",
                     Gemeente = "bb stad",
                     Postcode = 1000
                 };
