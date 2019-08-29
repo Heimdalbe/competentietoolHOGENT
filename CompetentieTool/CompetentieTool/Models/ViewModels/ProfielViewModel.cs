@@ -18,15 +18,15 @@ namespace CompetentieTool.Models.ViewModels
         [DataType(DataType.Date)]
         public DateTime GeboorteDatum { get; set; }
         [Required]
-        public string Adres { get; set; }
+        public string Straat { get; set; }
         [Required]
-        public int Postcode { get; set; }
+        public string Huisnummer { get; set; }
+        [Required]
+        public string Postcode { get; set; }
         [Required]
         public string Gemeente { get; set; }
         [Required]
         public string Nationaliteit { get; set; }
-        [Required]
-        public string Geboorteplaats { get; set; }
         [Required]
         public string Geslacht { get; set; }
         public string Gsm { get; set; }
@@ -43,11 +43,11 @@ namespace CompetentieTool.Models.ViewModels
             Achternaam = user.Achternaam;
             Voornaam = user.Voornaam;
             GeboorteDatum = user.GeboorteDatum;
-            Adres = user.Adres;
+            Straat = user.Straat;
+            Huisnummer = user.Huisnummer;
             Postcode = user.Postcode;
             Gemeente = user.Gemeente;
             Nationaliteit = user.Nationaliteit;
-            Geboorteplaats = user.Geboorteplaats;
             Geslacht = user.Geslacht;
             Gsm = user.Gsm;
             Emailadres = user.Emailadres;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CompetentieTool.Controllers
@@ -12,7 +13,7 @@ namespace CompetentieTool.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin,Werkgever")]
         public IActionResult Uitnodigingen()
         {
             return View();

@@ -8,6 +8,7 @@ namespace CompetentieTool.Models.Identities
 {
     public class ApplicationRole: IdentityRole
     {
+
         public ApplicationRole() : base()
         {
 

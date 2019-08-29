@@ -22,9 +22,9 @@ namespace CompetentieTool.Controllers
             return View();
         }
         
-        public IActionResult WijzigGegevens(int id)
+        public IActionResult Gegevens(string username)
         {
-            ApplicationUser user = _userRepository.GetById(id);
+            ApplicationUser user = _userRepository.GetByUsername(username);
             if (user == null)
                 return NotFound();
 
@@ -32,13 +32,13 @@ namespace CompetentieTool.Controllers
         }
         [HttpPost]
         
-        public IActionResult WijzigGegevens(int id, ProfielViewModel viewmodel)
+        public IActionResult Gegevens(string username, ProfielViewModel viewmodel)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    ApplicationUser user = _userRepository.GetById(id);
+                    ApplicationUser user = _userRepository.GetByUsername(username);
                     user.wijzigGegevens(viewmodel);
                     _userRepository.SaveChanges();
                     return View("Bevestiging");

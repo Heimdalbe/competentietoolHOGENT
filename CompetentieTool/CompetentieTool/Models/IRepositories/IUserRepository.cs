@@ -9,7 +9,7 @@ namespace CompetentieTool.Models.Domain
     public interface IUserRepository
     {
         IEnumerable<ApplicationUser> GetAll();
-        ApplicationUser GetById(int id);
+        ApplicationUser GetByUsername(string username);
         void Add(ApplicationUser user);
         void SaveChanges();
     }

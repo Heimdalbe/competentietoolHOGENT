@@ -60,13 +60,13 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             public DateTime Geboortedatum { get; set; }
 
             [Required(ErrorMessage = "Huisnummer is verplicht in te vullen")]
-            public int Huisnummer { get; set; }
+            public string Huisnummer { get; set; }
 
             [Required(ErrorMessage = "Straat is verplicht in te vullen")]
             public string Straat { get; set; }
 
             [Required(ErrorMessage = "Postcode is verplicht in te vullen")]
-            public int Postcode { get; set; }
+            public string Postcode { get; set; }
 
             [Required(ErrorMessage = "Gemeente is verplicht in te vullen")]
             public string Gemeente { get; set; }
@@ -78,7 +78,7 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             public string Geslacht { get; set; }
 
             [Display(Name = "Gsm nummer")]
-            [RegularExpression(@"^\+32[0-9]{9}$", ErrorMessage = "Een gsm nummer is van de vorm: +32470253698")]
+            //[RegularExpression(@"^\+32[0-9]{9}$", ErrorMessage = "Een gsm nummer is van de vorm: +32470253698")]
             public string GsmNummer { get; set; }
 
             [Required(ErrorMessage = "Email is verplicht in te vullen")]
@@ -108,8 +108,9 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Username, Email = Input.Email };
                 user.SetGegevens(Input);
+                
                 await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, Input.Type));
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)

@@ -5,12 +5,14 @@
 @inject UserManager<ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
+
 //if logged in as sollicitant
 {
     <li><a asp-area="" asp-controller="Sollicitant" asp-action="Vacatures">Vacatures</a></li>
     <li><a asp-area="" asp-controller="Sollicitant" asp-action="Uitnodigingen">Uitnodigingen</a></li>
+    <li><a asp-area="" asp-controller="User" asp-action="GegevensWijzigen">Profiel</a></li>
 }
-else 
+else
 //should be something like @if (SignInManager.IsSignedIn(Werkgever))
 {
     // if logged in as werkgever
