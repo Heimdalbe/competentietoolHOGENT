@@ -37,7 +37,7 @@ namespace CompetentieTool.Data
             {
                 var user = new Models.Identities.ApplicationUser
                 {
-                    UserName = "aaa@aa.aa",
+                    Username = "aaa@aa.aa",
                     Email = "aaa@aa.aa",
                     Voornaam = "aa",
                     Achternaam = "aa",
@@ -58,7 +58,7 @@ namespace CompetentieTool.Data
             {
                 var user = new Models.Identities.ApplicationUser
                 {
-                    UserName = "bbb@bb.bb",
+                    Username = "bbb@bb.bb",
                     Email = "bbb@bb.bb",
                     Voornaam = "bb",
                     Achternaam = "bb",
