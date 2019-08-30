@@ -7,6 +7,8 @@ namespace CompetentieTool.Models.Domain
 {
     public class Vacature
     {
+        public String Id { get; set; }
+
         public String Functie { get; set; }
 
         public String Beschrijving { get; set; }

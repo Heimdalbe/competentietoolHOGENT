@@ -4,6 +4,7 @@ using System.Text;
 using CompetentieTool.Models.Identities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using CompetentieTool.Models.Domain;
 
 namespace CompetentieTool.Data
 {
@@ -13,5 +14,6 @@ namespace CompetentieTool.Data
             : base(options)
         {
         }
+        public DbSet<CompetentieTool.Models.Domain.Vacature> Vacature { get; set; }
     }
 }

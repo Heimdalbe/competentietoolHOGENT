@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
-    <Folder Include="Views\Bedrijf\" />
   </ItemGroup>
 
 </Project>

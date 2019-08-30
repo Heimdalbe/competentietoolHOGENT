@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace CompetentieTool.Models.Domain
 {
-    public class CompetentieProfiel
+    public class Vraag : IVraag
     {
         public String Id { get; set; }
-        public IEnumerable<Competentie> Competenties { get; set; }
-
-        public CompetentieProfiel()
-        {
-        }
     }
 }
