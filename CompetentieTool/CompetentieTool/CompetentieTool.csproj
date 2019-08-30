@@ -6,18 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Migrations\**" />
     <Compile Remove="NewFolder\**" />
-    <Content Remove="Data\Migrations\**" />
     <Content Remove="NewFolder\**" />
-    <EmbeddedResource Remove="Data\Migrations\**" />
     <EmbeddedResource Remove="NewFolder\**" />
-    <None Remove="Data\Migrations\**" />
     <None Remove="NewFolder\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Data\Migrations\ApplicationDbContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>

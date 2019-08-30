@@ -12,6 +12,7 @@ namespace CompetentieTool.Models.Identities
     public class ApplicationUser : IdentityUser
     {
         public ApplicationUser() : base() { }
+        private string _usertype;
         private string _username;
         private string _emailadres;
         private string _achternaam;
@@ -26,31 +27,16 @@ namespace CompetentieTool.Models.Identities
         private string _huisnummer;
 
         #region Properties
-
-        public string Username
+        public string Usertype
         {
-            get { return _username; }
+            get { return _usertype; }
             private set
             {
-                if (String.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException();
-                }
-                _username = value;
+                _usertype = value;
             }
+
         }
-        public Regex emailRegex = new Regex(@"[\w\d\._-]+@[\w]+\.[\w]+(\.\w+)*");
-        public string Emailadres {
-            get { return _emailadres; }
-            set
-            {
-                if (String.IsNullOrWhiteSpace(value) || !emailRegex.IsMatch(value))
-                {
-                    throw new ArgumentException();
-                }
-                _emailadres = value;
-            }
-        }
+        
         public string Achternaam {
             get { return _achternaam; }
             set
@@ -164,7 +150,6 @@ namespace CompetentieTool.Models.Identities
             Achternaam = viewmodel.Achternaam;
             Voornaam = viewmodel.Voornaam;
             GeboorteDatum = viewmodel.GeboorteDatum;
-            Emailadres = viewmodel.Emailadres;
             Gsm = viewmodel.Gsm;
             Geslacht = viewmodel.Geslacht;
             Nationaliteit = viewmodel.Nationaliteit;
@@ -174,13 +159,26 @@ namespace CompetentieTool.Models.Identities
             Huisnummer = viewmodel.Huisnummer;
         }
 
-        public void SetGegevens(RegisterModel.InputModel input)
+        public void SetGegevensWerkgever(RegisterModel.InputModel input)
         {
-            Username = input.Username;
+            Usertype = "Werkgever";
             Achternaam = input.Achternaam;
             Voornaam = input.Voornaam;
             GeboorteDatum = input.Geboortedatum;
-            Emailadres = input.Email;
+            Gsm = input.GsmNummer;
+            Geslacht = input.Geslacht;
+            Nationaliteit = input.Nationaliteit;
+            Gemeente = input.Gemeente;
+            Postcode = input.Postcode;
+            Straat = input.Straat;
+            Huisnummer = input.Huisnummer;
+        }
+        public void SetGegevensSollicitant(RegisterSollicitantModel.InputModel input)
+        {
+            Usertype = "Sollicitant";
+            Achternaam = input.Achternaam;
+            Voornaam = input.Voornaam;
+            GeboorteDatum = input.Geboortedatum;
             Gsm = input.GsmNummer;
             Geslacht = input.Geslacht;
             Nationaliteit = input.Nationaliteit;

@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CompetentieTool.Data.Migrations
+namespace CompetentieTool.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class _koekje : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,9 @@ namespace CompetentieTool.Data.Migrations
                     Id = table.Column<string>(nullable: false),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true)
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    CreationDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,7 +29,6 @@ namespace CompetentieTool.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
@@ -40,7 +41,20 @@ namespace CompetentieTool.Data.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Usertype = table.Column<string>(nullable: true),
+                    Username = table.Column<string>(nullable: true),
+                    Emailadres = table.Column<string>(nullable: true),
+                    Achternaam = table.Column<string>(nullable: true),
+                    Voornaam = table.Column<string>(nullable: true),
+                    Gsm = table.Column<string>(nullable: true),
+                    Geslacht = table.Column<string>(nullable: true),
+                    GeboorteDatum = table.Column<DateTime>(nullable: false),
+                    Nationaliteit = table.Column<string>(nullable: true),
+                    Gemeente = table.Column<string>(nullable: true),
+                    Postcode = table.Column<string>(nullable: true),
+                    Straat = table.Column<string>(nullable: true),
+                    Huisnummer = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

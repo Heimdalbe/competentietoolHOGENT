@@ -34,6 +34,8 @@ namespace CompetentieTool.Data
             {
                 await roleManager.CreateAsync(new ApplicationRole(role2, desc2, DateTime.Now));
             }
+            
+            Console.WriteLine(await userManager.FindByNameAsync("thomass123") == null);
             if (await userManager.FindByNameAsync("thomass123") == null)
             {
                 var user = new ApplicationUser();
@@ -51,7 +53,7 @@ namespace CompetentieTool.Data
                 input.Gemeente = "Lokeren";
                 input.Postcode = "9160";
 
-                user.SetGegevens(input);
+                user.SetGegevensWerkgever(input);
 
                 var result = await userManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -63,30 +65,30 @@ namespace CompetentieTool.Data
             }
             if (await userManager.FindByNameAsync("testerboy420") == null)
             {
-                var user = new ApplicationUser();
-                var input = new RegisterModel.InputModel();
-                input.Achternaam = "bobbie";
-                input.Voornaam = "Bob";
-                input.Email = "test@test.be";
-                input.Username = "testerboy420";
-                input.GsmNummer = "0123456789";
-                input.Geslacht = "man";
-                input.Huisnummer = "20";
-                input.Straat = "koekjesstraat";
-                input.Nationaliteit = "Belg";
-                input.Geboortedatum = new DateTime(1990, 12, 10);
-                input.Gemeente = "Gent";
-                input.Postcode = "9000";
+                var user1 = new ApplicationUser();
+                var input1 = new RegisterModel.InputModel();
+                input1.Achternaam = "bobbie";
+                input1.Voornaam = "Bob";
+                input1.Email = "test@test.be";
+                input1.Username = "testerboy420";
+                input1.GsmNummer = "0123456789";
+                input1.Geslacht = "man";
+                input1.Huisnummer = "20";
+                input1.Straat = "koekjesstraat";
+                input1.Nationaliteit = "Belg";
+                input1.Geboortedatum = new DateTime(1990, 12, 10);
+                input1.Gemeente = "Gent";
+                input1.Postcode = "9000";
                 
-                user.SetGegevens(input);
+                user1.SetGegevensWerkgever(input1);
 
-                var result = await userManager.CreateAsync(user);
+                var result = await userManager.CreateAsync(user1);
                 if (result.Succeeded)
                 {
-                    await userManager.AddPasswordAsync(user, password);
-                    await userManager.AddToRoleAsync(user, role1);
+                    await userManager.AddPasswordAsync(user1, password);
+                    await userManager.AddToRoleAsync(user1, role1);
                 }
-                id2  = user.Id;
+                id2  = user1.Id;
             }
         }
     }

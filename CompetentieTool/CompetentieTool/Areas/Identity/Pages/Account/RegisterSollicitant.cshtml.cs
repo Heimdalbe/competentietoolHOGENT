@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
@@ -12,20 +13,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 
+
 namespace CompetentieTool.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
-    public class RegisterModel : PageModel
+    public class RegisterSollicitantModel : PageModel
     {
+        
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ILogger<RegisterModel> _logger;
+        private readonly ILogger<RegisterSollicitantModel> _logger;
         private readonly IEmailSender _emailSender;
 
-        public RegisterModel(
+        public RegisterSollicitantModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<RegisterModel> logger,
+            ILogger<RegisterSollicitantModel> logger,
             IEmailSender emailSender)
         {
             _userManager = userManager;
@@ -41,6 +43,7 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            
 
             [Required(ErrorMessage = "Gebruikersnaam is verplicht in te vullen")]
             [Display(Name = "Gebruikersnaam")]
@@ -107,9 +110,9 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Username, Email = Input.Email };
-                user.SetGegevensWerkgever(Input);
-                
-                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Werkgever"));
+                user.SetGegevensSollicitant(Input);
+
+                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Sollicitant"));
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

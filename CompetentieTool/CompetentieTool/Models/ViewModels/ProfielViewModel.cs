@@ -50,7 +50,7 @@ namespace CompetentieTool.Models.ViewModels
             Nationaliteit = user.Nationaliteit;
             Geslacht = user.Geslacht;
             Gsm = user.Gsm;
-            Emailadres = user.Emailadres;
+            Emailadres = user.Email;
 
         }
 
