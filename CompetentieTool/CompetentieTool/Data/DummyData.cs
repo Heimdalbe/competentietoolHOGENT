@@ -43,7 +43,7 @@ namespace CompetentieTool.Data
                 input.Achternaam = "Schuddinck";
                 input.Voornaam = "Thomas";
                 input.Email = "thomas@test.be";
-                input.Username = "thomass123";
+                user.UserName = "thomass123";
                 input.GsmNummer = "0491449500";
                 input.Geslacht = "man";
                 input.Huisnummer = "20";
@@ -70,7 +70,7 @@ namespace CompetentieTool.Data
                 input1.Achternaam = "bobbie";
                 input1.Voornaam = "Bob";
                 input1.Email = "test@test.be";
-                input1.Username = "testerboy420";
+                user1.UserName = "testerboy420";
                 input1.GsmNummer = "0123456789";
                 input1.Geslacht = "man";
                 input1.Huisnummer = "20";
