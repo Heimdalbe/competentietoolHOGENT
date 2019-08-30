@@ -13,8 +13,6 @@ namespace CompetentieTool.Models.Identities
         public ApplicationUser() : base() { }
         
         public int GebruikersID { get; set; }
-        public string Username { get; set; }
-        public string Emailadres { get; set; }
         public string Achternaam { get; set; }
         public string Voornaam { get; set; }
         public string Gsm { get; set; }
@@ -31,7 +29,6 @@ namespace CompetentieTool.Models.Identities
             Achternaam = viewmodel.Achternaam;
             Voornaam = viewmodel.Voornaam;
             GeboorteDatum = viewmodel.GeboorteDatum;
-            Emailadres = viewmodel.Emailadres;
             Gsm = viewmodel.Gsm;
             Geslacht = viewmodel.Geslacht;
             Geboorteplaats = viewmodel.Geboorteplaats;
@@ -43,11 +40,9 @@ namespace CompetentieTool.Models.Identities
 
         public void SetGegevens(RegisterModel.InputModel input)
         {
-            Username = input.Username;
             Achternaam = input.Achternaam;
             Voornaam = input.Voornaam;
             GeboorteDatum = input.Geboortedatum;
-            Emailadres = input.Email;
             Gsm = input.GsmNummer;
             Geslacht = input.Geslacht;
             Nationaliteit = input.Nationaliteit;

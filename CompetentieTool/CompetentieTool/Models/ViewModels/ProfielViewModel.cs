@@ -30,8 +30,7 @@ namespace CompetentieTool.Models.ViewModels
         [Required]
         public string Geslacht { get; set; }
         public string Gsm { get; set; }
-        [Required]
-        public string Emailadres { get; set; }
+        
 
         public ProfielViewModel()
         {
@@ -50,7 +49,6 @@ namespace CompetentieTool.Models.ViewModels
             Geboorteplaats = user.Geboorteplaats;
             Geslacht = user.Geslacht;
             Gsm = user.Gsm;
-            Emailadres = user.Emailadres;
 
         }
 
