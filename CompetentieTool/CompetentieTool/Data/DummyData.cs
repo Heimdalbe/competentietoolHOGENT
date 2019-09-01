@@ -35,7 +35,7 @@ namespace CompetentieTool.Data
                 await roleManager.CreateAsync(new ApplicationRole(role2, desc2, DateTime.Now));
             }
             
-            Console.WriteLine(await userManager.FindByNameAsync("thomass123") == null);
+            
             if (await userManager.FindByNameAsync("thomass123") == null)
             {
                 var user = new ApplicationUser();
@@ -43,7 +43,6 @@ namespace CompetentieTool.Data
                 input.Achternaam = "Schuddinck";
                 input.Voornaam = "Thomas";
                 input.Email = "thomas@test.be";
-                user.UserName = "thomass123";
                 input.GsmNummer = "0491449500";
                 input.Geslacht = "man";
                 input.Huisnummer = "20";
@@ -58,7 +57,7 @@ namespace CompetentieTool.Data
                 var result = await userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    await userManager.AddPasswordAsync(user, "broek123");
+                    await userManager.AddPasswordAsync(user, "Thomas1!");
                     await userManager.AddToRoleAsync(user, role1);
                 }
                 id1 = user.Id;
@@ -70,7 +69,6 @@ namespace CompetentieTool.Data
                 input1.Achternaam = "bobbie";
                 input1.Voornaam = "Bob";
                 input1.Email = "test@test.be";
-                user1.UserName = "testerboy420";
                 input1.GsmNummer = "0123456789";
                 input1.Geslacht = "man";
                 input1.Huisnummer = "20";

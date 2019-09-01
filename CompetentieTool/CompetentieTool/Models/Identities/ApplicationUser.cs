@@ -75,12 +75,13 @@ namespace CompetentieTool.Models.Identities
         public string Geslacht
         {
             get { return _geslacht; }
+            
             set
-            {
-                if (value == null)
-                    throw new ArgumentException(value);
-                _geslacht = value;
-            }
+                {
+                    if (value == null || !Regex.Match(value, "[MVX]", RegexOptions.IgnoreCase).Success)
+                        throw new ArgumentException(value);
+                    _geslacht = value;
+                }
         }
         public DateTime GeboorteDatum {
             get { return _geboorteDatum; }
@@ -157,6 +158,8 @@ namespace CompetentieTool.Models.Identities
             Postcode = viewmodel.Postcode;
             Straat = viewmodel.Straat;
             Huisnummer = viewmodel.Huisnummer;
+            this.Email = viewmodel.Emailadres;
+            this.UserName = viewmodel.Emailadres;
         }
 
         public void SetGegevensWerkgever(RegisterModel.InputModel input)
@@ -172,6 +175,8 @@ namespace CompetentieTool.Models.Identities
             Postcode = input.Postcode;
             Straat = input.Straat;
             Huisnummer = input.Huisnummer;
+            this.Email = input.Email;
+            this.UserName = input.Email;
         }
         public void SetGegevensSollicitant(RegisterSollicitantModel.InputModel input)
         {
@@ -186,6 +191,8 @@ namespace CompetentieTool.Models.Identities
             Postcode = input.Postcode;
             Straat = input.Straat;
             Huisnummer = input.Huisnummer;
+            this.Email = input.Email;
+            this.UserName = input.Email;
         }
     }
 }

@@ -44,12 +44,6 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
         public class InputModel
         {
             
-
-            [Required(ErrorMessage = "Gebruikersnaam is verplicht in te vullen")]
-            [Display(Name = "Gebruikersnaam")]
-            [Remote("checkUsernameValidate", "Lid", ErrorMessage = "Deze gebruikersnaam is al in gebruik.")]
-            public string Username { get; set; }
-
             [Required(ErrorMessage = "Voornaam is verplicht in te vullen")]
             public string Voornaam { get; set; }
 
@@ -109,7 +103,7 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Username, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
                 user.SetGegevensSollicitant(Input);
 
                 await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Sollicitant"));

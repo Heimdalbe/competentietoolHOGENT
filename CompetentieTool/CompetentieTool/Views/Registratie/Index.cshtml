@@ -1,12 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Registratie";
 }
-<h3>Ik wil registreren als</h3>
-<div class="row">
-    <div class="col-lg-4">
-        <a asp-area="Identity" asp-page="/Account/RegisterSollicitant">Sollicitant</a>
-    </div>
-    <div class="col-lg-8">
-        <a asp-area="Identity" asp-page="/Account/Register">Werkgever</a>
+<div class="d-inline-flex">
+    <h3 class="align-self-center">Ik wil registreren als</h3>
+    <div class="row justify-content-between">
+        <div class="col-lg-4">
+            <a class="display-2 regis" asp-area="Identity" asp-page="/Account/RegisterSollicitant">Sollicitant</a>
+        </div>
+        <div class="col-lg-8">
+            <a class="display-2 regis" asp-area="Identity" asp-page="/Account/Register">Werkgever</a>
+        </div>
     </div>
 </div>

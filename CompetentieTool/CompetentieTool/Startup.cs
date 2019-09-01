@@ -49,7 +49,7 @@ namespace CompetentieTool
             {
                 options.AddPolicy("OnlyAdminAccess", policy => policy.RequireRole("Admin"));
                 options.AddPolicy("OnlyWerkgeverAccess", policy => policy.RequireRole("Admin", "Werkgever"));
-                options.AddPolicy("OnlySollicitantAccess", policy => policy.RequireRole("Admin", "Werkgever"));
+                options.AddPolicy("OnlySollicitantAccess", policy => policy.RequireRole("Admin", "Sollicitant"));
             });
         }
     
