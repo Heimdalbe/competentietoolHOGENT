@@ -7,6 +7,7 @@ namespace CompetentieTool.Domain
 {
     public class Competentie
     {
+        public String Id { get; set; }
         public String Naam { get; set; }
         public String Verklaring { get; set; }
         public IVraag Vraag { get; set; }

@@ -1,4 +1,6 @@
-﻿using CompetentieTool.Models.Identities;
+﻿using CompetentieTool.Domain;
+using CompetentieTool.Models.Domain;
+using CompetentieTool.Models.Identities;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -74,7 +76,35 @@ namespace CompetentieTool.Data
                     await userManager.AddToRoleAsync(user, role1);
                 }
                 id2  = user.Id;
+
+                
             }
+            AddVacatures(context);
+        }
+        public static void AddVacatures(ApplicationDbContext context)
+        {
+            Competentie comp1 = new Competentie { Naam = "Niet veroordelen", Verklaring = "De hulpverlener veroordeelt niet en is zich hierbij bewust van de invloed van zijn eigen waarde, opvoedings- en normenkader op zijn denken" };
+            Competentie comp2 = new Competentie { Naam = "Situationeel denken", Verklaring = "De hulpverlener kan een inschatting maken wanneer een interventie al dan niet noodzakelijk is binnen het hulpverleningstraject en beroept zich hiervoor op geïnternaliseerde ethisch en theoretische kaders." };
+
+            Vacature vac1 = new Vacature { Beschrijving = "test er test", Functie = "hulpverlener" };
+            Vacature vac2 = new Vacature { Beschrijving = "nog een test", Functie = "brandweer" };
+            Vacature vac3 = new Vacature { Beschrijving = "test nr 3", Functie = "IT" };
+
+            ICollection<Competentie> competenties = new List<Competentie>();
+            competenties.Add(comp1);
+            competenties.Add(comp2);
+
+            vac1.AddCompetentie(competenties);
+            vac3.AddCompetentie(competenties);
+
+            context.Vacatures.Add(vac1);
+            context.Vacatures.Add(vac2);
+            context.Vacatures.Add(vac3);
+
+            context.Competenties.Add(comp1);
+            context.Competenties.Add(comp2);
+
+            context.SaveChanges();
         }
     }
 }
