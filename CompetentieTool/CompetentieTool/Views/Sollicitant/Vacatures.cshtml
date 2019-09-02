@@ -1,1 +1,25 @@
-﻿
+﻿@model IEnumerable<CompetentieTool.Models.Domain.Vacature>
+
+@{
+    ViewData["Title"] = "Vacatures";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="container">
+    <div class="panel-group">
+        @foreach (var item in Model)
+        {
+        <a asp-controller="Sollicitant" asp-action="Vragenlijst" asp-route-id="@item.Id">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3> @item.Functie</h3>
+
+                    <p>@item.Beschrijving</p>
+                </div>
+            </div>
+        </a>
+}
+
+    </div>
+    </div>

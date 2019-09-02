@@ -79,7 +79,7 @@ namespace CompetentieTool.Data
 
                 
             }
-            AddVacatures(context);
+            
         }
         public static void AddVacatures(ApplicationDbContext context)
         {

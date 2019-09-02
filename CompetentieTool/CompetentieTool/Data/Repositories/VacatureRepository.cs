@@ -1,5 +1,6 @@
 ﻿using CompetentieTool.Models.Domain;
 using CompetentieTool.Models.IRepositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace CompetentieTool.Data.Repositories
     public class VacatureRepository : IVacatureRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly DbSet<Vacature> _vacatures;
 
         public VacatureRepository(ApplicationDbContext context)
         {
             _context = context;
+            _vacatures = context.Vacatures;
         }
 
         public IEnumerable<Vacature> GetAll()
@@ -23,7 +26,7 @@ namespace CompetentieTool.Data.Repositories
 
         public Vacature GetBy(string id)
         {
-            return _context.Vacatures.Where(v => v.Id.Equals(id)).SingleOrDefault();
+            return _vacatures.Include(v => v.CompetentiesLijst).ThenInclude(c => c.Competentie).Where(v => v.Id.Equals(id)).SingleOrDefault();
         }
 
         public void SaveChanges()

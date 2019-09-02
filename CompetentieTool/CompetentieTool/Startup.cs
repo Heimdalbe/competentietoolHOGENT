@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CompetentieTool.Models.Identities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using CompetentieTool.Models.IRepositories;
+using CompetentieTool.Data.Repositories;
 
 namespace CompetentieTool
 {
@@ -45,6 +47,7 @@ namespace CompetentieTool
                 .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddScoped<IVacatureRepository, VacatureRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
