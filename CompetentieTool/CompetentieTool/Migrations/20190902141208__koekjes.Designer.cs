@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190830153247__koekje")]
-    partial class _koekje
+    [Migration("20190902141208__koekjes")]
+    partial class _koekjes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,8 +66,6 @@ namespace CompetentieTool.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("Emailadres");
-
                     b.Property<DateTime>("GeboorteDatum");
 
                     b.Property<string>("Gemeente");
@@ -106,8 +104,6 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Username");
 
                     b.Property<string>("Usertype");
 

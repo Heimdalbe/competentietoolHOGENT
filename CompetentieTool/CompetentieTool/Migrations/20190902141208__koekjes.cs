@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class _koekje : Migration
+    public partial class _koekjes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,6 +29,7 @@ namespace CompetentieTool.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
@@ -43,8 +44,6 @@ namespace CompetentieTool.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Usertype = table.Column<string>(nullable: true),
-                    Username = table.Column<string>(nullable: true),
-                    Emailadres = table.Column<string>(nullable: true),
                     Achternaam = table.Column<string>(nullable: true),
                     Voornaam = table.Column<string>(nullable: true),
                     Gsm = table.Column<string>(nullable: true),

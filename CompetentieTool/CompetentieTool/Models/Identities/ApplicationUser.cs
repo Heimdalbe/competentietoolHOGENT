@@ -13,8 +13,6 @@ namespace CompetentieTool.Models.Identities
     {
         public ApplicationUser() : base() { }
         private string _usertype;
-        private string _username;
-        private string _emailadres;
         private string _achternaam;
         private string _voornaam;
         private string _gsm;

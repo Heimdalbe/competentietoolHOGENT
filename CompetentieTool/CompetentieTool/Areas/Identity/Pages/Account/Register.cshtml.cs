@@ -102,11 +102,11 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, SecurityStamp = Guid.NewGuid().ToString("D") };
                 user.SetGegevensWerkgever(Input);
-                
-                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Werkgever"));
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Werkgever"));
+                
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

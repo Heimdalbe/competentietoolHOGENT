@@ -64,8 +64,6 @@ namespace CompetentieTool.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("Emailadres");
-
                     b.Property<DateTime>("GeboorteDatum");
 
                     b.Property<string>("Gemeente");
@@ -104,8 +102,6 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Username");
 
                     b.Property<string>("Usertype");
 

@@ -5,43 +5,47 @@ using System.Threading.Tasks;
 using CompetentieTool.Models.Domain;
 using CompetentieTool.Models.Identities;
 using CompetentieTool.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CompetentieTool.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUserRepository _userRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public UserController(IUserRepository userRepository)
+        public UserController(
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager)
         {
-            _userRepository = userRepository;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         public IActionResult Index()
         {
             return View();
         }
         
-        public IActionResult Gegevens(string username)
+        public IActionResult Gegevens()
         {
-            ApplicationUser user = _userRepository.GetByUsername(username);
+            ApplicationUser user = _userManager.FindByEmailAsync(User.Identity.Name).Result;
             if (user == null)
                 return NotFound();
 
             return View(new ProfielViewModel(user));
         }
         [HttpPost]
-        
-        public IActionResult Gegevens(string username, ProfielViewModel viewmodel)
+        public IActionResult Gegevens(ProfielViewModel viewmodel)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    ApplicationUser user = _userRepository.GetByUsername(username);
+                    ApplicationUser user = _userManager.FindByEmailAsync(User.Identity.Name).Result;
                     user.wijzigGegevens(viewmodel);
-                    _userRepository.SaveChanges();
-                    return View("Bevestiging");
+                    _userManager.UpdateAsync(user);
+                    TempData["message"] = $"De gegevens zijn succesvol aangepast.";
                 }
                 catch (Exception ex)
                 {
