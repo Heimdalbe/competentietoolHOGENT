@@ -1,4 +1,5 @@
-﻿using CompetentieTool.Domain;
+﻿using CompetentieTool.Data.Repositories;
+using CompetentieTool.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace CompetentieTool.Models.Domain
 
         public CompetentieProfiel()
         {
+            Competenties = new CompetentieRepository().GetBasisCompetenties();
         }
     }
 }

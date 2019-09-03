@@ -14,5 +14,10 @@ namespace CompetentieTool.Models.Domain
         public String Beschrijving { get; set; }
 
         public CompetentieProfiel Profiel { get; set; }
+
+        public Vacature()
+        {
+            Profiel = new CompetentieProfiel();
+        }
     }
 }
