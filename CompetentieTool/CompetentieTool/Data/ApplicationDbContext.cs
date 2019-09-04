@@ -30,11 +30,15 @@ namespace CompetentieTool.Data
             builder.Entity<VacatureCompetenties>().HasOne(v => v.Vacature).WithMany(v => v.CompetentiesLijst).HasForeignKey(v => v.VacatureId);
             builder.Entity<VacatureCompetenties>().HasOne(v => v.Competentie).WithMany().HasForeignKey(v => v.CompetentieId);
 
-            builder.Entity<Competentie>().Ignore(c => c.Vraag);
             builder.Entity<Competentie>().Ignore(c => c.Aanvulling);
+            builder.Entity<Competentie>().HasOne(v => v.Vraag).WithOne(c => c.Competentie).HasForeignKey<Competentie>(c => c.VraagId);
 
+            builder.Entity<IVraag>().HasKey(i => i.Id);
+            
 
-            builder.Entity<ApplicationUser>().Property(a => a.Geboorteplaats).HasMaxLength(100);
+            builder.Entity<VraagCasus>().HasOne(v => v.Vignet).WithMany();
+            builder.Entity<VraagCasus>().HasMany(v => v.Opties).WithOne();
+
         }
     }
 }

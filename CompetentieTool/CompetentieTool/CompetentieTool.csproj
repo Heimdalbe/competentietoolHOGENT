@@ -13,6 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20190904112801_Vragen.cs" />
+    <Compile Remove="Data\Migrations\20190904112801_Vragen.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190904130319_Vragen.cs" />
+    <Compile Remove="Data\Migrations\20190904130319_Vragen.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" PrivateAssets="All" />

@@ -7,5 +7,6 @@ namespace CompetentieTool.Domain
 {
     public class VraagOpen : IVraag
     {
+
     }
 }

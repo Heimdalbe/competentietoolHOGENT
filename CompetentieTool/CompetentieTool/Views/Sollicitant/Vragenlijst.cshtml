@@ -1,7 +1,16 @@
-﻿
+﻿@model IEnumerable<CompetentieTool.Models.ViewModels.VraagViewModel>
+
 @{
     ViewData["Title"] = "Vragenlijst";
 }
 
 <h2>Vragenlijst</h2>
-
+@foreach(var item in Model)
+{
+    
+    <p>@item.VraagStelling</p>
+    @if (item.Vignet != null)
+    {
+        <div>@item.Vignet</div>
+        }
+    }
