@@ -3,14 +3,45 @@
 @{
     ViewData["Title"] = "Vragenlijst";
 }
+@{ 
+    int counter = 1;
+}
 
 <h2>Vragenlijst</h2>
-@foreach(var item in Model)
-{
-    
-    <p>@item.VraagStelling</p>
-    @if (item.Vignet != null)
-    {
-        <div>@item.Vignet</div>
+<form asp-controller="Sollicitant" asp-action="" method="post" class="form-group">
+    <div class="container">
+        @foreach (var item in Model)
+        {
+        <div class="panel">
+            <h2 class="panel-heading">Vraag @counter</h2>
+            @{counter++;}
+            <div class="panel-body">
+                @if (item.Vignet != null)
+                {
+                    <div>@item.Vignet</div>
+                    <br />
+                }
+
+                <div>@item.VraagStelling</div>
+                @if (item.opties.Count > 0)
+                {
+
+                    @foreach (var opt in item.opties)
+                    {
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="@item.VraagId" value="opt" />@opt
+                    </label>
+                </div>
+
+                    }
+                    <br />
+                    <p>Verklaar uw antwoord</p>
+                }
+                @Html.TextArea(item.VraagId, null, new {@class = "form-control", @rows = 5})
+            </div>
+        </div>
+
         }
-    }
+    </div>
+      </form>
