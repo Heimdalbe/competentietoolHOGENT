@@ -33,6 +33,7 @@ namespace CompetentieTool.Controllers
         public IActionResult Vragenlijst(String id)
         {
             Vacature vac = _vacatureRepository.GetBy(id);
+            
             ICollection<VraagViewModel> models = new List<VraagViewModel>();
             foreach(Competentie comp in vac.Competenties)
             {
@@ -49,7 +50,10 @@ namespace CompetentieTool.Controllers
                 }
                 models.Add(res);
             }
-            return View(models);
+
+            var results = models.GroupBy(m => m.Vignet).ToList();
+
+            return View(results);
         }
     }
 }

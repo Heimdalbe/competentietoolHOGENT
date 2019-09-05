@@ -1,9 +1,9 @@
-﻿@model IEnumerable<CompetentieTool.Models.ViewModels.VraagViewModel>
+﻿@model List<IGrouping<string, CompetentieTool.Models.ViewModels.VraagViewModel>>
 
 @{
     ViewData["Title"] = "Vragenlijst";
 }
-@{ 
+@{
     int counter = 1;
 }
 
@@ -12,36 +12,43 @@
     <div class="container">
         @foreach (var item in Model)
         {
-        <div class="panel">
-            <h2 class="panel-heading">Vraag @counter</h2>
-            @{counter++;}
-            <div class="panel-body">
-                @if (item.Vignet != null)
-                {
-                    <div>@item.Vignet</div>
-                    <br />
-                }
-
-                <div>@item.VraagStelling</div>
-                @if (item.opties.Count > 0)
-                {
-
-                    @foreach (var opt in item.opties)
-                    {
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="@item.VraagId" value="opt" />@opt
-                    </label>
+            @if (item.Key != null)
+            {
+                <div class="panel">
+                    <h2>Casus</h2>
+                    <div class="panel-body">@item.Key</div>
                 </div>
+            }
 
-                    }
-                    <br />
-                    <p>Verklaar uw antwoord</p>
-                }
-                @Html.TextArea(item.VraagId, null, new {@class = "form-control", @rows = 5})
-            </div>
-        </div>
+            @foreach (var value in item)
+            {
 
+                <div class="panel">
+                    <h2 class="panel-heading">Vraag @counter</h2>
+                    @{counter++;}
+                    <div class="panel-body">
+
+                        <div>@value.VraagStelling</div>
+                        @if (value.opties.Count > 0)
+                        {
+
+                            @foreach (var opt in value.opties)
+                            {
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="@value.VraagId" value="opt" />@opt
+                                    </label>
+                                </div>
+
+                            }
+                            <br />
+                            <p>Verklaar uw antwoord</p>
+                        }
+                        @Html.TextArea(value.VraagId, null, new { @class = "form-control", @rows = 5 })
+                    </div>
+                </div>
+            }
         }
+
     </div>
-      </form>
+</form>

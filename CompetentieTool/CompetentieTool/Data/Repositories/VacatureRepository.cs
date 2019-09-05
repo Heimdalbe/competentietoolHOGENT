@@ -35,7 +35,8 @@ namespace CompetentieTool.Data.Repositories
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Vraag)
                 .ThenInclude(v => (v as VraagCasus).Opties)
-                .Where(v => v.Id.Equals(id)).SingleOrDefault();
+                .Where(v => v.Id.Equals(id)).SingleOrDefault()
+                ;
         }
 
         public void SaveChanges()
