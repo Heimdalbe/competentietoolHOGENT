@@ -6,49 +6,62 @@
 @{
     int counter = 1;
 }
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="~/js/wizard.js"></script>
+
 
 <h2>Vragenlijst</h2>
-<form asp-controller="Sollicitant" asp-action="" method="post" class="form-group">
-    <div class="container">
-        @foreach (var item in Model)
-        {
-            @if (item.Key != null)
-            {
-                <div class="panel">
-                    <h2>Casus</h2>
-                    <div class="panel-body">@item.Key</div>
-                </div>
-            }
-
-            @foreach (var value in item)
+<form  asp-controller="Sollicitant" asp-action="Submit" method="post" class="form-group">
+    <div class="container" id="wizard">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="start">
+                Welkom bij de vragenlijst
+            </div>
+            @foreach (var item in Model)
             {
 
-                <div class="panel">
-                    <h2 class="panel-heading">Vraag @counter</h2>
-                    @{counter++;}
-                    <div class="panel-body">
+                <div role="tabpanel" class="tab-pane" id="@item.Key">
+                    @if (item.Key != null)
+                    {
+                        <div class="panel">
+                            <h2>Casus</h2>
+                            <div class="panel-body">@item.Key</div>
+                        </div>
+                    }
 
-                        <div>@value.VraagStelling</div>
-                        @if (value.opties.Count > 0)
-                        {
+                    @foreach (var value in item)
+                    {
 
-                            @foreach (var opt in value.opties)
-                            {
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="@value.VraagId" value="opt" />@opt
-                                    </label>
-                                </div>
+                        <div class="panel">
+                            <h2 class="panel-heading">Vraag @counter</h2>
+                            @{counter++;}
+                            <div class="panel-body">
 
-                            }
-                            <br />
-                            <p>Verklaar uw antwoord</p>
-                        }
-                        @Html.TextArea(value.VraagId, null, new { @class = "form-control", @rows = 5 })
-                    </div>
+                                <div>@value.VraagStelling</div>
+                                @if (value.opties.Count > 0)
+                                {
+
+                                    @foreach (var opt in value.opties)
+                                    {
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="@value.VraagId" value="opt" asp-for="@value.OptieKeuze" />@opt
+                                            </label>
+                                        </div>
+
+                                    }
+                                    <br />
+                                    <p>Geef uw redenering</p>
+                                }
+                                <textarea asp-for="@value.Redenering" rows="5" id="@value.VraagId"></textarea>
+                            </div>
+                        </div>
+                    }
                 </div>
             }
-        }
-
+                <input type="submit" value="submit" />
+        </div>
+        <!--<button class="btn btn-default pull-right">SAVE</button>-->
     </div>
 </form>
+<button class="nexttab btn btn-default">Next</button>

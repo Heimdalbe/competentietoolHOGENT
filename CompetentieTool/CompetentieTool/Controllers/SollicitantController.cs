@@ -55,5 +55,14 @@ namespace CompetentieTool.Controllers
 
             return View(results);
         }
+
+        [HttpPost]
+        public void Submit(List<IGrouping<string, VraagViewModel>> models)
+        {
+            foreach(var group in models)
+            {
+                
+            }
+        }
     }
 }
