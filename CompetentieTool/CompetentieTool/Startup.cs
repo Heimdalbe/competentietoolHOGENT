@@ -14,8 +14,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CompetentieTool.Models.Identities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using CompetentieTool.Models.IRepositories;
-using CompetentieTool.Data.Repositories;
 
 namespace CompetentieTool
 {
@@ -47,8 +45,14 @@ namespace CompetentieTool
                 .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddScoped<IVacatureRepository, VacatureRepository>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("OnlyAdminAccess", policy => policy.RequireRole("Admin"));
+                options.AddPolicy("OnlyWerkgeverAccess", policy => policy.RequireRole("Admin", "Werkgever"));
+                options.AddPolicy("OnlySollicitantAccess", policy => policy.RequireRole("Admin", "Sollicitant"));
+            });
         }
+    
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,

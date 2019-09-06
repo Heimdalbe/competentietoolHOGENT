@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
@@ -12,20 +13,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 
+
 namespace CompetentieTool.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
-    public class RegisterModel : PageModel
+    public class RegisterSollicitantModel : PageModel
     {
+        
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ILogger<RegisterModel> _logger;
+        private readonly ILogger<RegisterSollicitantModel> _logger;
         private readonly IEmailSender _emailSender;
 
-        public RegisterModel(
+        public RegisterSollicitantModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<RegisterModel> logger,
+            ILogger<RegisterSollicitantModel> logger,
             IEmailSender emailSender)
         {
             _userManager = userManager;
@@ -50,7 +52,6 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
 
             [Required(ErrorMessage = "Geboortedatum is verplicht in te vullen")]
             [DataType(DataType.Date)]
-            [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
             public DateTime Geboortedatum { get; set; }
 
             [Required(ErrorMessage = "Huisnummer is verplicht in te vullen")]
@@ -102,10 +103,10 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, SecurityStamp = Guid.NewGuid().ToString("D") };
-                user.SetGegevensWerkgever(Input);
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                user.SetGegevensSollicitant(Input);
                 var result = await _userManager.CreateAsync(user, Input.Password);
-                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Werkgever"));
+                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Sollicitant"));
                 
                 if (result.Succeeded)
                 {
