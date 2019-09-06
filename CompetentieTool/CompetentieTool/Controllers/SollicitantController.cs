@@ -50,14 +50,17 @@ namespace CompetentieTool.Controllers
                 }
                 models.Add(res);
             }
-
+            ICollection<Group<string, VraagViewModel>> test = new List<Group<string, VraagViewModel>>();
             var results = models.GroupBy(m => m.Vignet).ToList();
-
-            return View(results);
+            foreach(var item in results)
+            {
+                test.Add(new Group<string, VraagViewModel> { Key = item.Key, Values = item.ToList() });
+            }
+            return View(test);
         }
 
         [HttpPost]
-        public void Submit(List<IGrouping<string, VraagViewModel>> models)
+        public void Submit(List<Group<string, VraagViewModel>> models)
         {
             foreach(var group in models)
             {

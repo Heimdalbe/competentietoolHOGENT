@@ -1,4 +1,4 @@
-﻿@model List<IGrouping<string, CompetentieTool.Models.ViewModels.VraagViewModel>>
+﻿@model List<CompetentieTool.Models.ViewModels.Group<string, CompetentieTool.Models.ViewModels.VraagViewModel>>
 
 @{
     ViewData["Title"] = "Vragenlijst";
@@ -11,25 +11,25 @@
 
 
 <h2>Vragenlijst</h2>
-<form  asp-controller="Sollicitant" asp-action="Submit" method="post" class="form-group">
+<form asp-controller="Sollicitant" asp-action="Submit" method="post" class="form-group">
     <div class="container" id="wizard">
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="start">
                 Welkom bij de vragenlijst
             </div>
-            @foreach (var item in Model)
+            @for (int i = 0; i < Model.Count; i++)
             {
 
-                <div role="tabpanel" class="tab-pane" id="@item.Key">
-                    @if (item.Key != null)
+                <div role="tabpanel" class="tab-pane" id="@Model[i].Key">
+                    @if (Model[i].Key != null)
                     {
                         <div class="panel">
                             <h2>Casus</h2>
-                            <div class="panel-body">@item.Key</div>
+                            <div class="panel-body">@Model[i].Key</div>
                         </div>
                     }
 
-                    @foreach (var value in item)
+                    @for (int j = 0; j < Model[i].Values.Count(); j++)
                     {
 
                         <div class="panel">
@@ -37,15 +37,16 @@
                             @{counter++;}
                             <div class="panel-body">
 
-                                <div>@value.VraagStelling</div>
-                                @if (value.opties.Count > 0)
+                                <div>@Model[i].Values[j].VraagStelling</div>
+                                @if (Model[i].Values[j].opties.Count > 0)
                                 {
 
-                                    @foreach (var opt in value.opties)
+                                    @foreach (var opt in Model[i].Values[j].opties)
                                     {
                                         <div class="radio">
+                                            @Html.RadioButtonFor(m => Model[i].Values[j].OptieKeuze, opt)
                                             <label>
-                                                <input type="radio" name="@value.VraagId" value="opt" asp-for="@value.OptieKeuze" />@opt
+                                                @opt
                                             </label>
                                         </div>
 
@@ -53,15 +54,16 @@
                                     <br />
                                     <p>Geef uw redenering</p>
                                 }
-                                <textarea asp-for="@value.Redenering" rows="5" id="@value.VraagId"></textarea>
+                                <textarea asp-for="@Model[i].Values[j].Redenering" rows="5" id="@Model[i].Values[j].VraagId"></textarea>
                             </div>
                         </div>
                     }
                 </div>
             }
-                <input type="submit" value="submit" />
+
         </div>
         <!--<button class="btn btn-default pull-right">SAVE</button>-->
     </div>
+    <input type="submit" value="submit" />
 </form>
 <button class="nexttab btn btn-default">Next</button>
