@@ -44,6 +44,7 @@ namespace CompetentieTool
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
+            services.AddScoped<IVacatureRepository, VacatureRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAuthorization(options =>
             {
