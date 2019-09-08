@@ -9,6 +9,7 @@ namespace CompetentieTool.Data.Repositories
 {
     public class CompetentieRepository : ICompetentieRepository
     {
+
         public void Add(Competentie user)
         {
             throw new NotImplementedException();

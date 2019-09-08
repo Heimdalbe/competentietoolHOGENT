@@ -14,6 +14,7 @@ namespace CompetentieTool.Data
             : base(options)
         {
         }
+
         public DbSet<CompetentieTool.Models.Domain.Vacature> Vacature { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompetentieTool.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,11 +14,13 @@ namespace CompetentieTool.Models.Domain
 
         public String Beschrijving { get; set; }
 
-        public CompetentieProfiel Profiel { get; set; }
+        public IEnumerable<Competentie> Competenties => CompetentiesLijst.Select(c => c.Competentie);
+
+        public ICollection<VacatureCompetenties> CompetentiesLijst { get; set; }
 
         public Vacature()
         {
-            Profiel = new CompetentieProfiel();
+            CompetentiesLijst = new List<VacatureCompetenties>();
         }
     }
 }
