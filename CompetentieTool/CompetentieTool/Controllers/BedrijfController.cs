@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CompetentieTool.Models.Domain;
 using CompetentieTool.Models.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,8 @@ namespace CompetentieTool.Controllers
 
         public IActionResult VacaturesList()
         {
-            return View();
+            //TODO(Joren): filter op bedrijf
+            return View(new List<Vacature>());
         }
 
         public IActionResult Create()
