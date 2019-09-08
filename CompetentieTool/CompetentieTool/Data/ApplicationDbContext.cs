@@ -10,11 +10,25 @@ namespace CompetentieTool.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
+        public DbSet<CompetentieTool.Models.Domain.Vacature> Vacature { get; set; }
+
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
 
-        public DbSet<CompetentieTool.Models.Domain.Vacature> Vacature { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+
+            base.OnModelCreating(builder);
+
+            builder.Entity<Vacature>().Ignore(v => v.Competenties);
+
+            builder.Entity<VacatureCompetentie>().HasKey(v => new { v.VacatureId, v.CompetentieId });
+            builder.Entity<VacatureCompetentie>().HasOne(v => v.Vacature).WithMany(v => v.CompetentiesLijst).HasForeignKey(v => v.VacatureId);
+            builder.Entity<VacatureCompetentie>().HasOne(v => v.Competentie).WithMany().HasForeignKey(v => v.CompetentieId);
+
+        }
     }
 }

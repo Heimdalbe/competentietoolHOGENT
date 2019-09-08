@@ -3,7 +3,7 @@ using System;
 
 namespace CompetentieTool.Models.Domain
 {
-    public class VacatureCompetenties
+    public class VacatureCompetentie
     {
         public String VacatureId { get; set; }
         public String CompetentieId { get; set; }

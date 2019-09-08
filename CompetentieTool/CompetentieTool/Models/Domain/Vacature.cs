@@ -16,11 +16,11 @@ namespace CompetentieTool.Models.Domain
 
         public IEnumerable<Competentie> Competenties => CompetentiesLijst.Select(c => c.Competentie);
 
-        public ICollection<VacatureCompetenties> CompetentiesLijst { get; set; }
+        public ICollection<VacatureCompetentie> CompetentiesLijst { get; set; }
 
         public Vacature()
         {
-            CompetentiesLijst = new List<VacatureCompetenties>();
+            CompetentiesLijst = new List<VacatureCompetentie>();
         }
     }
 }

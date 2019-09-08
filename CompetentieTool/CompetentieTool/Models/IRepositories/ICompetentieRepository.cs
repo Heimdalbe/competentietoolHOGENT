@@ -9,8 +9,10 @@ namespace CompetentieTool.Models.IRepositories
     public interface ICompetentieRepository
     {
         IEnumerable<Competentie> GetAll();
-        Competentie GetById(int id);
+        Competentie GetById(string id);
+        IEnumerable<Competentie> GetBasisCompetenties();
         void Add(Competentie user);
+        void Remove(string id);
         void SaveChanges();
     }
 }

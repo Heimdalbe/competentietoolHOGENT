@@ -20,12 +20,17 @@ namespace CompetentieTool.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Competentie GetById(int id)
+        public Competentie GetById(string id)
         {
             throw new NotImplementedException();
         }
 
         public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(string id)
         {
             throw new NotImplementedException();
         }
