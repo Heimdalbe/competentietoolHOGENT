@@ -17,12 +17,12 @@ namespace CompetentieTool.Data.Repositories
         public VacatureRepository(ApplicationDbContext context)
         {
             _context = context;
-            _vacatures = context.Vacatures;
+            _vacatures = context.Vacature;
         }
 
         public IEnumerable<Vacature> GetAll()
         {
-            return _context.Vacatures;
+            return _context.Vacature;
         }
 
         public Vacature GetBy(string id)

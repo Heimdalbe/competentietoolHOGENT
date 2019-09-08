@@ -10,8 +10,7 @@ namespace CompetentieTool.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
-        public DbSet<CompetentieTool.Models.Domain.Vacature> Vacature { get; set; }
-
+        public DbSet<Vacature> Vacature { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
