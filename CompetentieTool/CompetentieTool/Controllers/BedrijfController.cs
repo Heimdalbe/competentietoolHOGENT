@@ -41,7 +41,7 @@ namespace CompetentieTool.Controllers
             };
             _vacatureRepository.Add(temp);
 
-            return VacaturesList();
+            return RedirectToAction("VacaturesList");
         }
 
         public IActionResult Edit(String id)

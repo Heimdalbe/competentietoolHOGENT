@@ -31,9 +31,22 @@ namespace CompetentieTool.Models.ViewModels
         [Required]
         public IEnumerable<VacatureCompetentie> VacatureCompetenties { get; set; }
 
+        public Boolean IsInVacatureCompetenties(string id)
+        {
+            return !String.IsNullOrEmpty(VacatureCompetenties.FirstOrDefault(c => c.CompetentieId.Equals(id))?.CompetentieId);
+        }
+
+        public VacatureViewModel()
+        {
+            
+        }
+
         public VacatureViewModel(ICompetentieRepository competentieRepository)
         {
             _competentieRepository = competentieRepository;
+            var temp = new Vacature();
+            temp.AddCompetenties(competentieRepository.GetBasisCompetenties().ToList());
+            VacatureCompetenties = temp.CompetentiesLijst;
         }
 
         public VacatureViewModel(ICompetentieRepository competentieRepository, Vacature temp)
