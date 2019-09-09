@@ -6,13 +6,15 @@ using CompetentieTool.Models.Domain;
 using CompetentieTool.Models.Identities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using CompetentieTool.Models.Domain;
+using CompetentieTool.Domain;
 
 namespace CompetentieTool.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
-        public DbSet<Vacature> Vacatures { get; set; }
-        public DbSet<Competentie> Competenties { get; set; }
+        public DbSet<Vacature> Vacature { get; set; }
+        public DbSet<Competentie> Competenties {get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

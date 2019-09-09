@@ -4,14 +4,16 @@ using CompetentieTool.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CompetentieTool.Migrations
+namespace CompetentieTool.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190903143356_Vacature1")]
+    partial class Vacature1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,6 +40,8 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("Beschrijving");
 
+                    b.Property<string>("CompetentieProfielId");
+
                     b.Property<bool>("IsBasisCompetentie");
 
                     b.Property<string>("Naam");
@@ -50,9 +54,21 @@ namespace CompetentieTool.Migrations
 
                     b.HasIndex("AanvullingId");
 
+                    b.HasIndex("CompetentieProfielId");
+
                     b.HasIndex("VraagId");
 
-                    b.ToTable("Competenties");
+                    b.ToTable("Competentie");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.CompetentieProfiel", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CompetentieProfiel");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Vacature", b =>
@@ -64,22 +80,13 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("Functie");
 
+                    b.Property<string>("ProfielId");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("ProfielId");
+
                     b.ToTable("Vacature");
-                });
-
-            modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetentie", b =>
-                {
-                    b.Property<string>("VacatureId");
-
-                    b.Property<string>("CompetentieId");
-
-                    b.HasKey("VacatureId", "CompetentieId");
-
-                    b.HasIndex("CompetentieId");
-
-                    b.ToTable("VacatureCompetentie");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Vraag", b =>
@@ -139,7 +146,19 @@ namespace CompetentieTool.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("Land");
+                    b.Property<string>("Emailadres");
+
+                    b.Property<DateTime>("GeboorteDatum");
+
+                    b.Property<string>("Geboorteplaats");
+
+                    b.Property<int>("GebruikersID");
+
+                    b.Property<string>("Gemeente");
+
+                    b.Property<string>("Geslacht");
+
+                    b.Property<string>("Gsm");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -163,14 +182,12 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<string>("Stad");
-
-                    b.Property<string>("Straat");
-
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
+
+                    b.Property<string>("Username");
 
                     b.Property<string>("Voornaam");
 
@@ -277,6 +294,28 @@ namespace CompetentieTool.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CompetentieTool.Domain.Competentie", b =>
+                {
+                    b.HasOne("CompetentieTool.Domain.Aanvulling", "Aanvulling")
+                        .WithMany()
+                        .HasForeignKey("AanvullingId");
+
+                    b.HasOne("CompetentieTool.Models.Domain.CompetentieProfiel")
+                        .WithMany("Competenties")
+                        .HasForeignKey("CompetentieProfielId");
+
+                    b.HasOne("CompetentieTool.Models.Domain.Vraag", "Vraag")
+                        .WithMany()
+                        .HasForeignKey("VraagId");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.Vacature", b =>
+                {
+                    b.HasOne("CompetentieTool.Models.Domain.CompetentieProfiel", "Profiel")
+                        .WithMany()
+                        .HasForeignKey("ProfielId");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("CompetentieTool.Models.Identities.ApplicationRole")
@@ -320,13 +359,6 @@ namespace CompetentieTool.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CompetentieTool.Domain.VraagCasus", b =>
-                {
-                    b.HasOne("CompetentieTool.Domain.Vignet", "Vignet")
-                        .WithMany()
-                        .HasForeignKey("VignetId");
                 });
 #pragma warning restore 612, 618
         }

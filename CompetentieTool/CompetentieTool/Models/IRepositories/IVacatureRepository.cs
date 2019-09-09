@@ -11,5 +11,8 @@ namespace CompetentieTool.Models.IRepositories
         IEnumerable<Vacature> GetAll();
         Vacature GetBy(string id);
         void SaveChanges();
+        void Add(Vacature vacature);
+        void Delete(string id);
+        void Update(Vacature vacature);
     }
 }

@@ -35,6 +35,7 @@ namespace CompetentieTool.Controllers
 
             return View(new ProfielViewModel(user));
         }
+
         [HttpPost]
         public IActionResult Gegevens(ProfielViewModel viewmodel)
         {

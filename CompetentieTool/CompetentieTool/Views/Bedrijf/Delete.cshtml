@@ -1,0 +1,26 @@
+﻿@model CompetentieTool.Models.ViewModels.VacatureViewModel
+
+<h3>Vacature verwijderen?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Functie)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Functie)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Beschrijving)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Beschrijving)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="VacaturesList">Back to List</a>
+    </form>
+</div>

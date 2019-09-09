@@ -1,0 +1,24 @@
+﻿@model CompetentieTool.Models.ViewModels.VacatureViewModel
+
+<div>
+    <h2>Vacature details</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Functie)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Functie)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Beschrijving)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Beschrijving)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

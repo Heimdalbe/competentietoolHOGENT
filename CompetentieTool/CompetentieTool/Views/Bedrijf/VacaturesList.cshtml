@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CompetentieTool.Models.Domain.Vacature>
+<h2>
+    Vacatures voor uw bedrijf
+</h2>
+<p>
+    <a asp-action="Create">Voeg nieuwe vacature toe</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Functie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Beschrijving)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Functie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beschrijving)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Bewerken</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Verwijderen</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

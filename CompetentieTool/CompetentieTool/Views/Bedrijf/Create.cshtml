@@ -1,0 +1,58 @@
+﻿@model CompetentieTool.Models.ViewModels.VacatureViewModel
+
+<h2>Vacature aanmaken</h2>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Functie" class="control-label"></label>
+                <input asp-for="Functie" class="form-control" />
+                <span asp-validation-for="Functie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Beschrijving" class="control-label"></label>
+                <input asp-for="Beschrijving" class="form-control" />
+                <span asp-validation-for="Beschrijving" class="text-danger"></span>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Competentie
+                        </th>
+                        <th>
+                            Beschrijving
+                        </th>
+                        <th>
+                            
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.AlleCompetenties)
+                {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(Modelitem => item.Naam)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(Modelitem => item.Verklaring)
+                    </th>
+                    <th>
+                        <input type="checkbox" checked=@Model.IsInVacatureCompetenties(item.Id) />
+                    </th>
+                </tr>
+                }
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="VacaturesList">Back to List</a>
+</div>
+

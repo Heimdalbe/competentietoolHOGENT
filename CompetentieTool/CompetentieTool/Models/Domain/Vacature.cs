@@ -16,18 +16,17 @@ namespace CompetentieTool.Models.Domain
 
         public IEnumerable<Competentie> Competenties => CompetentiesLijst.Select(c => c.Competentie);
 
-        public ICollection<VacatureCompetenties> CompetentiesLijst { get; set; }
+        public ICollection<VacatureCompetentie> CompetentiesLijst { get; set; }
 
+        public void AddCompetenties(ICollection<Competentie> competenties)
+        {
+            foreach (Competentie comp in competenties)
+                CompetentiesLijst.Add(new VacatureCompetentie { Vacature = this, VacatureId = this.Id, Competentie = comp, CompetentieId = comp.Id });
+        }
 
         public Vacature()
         {
-            CompetentiesLijst = new List<VacatureCompetenties>();
-        }
-
-        public void AddCompetentie(ICollection<Competentie> competenties)
-        {
-            foreach(Competentie comp in competenties)
-                CompetentiesLijst.Add(new VacatureCompetenties { Vacature = this, VacatureId = this.Id, Competentie = comp, CompetentieId = comp.Id});
+            CompetentiesLijst = new List<VacatureCompetentie>();
         }
     }
 }
