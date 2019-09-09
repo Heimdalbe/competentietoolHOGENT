@@ -20,6 +20,18 @@ namespace CompetentieTool.Data.Repositories
             _vacatures = context.Vacature;
         }
 
+        public void Add(Vacature vacature)
+        {
+            _vacatures.Add(vacature);
+            SaveChanges();
+        }
+
+        public void Delete(string id)
+        {
+            _vacatures.Remove(_vacatures.Find(id));
+            SaveChanges();
+        }
+
         public IEnumerable<Vacature> GetAll()
         {
             return _context.Vacature;
@@ -35,13 +47,18 @@ namespace CompetentieTool.Data.Repositories
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Vraag)
                 .ThenInclude(v => (v as VraagCasus).Opties)
-                .Where(v => v.Id.Equals(id)).SingleOrDefault()
-                ;
+                .Where(v => v.Id.Equals(id)).SingleOrDefault();
         }
 
         public void SaveChanges()
         {
             _context.SaveChanges();
+        }
+
+        public void Update(Vacature vacature)
+        {
+            _vacatures.Update(vacature);
+            SaveChanges();
         }
     }
 }

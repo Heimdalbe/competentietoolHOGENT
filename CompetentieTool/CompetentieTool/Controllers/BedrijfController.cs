@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CompetentieTool.Models.Domain;
 using CompetentieTool.Models.IRepositories;
+using CompetentieTool.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CompetentieTool.Controllers
@@ -11,6 +12,7 @@ namespace CompetentieTool.Controllers
     public class BedrijfController : Controller
     {
         private readonly IVacatureRepository _vacatureRepository;
+        private readonly ICompetentieRepository _competentieRepository;
 
         public IActionResult Index()
         {
@@ -25,27 +27,71 @@ namespace CompetentieTool.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            return View(new VacatureViewModel(_competentieRepository));
         }
 
-        public IActionResult Edit()
+        [HttpPost]
+        public IActionResult Create(VacatureViewModel vm)
         {
-            return View();
+            var temp = new Vacature
+            {
+                Functie = vm.Functie,
+                Beschrijving = vm.Beschrijving,
+                CompetentiesLijst = (ICollection<VacatureCompetentie>)(vm.VacatureCompetenties)
+            };
+            _vacatureRepository.Add(temp);
+
+            return VacaturesList();
         }
 
-        public IActionResult Delete()
+        public IActionResult Edit(String id)
         {
-            return View();
+            var temp = _vacatureRepository.GetBy(id);
+
+            return View(new VacatureViewModel(_competentieRepository, temp));
         }
 
-        public IActionResult Details()
+        [HttpPost]
+        public IActionResult Edit(VacatureViewModel vm)
         {
-            return View();
+            var temp = new Vacature
+            {
+                Id = vm.Id,
+                Functie = vm.Functie,
+                Beschrijving = vm.Beschrijving,
+                CompetentiesLijst = (ICollection<VacatureCompetentie>)(vm.VacatureCompetenties)
+            };
+
+            _vacatureRepository.Update(temp);
+
+            return Details(vm.Id);
         }
 
-        public BedrijfController(IVacatureRepository vacatureRepository)
+        public IActionResult Delete(String id)
+        {
+            var temp = _vacatureRepository.GetBy(id);
+
+            return View(temp);
+        }
+
+        [HttpDelete]
+        public IActionResult DeletePost(String id)
+        {
+            _vacatureRepository.Delete(id);
+
+            return VacaturesList();
+        }
+
+        public IActionResult Details(String id)
+        {
+            var temp = _vacatureRepository.GetBy(id);
+            return View(new VacatureViewModel(_competentieRepository, temp));
+        }
+
+        public BedrijfController(IVacatureRepository vacatureRepository, ICompetentieRepository competentieRepository)
         {
             _vacatureRepository = vacatureRepository;
+            _competentieRepository = competentieRepository;
         }
     }
 }

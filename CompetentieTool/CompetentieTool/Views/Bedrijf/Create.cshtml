@@ -1,4 +1,4 @@
-﻿@model CompetentieTool.Models.Domain.Vacature
+﻿@model CompetentieTool.Models.ViewModels.VacatureViewModel
 
 <h4>Vacature</h4>
 <hr />
@@ -16,6 +16,35 @@
                 <input asp-for="Beschrijving" class="form-control" />
                 <span asp-validation-for="Beschrijving" class="text-danger"></span>
             </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Competentie
+                        </th>
+                        <th>
+                            Beschrijving
+                        </th>
+                        <th>
+                            
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.AlleCompetenties)
+                {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(Modelitem => item.Naam)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(Modelitem => item.Verklaring)
+                    </th>
+                    <th>
+                        <input type="checkbox" />
+                    </th>
+                </tr>
+                }
+            </table>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

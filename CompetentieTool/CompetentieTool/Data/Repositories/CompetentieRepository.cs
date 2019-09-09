@@ -15,7 +15,7 @@ namespace CompetentieTool.Data.Repositories
 
         public IEnumerable<Competentie> GetAll()
         {
-            throw new NotImplementedException();
+            return _competenties;
         }
 
         public Competentie GetBy(string id)

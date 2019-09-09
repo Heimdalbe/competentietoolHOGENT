@@ -30,8 +30,8 @@ namespace CompetentieTool.Controllers
 
             return View(new ProfielViewModel(user));
         }
+
         [HttpPost]
-        
         public IActionResult WijzigGegevens(int id, ProfielViewModel viewmodel)
         {
             if (ModelState.IsValid)
