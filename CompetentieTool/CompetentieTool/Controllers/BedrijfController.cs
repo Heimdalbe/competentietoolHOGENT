@@ -71,7 +71,7 @@ namespace CompetentieTool.Controllers
         {
             var temp = _vacatureRepository.GetBy(id);
 
-            return View(temp);
+            return View(new VacatureViewModel(_competentieRepository, temp));
         }
 
         [HttpDelete]
