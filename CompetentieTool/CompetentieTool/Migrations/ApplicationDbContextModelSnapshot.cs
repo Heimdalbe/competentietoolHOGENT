@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CompetentieTool.Data.Migrations
+namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -15,7 +15,7 @@ namespace CompetentieTool.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -152,8 +152,6 @@ namespace CompetentieTool.Data.Migrations
 
                     b.Property<string>("Achternaam");
 
-                    b.Property<string>("Adres");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -164,15 +162,13 @@ namespace CompetentieTool.Data.Migrations
 
                     b.Property<DateTime>("GeboorteDatum");
 
-                    b.Property<string>("Geboorteplaats");
-
-                    b.Property<int>("GebruikersID");
-
                     b.Property<string>("Gemeente");
 
                     b.Property<string>("Geslacht");
 
                     b.Property<string>("Gsm");
+
+                    b.Property<string>("Huisnummer");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -192,14 +188,18 @@ namespace CompetentieTool.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.Property<int>("Postcode");
+                    b.Property<string>("Postcode");
 
                     b.Property<string>("SecurityStamp");
+
+                    b.Property<string>("Straat");
 
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
+
+                    b.Property<string>("Usertype");
 
                     b.Property<string>("Voornaam");
 

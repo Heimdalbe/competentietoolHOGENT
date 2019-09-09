@@ -43,7 +43,12 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            
+            [Required(ErrorMessage = "Opleiding is verplicht in te vullen")]
+            public string Opleiding { get; set; }
+            [Required(ErrorMessage = "Opleidingsniveau is verplicht in te vullen")]
+            public string Opleidingsniveau { get; set; }
+
+
             [Required(ErrorMessage = "Voornaam is verplicht in te vullen")]
             public string Voornaam { get; set; }
 

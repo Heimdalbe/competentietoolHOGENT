@@ -7,35 +7,35 @@
 <h2>@ViewData["Title"]</h2>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-sm-10">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
 
-            <h3 class="col-md-12">Aanspreking</h3>
-            <div class="form-group col-md-12">
-                <div class="col-md-6">
+            <h3 class="col-sm-12">Aanspreking</h3>
+            <div class="form-group col-sm-12">
+                <div class="col-sm-6">
                     @Html.Label("Input.Voornaam", "Voornaam")
-                    @Html.TextBox("Input.Voornaam", "Bruce", new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.Input.Voornaam, new { placeholder = "Bruce", @class = "form-control" })
                 </div>
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     @Html.Label("Input.Achternaam", "Achternaam")
-                    @Html.TextBox("Input.Achternaam", "Banner", new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.Input.Achternaam, new { placeholder = "Banner", @class = "form-control" })
                 </div>
             </div>
-            <h3 class="col-md-12">Persoonlijke gegevens</h3>
-            <div class="form-group col-md-12">
-                <div class="col-md-6">
+            <h3 class="col-sm-12">Persoonlijke gegevens</h3>
+            <div class="form-group col-sm-12">
+                <div class="col-sm-6">
                     @Html.Label("Input.Geboortedatum", "Geboortedatum")
                     @Html.EditorFor(model => model.Input.Geboortedatum, new { @type = "date" })
                 </div>
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     @Html.Label("Input.Nationaliteit", "Nationaliteit")
-                    @Html.TextBox("Input.Nationaliteit", "Belg", new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.Input.Nationaliteit, new { placeholder = "Belg", @class = "form-control" })
                 </div>
             </div>
-            <div class="form-group col-md-12">
+            <div class="form-group col-sm-12">
                 @Html.LabelFor(model => model.Input.Geslacht, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10 pl-3">
+                <div class="col-sm-10 pl-3">
                     Man:
                     @Html.RadioButtonFor(model => model.Input.Geslacht, "M")
                     Vrouw:
@@ -44,47 +44,63 @@
                     @Html.RadioButtonFor(model => model.Input.Geslacht, "X", htmlAttributes: new { @class = "ml-1" })
                 </div>
             </div>
-            <div class="form-group col-md-12">
-                <div class="col-md-8">
-                    @Html.Label("Input.Straat", "Straat")
-                    @Html.TextBox("Input.Straat", "Beekstraat", new { @class = "form-control" })
+            <h3 class="col-sm-12">Bedrijfsgegevens</h3>
+            <div class="form-group col-sm-12">
+                <h4 class="col-sm-12">Algemene Gegevens</h4>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-6">
+                        @Html.Label("Input.Bedrijfsnaam", "Bedrijfsnaam")
+                        @Html.TextBoxFor(model => model.Input.Voornaam, new { placeholder = "HOGENT", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.Label("Input.Btwnummer", "BTW/Bedrijfsnummer")
+                        @Html.TextBoxFor(model => model.Input.Btwnummer, new { placeholder = "0123456789", @class = "form-control" })
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    @Html.Label("Input.Huisnummer", "Huisnummer")
-                    @Html.TextBox("Input.Huisnummer", "15", new { @class = "form-control" })
+                <h4 class="col-sm-12">Adres</h4>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-8">
+                        @Html.Label("Input.Straat", "Straat")
+                        @Html.TextBoxFor(model => model.Input.Straat, new { placeholder = "Beekstraat", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.Label("Input.Huisnummer", "Huisnummer")
+                        @Html.TextBoxFor(model => model.Input.Huisnummer, new { placeholder = "15", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-8">
+                        @Html.Label("Input.Gemeente", "Gemeente")
+                        @Html.TextBoxFor(model => model.Input.Gemeente, new { placeholder = "Gent", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.Label("Input.Postcode", "Postcode")
+                        @Html.TextBoxFor(model => model.Input.Postcode, new { placeholder = "9000", @class = "form-control" })
+                    </div>
+                </div>
+                <h4 class="col-sm-12">Contact informatie</h4>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-6">
+                        @Html.Label("Input.Email", "Email")
+                        @Html.TextBoxFor(model => model.Input.Email, new { placeholder = "voorbeeld@mail.be", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.Label("Input.GsmNummer", "Gsm")
+                        @Html.TextBoxFor(model => model.Input.GsmNummer, new { placeholder = "0123456789", @class = "form-control" })
+                    </div>
                 </div>
             </div>
-            <div class="form-group col-md-12">
-                <div class="col-md-8">
-                    @Html.Label("Input.Gemeente", "Gemeente")
-                    @Html.TextBox("Input.Gemeente", "Gent", new { @class = "form-control" })
-                </div>
-                <div class="col-md-4">
-                    @Html.Label("Input.Postcode", "Postcode")
-                    @Html.TextBox("Input.Postcode", "9000", new { @class = "form-control" })
-                </div>
-            </div>
-            <h3 class="col-md-12">Contact informatie</h3>
-            <div class="form-group col-md-12">
-                <div class="col-md-4">
-                    @Html.Label("Input.Email", "Email")
-                    @Html.TextBox("Input.Email", "voorbeeld@mail.be", new { @class = "form-control" })
-                </div>
-                <div class="col-md-8">
-                    @Html.Label("Input.GsmNummer", "Gsm")
-                    @Html.TextBox("Input.GsmNummer", "0123456789", new { @class = "form-control" })
-                </div>
-            </div>
+            
 
-            <h3 class="col-md-12">Beveiliging</h3>
-            <div class="form-group col-md-12">
-                <div class="col-md-6">
+            <h3 class="col-sm-12">Beveiliging</h3>
+            <div class="form-group col-sm-12">
+                <div class="col-sm-6">
                     @Html.Label("Input.Password", "Wachtwoord")
-                    @Html.Password("Input.Password")
+                    @Html.PasswordFor(model => model.Input.Password)
                 </div>
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     @Html.Label("Input.ConfirmPassword", "Wachtwoord bevestigen")
-                    @Html.Password("Input.ConfirmPassword")
+                    @Html.PasswordFor(model => model.Input.ConfirmPassword)
                 </div>
             </div>
             <button type="submit" class="btn btn-default">Registreer</button>

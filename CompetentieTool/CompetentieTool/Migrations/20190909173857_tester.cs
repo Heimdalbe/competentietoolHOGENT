@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class _koekjes : Migration
+    public partial class tester : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,6 +58,31 @@ namespace CompetentieTool.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vacatures",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Functie = table.Column<string>(nullable: true),
+                    Beschrijving = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vacatures", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vignet",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Beschrijving = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vignet", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -166,6 +191,91 @@ namespace CompetentieTool.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "IVraag",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    VraagStelling = table.Column<string>(nullable: true),
+                    CompetentieId = table.Column<string>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
+                    VignetId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IVraag", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_IVraag_Vignet_VignetId",
+                        column: x => x.VignetId,
+                        principalTable: "Vignet",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Competenties",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Naam = table.Column<string>(nullable: true),
+                    Verklaring = table.Column<string>(nullable: true),
+                    VraagId = table.Column<string>(nullable: true),
+                    Beschrijving = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Competenties", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Competenties_IVraag_VraagId",
+                        column: x => x.VraagId,
+                        principalTable: "IVraag",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Mogelijkheid",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Beschrijving = table.Column<string>(nullable: true),
+                    VraagCasusId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Mogelijkheid", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Mogelijkheid_IVraag_VraagCasusId",
+                        column: x => x.VraagCasusId,
+                        principalTable: "IVraag",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VacatureCompetenties",
+                columns: table => new
+                {
+                    VacatureId = table.Column<string>(nullable: false),
+                    CompetentieId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VacatureCompetenties", x => new { x.VacatureId, x.CompetentieId });
+                    table.ForeignKey(
+                        name: "FK_VacatureCompetenties_Competenties_CompetentieId",
+                        column: x => x.CompetentieId,
+                        principalTable: "Competenties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_VacatureCompetenties_Vacatures_VacatureId",
+                        column: x => x.VacatureId,
+                        principalTable: "Vacatures",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -204,6 +314,28 @@ namespace CompetentieTool.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Competenties_VraagId",
+                table: "Competenties",
+                column: "VraagId",
+                unique: true,
+                filter: "[VraagId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IVraag_VignetId",
+                table: "IVraag",
+                column: "VignetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Mogelijkheid_VraagCasusId",
+                table: "Mogelijkheid",
+                column: "VraagCasusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VacatureCompetenties_CompetentieId",
+                table: "VacatureCompetenties",
+                column: "CompetentieId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -224,10 +356,28 @@ namespace CompetentieTool.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Mogelijkheid");
+
+            migrationBuilder.DropTable(
+                name: "VacatureCompetenties");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Competenties");
+
+            migrationBuilder.DropTable(
+                name: "Vacatures");
+
+            migrationBuilder.DropTable(
+                name: "IVraag");
+
+            migrationBuilder.DropTable(
+                name: "Vignet");
         }
     }
 }

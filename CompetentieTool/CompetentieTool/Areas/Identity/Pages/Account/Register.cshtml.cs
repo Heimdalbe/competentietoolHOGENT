@@ -41,7 +41,13 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            
+            [Required(ErrorMessage = "Bedrijfsnaam is verplicht in te vullen")]
+            public string Bedrijfsnaam { get; set; }
+
+            [Display(Name = "BTW/Bedrijfsnummer")]
+            [Required(ErrorMessage = "BTW/Bedrijfsnummer is verplicht in te vullen")]
+            public string Btwnummer { get; set; }
+
             [Required(ErrorMessage = "Voornaam is verplicht in te vullen")]
             public string Voornaam { get; set; }
 

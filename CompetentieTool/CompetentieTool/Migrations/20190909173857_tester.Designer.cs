@@ -7,17 +7,17 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CompetentieTool.Data.Migrations
+namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190901223231_VacaturesCompetenties")]
-    partial class VacaturesCompetenties
+    [Migration("20190909173857_tester")]
+    partial class tester
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -32,9 +32,62 @@ namespace CompetentieTool.Data.Migrations
 
                     b.Property<string>("Verklaring");
 
+                    b.Property<string>("VraagId");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("VraagId")
+                        .IsUnique()
+                        .HasFilter("[VraagId] IS NOT NULL");
+
                     b.ToTable("Competenties");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Domain.IVraag", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CompetentieId");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
+                    b.Property<string>("VraagStelling");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IVraag");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IVraag");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Domain.Vignet", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Beschrijving");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vignet");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.Mogelijkheid", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Beschrijving");
+
+                    b.Property<string>("VraagCasusId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VraagCasusId");
+
+                    b.ToTable("Mogelijkheid");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Vacature", b =>
@@ -101,8 +154,6 @@ namespace CompetentieTool.Data.Migrations
 
                     b.Property<string>("Achternaam");
 
-                    b.Property<string>("Adres");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -113,16 +164,13 @@ namespace CompetentieTool.Data.Migrations
 
                     b.Property<DateTime>("GeboorteDatum");
 
-                    b.Property<string>("Geboorteplaats")
-                        .HasMaxLength(100);
-
-                    b.Property<int>("GebruikersID");
-
                     b.Property<string>("Gemeente");
 
                     b.Property<string>("Geslacht");
 
                     b.Property<string>("Gsm");
+
+                    b.Property<string>("Huisnummer");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -142,14 +190,18 @@ namespace CompetentieTool.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.Property<int>("Postcode");
+                    b.Property<string>("Postcode");
 
                     b.Property<string>("SecurityStamp");
+
+                    b.Property<string>("Straat");
 
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
+
+                    b.Property<string>("Usertype");
 
                     b.Property<string>("Voornaam");
 
@@ -256,6 +308,33 @@ namespace CompetentieTool.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CompetentieTool.Domain.VraagCasus", b =>
+                {
+                    b.HasBaseType("CompetentieTool.Domain.IVraag");
+
+                    b.Property<string>("VignetId");
+
+                    b.HasIndex("VignetId");
+
+                    b.ToTable("VraagCasus");
+
+                    b.HasDiscriminator().HasValue("VraagCasus");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Domain.Competentie", b =>
+                {
+                    b.HasOne("CompetentieTool.Domain.IVraag", "Vraag")
+                        .WithOne("Competentie")
+                        .HasForeignKey("CompetentieTool.Domain.Competentie", "VraagId");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.Mogelijkheid", b =>
+                {
+                    b.HasOne("CompetentieTool.Domain.VraagCasus")
+                        .WithMany("Opties")
+                        .HasForeignKey("VraagCasusId");
+                });
+
             modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetenties", b =>
                 {
                     b.HasOne("CompetentieTool.Domain.Competentie", "Competentie")
@@ -312,6 +391,13 @@ namespace CompetentieTool.Data.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CompetentieTool.Domain.VraagCasus", b =>
+                {
+                    b.HasOne("CompetentieTool.Domain.Vignet", "Vignet")
+                        .WithMany()
+                        .HasForeignKey("VignetId");
                 });
 #pragma warning restore 612, 618
         }
