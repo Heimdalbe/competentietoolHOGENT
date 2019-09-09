@@ -1,4 +1,6 @@
-﻿using CompetentieTool.Models.Identities;
+﻿using CompetentieTool.Domain;
+using CompetentieTool.Models.Domain;
+using CompetentieTool.Models.Identities;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -75,6 +77,48 @@ namespace CompetentieTool.Data
                 }
                 id2  = user.Id;
             }
+
+            // use this to initialize vacature test data
+            // AddVacatures(context);
+        }
+
+        public static void AddVacatures(ApplicationDbContext context)
+        {
+            Competentie comp1 = new Competentie { Naam = "Niet veroordelen", IsBasisCompetentie = true, Verklaring = "De hulpverlener veroordeelt niet en is zich hierbij bewust van de invloed van zijn eigen waarde, opvoedings- en normenkader op zijn denken" };
+            Competentie comp2 = new Competentie { Naam = "Situationeel denken", IsBasisCompetentie = true, Verklaring = "De hulpverlener kan een inschatting maken wanneer een interventie al dan niet noodzakelijk is binnen het hulpverleningstraject en beroept zich hiervoor op geïnternaliseerde ethisch en theoretische kaders." };
+            Competentie comp3 = new Competentie { Naam = "Respecteren Zelfbeschikkingsrecht", IsBasisCompetentie = true, Verklaring = "De hulpverlener respecteert het recht van de cliënt om zelf te beslissen  over zijn/haar situatie, ook al wijkt de beslissing af van de visie van de hulpverlener. Interventies die gericht zijn op het “overnemen” van de situatie bespreekt hij op voorhand met de cliënt zelf." };
+            Competentie comp4 = new Competentie { Naam = "Emancipatorisch denken", IsBasisCompetentie = true, Verklaring = "De hulpverlener richt zich op de sterkten en talenten van de cliënt en baseert het handelingsplan op het kunnen vervullen van de maatschappelijke rollen en doelen die de cliënt zélf aangeeft als waarde- en kwaliteitsvol. " };
+            Competentie comp5 = new Competentie { Naam = "Eigen positie in team", IsBasisCompetentie = true, Verklaring = "De hulpverlener is zich bewust van de invloed van zijn eigen positie binnen de groepsdynamiek in het team." };
+            Competentie comp6 = new Competentie { Naam = "Blijvend verwonderd", IsBasisCompetentie = true, Verklaring = "De hulpverlener vervalt niet in automatismen en kijkt met authentieke verwondering naar de werkelijkheid die hij ontmoet. Deze verwondering is geen houding, gevoel of oordeel, maar een status waaruit eventueel een houding of een gevoel kan ontstaan." };
+
+            Vacature vac1 = new Vacature { Beschrijving = "test er test", Functie = "Hulpverlener" };
+            Vacature vac2 = new Vacature { Beschrijving = "nog een test", Functie = "Brandweer" };
+            Vacature vac3 = new Vacature { Beschrijving = "test nr 3", Functie = "IT" };
+
+            ICollection<Competentie> competenties = new List<Competentie>();
+            competenties.Add(comp1);
+            competenties.Add(comp2);
+            competenties.Add(comp3);
+            competenties.Add(comp4);
+            competenties.Add(comp5);
+            competenties.Add(comp6);
+
+            vac1.AddCompetenties(competenties);
+            vac2.AddCompetenties(competenties);
+            vac3.AddCompetenties(competenties);
+
+            context.Vacature.Add(vac1);
+            context.Vacature.Add(vac2);
+            context.Vacature.Add(vac3);
+
+            context.Competenties.Add(comp1);
+            context.Competenties.Add(comp2);
+            context.Competenties.Add(comp3);
+            context.Competenties.Add(comp4);
+            context.Competenties.Add(comp5);
+            context.Competenties.Add(comp6);
+
+            context.SaveChanges();
         }
     }
 }

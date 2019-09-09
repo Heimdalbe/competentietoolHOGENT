@@ -20,7 +20,7 @@ namespace CompetentieTool.Controllers
         public IActionResult VacaturesList()
         {
             //TODO(Joren): filter op bedrijf
-            return View(new List<Vacature>());
+            return View(_vacatureRepository.GetAll());
         }
 
         public IActionResult Create()
