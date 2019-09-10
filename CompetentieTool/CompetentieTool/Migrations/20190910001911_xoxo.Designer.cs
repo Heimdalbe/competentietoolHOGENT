@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190909173857_tester")]
-    partial class tester
+    [Migration("20190910001911_xoxo")]
+    partial class xoxo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,6 +27,8 @@ namespace CompetentieTool.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Beschrijving");
+
+                    b.Property<bool>("IsBasisCompetentie");
 
                     b.Property<string>("Naam");
 
@@ -101,10 +103,10 @@ namespace CompetentieTool.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vacatures");
+                    b.ToTable("Vacature");
                 });
 
-            modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetenties", b =>
+            modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetentie", b =>
                 {
                     b.Property<string>("VacatureId");
 
@@ -114,7 +116,7 @@ namespace CompetentieTool.Migrations
 
                     b.HasIndex("CompetentieId");
 
-                    b.ToTable("VacatureCompetenties");
+                    b.ToTable("VacatureCompetentie");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Identities.ApplicationRole", b =>
@@ -335,7 +337,7 @@ namespace CompetentieTool.Migrations
                         .HasForeignKey("VraagCasusId");
                 });
 
-            modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetenties", b =>
+            modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetentie", b =>
                 {
                     b.HasOne("CompetentieTool.Domain.Competentie", "Competentie")
                         .WithMany()

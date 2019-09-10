@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CompetentieTool.Domain
 {
-    public class VraagOpen : Vraag
+    public class VraagOpen : IVraag
     {
 
     }

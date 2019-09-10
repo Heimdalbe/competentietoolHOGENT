@@ -19,22 +19,10 @@ namespace CompetentieTool.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CompetentieTool.Domain.Aanvulling", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Aanvulling");
-                });
-
             modelBuilder.Entity("CompetentieTool.Domain.Competentie", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AanvullingId");
 
                     b.Property<string>("Beschrijving");
 
@@ -48,11 +36,58 @@ namespace CompetentieTool.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AanvullingId");
-
-                    b.HasIndex("VraagId");
+                    b.HasIndex("VraagId")
+                        .IsUnique()
+                        .HasFilter("[VraagId] IS NOT NULL");
 
                     b.ToTable("Competenties");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Domain.IVraag", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CompetentieId");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
+                    b.Property<string>("VraagStelling");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IVraag");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IVraag");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Domain.Vignet", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Beschrijving");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vignet");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.Mogelijkheid", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Beschrijving");
+
+                    b.Property<string>("VraagCasusId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VraagCasusId");
+
+                    b.ToTable("Mogelijkheid");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Vacature", b =>
@@ -80,16 +115,6 @@ namespace CompetentieTool.Migrations
                     b.HasIndex("CompetentieId");
 
                     b.ToTable("VacatureCompetentie");
-                });
-
-            modelBuilder.Entity("CompetentieTool.Models.Domain.Vraag", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Vraag");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Identities.ApplicationRole", b =>
@@ -129,8 +154,6 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("Achternaam");
 
-                    b.Property<string>("Adres");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -139,7 +162,15 @@ namespace CompetentieTool.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("Land");
+                    b.Property<DateTime>("GeboorteDatum");
+
+                    b.Property<string>("Gemeente");
+
+                    b.Property<string>("Geslacht");
+
+                    b.Property<string>("Gsm");
+
+                    b.Property<string>("Huisnummer");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -159,11 +190,9 @@ namespace CompetentieTool.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.Property<int>("Postcode");
+                    b.Property<string>("Postcode");
 
                     b.Property<string>("SecurityStamp");
-
-                    b.Property<string>("Stad");
 
                     b.Property<string>("Straat");
 
@@ -171,6 +200,8 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
+
+                    b.Property<string>("Usertype");
 
                     b.Property<string>("Voornaam");
 
@@ -275,6 +306,46 @@ namespace CompetentieTool.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Domain.VraagCasus", b =>
+                {
+                    b.HasBaseType("CompetentieTool.Domain.IVraag");
+
+                    b.Property<string>("VignetId");
+
+                    b.HasIndex("VignetId");
+
+                    b.ToTable("VraagCasus");
+
+                    b.HasDiscriminator().HasValue("VraagCasus");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Domain.Competentie", b =>
+                {
+                    b.HasOne("CompetentieTool.Domain.IVraag", "Vraag")
+                        .WithOne("Competentie")
+                        .HasForeignKey("CompetentieTool.Domain.Competentie", "VraagId");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.Mogelijkheid", b =>
+                {
+                    b.HasOne("CompetentieTool.Domain.VraagCasus")
+                        .WithMany("Opties")
+                        .HasForeignKey("VraagCasusId");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetentie", b =>
+                {
+                    b.HasOne("CompetentieTool.Domain.Competentie", "Competentie")
+                        .WithMany()
+                        .HasForeignKey("CompetentieId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CompetentieTool.Models.Domain.Vacature", "Vacature")
+                        .WithMany("CompetentiesLijst")
+                        .HasForeignKey("VacatureId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

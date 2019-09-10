@@ -6,8 +6,6 @@ using CompetentieTool.Models.Domain;
 using CompetentieTool.Models.Identities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using CompetentieTool.Models.Domain;
-using CompetentieTool.Domain;
 
 namespace CompetentieTool.Data
 {
@@ -28,9 +26,9 @@ namespace CompetentieTool.Data
            
             builder.Entity<Vacature>().Ignore(v => v.Competenties);
 
-            builder.Entity<VacatureCompetenties>().HasKey(v => new { v.VacatureId, v.CompetentieId });
-            builder.Entity<VacatureCompetenties>().HasOne(v => v.Vacature).WithMany(v => v.CompetentiesLijst).HasForeignKey(v => v.VacatureId);
-            builder.Entity<VacatureCompetenties>().HasOne(v => v.Competentie).WithMany().HasForeignKey(v => v.CompetentieId);
+            builder.Entity<VacatureCompetentie>().HasKey(v => new { v.VacatureId, v.CompetentieId });
+            builder.Entity<VacatureCompetentie>().HasOne(v => v.Vacature).WithMany(v => v.CompetentiesLijst).HasForeignKey(v => v.VacatureId);
+            builder.Entity<VacatureCompetentie>().HasOne(v => v.Competentie).WithMany().HasForeignKey(v => v.CompetentieId);
 
             builder.Entity<Competentie>().Ignore(c => c.Aanvulling);
             builder.Entity<Competentie>().HasOne(v => v.Vraag).WithOne(c => c.Competentie).HasForeignKey<Competentie>(c => c.VraagId);

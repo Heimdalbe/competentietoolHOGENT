@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class tester : Migration
+    public partial class xoxo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,7 +61,7 @@ namespace CompetentieTool.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Vacatures",
+                name: "Vacature",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -70,7 +70,7 @@ namespace CompetentieTool.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vacatures", x => x.Id);
+                    table.PrimaryKey("PK_Vacature", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -219,6 +219,7 @@ namespace CompetentieTool.Migrations
                     Id = table.Column<string>(nullable: false),
                     Naam = table.Column<string>(nullable: true),
                     Verklaring = table.Column<string>(nullable: true),
+                    IsBasisCompetentie = table.Column<bool>(nullable: false),
                     VraagId = table.Column<string>(nullable: true),
                     Beschrijving = table.Column<string>(nullable: true)
                 },
@@ -253,7 +254,7 @@ namespace CompetentieTool.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VacatureCompetenties",
+                name: "VacatureCompetentie",
                 columns: table => new
                 {
                     VacatureId = table.Column<string>(nullable: false),
@@ -261,17 +262,17 @@ namespace CompetentieTool.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VacatureCompetenties", x => new { x.VacatureId, x.CompetentieId });
+                    table.PrimaryKey("PK_VacatureCompetentie", x => new { x.VacatureId, x.CompetentieId });
                     table.ForeignKey(
-                        name: "FK_VacatureCompetenties_Competenties_CompetentieId",
+                        name: "FK_VacatureCompetentie_Competenties_CompetentieId",
                         column: x => x.CompetentieId,
                         principalTable: "Competenties",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_VacatureCompetenties_Vacatures_VacatureId",
+                        name: "FK_VacatureCompetentie_Vacature_VacatureId",
                         column: x => x.VacatureId,
-                        principalTable: "Vacatures",
+                        principalTable: "Vacature",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -333,8 +334,8 @@ namespace CompetentieTool.Migrations
                 column: "VraagCasusId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_VacatureCompetenties_CompetentieId",
-                table: "VacatureCompetenties",
+                name: "IX_VacatureCompetentie_CompetentieId",
+                table: "VacatureCompetentie",
                 column: "CompetentieId");
         }
 
@@ -359,7 +360,7 @@ namespace CompetentieTool.Migrations
                 name: "Mogelijkheid");
 
             migrationBuilder.DropTable(
-                name: "VacatureCompetenties");
+                name: "VacatureCompetentie");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -371,7 +372,7 @@ namespace CompetentieTool.Migrations
                 name: "Competenties");
 
             migrationBuilder.DropTable(
-                name: "Vacatures");
+                name: "Vacature");
 
             migrationBuilder.DropTable(
                 name: "IVraag");

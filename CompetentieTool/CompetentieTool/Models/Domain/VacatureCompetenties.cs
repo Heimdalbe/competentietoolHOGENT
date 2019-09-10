@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CompetentieTool.Models.Domain
 {
-    public class VacatureCompetenties
+    public class VacatureCompetentie
     {
         #region Properties
         public String VacatureId { get; set; }
