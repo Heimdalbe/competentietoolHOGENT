@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
+using CompetentieTool.Models.Domain;
 
 namespace CompetentieTool.Areas.Identity.Pages.Account
 {
@@ -41,6 +42,7 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+
             [Required(ErrorMessage = "Bedrijfsnaam is verplicht in te vullen")]
             public string Bedrijfsnaam { get; set; }
 
@@ -108,7 +110,7 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, SecurityStamp = Guid.NewGuid().ToString("D") };
+                var user = new Bedrijf { UserName = Input.Email, Email = Input.Email, SecurityStamp = Guid.NewGuid().ToString("D") };
                 user.SetGegevensWerkgever(Input);
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Werkgever"));

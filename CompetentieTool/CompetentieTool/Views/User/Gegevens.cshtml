@@ -6,153 +6,117 @@
 
 <div class="container centcontent">
     
+    <div class="row">
+        <div class="col-sm-10">
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
 
-
-    <form method="post">
-        <div class="container accordion" id="accordionExample">
-            <div asp-validation-summary="All"></div>
-            <div class="card">
-                <div class="card-header" style="cursor: pointer;" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <h2 class="mb-0">
-                        Algemene Gegevens
-                    </h2>
-                </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label asp-for="Voornaam"></label>
-                                <input asp-for="Voornaam" class="form-control" />
-                                <span asp-validation-for="Voornaam" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-6">
-                                <label asp-for="Achternaam"></label>
-                                <input asp-for="Achternaam" class="form-control" />
-                                <span asp-validation-for="Achternaam" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-3">
-                                <label asp-for="GeboorteDatum"></label>
-                                <input asp-for="GeboorteDatum" class="form-control" readonly />
-                                <span asp-validation-for="GeboorteDatum" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-4">
-                                <label asp-for="Geslacht"></label>
-                                <select asp-for="Geslacht" class="form-control">
-                                    <option value="man">Man</option>
-                                    <option value="vrouw">Vrouw</option>
-                                    <option value="anders">Anders</option>
-                                </select>
-                                <span asp-validation-for="Geslacht" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label asp-for="Nationaliteit"></label>
-                                <input asp-for="Nationaliteit" class="form-control" />
-                                <span asp-validation-for="Nationaliteit" class="text-danger"></span>
-                            </div>
-                        </div>
+                <h3 class="col-sm-12">Aanspreking</h3>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-6">
+                        @Html.Label("Input.Voornaam", "Voornaam")
+                        @Html.TextBoxFor(model => model.Voornaam, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.Label("Input.Achternaam", "Achternaam")
+                        @Html.TextBoxFor(model => model.Achternaam, new { @class = "form-control" })
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-header" style="cursor: pointer;" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <h2 class="mb-0">
-                        Adres
-                    </h2>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="form-group col-5">
-                                <label asp-for="Straat"></label>
-                                <input asp-for="Straat" class="form-control" />
-                                <span asp-validation-for="Straat" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-2">
-                                <label asp-for="Huisnummer"></label>
-                                <input asp-for="Huisnummer" class="form-control" />
-                                <span asp-validation-for="Huisnummer" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-2">
-                                <label asp-for="Postcode"></label>
-                                <input asp-for="Postcode" class="form-control" />
-                                <span asp-validation-for="Postcode" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-3">
-                                <label asp-for="Gemeente"></label>
-                                <input asp-for="Gemeente" class="form-control" />
-                                <span asp-validation-for="Gemeente" class="text-danger"></span>
-                            </div>
+                <h3 class="col-sm-12">Persoonlijke gegevens</h3>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-6">
+                        <div>
+                            @Html.Label("Input.Geboortedatum", "Geboortedatum")
                         </div>
+                        @Html.EditorFor(model => model.Geboortedatum, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.Label("Input.Nationaliteit", "Nationaliteit")
+                        @Html.TextBoxFor(model => model.Nationaliteit, new { @class = "form-control" })
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-header" style="cursor: pointer;" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    <h2 class="mb-0">
-                        Contact informatie
-                    </h2>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label asp-for="Gsm"></label>
-                                <input asp-for="Gsm" class="form-control" />
-                                <span asp-validation-for="Gsm" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-6">
-                                <label asp-for="Emailadres"></label>
-                                <input asp-for="Emailadres" class="form-control" />
-                                <span asp-validation-for="Emailadres" class="text-danger"></span>
-                            </div>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-8">
+                        @Html.LabelFor(model => model.Geslacht, new { @class = "control-label" })
+                        <div>
+                            Man:
+                            @Html.RadioButtonFor(model => model.Geslacht, "M", ((bool)ViewData["IsMan"]))
+                            Vrouw:
+                            @Html.RadioButtonFor(model => model.Geslacht, "V", ((bool)ViewData["IsVrouw"]))
+                            Andere:
+                            @Html.RadioButtonFor(model => model.Geslacht, "X", (!(bool)ViewData["IsMan"] && !(bool)ViewData["IsVrouw"]))
                         </div>
-                    </div>
-                </div>
-            </div><!--
-            <div class="card">
-                <div class="card-header" style="cursor: pointer;" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    <h2 class="mb-0">
-                        Wachtwoord Wijzigen
-                    </h2>
-                </div>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label asp-for="Username"></label>
-                                <input asp-for="Username" class="form-control" readonly />
-                                <span asp-validation-for="Username" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label asp-for="Password"></label>
-                                <input asp-for="Password" class="form-control" />
-                                <span asp-validation-for="Password" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-6">
-                                <label asp-for="ConfirmPassword"></label>
-                                <input asp-for="ConfirmPassword" class="form-control" />
-                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
 
-            <div></div>
-            <div class="mt-2">
-                <button class="btn btn-primary" type="submit">Opslaan</button>
-            </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-8">
+                        @Html.Label("Input.Straat", "Straat")
+                        @Html.TextBoxFor(model => model.Straat, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.Label("Input.Huisnummer", "Huisnummer")
+                        @Html.TextBoxFor(model => model.Huisnummer, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-8">
+                        @Html.Label("Input.Gemeente", "Gemeente")
+                        @Html.TextBoxFor(model => model.Gemeente, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.Label("Input.Postcode", "Postcode")
+                        @Html.TextBoxFor(model => model.Postcode, new { @class = "form-control" })
+                    </div>
+                </div>
+                @if ((bool)ViewData["IsSollicitant"])
+                {
+                    <h3 class="col-sm-12">Opleiding</h3>
+                    <div class="form-group col-sm-12">
+                        <div class="col-sm-6">
+                            @Html.Label("Input.Opleidingsniveau", "Opleidingsniveau")
+                            @Html.DropDownListFor(m => m.Opleidingsniveau, Enum.GetValues(typeof(Opleidingsniveau)).Cast<Opleidingsniveau>().Select(c => new SelectListItem { Text = c.ToString(), Value = c.ToString() }), "Opleidingsniveau", new { @class = "form-control" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.Label("Input.Opleiding", "Studie")
+                            @Html.TextBoxFor(model => model.Opleiding, new { @class = "form-control" })
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <h3 class="col-sm-12">Bedrijf</h3>
+                    <div class="form-group col-sm-12">
+                        <div class="col-sm-6">
+                            @Html.Label("Input.Bedrijfsnaam", "Bedrijfsnaam")
+                            @Html.TextBoxFor(model => model.Bedrijfsnaam, new { @class = "form-control" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.Label("Input.Btwnummer")
+                            @Html.TextBoxFor(model => model.Btwnummer, new { @class = "form-control" })
+                            model.Opleiding
+                            ViewData["IsSollicitant"]
+                        </div>
+                    </div>
+                }
+
+
+                <h3 class="col-sm-12">Contact informatie</h3>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-6">
+                        @Html.Label("Input.Email", "Email")
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.Label("Input.GsmNummer", "Gsm")
+                        @Html.TextBoxFor(model => model.Gsm, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-default">Opslaan</button>
+            </form>
         </div>
-
-    </form>
+    </div>
 </div>
 @section scripts {
     <script asp-src-include="lib/jquery-validation/dist/jquery.validate.js"></script>

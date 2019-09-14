@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class xoxo : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,12 +48,15 @@ namespace CompetentieTool.Migrations
                     Voornaam = table.Column<string>(nullable: true),
                     Gsm = table.Column<string>(nullable: true),
                     Geslacht = table.Column<string>(nullable: true),
-                    GeboorteDatum = table.Column<DateTime>(nullable: false),
+                    Geboortedatum = table.Column<DateTime>(nullable: false),
                     Nationaliteit = table.Column<string>(nullable: true),
                     Gemeente = table.Column<string>(nullable: true),
                     Postcode = table.Column<string>(nullable: true),
                     Straat = table.Column<string>(nullable: true),
-                    Huisnummer = table.Column<string>(nullable: true)
+                    Huisnummer = table.Column<string>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
+                    Bedrijfsnaam = table.Column<string>(nullable: true),
+                    BtwNummer = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
