@@ -1,9 +1,10 @@
 ﻿@model CompetentieTool.Models.ViewModels.VacatureViewModel
+@inject CompetentieTool.Models.IRepositories.ICompetentieRepository compRep
 
 <h2>Vacature bewerken</h2>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -17,6 +18,35 @@
                 <input asp-for="Beschrijving" class="form-control" />
                 <span asp-validation-for="Beschrijving" class="text-danger"></span>
             </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Competentie
+                        </th>
+                        <th>
+                            Verklaring
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in compRep.GetAll())
+                {
+                    <tr>
+                        <th>
+                            @Html.DisplayFor(Modelitem => item.Naam)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(Modelitem => item.Verklaring)
+                        </th>
+                        <th>
+                            <input type="checkbox" checked=@Model.IsInVacatureCompetenties(item.Id)>
+                        </th>
+                    </tr>
+                }
+            </table>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>

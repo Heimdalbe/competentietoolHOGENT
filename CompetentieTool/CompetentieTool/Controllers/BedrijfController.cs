@@ -27,12 +27,21 @@ namespace CompetentieTool.Controllers
 
         public IActionResult Create()
         {
-            return View(new VacatureViewModel(_competentieRepository));
+            var temp = new VacatureViewModel();
+            temp.SetCompetentieRepository(_competentieRepository);
+
+            var vac = new Vacature();
+            vac.AddCompetenties(_competentieRepository.GetBasisCompetenties().ToList());
+            temp.VacatureCompetenties = vac.CompetentiesLijst;
+
+            return View(temp);
         }
 
         [HttpPost]
         public IActionResult Create(VacatureViewModel vm)
         {
+            vm.SetCompetentieRepository(_competentieRepository);
+
             var temp = new Vacature
             {
                 Functie = vm.Functie,
@@ -46,9 +55,11 @@ namespace CompetentieTool.Controllers
 
         public IActionResult Edit(String id)
         {
-            var temp = _vacatureRepository.GetBy(id);
+            var vac = _vacatureRepository.GetBy(id);
+            var temp = new VacatureViewModel(vac);
+            temp.SetCompetentieRepository(_competentieRepository);
 
-            return View(new VacatureViewModel(_competentieRepository, temp));
+            return View(temp);
         }
 
         [HttpPost]
@@ -69,9 +80,11 @@ namespace CompetentieTool.Controllers
 
         public IActionResult Delete(String id)
         {
-            var temp = _vacatureRepository.GetBy(id);
+            var vac = _vacatureRepository.GetBy(id);
+            var temp = new VacatureViewModel(vac);
+            temp.SetCompetentieRepository(_competentieRepository);
 
-            return View(new VacatureViewModel(_competentieRepository, temp));
+            return View(temp);
         }
 
         [HttpDelete]
@@ -84,8 +97,11 @@ namespace CompetentieTool.Controllers
 
         public IActionResult Details(String id)
         {
-            var temp = _vacatureRepository.GetBy(id);
-            return View(new VacatureViewModel(_competentieRepository, temp));
+            var vac = _vacatureRepository.GetBy(id);
+            var temp = new VacatureViewModel(vac);
+            temp.SetCompetentieRepository(_competentieRepository);
+
+            return View(temp);
         }
 
         public BedrijfController(IVacatureRepository vacatureRepository, ICompetentieRepository competentieRepository)

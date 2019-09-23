@@ -34,7 +34,14 @@ namespace CompetentieTool.Data.Repositories
 
         public IEnumerable<Vacature> GetAll()
         {
-            return _context.Vacature;
+            return _context.Vacature.Include(v => v.CompetentiesLijst)
+                .ThenInclude(c => c.Competentie)
+                .ThenInclude(c => c.Vraag)
+                .ThenInclude(v => (v as VraagCasus).Vignet)
+                .Include(v => v.CompetentiesLijst)
+                .ThenInclude(c => c.Competentie)
+                .ThenInclude(c => c.Vraag)
+                .ThenInclude(v => (v as VraagCasus).Opties);
         }
 
         public Vacature GetBy(string id)

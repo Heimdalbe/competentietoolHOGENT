@@ -11,7 +11,7 @@ namespace CompetentieTool.Models.ViewModels
 {
     public class VacatureViewModel
     {
-        private readonly ICompetentieRepository _competentieRepository;
+        private ICompetentieRepository _competentieRepository;
 
         [Required]
         public String Id { get; set; }
@@ -23,13 +23,12 @@ namespace CompetentieTool.Models.ViewModels
         public String Beschrijving { get; set; }
 
         [Required]
-        public IEnumerable<Competentie> AlleCompetenties
-        {
-            get { return _competentieRepository.GetBasisCompetenties(); }
-        }
-
-        [Required]
         public IEnumerable<VacatureCompetentie> VacatureCompetenties { get; set; }
+
+        internal void SetCompetentieRepository(ICompetentieRepository competentieRepository)
+        {
+            this._competentieRepository = competentieRepository;
+        }
 
         public Boolean IsInVacatureCompetenties(string id)
         {
@@ -38,20 +37,10 @@ namespace CompetentieTool.Models.ViewModels
 
         public VacatureViewModel()
         {
-            
         }
 
-        public VacatureViewModel(ICompetentieRepository competentieRepository)
+        public VacatureViewModel(Vacature temp)
         {
-            _competentieRepository = competentieRepository;
-            var temp = new Vacature();
-            temp.AddCompetenties(competentieRepository.GetBasisCompetenties().ToList());
-            VacatureCompetenties = temp.CompetentiesLijst;
-        }
-
-        public VacatureViewModel(ICompetentieRepository competentieRepository, Vacature temp)
-        {
-            this._competentieRepository = competentieRepository;
             Id = temp.Id;
             Functie = temp.Functie;
             Beschrijving = temp.Beschrijving;

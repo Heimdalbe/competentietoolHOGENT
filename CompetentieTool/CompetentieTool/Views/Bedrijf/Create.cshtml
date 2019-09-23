@@ -1,4 +1,5 @@
 ﻿@model CompetentieTool.Models.ViewModels.VacatureViewModel
+@inject CompetentieTool.Models.IRepositories.ICompetentieRepository compRep
 
 <h2>Vacature aanmaken</h2>
 <hr />
@@ -23,14 +24,14 @@
                             Competentie
                         </th>
                         <th>
-                            Beschrijving
+                            Verklaring
                         </th>
                         <th>
                             
                         </th>
                     </tr>
                 </thead>
-                @foreach (var item in Model.AlleCompetenties)
+                @foreach (var item in compRep.GetAll())
                 {
                 <tr>
                     <th>
