@@ -1,6 +1,7 @@
 ﻿@model CompetentieTool.Models.ViewModels.ProfielViewModel;
 @{
-    ViewData["Title"] = ViewData["Naam"];
+    //ViewData["Title"] = ViewData["Naam"];
+
 
 }
 
@@ -40,11 +41,11 @@
                         @Html.LabelFor(model => model.Geslacht, new { @class = "control-label" })
                         <div>
                             Man:
-                            @Html.RadioButtonFor(model => model.Geslacht, "M", ((bool)ViewData["IsMan"]))
+                            @Html.RadioButtonFor(model => model.Geslacht, "M")
                             Vrouw:
-                            @Html.RadioButtonFor(model => model.Geslacht, "V", ((bool)ViewData["IsVrouw"]))
+                            @Html.RadioButtonFor(model => model.Geslacht, "V")
                             Andere:
-                            @Html.RadioButtonFor(model => model.Geslacht, "X", (!(bool)ViewData["IsMan"] && !(bool)ViewData["IsVrouw"]))
+                            @Html.RadioButtonFor(model => model.Geslacht, "X")
                         </div>
 
                     </div>
@@ -69,7 +70,7 @@
                         @Html.TextBoxFor(model => model.Postcode, new { @class = "form-control" })
                     </div>
                 </div>
-                @if ((bool)ViewData["IsSollicitant"])
+                @if (Model.IsSollicitant)
                 {
                     <h3 class="col-sm-12">Opleiding</h3>
                     <div class="form-group col-sm-12">
@@ -94,8 +95,6 @@
                         <div class="col-sm-6">
                             @Html.Label("Input.Btwnummer")
                             @Html.TextBoxFor(model => model.Btwnummer, new { @class = "form-control" })
-                            model.Opleiding
-                            ViewData["IsSollicitant"]
                         </div>
                     </div>
                 }

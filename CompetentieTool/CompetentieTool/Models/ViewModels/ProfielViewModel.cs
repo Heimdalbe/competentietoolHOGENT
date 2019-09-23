@@ -11,17 +11,18 @@ namespace CompetentieTool.Models.ViewModels
 {
     public class ProfielViewModel
     {
+        public Boolean IsSollicitant { get; set; }
 
-        [Required(ErrorMessage = "Opleiding is verplicht in te vullen")]
+        //[Required(ErrorMessage = "Opleiding is verplicht in te vullen")]
         public string Opleiding { get; set; }
-        [Required(ErrorMessage = "Opleidingsniveau is verplicht in te vullen")]
+        //[Required(ErrorMessage = "Opleidingsniveau is verplicht in te vullen")]
         public Opleidingsniveau Opleidingsniveau { get; set; }
 
-        [Required(ErrorMessage = "Bedrijfsnaam is verplicht in te vullen")]
+        //[Required(ErrorMessage = "Bedrijfsnaam is verplicht in te vullen")]
         public string Bedrijfsnaam { get; set; }
 
         [Display(Name = "BTW/Bedrijfsnummer")]
-        [Required(ErrorMessage = "BTW/Bedrijfsnummer is verplicht in te vullen")]
+        //[Required(ErrorMessage = "BTW/Bedrijfsnummer is verplicht in te vullen")]
         public string Btwnummer { get; set; }
 
         [Required(ErrorMessage = "Voornaam is verplicht in te vullen")]
@@ -32,7 +33,7 @@ namespace CompetentieTool.Models.ViewModels
 
         [Required(ErrorMessage = "Geboortedatum is verplicht in te vullen")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        //DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Geboortedatum { get; set; }
 
         [Required(ErrorMessage = "Huisnummer is verplicht in te vullen")]
@@ -65,11 +66,12 @@ namespace CompetentieTool.Models.ViewModels
 
         public ProfielViewModel()
         {
-
+            
 
         }
-        public ProfielViewModel(ApplicationUser user) : this()
+        public ProfielViewModel(ApplicationUser user, Boolean bol) : this()
         {
+            IsSollicitant = bol;
             Achternaam = user.Achternaam;
             Voornaam = user.Voornaam;
             Geboortedatum = user.Geboortedatum;
@@ -86,13 +88,13 @@ namespace CompetentieTool.Models.ViewModels
                 var user1 = (Sollicitant)user;
                 Opleiding = user1.Opleiding;
                 Opleidingsniveau = user1.Opleidingsniveau;
-                Bedrijfsnaam = null;
-                Btwnummer = null;
+                Bedrijfsnaam = "leeg";
+                Btwnummer = "leeg";
             }
             else
             {
                 var user2 = (Bedrijf)user;
-                Opleiding = null;
+                Opleiding = "leeg";
                 Opleidingsniveau = Opleidingsniveau.Basis_Onderwijs;
                 Bedrijfsnaam = user2.Bedrijfsnaam;
                 Btwnummer = user2.BtwNummer;

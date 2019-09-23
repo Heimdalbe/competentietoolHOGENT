@@ -30,13 +30,10 @@ namespace CompetentieTool.Controllers
         public IActionResult Gegevens()
         {
             ApplicationUser user = _userManager.FindByEmailAsync(User.Identity.Name).Result;
-            ViewData["IsSollicitant"] = user.GetType().Equals("Sollicitant");
-            ViewData["IsMan"] = user.Geslacht.Equals("M");
-            ViewData["IsVrouw"] = user.Geslacht.Equals("V");
             if (user == null)
                 return NotFound();
 
-            return View(new ProfielViewModel(user));
+            return View(new ProfielViewModel(user, user.GetType().Equals("Sollicitant")));
         }
 
         [HttpPost]

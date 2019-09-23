@@ -47,7 +47,7 @@ namespace CompetentieTool.Data
                 input.Voornaam = "Thomas";
                 input.Email = "thomas@test.be";
                 input.GsmNummer = "0491449500";
-                input.Geslacht = "V";
+                input.Geslacht = "M";
                 input.Huisnummer = "20";
                 input.Straat = "Beekstraat";
                 input.Nationaliteit = "Belg";
@@ -75,7 +75,7 @@ namespace CompetentieTool.Data
                 input1.Voornaam = "Bob";
                 input1.Email = "test@test.be";
                 input1.GsmNummer = "0123456789";
-                input1.Geslacht = "M";
+                input1.Geslacht = "V";
                 input1.Huisnummer = "20";
                 input1.Straat = "koekjesstraat";
                 input1.Nationaliteit = "Belg";
