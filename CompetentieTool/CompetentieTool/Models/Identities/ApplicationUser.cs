@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CompetentieTool.Models.Identities
 {
-    public class ApplicationUser : IdentityUser
+    public abstract class ApplicationUser : IdentityUser
     {
         public ApplicationUser() : base() { }
         private string _usertype;
@@ -81,7 +81,7 @@ namespace CompetentieTool.Models.Identities
                     _geslacht = value;
                 }
         }
-        public DateTime GeboorteDatum {
+        public DateTime Geboortedatum {
             get { return _geboorteDatum; }
             set
             {
@@ -144,53 +144,11 @@ namespace CompetentieTool.Models.Identities
         }
         #endregion
 
-        public void wijzigGegevens(ProfielViewModel viewmodel)
-        {
-            Achternaam = viewmodel.Achternaam;
-            Voornaam = viewmodel.Voornaam;
-            GeboorteDatum = viewmodel.GeboorteDatum;
-            Gsm = viewmodel.Gsm;
-            Geslacht = viewmodel.Geslacht;
-            Nationaliteit = viewmodel.Nationaliteit;
-            Gemeente = viewmodel.Gemeente;
-            Postcode = viewmodel.Postcode;
-            Straat = viewmodel.Straat;
-            Huisnummer = viewmodel.Huisnummer;
-            this.Email = viewmodel.Emailadres;
-            this.UserName = viewmodel.Emailadres;
-        }
+        public abstract void wijzigGegevens(ProfielViewModel viewmodel);
 
-        public void SetGegevensWerkgever(RegisterModel.InputModel input)
-        {
-            Usertype = "Werkgever";
-            Achternaam = input.Achternaam;
-            Voornaam = input.Voornaam;
-            GeboorteDatum = input.Geboortedatum;
-            Gsm = input.GsmNummer;
-            Geslacht = input.Geslacht;
-            Nationaliteit = input.Nationaliteit;
-            Gemeente = input.Gemeente;
-            Postcode = input.Postcode;
-            Straat = input.Straat;
-            Huisnummer = input.Huisnummer;
-            this.Email = input.Email;
-            this.UserName = input.Email;
-        }
-        public void SetGegevensSollicitant(RegisterSollicitantModel.InputModel input)
-        {
-            Usertype = "Sollicitant";
-            Achternaam = input.Achternaam;
-            Voornaam = input.Voornaam;
-            GeboorteDatum = input.Geboortedatum;
-            Gsm = input.GsmNummer;
-            Geslacht = input.Geslacht;
-            Nationaliteit = input.Nationaliteit;
-            Gemeente = input.Gemeente;
-            Postcode = input.Postcode;
-            Straat = input.Straat;
-            Huisnummer = input.Huisnummer;
-            this.Email = input.Email;
-            this.UserName = input.Email;
-        }
+        public abstract void SetGegevensWerkgever(RegisterModel.InputModel input);
+
+        public abstract void SetGegevensSollicitant(RegisterSollicitantModel.InputModel input);
+        public abstract String GetType();
     }
 }

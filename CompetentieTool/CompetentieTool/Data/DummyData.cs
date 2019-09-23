@@ -41,21 +41,23 @@ namespace CompetentieTool.Data
             
             if (await userManager.FindByNameAsync("thomass123") == null)
             {
-                var user = new ApplicationUser();
-                var input = new RegisterModel.InputModel();
+                var user = new Sollicitant();
+                var input = new RegisterSollicitantModel.InputModel();
                 input.Achternaam = "Schuddinck";
                 input.Voornaam = "Thomas";
                 input.Email = "thomas@test.be";
                 input.GsmNummer = "0491449500";
-                input.Geslacht = "man";
+                input.Geslacht = "V";
                 input.Huisnummer = "20";
                 input.Straat = "Beekstraat";
                 input.Nationaliteit = "Belg";
                 input.Geboortedatum = new DateTime(1997, 12, 20);
                 input.Gemeente = "Lokeren";
                 input.Postcode = "9160";
+                input.Opleiding = "Toegepaste Informatica";
+                input.Opleidingsniveau = Models.Opleidingsniveau.Professionele_Bachelor;
 
-                user.SetGegevensWerkgever(input);
+                user.SetGegevensSollicitant(input);
 
                 var result = await userManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -67,20 +69,21 @@ namespace CompetentieTool.Data
             }
             if (await userManager.FindByNameAsync("testerboy420") == null)
             {
-                var user1 = new ApplicationUser();
+                var user1 = new Bedrijf();
                 var input1 = new RegisterModel.InputModel();
                 input1.Achternaam = "bobbie";
                 input1.Voornaam = "Bob";
                 input1.Email = "test@test.be";
                 input1.GsmNummer = "0123456789";
-                input1.Geslacht = "man";
+                input1.Geslacht = "M";
                 input1.Huisnummer = "20";
                 input1.Straat = "koekjesstraat";
                 input1.Nationaliteit = "Belg";
                 input1.Geboortedatum = new DateTime(1990, 12, 10);
                 input1.Gemeente = "Gent";
                 input1.Postcode = "9000";
-                
+                input1.Bedrijfsnaam = "Coca-Cola";
+                input1.Btwnummer = "0123456789";
                 user1.SetGegevensWerkgever(input1);
 
                 var result = await userManager.CreateAsync(user1);
@@ -93,7 +96,7 @@ namespace CompetentieTool.Data
             }
 
             // use this to initialize vacature test data
-            // AddVacatures(context);
+            AddVacatures(context);
         }
 
         public static void AddVacatures(ApplicationDbContext context)

@@ -27,23 +27,28 @@
                 <h3 class="col-sm-12">Persoonlijke gegevens</h3>
                 <div class="form-group col-sm-12">
                     <div class="col-sm-6">
-                        @Html.Label("Input.Geboortedatum", "Geboortedatum")
-                        @Html.EditorFor(model => model.Input.Geboortedatum, new { @type = "date" })
+                        <div>
+                            @Html.Label("Input.Geboortedatum", "Geboortedatum")
+                        </div>
+                        @Html.EditorFor(model => model.Input.Geboortedatum, new { @type = "date", @class = "form-control" })
                     </div>
                     <div class="col-sm-6">
                         @Html.Label("Input.Nationaliteit", "Nationaliteit")
-                        @Html.TextBoxFor(model => model.Input.Nationaliteit, new { placeholder= "Belg", @class = "form-control" })
+                        @Html.TextBoxFor(model => model.Input.Nationaliteit, new { placeholder = "Belg", @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-group col-sm-12">
-                    @Html.LabelFor(model => model.Input.Geslacht, htmlAttributes: new { @class = "control-label col-sm-2" })
-                    <div class="col-sm-10">
-                        Man:
-                        @Html.RadioButtonFor(model => model.Input.Geslacht, "M")
-                        Vrouw:
-                        @Html.RadioButtonFor(model => model.Input.Geslacht, "V", htmlAttributes: new { @class = "pl-1" })
-                        Andere:
-                        @Html.RadioButtonFor(model => model.Input.Geslacht, "X", htmlAttributes: new { @class = "pl-1" })
+                    <div class="col-sm-8">
+                        @Html.LabelFor(model => model.Input.Geslacht, new { @class = "control-label" })
+                        <div>
+                            Man:
+                            @Html.RadioButtonFor(model => model.Input.Geslacht, "M")
+                            Vrouw:
+                            @Html.RadioButtonFor(model => model.Input.Geslacht, "V", htmlAttributes: new { @class = "" })
+                            Andere:
+                            @Html.RadioButtonFor(model => model.Input.Geslacht, "X", htmlAttributes: new { @class = "" })
+                        </div>
+
                     </div>
                 </div>
                 <div class="form-group col-sm-12">

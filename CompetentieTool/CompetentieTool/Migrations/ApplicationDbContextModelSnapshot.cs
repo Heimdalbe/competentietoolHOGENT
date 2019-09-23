@@ -157,12 +157,15 @@ namespace CompetentieTool.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<DateTime>("GeboorteDatum");
+                    b.Property<DateTime>("Geboortedatum");
 
                     b.Property<string>("Gemeente");
 
@@ -216,6 +219,8 @@ namespace CompetentieTool.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("ApplicationUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -319,6 +324,29 @@ namespace CompetentieTool.Migrations
                     b.ToTable("VraagCasus");
 
                     b.HasDiscriminator().HasValue("VraagCasus");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.Bedrijf", b =>
+                {
+                    b.HasBaseType("CompetentieTool.Models.Identities.ApplicationUser");
+
+                    b.Property<string>("Bedrijfsnaam");
+
+                    b.Property<string>("BtwNummer");
+
+                    b.ToTable("Bedrijf");
+
+                    b.HasDiscriminator().HasValue("Bedrijf");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.Sollicitant", b =>
+                {
+                    b.HasBaseType("CompetentieTool.Models.Identities.ApplicationUser");
+
+
+                    b.ToTable("Sollicitant");
+
+                    b.HasDiscriminator().HasValue("Sollicitant");
                 });
 
             modelBuilder.Entity("CompetentieTool.Domain.Competentie", b =>

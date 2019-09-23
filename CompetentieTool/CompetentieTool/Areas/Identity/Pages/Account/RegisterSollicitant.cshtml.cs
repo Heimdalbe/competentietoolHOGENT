@@ -12,7 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
-
+using CompetentieTool.Models;
+using CompetentieTool.Models.Domain;
 
 namespace CompetentieTool.Areas.Identity.Pages.Account
 {
@@ -46,7 +47,7 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Opleiding is verplicht in te vullen")]
             public string Opleiding { get; set; }
             [Required(ErrorMessage = "Opleidingsniveau is verplicht in te vullen")]
-            public string Opleidingsniveau { get; set; }
+            public Opleidingsniveau Opleidingsniveau { get; set; }
 
 
             [Required(ErrorMessage = "Voornaam is verplicht in te vullen")]
@@ -108,7 +109,7 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new Sollicitant { UserName = Input.Email, Email = Input.Email };
                 user.SetGegevensSollicitant(Input);
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Sollicitant"));
