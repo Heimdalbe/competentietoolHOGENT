@@ -96,7 +96,7 @@ namespace CompetentieTool.Data
             }
 
             // use this to initialize vacature test data
-            AddVacatures(context);
+            //AddVacatures(context);
         }
 
         public static void AddVacatures(ApplicationDbContext context)
