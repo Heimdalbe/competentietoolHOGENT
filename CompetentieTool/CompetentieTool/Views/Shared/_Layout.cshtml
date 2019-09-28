@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CompetentieTool</title>
+    <title>@ViewData["Title"] - Competentieverkenner</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -31,8 +31,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Startpagina</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">Hoe?</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Ontstaan</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Wetenschappelijke onderbouw</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Interessante literatuur</a></li>
                     <partial name="_LoggedInPartial" />
                 </ul>
                 <partial name="_LoginPartial" />

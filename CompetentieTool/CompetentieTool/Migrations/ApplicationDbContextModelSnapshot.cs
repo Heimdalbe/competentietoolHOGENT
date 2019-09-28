@@ -15,7 +15,7 @@ namespace CompetentieTool.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -326,17 +326,17 @@ namespace CompetentieTool.Migrations
                     b.HasDiscriminator().HasValue("VraagCasus");
                 });
 
-            modelBuilder.Entity("CompetentieTool.Models.Domain.Bedrijf", b =>
+            modelBuilder.Entity("CompetentieTool.Models.Domain.Organisatie", b =>
                 {
                     b.HasBaseType("CompetentieTool.Models.Identities.ApplicationUser");
 
-                    b.Property<string>("Bedrijfsnaam");
-
                     b.Property<string>("BtwNummer");
 
-                    b.ToTable("Bedrijf");
+                    b.Property<string>("OrganisatieNaam");
 
-                    b.HasDiscriminator().HasValue("Bedrijf");
+                    b.ToTable("Organisatie");
+
+                    b.HasDiscriminator().HasValue("Organisatie");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Sollicitant", b =>

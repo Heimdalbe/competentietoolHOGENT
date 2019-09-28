@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190914170034_test")]
-    partial class test
+    [Migration("20190928130902_start")]
+    partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -328,23 +328,26 @@ namespace CompetentieTool.Migrations
                     b.HasDiscriminator().HasValue("VraagCasus");
                 });
 
-            modelBuilder.Entity("CompetentieTool.Models.Domain.Bedrijf", b =>
+            modelBuilder.Entity("CompetentieTool.Models.Domain.Organisatie", b =>
                 {
                     b.HasBaseType("CompetentieTool.Models.Identities.ApplicationUser");
 
-                    b.Property<string>("Bedrijfsnaam");
-
                     b.Property<string>("BtwNummer");
 
-                    b.ToTable("Bedrijf");
+                    b.Property<string>("OrganisatieNaam");
 
-                    b.HasDiscriminator().HasValue("Bedrijf");
+                    b.ToTable("Organisatie");
+
+                    b.HasDiscriminator().HasValue("Organisatie");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Sollicitant", b =>
                 {
                     b.HasBaseType("CompetentieTool.Models.Identities.ApplicationUser");
 
+                    b.Property<string>("Opleiding");
+
+                    b.Property<int>("Opleidingsniveau");
 
                     b.ToTable("Sollicitant");
 

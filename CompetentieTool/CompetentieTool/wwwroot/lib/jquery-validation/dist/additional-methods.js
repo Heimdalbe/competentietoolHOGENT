@@ -9,7 +9,7 @@
 (function( factory ) {
 	if ( typeof define === "function" && define.amd ) {
 		define( ["jquery", "./jquery.validate"], factory );
-	} else if (typeof module === "object" && module.exports) {
+	} else if (typeof module === "obuct" && module.exports) {
 		module.exports = factory( require( "jquery" ) );
 	} else {
 		factory( jQuery );
@@ -711,7 +711,7 @@ $.validator.addMethod( "netmask", function( value, element ) {
 }, "Please enter a valid netmask." );
 
 /*
- * The NIE (Número de Identificación de Extranjero) is a Spanish tax identification number assigned by the Spanish
+ * The NIE (Número de Identificación de Extranuro) is a Spanish tax identification number assigned by the Spanish
  * authorities to any foreigner.
  *
  * The NIE is the equivalent of a Spaniards Número de Identificación Fiscal (NIF) which serves as a fiscal

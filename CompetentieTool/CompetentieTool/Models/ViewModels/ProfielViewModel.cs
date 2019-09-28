@@ -18,11 +18,11 @@ namespace CompetentieTool.Models.ViewModels
         //[Required(ErrorMessage = "Opleidingsniveau is verplicht in te vullen")]
         public Opleidingsniveau Opleidingsniveau { get; set; }
 
-        //[Required(ErrorMessage = "Bedrijfsnaam is verplicht in te vullen")]
-        public string Bedrijfsnaam { get; set; }
+        //[Required(ErrorMessage = "De naam van de organisatie is verplicht in te vullen")]
+        public string OrganisatieNaam { get; set; }
 
-        [Display(Name = "BTW/Bedrijfsnummer")]
-        //[Required(ErrorMessage = "BTW/Bedrijfsnummer is verplicht in te vullen")]
+        [Display(Name = "BTW/Organisatiesnummer")]
+        //[Required(ErrorMessage = "BTW/Organisatienummer is verplicht in te vullen")]
         public string Btwnummer { get; set; }
 
         [Required(ErrorMessage = "Voornaam is verplicht in te vullen")]
@@ -88,15 +88,15 @@ namespace CompetentieTool.Models.ViewModels
                 var user1 = (Sollicitant)user;
                 Opleiding = user1.Opleiding;
                 Opleidingsniveau = user1.Opleidingsniveau;
-                Bedrijfsnaam = "leeg";
+                OrganisatieNaam = "leeg";
                 Btwnummer = "leeg";
             }
             else
             {
-                var user2 = (Bedrijf)user;
+                var user2 = (Organisatie)user;
                 Opleiding = "leeg";
                 Opleidingsniveau = Opleidingsniveau.Basis_Onderwijs;
-                Bedrijfsnaam = user2.Bedrijfsnaam;
+                OrganisatieNaam = user2.OrganisatieNaam;
                 Btwnummer = user2.BtwNummer;
             }
         }

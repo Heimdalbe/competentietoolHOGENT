@@ -16,6 +16,7 @@ using CompetentieTool.Models.Identities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using CompetentieTool.Models.IRepositories;
 using CompetentieTool.Data.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CompetentieTool
 {

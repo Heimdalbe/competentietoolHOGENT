@@ -14,7 +14,7 @@ namespace CompetentieTool.Data
         public DbSet<Vacature> Vacature { get; set; }
         public DbSet<Competentie> Competenties {get; set; }
         public DbSet<Sollicitant> Sollicitanten { get; set; }
-        public DbSet<Bedrijf> Bedrijven { get; set; }
+        public DbSet<Organisatie> Bedrijven { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
