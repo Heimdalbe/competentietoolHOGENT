@@ -11,7 +11,7 @@
 
 
 <h2>Vragenlijst</h2>
-<form asp-controller="Sollicitant" asp-action="Submit" method="post" class="form-group">
+<form asp-controller="Sollicitant" asp-action="Submit" asp-route-id="@ViewData["id"]" method="post" class="form-group">
     <div class="container" id="wizard">
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="start">

@@ -7,6 +7,7 @@ namespace CompetentieTool.Models.Domain
 {
     public class IngevuldeVacature
     {
+        public string Id { get; set; }
         public Vacature Vacature { get; set; }
         public IList<Response> responses { get; set; }
 

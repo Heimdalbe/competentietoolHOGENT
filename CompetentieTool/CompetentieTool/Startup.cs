@@ -49,6 +49,7 @@ namespace CompetentieTool
 
             services.AddScoped<IVacatureRepository, VacatureRepository>();
             services.AddScoped<ICompetentieRepository, CompetentieRepository>();
+            services.AddScoped<IIngevuldeVacatureRepository, IngevuldeVacatureRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAuthorization(options =>

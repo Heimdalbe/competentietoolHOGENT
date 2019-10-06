@@ -14,10 +14,12 @@ namespace CompetentieTool.Controllers
     public class SollicitantController : Controller
     {
         private readonly IVacatureRepository _vacatureRepository;
+        private readonly IIngevuldeVacatureRepository _ingevuldeVacatureRepository;
 
-        public SollicitantController(IVacatureRepository vacatureRepository)
+        public SollicitantController(IVacatureRepository vacatureRepository, IIngevuldeVacatureRepository ingevuldeVacatureRepository)
         {
             this._vacatureRepository = vacatureRepository;
+            _ingevuldeVacatureRepository = ingevuldeVacatureRepository;
         }
         public IActionResult Vacatures()
         {
@@ -50,20 +52,23 @@ namespace CompetentieTool.Controllers
                 }
                 models.Add(res);
             }
-            ICollection<Group<string, VraagViewModel>> test = new List<Group<string, VraagViewModel>>();
+
+            ViewData["id"] = id;
+
+            ICollection<Group<string, VraagViewModel>> groups = new List<Group<string, VraagViewModel>>();
             var results = models.GroupBy(m => m.Vignet).ToList();
             foreach(var item in results)
             {
-                test.Add(new Group<string, VraagViewModel> { Key = item.Key, Values = item.ToList() });
+                groups.Add(new Group<string, VraagViewModel> { Key = item.Key, Values = item.ToList() });
             }
-            return View(test);
+            return View(groups);
         }
 
         [HttpPost]
-        public void Submit(List<Group<string, VraagViewModel>> models)
+        public IActionResult Submit(List<Group<string, VraagViewModel>> models, string id)
         {
             IngevuldeVacature vac = new IngevuldeVacature();
-           //vac.Vacature = _vacatureRepository.GetBy();
+           vac.Vacature = _vacatureRepository.GetBy(id);
             foreach(var group in models)
             {
                 foreach(var item in group.Values)
@@ -71,8 +76,9 @@ namespace CompetentieTool.Controllers
                     vac.responses.Add(new Response { Aanvulling = item.Redenering, VraagId = item.VraagId, OptieKeuze = item.OptieKeuze });
                 }
             }
-
+            _ingevuldeVacatureRepository.Add(vac);
             int i = 1;
+            return RedirectToAction("Index", "Home");
         }
     }
 }
