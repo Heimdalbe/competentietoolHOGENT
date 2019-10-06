@@ -62,10 +62,17 @@ namespace CompetentieTool.Controllers
         [HttpPost]
         public void Submit(List<Group<string, VraagViewModel>> models)
         {
+            IngevuldeVacature vac = new IngevuldeVacature();
+           //vac.Vacature = _vacatureRepository.GetBy();
             foreach(var group in models)
             {
-                
+                foreach(var item in group.Values)
+                {
+                    vac.responses.Add(new Response { Aanvulling = item.Redenering, VraagId = item.VraagId, OptieKeuze = item.OptieKeuze });
+                }
             }
+
+            int i = 1;
         }
     }
 }

@@ -55,6 +55,7 @@
                                     <p>Geef uw redenering</p>
                                 }
                                 <textarea asp-for="@Model[i].Values[j].Redenering" rows="5" id="@Model[i].Values[j].VraagId"></textarea>
+                                @Html.HiddenFor(m => Model[i].Values[j].VraagId)
                             </div>
                         </div>
                     }
