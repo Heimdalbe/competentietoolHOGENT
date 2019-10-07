@@ -10,9 +10,9 @@
     <div class="panel-group">
         @foreach (var item in Model)
         {
-        <a asp-controller="Sollicitant" asp-action="Vragenlijst" asp-route-id="@item.Id">
+        <a asp-controller="Sollicitant" asp-action="Vragenlijst" asp-route-id="@item.Id" class="vacatureLijst">
             <div class="panel">
-                <div class="panel-body">
+                <div class="panel-body vacatureLijst">
                     <h3> @item.Functie</h3>
 
                     <p>@item.Beschrijving</p>

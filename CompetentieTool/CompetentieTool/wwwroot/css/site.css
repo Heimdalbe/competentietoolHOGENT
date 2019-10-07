@@ -35,3 +35,17 @@ body {
         display: none;
     }
 }
+
+textarea {
+    resize: none;
+}
+
+.vacatureLijst {
+    text-decoration: none;
+    color: black;
+}
+
+.vacatureLijst:hover{
+    text-decoration: none;
+    background-color: lightgrey;
+}
