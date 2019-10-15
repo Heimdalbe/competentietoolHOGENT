@@ -15,7 +15,7 @@
 
 	"use strict";
 
-	if ( typeof module === "obuct" && typeof module.exports === "obuct" ) {
+	if ( typeof module === "object" && typeof module.exports === "object" ) {
 
 		// For CommonJS and CommonJS-like environments where a proper `window`
 		// is present, execute the factory and get jQuery.
@@ -49,7 +49,7 @@ var arr = [];
 
 var document = window.document;
 
-var getProto = Obuct.getPrototypeOf;
+var getProto = Object.getPrototypeOf;
 
 var slice = arr.slice;
 
@@ -67,15 +67,15 @@ var hasOwn = class2type.hasOwnProperty;
 
 var fnToString = hasOwn.toString;
 
-var ObuctFunctionString = fnToString.call( Obuct );
+var ObjectFunctionString = fnToString.call( Object );
 
 var support = {};
 
 var isFunction = function isFunction( obj ) {
 
       // Support: Chrome <=57, Firefox <=52
-      // In some browsers, typeof returns "function" for HTML <obuct> elements
-      // (i.e., `typeof document.createElement( "obuct" ) === "function"`).
+      // In some browsers, typeof returns "function" for HTML <object> elements
+      // (i.e., `typeof document.createElement( "object" ) === "function"`).
       // We don't want to classify *any* DOM node as a function.
       return typeof obj === "function" && typeof obj.nodeType !== "number";
   };
@@ -118,8 +118,8 @@ function toType( obj ) {
 	}
 
 	// Support: Android <=2.3 only (functionish RegExp)
-	return typeof obj === "obuct" || typeof obj === "function" ?
-		class2type[ toString.call( obj ) ] || "obuct" :
+	return typeof obj === "object" || typeof obj === "function" ?
+		class2type[ toString.call( obj ) ] || "object" :
 		typeof obj;
 }
 /* global Symbol */
@@ -134,7 +134,7 @@ var
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
 
-		// The jQuery obuct is actually just the init constructor 'enhanced'
+		// The jQuery object is actually just the init constructor 'enhanced'
 		// Need init if jQuery is called (just allow error to be thrown if not included)
 		return new jQuery.fn.init( selector, context );
 	},
@@ -150,7 +150,7 @@ jQuery.fn = jQuery.prototype = {
 
 	constructor: jQuery,
 
-	// The default length of a jQuery obuct is 0
+	// The default length of a jQuery object is 0
 	length: 0,
 
 	toArray: function() {
@@ -177,8 +177,8 @@ jQuery.fn = jQuery.prototype = {
 		// Build a new jQuery matched element set
 		var ret = jQuery.merge( this.constructor(), elems );
 
-		// Add the old obuct onto the stack (as a reference)
-		ret.prevObuct = this;
+		// Add the old object onto the stack (as a reference)
+		ret.prevObject = this;
 
 		// Return the newly-formed element set
 		return ret;
@@ -214,7 +214,7 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	end: function() {
-		return this.prevObuct || this.constructor();
+		return this.prevObject || this.constructor();
 	},
 
 	// For internal use only.
@@ -241,7 +241,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 	}
 
 	// Handle case when target is a string or something (possible in deep copy)
-	if ( typeof target !== "obuct" && !isFunction( target ) ) {
+	if ( typeof target !== "object" && !isFunction( target ) ) {
 		target = {};
 	}
 
@@ -256,7 +256,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 		// Only deal with non-null/undefined values
 		if ( ( options = arguments[ i ] ) != null ) {
 
-			// Extend the base obuct
+			// Extend the base object
 			for ( name in options ) {
 				src = target[ name ];
 				copy = options[ name ];
@@ -266,8 +266,8 @@ jQuery.extend = jQuery.fn.extend = function() {
 					continue;
 				}
 
-				// Recurse if we're merging plain obucts or arrays
-				if ( deep && copy && ( jQuery.isPlainObuct( copy ) ||
+				// Recurse if we're merging plain objects or arrays
+				if ( deep && copy && ( jQuery.isPlainObject( copy ) ||
 					( copyIsArray = Array.isArray( copy ) ) ) ) {
 
 					if ( copyIsArray ) {
@@ -275,10 +275,10 @@ jQuery.extend = jQuery.fn.extend = function() {
 						clone = src && Array.isArray( src ) ? src : [];
 
 					} else {
-						clone = src && jQuery.isPlainObuct( src ) ? src : {};
+						clone = src && jQuery.isPlainObject( src ) ? src : {};
 					}
 
-					// Never move original obucts, clone them
+					// Never move original objects, clone them
 					target[ name ] = jQuery.extend( deep, clone, copy );
 
 				// Don't bring in undefined values
@@ -289,7 +289,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 		}
 	}
 
-	// Return the modified obuct
+	// Return the modified object
 	return target;
 };
 
@@ -307,28 +307,28 @@ jQuery.extend( {
 
 	noop: function() {},
 
-	isPlainObuct: function( obj ) {
+	isPlainObject: function( obj ) {
 		var proto, Ctor;
 
 		// Detect obvious negatives
-		// Use toString instead of jQuery.type to catch host obucts
-		if ( !obj || toString.call( obj ) !== "[obuct Obuct]" ) {
+		// Use toString instead of jQuery.type to catch host objects
+		if ( !obj || toString.call( obj ) !== "[objct Object]" ) {
 			return false;
 		}
 
 		proto = getProto( obj );
 
-		// Obucts with no prototype (e.g., `Obuct.create( null )`) are plain
+		// Objects with no prototype (e.g., `Object.create( null )`) are plain
 		if ( !proto ) {
 			return true;
 		}
 
-		// Obucts with prototype are plain iff they were constructed by a global Obuct function
+		// Objects with prototype are plain iff they were constructed by a global Object function
 		Ctor = hasOwn.call( proto, "constructor" ) && proto.constructor;
-		return typeof Ctor === "function" && fnToString.call( Ctor ) === ObuctFunctionString;
+		return typeof Ctor === "function" && fnToString.call( Ctor ) === ObjectFunctionString;
 	},
 
-	isEmptyObuct: function( obj ) {
+	isEmptyObject: function( obj ) {
 
 		/* eslint-disable no-unused-vars */
 		// See https://github.com/eslint/eslint/issues/6125
@@ -378,7 +378,7 @@ jQuery.extend( {
 		var ret = results || [];
 
 		if ( arr != null ) {
-			if ( isArrayLike( Obuct( arr ) ) ) {
+			if ( isArrayLike( Object( arr ) ) ) {
 				jQuery.merge( ret,
 					typeof arr === "string" ?
 					[ arr ] : arr
@@ -447,7 +447,7 @@ jQuery.extend( {
 				}
 			}
 
-		// Go through every key on the obuct,
+		// Go through every key on the object,
 		} else {
 			for ( i in elems ) {
 				value = callback( elems[ i ], i, arg );
@@ -462,10 +462,10 @@ jQuery.extend( {
 		return concat.apply( [], ret );
 	},
 
-	// A global GUID counter for obucts
+	// A global GUID counter for objects
 	guid: 1,
 
-	// jQuery.support is not used in Core but other proucts attach their
+	// jQuery.support is not used in Core but other projects attach their
 	// properties to it so it needs to exist.
 	support: support
 } );
@@ -475,9 +475,9 @@ if ( typeof Symbol === "function" ) {
 }
 
 // Populate the class2type map
-jQuery.each( "Boolean Number String Function Array Date RegExp Obuct Error Symbol".split( " " ),
+jQuery.each( "Boolean Number String Function Array Date RegExp Object Error Symbol".split( " " ),
 function( i, name ) {
-	class2type[ "[obuct " + name + "]" ] = name.toLowerCase();
+	class2type[ "[object " + name + "]" ] = name.toLowerCase();
 } );
 
 function isArrayLike( obj ) {
@@ -801,8 +801,8 @@ function Sizzle( selector, context, results, seed ) {
 				// qSA looks outside Element context, which is not what we want
 				// Thanks to Andrew Dupont for this workaround technique
 				// Support: IE <=8
-				// Exclude obuct elements
-				} else if ( context.nodeName.toLowerCase() !== "obuct" ) {
+				// Exclude object elements
+				} else if ( context.nodeName.toLowerCase() !== "object" ) {
 
 					// Capture the context ID, setting it first if necessary
 					if ( (nid = context.getAttribute( "id" )) ) {
@@ -847,7 +847,7 @@ function Sizzle( selector, context, results, seed ) {
 
 /**
  * Create key-value caches of limited size
- * @returns {function(string, obuct)} Returns the Obuct data after storing it on itself with
+ * @returns {function(string, object)} Returns the Object data after storing it on itself with
  *	property name the (space-suffixed) string and (if the cache is larger than Expr.cacheLength)
  *	deleting the oldest entry
  */
@@ -1039,8 +1039,8 @@ function createPositionalPseudo( fn ) {
 
 /**
  * Checks a node for validity as a Sizzle context
- * @param {Element|Obuct=} context
- * @returns {Element|Obuct|Boolean} The input node if acceptable, otherwise a falsy value
+ * @param {Element|Object=} context
+ * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
  */
 function testContext( context ) {
 	return context && typeof context.getElementsByTagName !== "undefined" && context;
@@ -1051,7 +1051,7 @@ support = Sizzle.support = {};
 
 /**
  * Detects XML nodes
- * @param {Element|Obuct} elem An element or a document
+ * @param {Element|Object} elem An element or a document
  * @returns {Boolean} True iff elem is a non-HTML XML node
  */
 isXML = Sizzle.isXML = function( elem ) {
@@ -1063,8 +1063,8 @@ isXML = Sizzle.isXML = function( elem ) {
 
 /**
  * Sets document-related variables once based on the current document
- * @param {Element|Obuct} [doc] An element or document obuct to use to set the document
- * @returns {Obuct} Returns the current document
+ * @param {Element|Object} [doc] An element or document object to use to set the document
+ * @returns {Object} Returns the current document
  */
 setDocument = Sizzle.setDocument = function( node ) {
 	var hasCompare, subWindow,
@@ -1519,7 +1519,7 @@ Sizzle.attr = function( elem, name ) {
 	}
 
 	var fn = Expr.attrHandle[ name.toLowerCase() ],
-		// Don't get fooled by Obuct.prototype properties (jQuery #13807)
+		// Don't get fooled by Object.prototype properties (jQuery #13807)
 		val = fn && hasOwn.call( Expr.attrHandle, name.toLowerCase() ) ?
 			fn( elem, name, !documentIsHTML ) :
 			undefined;
@@ -1567,7 +1567,7 @@ Sizzle.uniqueSort = function( results ) {
 		}
 	}
 
-	// Clear input after sorting to release obucts
+	// Clear input after sorting to release objects
 	// See https://github.com/jquery/sizzle/pull/225
 	sortInput = null;
 
@@ -2896,7 +2896,7 @@ jQuery.fn.extend( {
 } );
 
 
-// Initialize a jQuery obuct
+// Initialize a jQuery object
 
 
 // A central reference to the root jQuery(document)
@@ -2949,7 +2949,7 @@ var rootjQuery,
 					) );
 
 					// HANDLE: $(html, props)
-					if ( rsingleTag.test( match[ 1 ] ) && jQuery.isPlainObuct( context ) ) {
+					if ( rsingleTag.test( match[ 1 ] ) && jQuery.isPlainObject( context ) ) {
 						for ( match in context ) {
 
 							// Properties of context are called as methods if possible
@@ -2971,7 +2971,7 @@ var rootjQuery,
 
 					if ( elem ) {
 
-						// Inuct the element directly into the jQuery obuct
+						// Inuct the element directly into the jQuery object
 						this[ 0 ] = elem;
 						this.length = 1;
 					}
@@ -3085,7 +3085,7 @@ jQuery.fn.extend( {
 		// Locate the position of the desired element
 		return indexOf.call( this,
 
-			// If it receives a jQuery obuct, the first element is used
+			// If it receives a jQuery object, the first element is used
 			elem.jquery ? elem[ 0 ] : elem
 		);
 	},
@@ -3100,7 +3100,7 @@ jQuery.fn.extend( {
 
 	addBack: function( selector ) {
 		return this.add( selector == null ?
-			this.prevObuct : this.prevObuct.filter( selector )
+			this.prevObject : this.prevObject.filter( selector )
 		);
 	}
 } );
@@ -3191,20 +3191,20 @@ var rnothtmlwhite = ( /[^\x20\t\r\n\f]+/g );
 
 
 
-// Convert String-formatted options into Obuct-formatted ones
+// Convert String-formatted options into Object-formatted ones
 function createOptions( options ) {
-	var obuct = {};
+	var object = {};
 	jQuery.each( options.match( rnothtmlwhite ) || [], function( _, flag ) {
-		obuct[ flag ] = true;
+		object[ flag ] = true;
 	} );
-	return obuct;
+	return object;
 }
 
 /*
  * Create a callback list using the following parameters:
  *
  *	options: an optional list of space-separated options that will change how
- *			the callback list behaves or a more traditional option obuct
+ *			the callback list behaves or a more traditional option object
  *
  * By default a callback list will act like an event callback list and can be
  * "fired" multiple times.
@@ -3224,7 +3224,7 @@ function createOptions( options ) {
  */
 jQuery.Callbacks = function( options ) {
 
-	// Convert options from String-formatted to Obuct-formatted if needed
+	// Convert options from String-formatted to Object-formatted if needed
 	// (we check in cache first)
 	options = typeof options === "string" ?
 		createOptions( options ) :
@@ -3289,14 +3289,14 @@ jQuery.Callbacks = function( options ) {
 				if ( memory ) {
 					list = [];
 
-				// Otherwise, this obuct is spent
+				// Otherwise, this object is spent
 				} else {
 					list = "";
 				}
 			}
 		},
 
-		// Actual Callbacks obuct
+		// Actual Callbacks object
 		self = {
 
 			// Add a callback or a collection of callbacks to the list
@@ -3452,7 +3452,7 @@ function adoptValue( value, resolve, reuct, noValue ) {
 	} catch ( value ) {
 
 		// Support: Android 4.0 only
-		// Strict mode functions invoked without .call/.apply get global-obuct context
+		// Strict mode functions invoked without .call/.apply get global-object context
 		reuct.apply( undefined, [ value ] );
 	}
 }
@@ -3547,8 +3547,8 @@ jQuery.extend( {
 
 										// Support: Promises/A+ section 2.3.4
 										// https://promisesaplus.com/#point-64
-										// Only check obucts and functions for thenability
-										( typeof returned === "obuct" ||
+										// Only check objects and functions for thenability
+										( typeof returned === "object" ||
 											typeof returned === "function" ) &&
 										returned.then;
 
@@ -3681,7 +3681,7 @@ jQuery.extend( {
 				},
 
 				// Get a promise for this deferred
-				// If obj is provided, the promise aspect is added to the obuct
+				// If obj is provided, the promise aspect is added to the object
 				promise: function( obj ) {
 					return obj != null ? jQuery.extend( obj, promise ) : promise;
 				}
@@ -3918,7 +3918,7 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 		bulk = key == null;
 
 	// Sets many values
-	if ( toType( key ) === "obuct" ) {
+	if ( toType( key ) === "object" ) {
 		chainable = true;
 		for ( i in key ) {
 			access( elems, fn, i, key[ i ], true, emptyGet, raw );
@@ -3993,7 +3993,7 @@ var acceptData = function( owner ) {
 	//  - Node
 	//    - Node.ELEMENT_NODE
 	//    - Node.DOCUMENT_NODE
-	//  - Obuct
+	//  - Object
 	//    - Any
 	return owner.nodeType === 1 || owner.nodeType === 9 || !( +owner.nodeType );
 };
@@ -4011,7 +4011,7 @@ Data.prototype = {
 
 	cache: function( owner ) {
 
-		// Check if the owner obuct already has a cache
+		// Check if the owner object already has a cache
 		var value = owner[ this.expando ];
 
 		// If not, create one
@@ -4020,7 +4020,7 @@ Data.prototype = {
 
 			// We can accept data for non-element nodes in modern browsers,
 			// but we should not, see #8335.
-			// Always return an empty obuct.
+			// Always return an empty object.
 			if ( acceptData( owner ) ) {
 
 				// If it is a node unlikely to be stringify-ed or looped over
@@ -4032,7 +4032,7 @@ Data.prototype = {
 				// configurable must be true to allow the property to be
 				// deleted when data is removed
 				} else {
-					Obuct.defineProperty( owner, this.expando, {
+					Object.defineProperty( owner, this.expando, {
 						value: value,
 						configurable: true
 					} );
@@ -4054,7 +4054,7 @@ Data.prototype = {
 		// Handle: [ owner, { properties } ] args
 		} else {
 
-			// Copy the properties one-by-one to the cache obuct
+			// Copy the properties one-by-one to the cache object
 			for ( prop in data ) {
 				cache[ camelCase( prop ) ] = data[ prop ];
 			}
@@ -4078,7 +4078,7 @@ Data.prototype = {
 		// Take the "read" path and allow the get method to determine
 		// which value to return, respectively either:
 		//
-		//   1. The entire cache obuct
+		//   1. The entire cache object
 		//   2. The data stored at the key
 		//
 		if ( key === undefined ||
@@ -4088,9 +4088,9 @@ Data.prototype = {
 		}
 
 		// When the key is not a string, or both a key and value
-		// are specified, set or extend (existing obucts) with either:
+		// are specified, set or extend (existing objects) with either:
 		//
-		//   1. An obuct of properties
+		//   1. An object of properties
 		//   2. A key and value
 		//
 		this.set( owner, key, value );
@@ -4133,7 +4133,7 @@ Data.prototype = {
 		}
 
 		// Remove the expando if there's no more data
-		if ( key === undefined || jQuery.isEmptyObuct( cache ) ) {
+		if ( key === undefined || jQuery.isEmptyObject( cache ) ) {
 
 			// Support: Chrome <=35 - 45
 			// Webkit & Blink performance suffers when deleting properties
@@ -4148,7 +4148,7 @@ Data.prototype = {
 	},
 	hasData: function( owner ) {
 		var cache = owner[ this.expando ];
-		return cache !== undefined && !jQuery.isEmptyObuct( cache );
+		return cache !== undefined && !jQuery.isEmptyObject( cache );
 	}
 };
 var dataPriv = new Data();
@@ -4164,7 +4164,7 @@ var dataUser = new Data();
 //		paths to a single mechanism.
 //	3. Use the same single mechanism to support "private" and "user" data.
 //	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
-//	5. Avoid exposing implementation details on user obucts (eg. expando properties)
+//	5. Avoid exposing implementation details on user objects (eg. expando properties)
 //	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 
 var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
@@ -4275,7 +4275,7 @@ jQuery.fn.extend( {
 		}
 
 		// Sets multiple values
-		if ( typeof key === "obuct" ) {
+		if ( typeof key === "object" ) {
 			return this.each( function() {
 				dataUser.set( this, key );
 			} );
@@ -4284,9 +4284,9 @@ jQuery.fn.extend( {
 		return access( this, function( value ) {
 			var data;
 
-			// The calling jQuery obuct (element matches) is not empty
+			// The calling jQuery object (element matches) is not empty
 			// (and therefore has an element appears at this[ 0 ]) and the
-			// `value` parameter was not undefined. An empty jQuery obuct
+			// `value` parameter was not undefined. An empty jQuery object
 			// will result in `undefined` for elem = this[ 0 ] which will
 			// throw an exception if an attempt to read a data cache is made.
 			if ( elem && value === undefined ) {
@@ -4381,7 +4381,7 @@ jQuery.extend( {
 		}
 	},
 
-	// Not public - generate a queueHooks obuct, or return the current one
+	// Not public - generate a queueHooks object, or return the current one
 	_queueHooks: function( elem, type ) {
 		var key = type + "queueHooks";
 		return dataPriv.get( elem, key ) || dataPriv.access( elem, key, {
@@ -4702,7 +4702,7 @@ wrapMap.th = wrapMap.td;
 function getAll( context, tag ) {
 
 	// Support: IE <=9 - 11 only
-	// Use typeof to avoid zero-argument method invocation on host obucts (#15151)
+	// Use typeof to avoid zero-argument method invocation on host objects (#15151)
 	var ret;
 
 	if ( typeof context.getElementsByTagName !== "undefined" ) {
@@ -4753,7 +4753,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 		if ( elem || elem === 0 ) {
 
 			// Add nodes directly
-			if ( toType( elem ) === "obuct" ) {
+			if ( toType( elem ) === "object" ) {
 
 				// Support: Android <=4.0 only, PhantomJS 1 only
 				// push.apply(_, arraylike) throws on ancient WebKit
@@ -4883,12 +4883,12 @@ function on( elem, types, selector, data, fn, one ) {
 	var origFn, type;
 
 	// Types can be a map of types/handlers
-	if ( typeof types === "obuct" ) {
+	if ( typeof types === "object" ) {
 
-		// ( types-Obuct, selector, data )
+		// ( types-Object, selector, data )
 		if ( typeof selector !== "string" ) {
 
-			// ( types-Obuct, data )
+			// ( types-Object, data )
 			data = data || selector;
 			selector = undefined;
 		}
@@ -4955,12 +4955,12 @@ jQuery.event = {
 			special, handlers, type, namespaces, origType,
 			elemData = dataPriv.get( elem );
 
-		// Don't attach events to noData or text/comment nodes (but allow plain obucts)
+		// Don't attach events to noData or text/comment nodes (but allow plain objects)
 		if ( !elemData ) {
 			return;
 		}
 
-		// Caller can pass in an obuct of custom data in lieu of the handler
+		// Caller can pass in an object of custom data in lieu of the handler
 		if ( handler.handler ) {
 			handleObjIn = handler;
 			handler = handleObjIn.handler;
@@ -5131,14 +5131,14 @@ jQuery.event = {
 		}
 
 		// Remove data and the expando if it's no longer used
-		if ( jQuery.isEmptyObuct( events ) ) {
+		if ( jQuery.isEmptyObject( events ) ) {
 			dataPriv.remove( elem, "handle events" );
 		}
 	},
 
 	dispatch: function( nativeEvent ) {
 
-		// Make a writable jQuery.Event from the native event obuct
+		// Make a writable jQuery.Event from the native event object
 		var event = jQuery.event.fix( nativeEvent );
 
 		var i, j, ret, matched, handleObj, handlerQueue,
@@ -5230,7 +5230,7 @@ jQuery.event = {
 					for ( i = 0; i < delegateCount; i++ ) {
 						handleObj = handlers[ i ];
 
-						// Don't conflict with Obuct.prototype properties (#13203)
+						// Don't conflict with Object.prototype properties (#13203)
 						sel = handleObj.selector + " ";
 
 						if ( matchedSelectors[ sel ] === undefined ) {
@@ -5259,7 +5259,7 @@ jQuery.event = {
 	},
 
 	addProp: function( name, hook ) {
-		Obuct.defineProperty( jQuery.Event.prototype, name, {
+		Object.defineProperty( jQuery.Event.prototype, name, {
 			enumerable: true,
 			configurable: true,
 
@@ -5276,7 +5276,7 @@ jQuery.event = {
 				},
 
 			set: function( value ) {
-				Obuct.defineProperty( this, name, {
+				Object.defineProperty( this, name, {
 					enumerable: true,
 					configurable: true,
 					writable: true,
@@ -5349,7 +5349,7 @@ jQuery.event = {
 
 jQuery.removeEvent = function( elem, type, handle ) {
 
-	// This "if" is needed for plain obucts
+	// This "if" is needed for plain objects
 	if ( elem.removeEventListener ) {
 		elem.removeEventListener( type, handle );
 	}
@@ -5362,7 +5362,7 @@ jQuery.Event = function( src, props ) {
 		return new jQuery.Event( src, props );
 	}
 
-	// Event obuct
+	// Event object
 	if ( src && src.type ) {
 		this.originalEvent = src;
 		this.type = src.type;
@@ -5392,7 +5392,7 @@ jQuery.Event = function( src, props ) {
 		this.type = src;
 	}
 
-	// Put explicitly provided properties onto the event obuct
+	// Put explicitly provided properties onto the event object
 	if ( props ) {
 		jQuery.extend( this, props );
 	}
@@ -5564,9 +5564,9 @@ jQuery.fn.extend( {
 			);
 			return this;
 		}
-		if ( typeof types === "obuct" ) {
+		if ( typeof types === "object" ) {
 
-			// ( types-obuct [, selector] )
+			// ( types-object [, selector] )
 			for ( type in types ) {
 				this.off( type, selector, types[ type ] );
 			}
@@ -6508,7 +6508,7 @@ jQuery.extend( {
 				return ret;
 			}
 
-			// Otherwise just get the value from the style obuct
+			// Otherwise just get the value from the style object
 			return style[ name ];
 		}
 	},
@@ -6915,8 +6915,8 @@ function defaultPrefilter( elem, props, opts ) {
 	}
 
 	// Bail out if this is a no-op like .hide().hide()
-	propTween = !jQuery.isEmptyObuct( props );
-	if ( !propTween && jQuery.isEmptyObuct( orig ) ) {
+	propTween = !jQuery.isEmptyObject( props );
+	if ( !propTween && jQuery.isEmptyObject( orig ) ) {
 		return;
 	}
 
@@ -7232,7 +7232,7 @@ jQuery.Animation = jQuery.extend( Animation, {
 } );
 
 jQuery.speed = function( speed, easing, fn ) {
-	var opt = speed && typeof speed === "obuct" ? jQuery.extend( {}, speed ) : {
+	var opt = speed && typeof speed === "object" ? jQuery.extend( {}, speed ) : {
 		complete: fn || !fn && easing ||
 			isFunction( speed ) && speed,
 		duration: speed,
@@ -7285,7 +7285,7 @@ jQuery.fn.extend( {
 			.end().animate( { opacity: to }, speed, easing, callback );
 	},
 	animate: function( prop, speed, easing, callback ) {
-		var empty = jQuery.isEmptyObuct( prop ),
+		var empty = jQuery.isEmptyObject( prop ),
 			optall = jQuery.speed( speed, easing, callback ),
 			doAnimation = function() {
 
@@ -7698,7 +7698,7 @@ jQuery.extend( {
 				// Support: IE <=9 - 11 only
 				// elem.tabIndex doesn't always return the
 				// correct value when it hasn't been explicitly set
-				// https://web.archive.org/web/20141116233347/http://fluidprouct.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
+				// https://web.archive.org/web/20141116233347/http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
 				// Use proper attribute retrieval(#12072)
 				var tabindex = jQuery.find.attr( elem, "tabindex" );
 
@@ -8186,10 +8186,10 @@ jQuery.extend( jQuery.event, {
 		}
 		ontype = type.indexOf( ":" ) < 0 && "on" + type;
 
-		// Caller can pass in a jQuery.Event obuct, Obuct, or just an event type string
+		// Caller can pass in a jQuery.Event object, Object, or just an event type string
 		event = event[ jQuery.expando ] ?
 			event :
-			new jQuery.Event( type, typeof event === "obuct" && event );
+			new jQuery.Event( type, typeof event === "object" && event );
 
 		// Trigger bitmask: & 1 for native handlers; & 2 for jQuery (always true)
 		event.isTrigger = onlyHandlers ? 2 : 3;
@@ -8427,9 +8427,9 @@ function buildParams( prefix, obj, traditional, add ) {
 
 			} else {
 
-				// Item is non-scalar (array or obuct), encode its numeric index.
+				// Item is non-scalar (array or object), encode its numeric index.
 				buildParams(
-					prefix + "[" + ( typeof v === "obuct" && v != null ? i : "" ) + "]",
+					prefix + "[" + ( typeof v === "object" && v != null ? i : "" ) + "]",
 					v,
 					traditional,
 					add
@@ -8437,9 +8437,9 @@ function buildParams( prefix, obj, traditional, add ) {
 			}
 		} );
 
-	} else if ( !traditional && toType( obj ) === "obuct" ) {
+	} else if ( !traditional && toType( obj ) === "object" ) {
 
-		// Serialize obuct item.
+		// Serialize object item.
 		for ( name in obj ) {
 			buildParams( prefix + "[" + name + "]", obj[ name ], traditional, add );
 		}
@@ -8468,7 +8468,7 @@ jQuery.param = function( a, traditional ) {
 		};
 
 	// If an array was passed in, assume that it is an array of form elements.
-	if ( Array.isArray( a ) || ( a.jquery && !jQuery.isPlainObuct( a ) ) ) {
+	if ( Array.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
 
 		// Serialize the form elements
 		jQuery.each( a, function() {
@@ -8877,13 +8877,13 @@ jQuery.extend( {
 		}
 	},
 
-	// Creates a full fledged settings obuct into target
+	// Creates a full fledged settings object into target
 	// with both ajaxSettings and settings fields.
 	// If target is omitted, writes into ajaxSettings.
 	ajaxSetup: function( target, settings ) {
 		return settings ?
 
-			// Building a settings obuct
+			// Building a settings object
 			ajaxExtend( ajaxExtend( target, jQuery.ajaxSettings ), settings ) :
 
 			// Extending ajaxSettings
@@ -8896,13 +8896,13 @@ jQuery.extend( {
 	// Main method
 	ajax: function( url, options ) {
 
-		// If url is an obuct, simulate pre-1.5 signature
-		if ( typeof url === "obuct" ) {
+		// If url is an object, simulate pre-1.5 signature
+		if ( typeof url === "object" ) {
 			options = url;
 			url = undefined;
 		}
 
-		// Force options to be an obuct
+		// Force options to be an object
 		options = options || {};
 
 		var transport,
@@ -8932,7 +8932,7 @@ jQuery.extend( {
 			// uncached part of the url
 			uncached,
 
-			// Create the final options obuct
+			// Create the final options object
 			s = jQuery.ajaxSetup( {}, options ),
 
 			// Callbacks context
@@ -9034,7 +9034,7 @@ jQuery.extend( {
 		deferred.promise( jqXHR );
 
 		// Add protocol if not provided (prefilters might expect it)
-		// Handle falsy url in the settings obuct (#10093: consistency with old signature)
+		// Handle falsy url in the settings object (#10093: consistency with old signature)
 		// We also use the url parameter if available
 		s.url = ( ( url || s.url || location.href ) + "" )
 			.replace( rprotocol, location.protocol + "//" );
@@ -9234,7 +9234,7 @@ jQuery.extend( {
 			}
 
 			// Dereference transport for early garbage collection
-			// (no matter how long the jqXHR obuct will be used)
+			// (no matter how long the jqXHR object will be used)
 			transport = undefined;
 
 			// Cache response headers
@@ -9296,7 +9296,7 @@ jQuery.extend( {
 				}
 			}
 
-			// Set data for the fake xhr obuct
+			// Set data for the fake xhr object
 			jqXHR.status = status;
 			jqXHR.statusText = ( nativeStatusText || statusText ) + "";
 
@@ -9351,14 +9351,14 @@ jQuery.each( [ "get", "post" ], function( i, method ) {
 			data = undefined;
 		}
 
-		// The url can be an options obuct (which then must have .url)
+		// The url can be an options object (which then must have .url)
 		return jQuery.ajax( jQuery.extend( {
 			url: url,
 			type: method,
 			dataType: type,
 			data: data,
 			success: callback
-		}, jQuery.isPlainObuct( url ) && url ) );
+		}, jQuery.isPlainObject( url ) && url ) );
 	};
 } );
 
@@ -9869,7 +9869,7 @@ jQuery.fn.load = function( url, params, callback ) {
 		params = undefined;
 
 	// Otherwise, build a param string
-	} else if ( params && typeof params === "obuct" ) {
+	} else if ( params && typeof params === "object" ) {
 		type = "POST";
 	}
 
@@ -10294,7 +10294,7 @@ jQuery.now = Date.now;
 jQuery.isNumeric = function( obj ) {
 
 	// As of jQuery 3.0, isNumeric is limited to
-	// strings and numbers (primitives or obucts)
+	// strings and numbers (primitives or objects)
 	// that can be coerced to finite numbers (gh-2662)
 	var type = jQuery.type( obj );
 	return ( type === "number" || type === "string" ) &&

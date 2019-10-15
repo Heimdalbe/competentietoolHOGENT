@@ -51,7 +51,7 @@
     <Category Id="CodeSchema_Property" Label="Property" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Property" NavigationActionLabel="Properties" />
     <Category Id="CodeSchema_ReturnTypeLink" Label="Return" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Return types" OutgoingActionLabel="Return types" />
     <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
-    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target obuct" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
     <Category Id="File" Label="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="File" NavigationActionLabel="Files" />
     <Category Id="FileSystem.Category.FileOfType.dll" BasedOn="CodeSchema_Assembly" CanBeDataDriven="True" IsProviderRoot="False" />
     <Category Id="Implements" Label="Implements" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Implemented by" OutgoingActionLabel="Implements" />
@@ -83,7 +83,7 @@
     <Property Id="IsEnabled" DataType="System.Boolean" />
     <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
     <Property Id="IsSourceVirtualized" Label="Link Source Virtualized" Description="If true, the link source end contains data for virtualized nodes/links (i.e. not actually created in the graph)." DataType="System.Boolean" />
-    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable obuct" DataType="System.String" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
     <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
     <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
     <Property Id="TargetType" DataType="System.Type" />
@@ -96,9 +96,9 @@
   </Properties>
   <QualifiedNames>
     <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
-    <Name Id="Member" Label="Member" ValueType="System.Obuct" />
+    <Name Id="Member" Label="Member" ValueType="System.Object" />
     <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
-    <Name Id="Type" Label="Type" ValueType="System.Obuct" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
   </QualifiedNames>
   <IdentifierAliases>
     <Alias n="1" Uri="Assembly=$(c29e6058-6259-4e81-ab69-c1b8f2f5870f.OutputPathUri)" />
@@ -119,38 +119,38 @@
       <Condition Expression="HasCategory('QueryResult')" />
       <Setter Property="Background" Value="#FFBCFFBE" />
     </Style>
-    <Style TargetType="Node" GroupLabel="Test Prouct" ValueLabel="Test Prouct">
-      <Condition Expression="HasCategory('CodeMap_TestProuct')" />
-      <Setter Property="Icon" Value="CodeMap_TestProuct" />
+    <Style TargetType="Node" GroupLabel="Test Project" ValueLabel="Test Project">
+      <Condition Expression="HasCategory('CodeMap_TestProject')" />
+      <Setter Property="Icon" Value="CodeMap_TestProject" />
       <Setter Property="Background" Value="#FF307A69" />
     </Style>
-    <Style TargetType="Node" GroupLabel="Web Prouct" ValueLabel="Web Prouct">
-      <Condition Expression="HasCategory('CodeMap_WebProuct')" />
-      <Setter Property="Icon" Value="CodeMap_WebProuct" />
+    <Style TargetType="Node" GroupLabel="Web Project" ValueLabel="Web Project">
+      <Condition Expression="HasCategory('CodeMap_WebProject')" />
+      <Setter Property="Icon" Value="CodeMap_WebProject" />
     </Style>
-    <Style TargetType="Node" GroupLabel="Windows Store Prouct" ValueLabel="Windows Store Prouct">
-      <Condition Expression="HasCategory('CodeMap_WindowsStoreProuct')" />
-      <Setter Property="Icon" Value="CodeMap_WindowsStoreProuct" />
+    <Style TargetType="Node" GroupLabel="Windows Store Project" ValueLabel="Windows Store Project">
+      <Condition Expression="HasCategory('CodeMap_WindowsStoreProject')" />
+      <Setter Property="Icon" Value="CodeMap_WindowsStoreProject" />
     </Style>
-    <Style TargetType="Node" GroupLabel="Phone Prouct" ValueLabel="Phone Prouct">
-      <Condition Expression="HasCategory('CodeMap_PhoneProuct')" />
-      <Setter Property="Icon" Value="CodeMap_PhoneProuct" />
+    <Style TargetType="Node" GroupLabel="Phone Project" ValueLabel="Phone Project">
+      <Condition Expression="HasCategory('CodeMap_PhoneProject')" />
+      <Setter Property="Icon" Value="CodeMap_PhoneProject" />
     </Style>
     <Style TargetType="Node" GroupLabel="Portable Library" ValueLabel="Portable Library">
-      <Condition Expression="HasCategory('CodeMap_PortableLibraryProuct')" />
-      <Setter Property="Icon" Value="CodeMap_PortableLibraryProuct" />
+      <Condition Expression="HasCategory('CodeMap_PortableLibraryProject')" />
+      <Setter Property="Icon" Value="CodeMap_PortableLibraryProject" />
     </Style>
-    <Style TargetType="Node" GroupLabel="WPF Prouct" ValueLabel="WPF Prouct">
-      <Condition Expression="HasCategory('CodeMap_WpfProuct')" />
-      <Setter Property="Icon" Value="CodeMap_WpfProuct" />
+    <Style TargetType="Node" GroupLabel="WPF Project" ValueLabel="WPF Project">
+      <Condition Expression="HasCategory('CodeMap_WpfProject')" />
+      <Setter Property="Icon" Value="CodeMap_WpfProject" />
     </Style>
-    <Style TargetType="Node" GroupLabel="VSIX Prouct" ValueLabel="VSIX Prouct">
-      <Condition Expression="HasCategory('CodeMap_VsixProuct')" />
-      <Setter Property="Icon" Value="CodeMap_VsixProuct" />
+    <Style TargetType="Node" GroupLabel="VSIX Project" ValueLabel="VSIX Project">
+      <Condition Expression="HasCategory('CodeMap_VsixProject')" />
+      <Setter Property="Icon" Value="CodeMap_VsixProject" />
     </Style>
-    <Style TargetType="Node" GroupLabel="Modeling Prouct" ValueLabel="Modeling Prouct">
-      <Condition Expression="HasCategory('CodeMap_ModelingProuct')" />
-      <Setter Property="Icon" Value="CodeMap_ModelingProuct" />
+    <Style TargetType="Node" GroupLabel="Modeling Project" ValueLabel="Modeling Project">
+      <Condition Expression="HasCategory('CodeMap_ModelingProject')" />
+      <Setter Property="Icon" Value="CodeMap_ModelingProject" />
     </Style>
     <Style TargetType="Node" GroupLabel="Assembly" ValueLabel="Has category">
       <Condition Expression="HasCategory('CodeSchema_Assembly')" />
@@ -318,8 +318,8 @@
       <Condition Expression="HasCategory('CodeMap_SolutionFolder')" />
       <Setter Property="Background" Value="#FFDEBA83" />
     </Style>
-    <Style TargetType="Link" GroupLabel="Prouct Reference" ValueLabel="Prouct Reference">
-      <Condition Expression="HasCategory('CodeMap_ProuctReference')" />
+    <Style TargetType="Link" GroupLabel="Project Reference" ValueLabel="Project Reference">
+      <Condition Expression="HasCategory('CodeMap_ProjectReference')" />
       <Setter Property="Stroke" Value="#9A9A9A" />
       <Setter Property="StrokeDashArray" Value="2 2" />
       <Setter Property="DrawArrow" Value="true" />
