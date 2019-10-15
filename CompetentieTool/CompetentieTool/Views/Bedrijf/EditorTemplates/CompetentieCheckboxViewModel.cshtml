@@ -1,0 +1,7 @@
+﻿@model CompetentieTool.Models.ViewModels.CompetentieCheckboxViewModel
+<tr>
+    <th scope="row">@Model.Naam</th>
+    <td>@Model.Verklaring</td>
+    <td>@Html.CheckBoxFor(x => x.IsSelected)</td>
+    @Html.HiddenFor(x => x.Id)
+</tr>

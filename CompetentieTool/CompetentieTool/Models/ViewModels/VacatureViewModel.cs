@@ -1,6 +1,7 @@
 ﻿using CompetentieTool.Domain;
 using CompetentieTool.Models.Domain;
 using CompetentieTool.Models.IRepositories;
+using CompetentieTool.Models.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,7 +12,6 @@ namespace CompetentieTool.Models.ViewModels
 {
     public class VacatureViewModel
     {
-        private ICompetentieRepository _competentieRepository;
 
         [Required]
         public String Id { get; set; }
@@ -23,20 +23,19 @@ namespace CompetentieTool.Models.ViewModels
         public String Beschrijving { get; set; }
 
         [Required]
-        public IEnumerable<VacatureCompetentie> VacatureCompetenties { get; set; }
-
-        internal void SetCompetentieRepository(ICompetentieRepository competentieRepository)
-        {
-            this._competentieRepository = competentieRepository;
-        }
+        public ICollection<string> VacatureCompetenties { get; set; }
 
         public Boolean IsInVacatureCompetenties(string id)
         {
-            return !String.IsNullOrEmpty(VacatureCompetenties.FirstOrDefault(c => c.CompetentieId.Equals(id))?.CompetentieId);
+            return !String.IsNullOrEmpty(VacatureCompetenties.FirstOrDefault(c => c.Equals(id)));
         }
+
+        public List<CompetentieCheckboxViewModel> CompetentieIds { get; set; }
 
         public VacatureViewModel()
         {
+            VacatureCompetenties = new List<string>();
+            CompetentieIds = new List<CompetentieCheckboxViewModel>();
         }
 
         public VacatureViewModel(Vacature temp)
@@ -44,7 +43,8 @@ namespace CompetentieTool.Models.ViewModels
             Id = temp.Id;
             Functie = temp.Functie;
             Beschrijving = temp.Beschrijving;
-            VacatureCompetenties = temp.CompetentiesLijst;
+            CompetentieIds = new List<CompetentieCheckboxViewModel>();
+            VacatureCompetenties = temp.CompetentiesLijst.Select(c => c.CompetentieId).ToList();
         }
     }
 }

@@ -32,20 +32,9 @@
                         </th>
                     </tr>
                 </thead>
-                @foreach (var item in compRep.GetAll())
-                {
-                    <tr>
-                        <th>
-                            @Html.DisplayFor(Modelitem => item.Naam)
-                        </th>
-                        <th>
-                            @Html.DisplayFor(Modelitem => item.Verklaring)
-                        </th>
-                        <th>
-                            <input type="checkbox" checked=@Model.IsInVacatureCompetenties(item.Id)>
-                        </th>
-                    </tr>
-                }
+                <tbody>
+                    @Html.EditorFor(m => m.CompetentieIds)
+                </tbody>
             </table>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
