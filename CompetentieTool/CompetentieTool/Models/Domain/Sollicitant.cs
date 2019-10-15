@@ -14,8 +14,8 @@ namespace CompetentieTool.Models.Domain
         private string _opleidingsnaam;
 
 
-        public Opleidingsniveau Opleidingsniveau;
-        public string Opleiding;
+        public Opleidingsniveau Opleidingsniveau { get; set; }
+        public string Opleiding { get; set; }
         
 
         public override void SetGegevensWerkgever(RegisterModel.InputModel input)

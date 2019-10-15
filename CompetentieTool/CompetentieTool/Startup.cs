@@ -16,6 +16,7 @@ using CompetentieTool.Models.Identities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using CompetentieTool.Models.IRepositories;
 using CompetentieTool.Data.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CompetentieTool
 {
@@ -48,6 +49,7 @@ namespace CompetentieTool
 
             services.AddScoped<IVacatureRepository, VacatureRepository>();
             services.AddScoped<ICompetentieRepository, CompetentieRepository>();
+            services.AddScoped<IIngevuldeVacatureRepository, IngevuldeVacatureRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAuthorization(options =>

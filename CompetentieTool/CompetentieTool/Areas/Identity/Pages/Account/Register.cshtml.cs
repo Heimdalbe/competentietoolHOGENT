@@ -43,11 +43,11 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
         public class InputModel
         {
 
-            [Required(ErrorMessage = "Bedrijfsnaam is verplicht in te vullen")]
-            public string Bedrijfsnaam { get; set; }
+            [Required(ErrorMessage = "De naam van de organisatie is verplicht in te vullen")]
+            public string OrganisatieNaam { get; set; }
 
-            [Display(Name = "BTW/Bedrijfsnummer")]
-            [Required(ErrorMessage = "BTW/Bedrijfsnummer is verplicht in te vullen")]
+            [Display(Name = "BTW/Organisatienummer")]
+            [Required(ErrorMessage = "BTW/Organisatienummer is verplicht in te vullen")]
             public string Btwnummer { get; set; }
 
             [Required(ErrorMessage = "Voornaam is verplicht in te vullen")]
@@ -110,7 +110,7 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new Bedrijf { UserName = Input.Email, Email = Input.Email, SecurityStamp = Guid.NewGuid().ToString("D") };
+                var user = new Organisatie { UserName = Input.Email, Email = Input.Email, SecurityStamp = Guid.NewGuid().ToString("D") };
                 user.SetGegevensWerkgever(Input);
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Werkgever"));

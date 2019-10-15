@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace CompetentieTool.Models.Domain
 {
-    public class Bedrijf:ApplicationUser
+    public class Organisatie:ApplicationUser
     {
         private string _bedrijfsnaam;
         private string _btwnummer;
 
 
-        public string Bedrijfsnaam { get; set; }
+        public string OrganisatieNaam { get; set; }
         public string BtwNummer { get; set; }
 
         public override string GetType()
@@ -42,7 +42,7 @@ namespace CompetentieTool.Models.Domain
             Huisnummer = input.Huisnummer;
             this.Email = input.Email;
             this.UserName = input.Email;
-            Bedrijfsnaam = input.Bedrijfsnaam;
+            OrganisatieNaam = input.OrganisatieNaam;
             BtwNummer = input.Btwnummer;
         }
 
@@ -60,7 +60,7 @@ namespace CompetentieTool.Models.Domain
             Huisnummer = input.Huisnummer;
             this.Email = input.Email;
             this.UserName = input.Email;
-            Bedrijfsnaam = input.Bedrijfsnaam;
+            OrganisatieNaam = input.OrganisatieNaam;
             BtwNummer = input.Btwnummer;
         }
     }

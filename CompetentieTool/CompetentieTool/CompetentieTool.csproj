@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20190923132206_koekje.cs" />
-    <Compile Remove="Migrations\20190923132206_koekje.Designer.cs" />
+    <Compile Remove="Migrations\20190925163856_checktest.cs" />
+    <Compile Remove="Migrations\20190925163856_checktest.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

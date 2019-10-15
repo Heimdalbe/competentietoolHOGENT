@@ -4,18 +4,20 @@ using CompetentieTool.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190928130902_start")]
+    partial class start
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -74,20 +76,6 @@ namespace CompetentieTool.Migrations
                     b.ToTable("Vignet");
                 });
 
-            modelBuilder.Entity("CompetentieTool.Models.Domain.IngevuldeVacature", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("VacatureId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VacatureId");
-
-                    b.ToTable("IngevuldeVacatures");
-                });
-
             modelBuilder.Entity("CompetentieTool.Models.Domain.Mogelijkheid", b =>
                 {
                     b.Property<string>("Id")
@@ -102,26 +90,6 @@ namespace CompetentieTool.Migrations
                     b.HasIndex("VraagCasusId");
 
                     b.ToTable("Mogelijkheid");
-                });
-
-            modelBuilder.Entity("CompetentieTool.Models.Domain.Response", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Aanvulling");
-
-                    b.Property<string>("IngevuldeVacatureId");
-
-                    b.Property<string>("OptieKeuze");
-
-                    b.Property<string>("VraagId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IngevuldeVacatureId");
-
-                    b.ToTable("Response");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Vacature", b =>
@@ -393,25 +361,11 @@ namespace CompetentieTool.Migrations
                         .HasForeignKey("CompetentieTool.Domain.Competentie", "VraagId");
                 });
 
-            modelBuilder.Entity("CompetentieTool.Models.Domain.IngevuldeVacature", b =>
-                {
-                    b.HasOne("CompetentieTool.Models.Domain.Vacature", "Vacature")
-                        .WithMany()
-                        .HasForeignKey("VacatureId");
-                });
-
             modelBuilder.Entity("CompetentieTool.Models.Domain.Mogelijkheid", b =>
                 {
                     b.HasOne("CompetentieTool.Domain.VraagCasus")
                         .WithMany("Opties")
                         .HasForeignKey("VraagCasusId");
-                });
-
-            modelBuilder.Entity("CompetentieTool.Models.Domain.Response", b =>
-                {
-                    b.HasOne("CompetentieTool.Models.Domain.IngevuldeVacature")
-                        .WithMany("responses")
-                        .HasForeignKey("IngevuldeVacatureId");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetentie", b =>

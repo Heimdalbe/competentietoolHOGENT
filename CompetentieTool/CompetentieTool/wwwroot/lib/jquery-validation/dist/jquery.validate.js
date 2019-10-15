@@ -9,7 +9,7 @@
 (function( factory ) {
 	if ( typeof define === "function" && define.amd ) {
 		define( ["jquery"], factory );
-	} else if (typeof module === "object" && module.exports) {
+	} else if (typeof module === "obuct" && module.exports) {
 		module.exports = factory( require( "jquery" ) );
 	} else {
 		factory( jQuery );
@@ -144,7 +144,7 @@ $.extend( $.fn, {
 		var element = this[ 0 ],
 			settings, staticRules, existingRules, data, param, filtered;
 
-		// If nothing is selected, return empty object; can't chain anyway
+		// If nothing is selected, return empty obuct; can't chain anyway
 		if ( element == null ) {
 			return;
 		}
@@ -570,10 +570,10 @@ $.extend( $.validator, {
 		},
 
 		numberOfInvalids: function() {
-			return this.objectLength( this.invalid );
+			return this.obuctLength( this.invalid );
 		},
 
-		objectLength: function( obj ) {
+		obuctLength: function( obj ) {
 			/* jshint unused: false */
 			var count = 0,
 				i;
@@ -650,7 +650,7 @@ $.extend( $.validator, {
 				}
 
 				// Select only the first element for each name, and only those with rules specified
-				if ( name in rulesCache || !validator.objectLength( $( this ).rules() ) ) {
+				if ( name in rulesCache || !validator.obuctLength( $( this ).rules() ) ) {
 					return false;
 				}
 
@@ -807,7 +807,7 @@ $.extend( $.validator, {
 			if ( dependencyMismatch ) {
 				return;
 			}
-			if ( this.objectLength( rules ) ) {
+			if ( this.obuctLength( rules ) ) {
 				this.successList.push( element );
 			}
 			return true;
@@ -837,7 +837,7 @@ $.extend( $.validator, {
 			return undefined;
 		},
 
-		// The second parameter 'rule' used to be a string, and extended to an object literal
+		// The second parameter 'rule' used to be a string, and extended to an obuct literal
 		// of the following form:
 		// rule = {
 		//     method: "method name",

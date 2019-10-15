@@ -221,10 +221,10 @@
     <Node Id="@167" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.configuration.xml\2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Xml.dll" Group="Collapsed" Label="Microsoft.Extensions.Configuration.Xml.dll" UseManualLocation="True">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
-    <Node Id="@168" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection\2.1.1\lib\netcoreapp2.0\Microsoft.Extensions.DependencyInjection.dll" Group="Collapsed" Label="Microsoft.Extensions.DependencyInjection.dll" UseManualLocation="True">
+    <Node Id="@168" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinuction\2.1.1\lib\netcoreapp2.0\Microsoft.Extensions.DependencyInuction.dll" Group="Collapsed" Label="Microsoft.Extensions.DependencyInuction.dll" UseManualLocation="True">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
-    <Node Id="@169" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll" Group="Collapsed" Label="Microsoft.Extensions.DependencyInjection.Abstractions.dll" UseManualLocation="True">
+    <Node Id="@169" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinuction.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInuction.Abstractions.dll" Group="Collapsed" Label="Microsoft.Extensions.DependencyInuction.Abstractions.dll" UseManualLocation="True">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
     <Node Id="@170" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencymodel\2.1.0\lib\netstandard1.6\Microsoft.Extensions.DependencyModel.dll" Group="Collapsed" Label="Microsoft.Extensions.DependencyModel.dll" UseManualLocation="True">
@@ -293,7 +293,7 @@
     <Node Id="@190" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.logging.tracesource\2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.TraceSource.dll" Group="Collapsed" Label="Microsoft.Extensions.Logging.TraceSource.dll" UseManualLocation="True">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
-    <Node Id="@191" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.objectpool\2.1.1\lib\netstandard2.0\Microsoft.Extensions.ObjectPool.dll" Group="Collapsed" Label="Microsoft.Extensions.ObjectPool.dll" UseManualLocation="True">
+    <Node Id="@191" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.obuctpool\2.1.1\lib\netstandard2.0\Microsoft.Extensions.ObuctPool.dll" Group="Collapsed" Label="Microsoft.Extensions.ObuctPool.dll" UseManualLocation="True">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
     <Node Id="@192" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.options\2.1.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll" Group="Collapsed" Label="Microsoft.Extensions.Options.dll" UseManualLocation="True">
@@ -611,7 +611,7 @@
     <Node Id="@290" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\ref\netcoreapp2.1\System.Numerics.Vectors.dll" Group="Collapsed" Label="System.Numerics.Vectors.dll" UseManualLocation="True">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
-    <Node Id="@291" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\ref\netcoreapp2.1\System.ObjectModel.dll" Group="Collapsed" Label="System.ObjectModel.dll" UseManualLocation="True">
+    <Node Id="@291" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\ref\netcoreapp2.1\System.ObuctModel.dll" Group="Collapsed" Label="System.ObuctModel.dll" UseManualLocation="True">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
     <Node Id="@292" Category="CodeSchema_Assembly" CodeSchemaProperty_IsExternal="True" DelayedChildNodesState="NotFetched" FilePath="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\ref\netcoreapp2.1\System.Reflection.dll" Group="Collapsed" Label="System.Reflection.dll" UseManualLocation="True">
@@ -1707,7 +1707,7 @@
     <Category Id="CodeSchema_Property" Label="Property" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Property" NavigationActionLabel="Properties" />
     <Category Id="CodeSchema_ReturnTypeLink" Label="Return" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Return types" OutgoingActionLabel="Return types" />
     <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
-    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target obuct" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
     <Category Id="Externals" Label="Externals" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Externals" />
     <Category Id="File" Label="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="File" NavigationActionLabel="Files" />
     <Category Id="FileSystem.Category.FileOfType.dll" BasedOn="CodeSchema_Assembly" CanBeDataDriven="True" IsProviderRoot="False" />
@@ -1741,7 +1741,7 @@
     <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
     <Property Id="IsSourceVirtualized" Label="Link Source Virtualized" Description="If true, the link source end contains data for virtualized nodes/links (i.e. not actually created in the graph)." DataType="System.Boolean" />
     <Property Id="IsTargetVirtualized" Label="Link Target Virtualized" Description="If true, the link target end contains data for virtualized nodes/links (i.e. not actually created in the graph)." DataType="System.Boolean" />
-    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable obuct" DataType="System.String" />
     <Property Id="Layout" DataType="System.String" />
     <Property Id="LayoutSettings" DataType="Microsoft.VisualStudio.Diagrams.View.GroupLayoutStyle" />
     <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
@@ -1756,10 +1756,10 @@
   </Properties>
   <QualifiedNames>
     <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
-    <Name Id="Member" Label="Member" ValueType="System.Object" />
+    <Name Id="Member" Label="Member" ValueType="System.Obuct" />
     <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
     <Name Id="StrongName" Label="Strong Name" ValueType="System.String" />
-    <Name Id="Type" Label="Type" ValueType="System.Object" />
+    <Name Id="Type" Label="Type" ValueType="System.Obuct" />
   </QualifiedNames>
   <IdentifierAliases>
     <Alias n="1" Uri="Assembly=$(FxUri)/System.Data.dll" />
@@ -1929,8 +1929,8 @@
     <Alias n="165" Id="(StrongName=&quot;Microsoft.Extensions.Configuration.KeyPerFile, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
     <Alias n="166" Id="(StrongName=&quot;Microsoft.Extensions.Configuration.UserSecrets, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
     <Alias n="167" Id="(StrongName=&quot;Microsoft.Extensions.Configuration.Xml, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
-    <Alias n="168" Id="(StrongName=&quot;Microsoft.Extensions.DependencyInjection, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
-    <Alias n="169" Id="(StrongName=&quot;Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
+    <Alias n="168" Id="(StrongName=&quot;Microsoft.Extensions.DependencyInuction, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
+    <Alias n="169" Id="(StrongName=&quot;Microsoft.Extensions.DependencyInuction.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
     <Alias n="170" Id="(StrongName=&quot;Microsoft.Extensions.DependencyModel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
     <Alias n="171" Id="(StrongName=&quot;Microsoft.Extensions.DiagnosticAdapter, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
     <Alias n="172" Id="(StrongName=&quot;Microsoft.Extensions.FileProviders.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
@@ -1952,7 +1952,7 @@
     <Alias n="188" Id="(StrongName=&quot;Microsoft.Extensions.Logging.Debug, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
     <Alias n="189" Id="(StrongName=&quot;Microsoft.Extensions.Logging.EventSource, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
     <Alias n="190" Id="(StrongName=&quot;Microsoft.Extensions.Logging.TraceSource, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
-    <Alias n="191" Id="(StrongName=&quot;Microsoft.Extensions.ObjectPool, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
+    <Alias n="191" Id="(StrongName=&quot;Microsoft.Extensions.ObuctPool, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
     <Alias n="192" Id="(StrongName=&quot;Microsoft.Extensions.Options, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
     <Alias n="193" Id="(StrongName=&quot;Microsoft.Extensions.Options.ConfigurationExtensions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
     <Alias n="194" Id="(StrongName=&quot;Microsoft.Extensions.Primitives, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60&quot;)" />
@@ -2052,7 +2052,7 @@
     <Alias n="288" Id="(StrongName=&quot;System.Net.WebSockets.Client, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot;)" />
     <Alias n="289" Id="(StrongName=&quot;System.Net.WebSockets.WebSocketProtocol, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51&quot;)" />
     <Alias n="290" Id="(StrongName=&quot;System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot;)" />
-    <Alias n="291" Id="(StrongName=&quot;System.ObjectModel, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot;)" />
+    <Alias n="291" Id="(StrongName=&quot;System.ObuctModel, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot;)" />
     <Alias n="292" Id="(StrongName=&quot;System.Reflection, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot;)" />
     <Alias n="293" Id="(StrongName=&quot;System.Reflection.DispatchProxy, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot;)" />
     <Alias n="294" Id="(StrongName=&quot;System.Reflection.Emit, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot;)" />
@@ -2137,38 +2137,38 @@
       <Condition Expression="HasCategory('QueryResult')" />
       <Setter Property="Background" Value="#FFBCFFBE" />
     </Style>
-    <Style TargetType="Node" GroupLabel="Test Project" ValueLabel="Test Project">
-      <Condition Expression="HasCategory('CodeMap_TestProject')" />
-      <Setter Property="Icon" Value="CodeMap_TestProject" />
+    <Style TargetType="Node" GroupLabel="Test Prouct" ValueLabel="Test Prouct">
+      <Condition Expression="HasCategory('CodeMap_TestProuct')" />
+      <Setter Property="Icon" Value="CodeMap_TestProuct" />
       <Setter Property="Background" Value="#FF307A69" />
     </Style>
-    <Style TargetType="Node" GroupLabel="Web Project" ValueLabel="Web Project">
-      <Condition Expression="HasCategory('CodeMap_WebProject')" />
-      <Setter Property="Icon" Value="CodeMap_WebProject" />
+    <Style TargetType="Node" GroupLabel="Web Prouct" ValueLabel="Web Prouct">
+      <Condition Expression="HasCategory('CodeMap_WebProuct')" />
+      <Setter Property="Icon" Value="CodeMap_WebProuct" />
     </Style>
-    <Style TargetType="Node" GroupLabel="Windows Store Project" ValueLabel="Windows Store Project">
-      <Condition Expression="HasCategory('CodeMap_WindowsStoreProject')" />
-      <Setter Property="Icon" Value="CodeMap_WindowsStoreProject" />
+    <Style TargetType="Node" GroupLabel="Windows Store Prouct" ValueLabel="Windows Store Prouct">
+      <Condition Expression="HasCategory('CodeMap_WindowsStoreProuct')" />
+      <Setter Property="Icon" Value="CodeMap_WindowsStoreProuct" />
     </Style>
-    <Style TargetType="Node" GroupLabel="Phone Project" ValueLabel="Phone Project">
-      <Condition Expression="HasCategory('CodeMap_PhoneProject')" />
-      <Setter Property="Icon" Value="CodeMap_PhoneProject" />
+    <Style TargetType="Node" GroupLabel="Phone Prouct" ValueLabel="Phone Prouct">
+      <Condition Expression="HasCategory('CodeMap_PhoneProuct')" />
+      <Setter Property="Icon" Value="CodeMap_PhoneProuct" />
     </Style>
     <Style TargetType="Node" GroupLabel="Portable Library" ValueLabel="Portable Library">
-      <Condition Expression="HasCategory('CodeMap_PortableLibraryProject')" />
-      <Setter Property="Icon" Value="CodeMap_PortableLibraryProject" />
+      <Condition Expression="HasCategory('CodeMap_PortableLibraryProuct')" />
+      <Setter Property="Icon" Value="CodeMap_PortableLibraryProuct" />
     </Style>
-    <Style TargetType="Node" GroupLabel="WPF Project" ValueLabel="WPF Project">
-      <Condition Expression="HasCategory('CodeMap_WpfProject')" />
-      <Setter Property="Icon" Value="CodeMap_WpfProject" />
+    <Style TargetType="Node" GroupLabel="WPF Prouct" ValueLabel="WPF Prouct">
+      <Condition Expression="HasCategory('CodeMap_WpfProuct')" />
+      <Setter Property="Icon" Value="CodeMap_WpfProuct" />
     </Style>
-    <Style TargetType="Node" GroupLabel="VSIX Project" ValueLabel="VSIX Project">
-      <Condition Expression="HasCategory('CodeMap_VsixProject')" />
-      <Setter Property="Icon" Value="CodeMap_VsixProject" />
+    <Style TargetType="Node" GroupLabel="VSIX Prouct" ValueLabel="VSIX Prouct">
+      <Condition Expression="HasCategory('CodeMap_VsixProuct')" />
+      <Setter Property="Icon" Value="CodeMap_VsixProuct" />
     </Style>
-    <Style TargetType="Node" GroupLabel="Modeling Project" ValueLabel="Modeling Project">
-      <Condition Expression="HasCategory('CodeMap_ModelingProject')" />
-      <Setter Property="Icon" Value="CodeMap_ModelingProject" />
+    <Style TargetType="Node" GroupLabel="Modeling Prouct" ValueLabel="Modeling Prouct">
+      <Condition Expression="HasCategory('CodeMap_ModelingProuct')" />
+      <Setter Property="Icon" Value="CodeMap_ModelingProuct" />
     </Style>
     <Style TargetType="Node" GroupLabel="Assembly" ValueLabel="Has category">
       <Condition Expression="HasCategory('CodeSchema_Assembly')" />
@@ -2336,8 +2336,8 @@
       <Condition Expression="HasCategory('CodeMap_SolutionFolder')" />
       <Setter Property="Background" Value="#FFDEBA83" />
     </Style>
-    <Style TargetType="Link" GroupLabel="Project Reference" ValueLabel="Project Reference">
-      <Condition Expression="HasCategory('CodeMap_ProjectReference')" />
+    <Style TargetType="Link" GroupLabel="Prouct Reference" ValueLabel="Prouct Reference">
+      <Condition Expression="HasCategory('CodeMap_ProuctReference')" />
       <Setter Property="Stroke" Value="#9A9A9A" />
       <Setter Property="StrokeDashArray" Value="2 2" />
       <Setter Property="DrawArrow" Value="true" />
