@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class start : Migration
+    public partial class m1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -197,6 +197,24 @@ namespace CompetentieTool.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "IngevuldeVacatures",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    VacatureId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IngevuldeVacatures", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_IngevuldeVacatures_Vacature_VacatureId",
+                        column: x => x.VacatureId,
+                        principalTable: "Vacature",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "IVraag",
                 columns: table => new
                 {
@@ -213,6 +231,27 @@ namespace CompetentieTool.Migrations
                         name: "FK_IVraag_Vignet_VignetId",
                         column: x => x.VignetId,
                         principalTable: "Vignet",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Response",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    OptieKeuze = table.Column<string>(nullable: true),
+                    Aanvulling = table.Column<string>(nullable: true),
+                    VraagId = table.Column<string>(nullable: true),
+                    IngevuldeVacatureId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Response", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Response_IngevuldeVacatures_IngevuldeVacatureId",
+                        column: x => x.IngevuldeVacatureId,
+                        principalTable: "IngevuldeVacatures",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -329,6 +368,11 @@ namespace CompetentieTool.Migrations
                 filter: "[VraagId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_IngevuldeVacatures_VacatureId",
+                table: "IngevuldeVacatures",
+                column: "VacatureId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_IVraag_VignetId",
                 table: "IVraag",
                 column: "VignetId");
@@ -337,6 +381,11 @@ namespace CompetentieTool.Migrations
                 name: "IX_Mogelijkheid_VraagCasusId",
                 table: "Mogelijkheid",
                 column: "VraagCasusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Response_IngevuldeVacatureId",
+                table: "Response",
+                column: "IngevuldeVacatureId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VacatureCompetentie_CompetentieId",
@@ -365,6 +414,9 @@ namespace CompetentieTool.Migrations
                 name: "Mogelijkheid");
 
             migrationBuilder.DropTable(
+                name: "Response");
+
+            migrationBuilder.DropTable(
                 name: "VacatureCompetentie");
 
             migrationBuilder.DropTable(
@@ -372,6 +424,9 @@ namespace CompetentieTool.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "IngevuldeVacatures");
 
             migrationBuilder.DropTable(
                 name: "Competenties");
