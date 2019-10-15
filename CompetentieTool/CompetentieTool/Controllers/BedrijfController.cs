@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CompetentieTool.Domain;
 using CompetentieTool.Models.Domain;
 using CompetentieTool.Models.IRepositories;
 using CompetentieTool.Models.ViewModels;
@@ -28,11 +29,10 @@ namespace CompetentieTool.Controllers
         public IActionResult Create()
         {
             var temp = new VacatureViewModel();
-            temp.SetCompetentieRepository(_competentieRepository);
 
             var vac = new Vacature();
             vac.AddCompetenties(_competentieRepository.GetBasisCompetenties().ToList());
-            temp.VacatureCompetenties = vac.CompetentiesLijst;
+            temp.VacatureCompetenties = vac.CompetentiesLijst.Select(c => c.CompetentieId).ToList();
 
             return View(temp);
         }
@@ -40,38 +40,92 @@ namespace CompetentieTool.Controllers
         [HttpPost]
         public IActionResult Create(VacatureViewModel vm)
         {
-            vm.SetCompetentieRepository(_competentieRepository);
-
             var temp = new Vacature
             {
                 Functie = vm.Functie,
                 Beschrijving = vm.Beschrijving,
-                CompetentiesLijst = (ICollection<VacatureCompetentie>)(vm.VacatureCompetenties)
             };
+
+            var templist = new List<Competentie>();
+
+            foreach (var item in vm.CompetentieIds)
+            {
+                if(item.IsSelected)
+                {
+                    templist.Add(_competentieRepository.GetBy(item.Id));
+                }
+            }
+
+            temp.AddCompetenties(templist);
+
             _vacatureRepository.Add(temp);
 
             return RedirectToAction("VacaturesList");
+        }
+
+        public IActionResult SelecteerCompetenties(VacatureViewModel vm)
+        {
+
+            foreach (var item in _competentieRepository.GetAll())
+            {
+                vm.CompetentieIds.Add(new CompetentieCheckboxViewModel
+                {
+                    Naam = item.Naam,
+                    Id = item.Id,
+                    Verklaring = item.Verklaring
+                });
+            }
+
+            return View(vm);
         }
 
         public IActionResult Edit(String id)
         {
             var vac = _vacatureRepository.GetBy(id);
             var temp = new VacatureViewModel(vac);
-            temp.SetCompetentieRepository(_competentieRepository);
+
+            foreach (var item in _competentieRepository.GetAll())
+            {
+                temp.CompetentieIds.Add(new CompetentieCheckboxViewModel
+                {
+                    Naam = item.Naam,
+                    Id = item.Id,
+                    Verklaring = item.Verklaring,
+                    IsSelected = IsCompetentieInVacature(vac, item.Id)
+                });
+            }
 
             return View(temp);
+        }
+
+        private bool IsCompetentieInVacature(Vacature vacature, String competentieId)
+        {
+            return vacature.CompetentiesLijst.Select(c => c.CompetentieId).Contains(competentieId);
         }
 
         [HttpPost]
         public IActionResult Edit(VacatureViewModel vm)
         {
+            var templist = new List<Competentie>();
+
+            foreach (var item in vm.CompetentieIds)
+            {
+                if (item.IsSelected)
+                {
+                    templist.Add(_competentieRepository.GetBy(item.Id));
+                }
+            }
+
             var temp = new Vacature
             {
                 Id = vm.Id,
                 Functie = vm.Functie,
                 Beschrijving = vm.Beschrijving,
-                CompetentiesLijst = (ICollection<VacatureCompetentie>)(vm.VacatureCompetenties)
             };
+
+            temp.CompetentiesLijst = new List<VacatureCompetentie>();
+
+            temp.AddCompetenties(templist);
 
             _vacatureRepository.Update(temp);
 
@@ -82,24 +136,22 @@ namespace CompetentieTool.Controllers
         {
             var vac = _vacatureRepository.GetBy(id);
             var temp = new VacatureViewModel(vac);
-            temp.SetCompetentieRepository(_competentieRepository);
 
             return View(temp);
         }
 
-        [HttpDelete]
+        [HttpPost]
         public IActionResult DeletePost(String id)
         {
             _vacatureRepository.Delete(id);
 
-            return VacaturesList();
+            return RedirectToAction("VacaturesList");
         }
 
         public IActionResult Details(String id)
         {
             var vac = _vacatureRepository.GetBy(id);
             var temp = new VacatureViewModel(vac);
-            temp.SetCompetentieRepository(_competentieRepository);
 
             return View(temp);
         }

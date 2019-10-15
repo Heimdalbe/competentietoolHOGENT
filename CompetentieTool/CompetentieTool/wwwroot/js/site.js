@@ -15,7 +15,12 @@ function bootstrapTabControl() {
             $(pane[i]).removeClass('active');
             $(pane[i + 1]).addClass('active');
         }
+        if (i === pane.length - 1) {
+            $('.nexttab').hide()
+        }
     });
 }
+
+
 
 bootstrapTabControl();

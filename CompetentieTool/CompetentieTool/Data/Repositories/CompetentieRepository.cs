@@ -20,7 +20,7 @@ namespace CompetentieTool.Data.Repositories
 
         public Competentie GetBy(string id)
         {
-            throw new NotImplementedException();
+            return _competenties.FirstOrDefault(c => c.Id.Equals(id));
         }
 
         public void SaveChanges()

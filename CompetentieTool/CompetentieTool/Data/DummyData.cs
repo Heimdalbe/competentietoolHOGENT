@@ -90,20 +90,20 @@ namespace CompetentieTool.Data
                 if (result.Succeeded)
                 {
                     await userManager.AddPasswordAsync(user1, password);
-                    await userManager.AddToRoleAsync(user1, role1);
+                    await userManager.AddToRoleAsync(user1, role2);
                 }
                 id2  = user1.Id;
             }
 
             // use this to initialize vacature test data
-            //AddVacatures(context);
+             AddVacatures(context);
         }
 
         public static void AddVacatures(ApplicationDbContext context)
         {
-            Vacature vac1 = new Vacature { Beschrijving = "test er test", Functie = "hulpverlener" };
-            Vacature vac2 = new Vacature { Beschrijving = "nog een test", Functie = "brandweer" };
-            Vacature vac3 = new Vacature { Beschrijving = "test nr 3", Functie = "IT" };
+            Vacature vac1 = new Vacature { Beschrijving = "Verpleger voor thuiszorg bij het gele kruis", Functie = "Verpleger voor thuiszorg" };
+            Vacature vac2 = new Vacature { Beschrijving = "Verpleger in ziekenhuis UZ te Gent", Functie = "Verpleger" };
+            Vacature vac3 = new Vacature { Beschrijving = "medewerker die helpt bij bloedinzamelingen", Functie = "Rode kruis medewerker" };
 
 
 
@@ -111,7 +111,7 @@ namespace CompetentieTool.Data
             Competentie comp1 = new Competentie { Naam = "Niet veroordelen", Verklaring = "De hulpverlener veroordeelt niet en is zich hierbij bewust van de invloed van zijn eigen waarde, opvoedings- en normenkader op zijn denken" };
             Competentie comp2 = new Competentie { Naam = "Situationeel denken", Verklaring = "De hulpverlener kan een inschatting maken wanneer een interventie al dan niet noodzakelijk is binnen het hulpverleningstrauct en beroept zich hiervoor op geïnternaliseerde ethisch en theoretische kaders." };
             Competentie comp3 = new Competentie { Naam = "Respecteren Zelfbeschikkingsrecht", Verklaring = "De hulpverlener respecteert het recht van de cliënt om zelf te beslissen  over zijn/haar situatie, ook al wijkt de beslissing af van de visie van de hulpverlener. Interventies die gericht zijn op het “overnemen” van de situatie bespreekt hij op voorhand met de cliënt zelf." };
-            Competentie comp4 = new Competentie { Naam = "Emancipatorisch denken", Verklaring = "De hulpverlener richt zich op de sterkten en talenten van de cliënt en baseert het handelingsplan op het kunnen vervullen van de maatschappelijke rollen en doelen die de cliënt zélf aangeeft als waarde- en kwaliteitsvol." };
+            Competentie comp4 = new Competentie { Naam = "Omgaan met tegenoverdracht", Verklaring = "De hulpverlener is zich bewust van gevoelens van tegenoverdracht.  Hij/zij is in staat om te reflecteren van waaruit dit zou komt en kan dit bespreekbaar stellen." };
 
                        
 
@@ -140,7 +140,17 @@ namespace CompetentieTool.Data
             opties2.Add(optie23);
             opties2.Add(optie24);
 
-
+            Mogelijkheid optie31 = new Mogelijkheid { Beschrijving = "ik ga voor mezelf op zoek naar de reden" };
+            Mogelijkheid optie32 = new Mogelijkheid { Beschrijving = "ik contacteer  een collega om mijn gevoel te bespreken" };
+            Mogelijkheid optie33 = new Mogelijkheid { Beschrijving = "ik maak dit bespreekbaar bij  de cliënt" };
+            Mogelijkheid optie34 = new Mogelijkheid { Beschrijving = "ik contacteer mijn  leidinggevende om tot een oplossing te komen" };
+            Mogelijkheid optie35 = new Mogelijkheid { Beschrijving = "ik onderneem  stappen om de relatie van mijn kant te proberen verbeteren" };
+            IList<Mogelijkheid> opties3 = new List<Mogelijkheid>();
+            opties3.Add(optie31);
+            opties3.Add(optie32);
+            opties3.Add(optie33);
+            opties3.Add(optie34);
+            opties3.Add(optie35);
 
 
 
@@ -151,15 +161,17 @@ namespace CompetentieTool.Data
             comp2.Vraag = vraag2;
             IVraag vraag3 = new VraagCasus { VraagStelling = "Wat doet U?", Vignet = vignet2, Opties = opties2, Competentie = comp3 };
             comp3.Vraag = vraag3;
-            IVraag vraag4 = new VraagOpen { VraagStelling = "######################################################################", Competentie = comp4 };
-            comp2.Vraag = vraag4;
+            IVraag vraag4 = new VraagCasus { VraagStelling = "Je komt bij een nieuwe cliënt aan huis waar je bijna onmiddellijk een antipathie voor voelt. Dit gevoel blijft ook na de volgende bezoeken aanwezig. Wat doet u?", Opties = opties3, Vignet = vignet1,  Competentie = comp4 };
+            comp4.Vraag = vraag4;
 
 
 
 
             ICollection<Competentie> competenties = new List<Competentie>();
             competenties.Add(comp1);
-            competenties.Add(comp2);
+            //competenties.Add(comp2);
+            competenties.Add(comp3);
+            competenties.Add(comp4);
 
             vac1.AddCompetenties(competenties);
             vac3.AddCompetenties(competenties);

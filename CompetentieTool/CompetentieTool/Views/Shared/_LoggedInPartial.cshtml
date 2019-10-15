@@ -4,7 +4,7 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-@if (SignInManager.IsSignedIn(User))
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Sollicitant"))
 
 //if logged in as sollicitant
 {
@@ -12,9 +12,8 @@
     <a asp-area="" asp-controller="Sollicitant" asp-action="Uitnodigingen">Uitnodigingen</a>
     <a asp-area="" asp-controller="User" asp-action="Gegevens">Profiel</a>
 }
-else
-//should be something like @if (SignInManager.IsSignedIn(Werkgever))
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Werkgever"))
 {
-    // if logged in as werkgever
     <a asp-area="" asp-controller="Bedrijf" asp-action="VacaturesList">Vacatures</a>
+    <a asp-area="" asp-controller="User" asp-action="Gegevens">Profiel</a>
 }
