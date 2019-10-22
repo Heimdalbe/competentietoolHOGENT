@@ -96,7 +96,7 @@ namespace CompetentieTool.Data
             }
 
             // use this to initialize vacature test data
-            // AddVacatures(context);
+            AddVacatures(context);
         }
 
         public static void AddVacatures(ApplicationDbContext context)
@@ -152,7 +152,7 @@ namespace CompetentieTool.Data
             IVraag vraag3 = new VraagCasus { VraagStelling = "Wat doet U?", Vignet = vignet2, Opties = opties2, Competentie = comp3 };
             comp3.Vraag = vraag3;
             IVraag vraag4 = new VraagOpen { VraagStelling = "######################################################################", Competentie = comp4 };
-            comp2.Vraag = vraag4;
+            comp4.Vraag = vraag4;
 
 
 
@@ -166,6 +166,8 @@ namespace CompetentieTool.Data
 
             context.Competenties.Add(comp1);
             context.Competenties.Add(comp2);
+            context.Competenties.Add(comp3);
+            context.Competenties.Add(comp4);
 
             context.Vacature.Add(vac1);
             context.Vacature.Add(vac2);
