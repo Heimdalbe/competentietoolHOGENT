@@ -63,7 +63,7 @@ namespace CompetentieTool.Data
                 if (result.Succeeded)
                 {
                     await userManager.AddPasswordAsync(user, "Thomas1!");
-                    await userManager.AddToRoleAsync(user, role1);
+                    await userManager.AddToRoleAsync(user, role2);
                 }
                 id1 = user.Id;
             }
@@ -90,7 +90,7 @@ namespace CompetentieTool.Data
                 if (result.Succeeded)
                 {
                     await userManager.AddPasswordAsync(user1, password);
-                    await userManager.AddToRoleAsync(user1, role2);
+                    await userManager.AddToRoleAsync(user1, role1);
                 }
                 id2  = user1.Id;
             }

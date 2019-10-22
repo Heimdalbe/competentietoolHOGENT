@@ -1,0 +1,116 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Rapport</title>
+    <script>
+window.onload = function () {
+    CanvasJS.addColorSet("kleuren",
+        [//colorSet Array
+
+            "#576ff2",
+            "#ffffff"
+        ]);
+    var chart = new CanvasJS.Chart("chartContainer1", {
+        animationEnabled: false,
+	title: {
+        text: "@Html.ViewBag.Percentage1",
+        verticalAlign: "center"
+        },
+        toolTip: {
+            enabled: false
+    },
+	data: [{
+		type: "doughnut",
+		startAngle: -90,
+		
+		dataPoints: @Html.Raw(ViewBag.DataPoints1)
+	}]
+});
+    chart.render();
+    var chart2 = new CanvasJS.Chart("chartContainer2", {
+        animationEnabled: false,
+	title: {
+        text: "@Html.ViewBag.Percentage2",
+        verticalAlign: "center"
+        },
+        toolTip: {
+            enabled: false
+    },
+	data: [{
+		type: "doughnut",
+		startAngle: -90,
+		
+		dataPoints: @Html.Raw(ViewBag.DataPoints2)
+	}]
+});
+    chart2.render();
+    var chart3 = new CanvasJS.Chart("chartContainer3", {
+        animationEnabled: false,
+	title: {
+        text: "@Html.ViewBag.Percentage3",
+        verticalAlign: "center"
+        },
+        toolTip: {
+            enabled: false
+    },
+	data: [{
+		type: "doughnut",
+		startAngle: -90,
+		
+		dataPoints: @Html.Raw(ViewBag.DataPoints3)
+	}]
+});
+    chart3.render();
+
+
+}
+    </script>
+</head>
+<body class="container">
+    <h1 class="text-center">Vacature: Verpleger</h1>
+    <div class="alert alert-info">
+        <h4>Uitleg:</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <h5>Email: test@test.be</h5>
+        <h5>Datum: 22/10/2019</h5>
+    </div>
+    <div>
+        <h2 class="text-center">Grondhouding</h2>
+        <h3 class="text-center">Open vragen</h3>
+        <h3 class="text-center">Meerkeuze</h3>
+        <h3 class="text-center">Rubrics</h3>
+        <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
+        <hr />
+    </div>
+    <div>
+        <h2 class="text-center">Kennis</h2>
+        <h3 class="text-center">Open vragen</h3>
+        <h3 class="text-center">Meerkeuze</h3>
+        <h3 class="text-center">Rubrics</h3>
+        <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+        <hr />
+    </div>
+    <div>
+        <h2 class="text-center">Vaardigheiden</h2>
+        <h3 class="text-center">Open vragen</h3>
+        <h3 class="text-center">Meerkeuze</h3>
+        <h3 class="text-center">Rubrics</h3>
+        <div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+        <hr />
+    </div>
+
+    
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
