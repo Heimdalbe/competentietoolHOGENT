@@ -1,5 +1,5 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this prouct to bundle and minify static web assets.
+// for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
 
@@ -15,7 +15,12 @@ function bootstrapTabControl() {
             $(pane[i]).removeClass('active');
             $(pane[i + 1]).addClass('active');
         }
+        if (i === pane.length - 1) {
+            $('.nexttab').hide()
+        }
     });
 }
+
+
 
 bootstrapTabControl();

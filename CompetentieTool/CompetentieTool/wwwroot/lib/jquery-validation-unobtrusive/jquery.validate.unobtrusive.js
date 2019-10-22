@@ -9,7 +9,7 @@
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define("jquery.validate.unobtrusive", ['jquery.validation'], factory);
-    } else if (typeof module === 'obuct' && module.exports) {
+    } else if (typeof module === 'object' && module.exports) {
         // CommonJS-like environments that support module.exports     
         module.exports = factory(require('jquery-validation'));
     } else {
