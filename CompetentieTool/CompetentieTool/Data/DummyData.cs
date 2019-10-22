@@ -96,7 +96,7 @@ namespace CompetentieTool.Data
             }
 
             // use this to initialize vacature test data
-             AddVacatures(context);
+            AddVacatures(context);
         }
 
         public static void AddVacatures(ApplicationDbContext context)
@@ -178,6 +178,8 @@ namespace CompetentieTool.Data
 
             context.Competenties.Add(comp1);
             context.Competenties.Add(comp2);
+            context.Competenties.Add(comp3);
+            context.Competenties.Add(comp4);
 
             context.Vacature.Add(vac1);
             context.Vacature.Add(vac2);

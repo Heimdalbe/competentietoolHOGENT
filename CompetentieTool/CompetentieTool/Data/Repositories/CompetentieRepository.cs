@@ -15,7 +15,7 @@ namespace CompetentieTool.Data.Repositories
 
         public IEnumerable<Competentie> GetAll()
         {
-            return _competenties;
+            return _competenties.Include(c => c.Vraag);
         }
 
         public Competentie GetBy(string id)
