@@ -41,7 +41,10 @@ namespace CompetentieTool.Data.Repositories
                 .Include(v => v.CompetentiesLijst)
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Vraag)
-                .ThenInclude(v => (v as VraagCasus).Opties);
+                .ThenInclude(v => (v as VraagCasus).Opties)
+                .Include(v => v.CompetentiesLijst)
+                .ThenInclude(c => c.Competentie)
+                .ThenInclude(c => c.Aanvulling);
         }
 
         public Vacature GetBy(string id)
@@ -54,6 +57,9 @@ namespace CompetentieTool.Data.Repositories
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Vraag)
                 .ThenInclude(v => (v as VraagCasus).Opties)
+                .Include(v => v.CompetentiesLijst)
+                .ThenInclude(c => c.Competentie)
+                .ThenInclude(c => c.Aanvulling)
                 .Where(v => v.Id.Equals(id)).SingleOrDefault();
         }
 

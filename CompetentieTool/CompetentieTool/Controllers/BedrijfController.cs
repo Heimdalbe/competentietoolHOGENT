@@ -50,7 +50,7 @@ namespace CompetentieTool.Controllers
 
             foreach (var item in vm.CompetentieIds)
             {
-                if(item.IsSelected)
+                if (!item.HeeftAanvulling || !IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
                 {
                     templist.Add(_competentieRepository.GetBy(item.Id));
                 }
@@ -63,6 +63,23 @@ namespace CompetentieTool.Controllers
             return RedirectToAction("VacaturesList");
         }
 
+        private Boolean IsSchrapOptie(String expectedId, String competentieId)
+        {
+            var comp = _competentieRepository.GetBy(competentieId);
+
+            if (comp.Aanvulling != null)
+            {
+                foreach (var item in comp.Aanvulling.Opties)
+                {
+                    if (item.IsSchrapOptie)
+                    {
+                        return item.Id.Equals(expectedId);
+                    }
+                }
+            }
+            return false;
+        }
+
         public IActionResult SelecteerCompetenties(VacatureViewModel vm)
         {
 
@@ -72,7 +89,10 @@ namespace CompetentieTool.Controllers
                 {
                     Naam = item.Naam,
                     Id = item.Id,
-                    Verklaring = item.Verklaring
+                    Verklaring = item.Verklaring,
+                    Aanvulling = item.Aanvulling?.Beschrijving,
+                    AanvulOpties = item.Aanvulling?.Opties,
+                    HeeftAanvulling = (item.Aanvulling != null)
                 });
             }
 
@@ -91,6 +111,9 @@ namespace CompetentieTool.Controllers
                     Naam = item.Naam,
                     Id = item.Id,
                     Verklaring = item.Verklaring,
+                    Aanvulling = item.Aanvulling?.Beschrijving,
+                    AanvulOpties = item.Aanvulling?.Opties,
+                    HeeftAanvulling = (item.Aanvulling != null),
                     IsSelected = IsCompetentieInVacature(vac, item.Id)
                 });
             }
@@ -110,7 +133,7 @@ namespace CompetentieTool.Controllers
 
             foreach (var item in vm.CompetentieIds)
             {
-                if (item.IsSelected)
+                if (!item.HeeftAanvulling || !IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
                 {
                     templist.Add(_competentieRepository.GetBy(item.Id));
                 }

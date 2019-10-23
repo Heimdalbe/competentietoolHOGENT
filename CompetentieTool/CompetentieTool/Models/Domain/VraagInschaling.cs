@@ -8,5 +8,6 @@ namespace CompetentieTool.Domain
 {
     public class VraagInschaling : IVraag
     {
+        public IEnumerable<Mogelijkheid> Opties { get; set; }
     }
 }
