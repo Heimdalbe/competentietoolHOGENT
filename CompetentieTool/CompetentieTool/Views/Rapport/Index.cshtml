@@ -8,9 +8,10 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/eigenCss.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <script src="~/lib/jquery/jquery.canvasjs.min.js"></script>
     <title>Rapport</title>
     <script>
 window.onload = function () {
@@ -32,7 +33,7 @@ window.onload = function () {
 	data: [{
 		type: "doughnut",
 		startAngle: -90,
-		
+
 		dataPoints: @Html.Raw(ViewBag.DataPoints1)
 	}]
 });
@@ -49,7 +50,7 @@ window.onload = function () {
 	data: [{
 		type: "doughnut",
 		startAngle: -90,
-		
+
 		dataPoints: @Html.Raw(ViewBag.DataPoints2)
 	}]
 });
@@ -66,7 +67,7 @@ window.onload = function () {
 	data: [{
 		type: "doughnut",
 		startAngle: -90,
-		
+
 		dataPoints: @Html.Raw(ViewBag.DataPoints3)
 	}]
 });
@@ -86,10 +87,51 @@ window.onload = function () {
         <h5>Datum: 22/10/2019</h5>
     </div>
     <div>
+        <h2 class="text-center">Rubrics</h2>
+        <div class="row">
+            <div class="col-sm" id="chartContainer1" style="width: 32%; height: 300px;display: inline-block;"></div>
+            <div class="col-sm" id="chartContainer2" style="width: 32%; height: 300px;display: inline-block;"></div>
+            <div class="col-sm" id="chartContainer3" style="width: 32%; height: 300px;display: inline-block;"></div>
+        </div>
+        
+        <div class="alert alert-success">
+
+            <h5>Behandelde competenties</h5>
+            <div class="d-flex justify-content-around">
+                <div class="rubrics" style="width: 32%; display: inline-block;">
+                    <ul>
+                        <li>Presentie</li>
+                        <li>Empathie</li>
+                        <li>Economisch bewustzijn</li>
+                        <li>Zelfonthulling</li>
+                    </ul>
+                </div>
+                <div class="rubrics" style="width: 32%; display: inline-block;">
+                    <ul>
+                        <li>Psychopathologie</li>
+                        <li>Psychofarmacologie</li>
+                        <li>Preventie- en leefstijlfactoren</li>
+                        <li>Somatische problemen</li>
+                        <li>Kritische life-events</li>
+                    </ul>
+                </div>
+                <div class="rubrics" style="width: 32%; display: inline-block;">
+                    <ul>
+                        <li>Agendabeheer</li>
+                        <li>Omgaan met crisissituaties</li>
+                        <li>Coachen van cliëntgroepen </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div></div>
+            <h5>Het diagram toont aan hoeveel de visie van de sollicitant overeen komt met die van u.</h5>
+        </div>
+        <hr />
+
+
         <h2 class="text-center">Grondhouding</h2>
 
-
-        <h3 class="text-center">Open vragen</h3>
         <div class="container">
             <h4>Competentie: Connectie maken via dagdagelijksheid</h4>
             <h5>Verklaring: De hulpverlener gebruikt de dagdagelijkse context om een authentiek contact met de cliënt te bewerkstelligen en  tot verdieping te komen in de gesprekken.</h5>
@@ -105,7 +147,6 @@ window.onload = function () {
 
             </div>
         </div>
-        <h3 class="text-center">Meerkeuze</h3>
         <div class="container">
             <h4>Competentie: Niet veroordelen</h4>
             <h5>Verklaring: De hulpverlener veroordeelt niet en is zich hierbij bewust van de invloed van zijn eigen waarde, opvoedings- en normenkader op zijn denken. </h5>
@@ -126,40 +167,18 @@ window.onload = function () {
                 </div>
             </div>
         </div>
-        <h3 class="text-center">Rubrics</h3>
-        <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
-        <div class="alert alert-success">
-            
-            <h5>Behandelde competenties</h5>
-            <ul>
-                <li>Presentie</li>
-                <li>Empathie</li>
-                <li>Economisch bewustzijn</li>
-                <li>Zelfonthulling</li>
-            </ul>
-            <div></div>
-            <h5>Het diagram toont aan hoeveel de visie van de sollicitant overeen komt met die van u.</h5>
-        </div>
         <hr />
     </div>
     <div>
         <h2 class="text-center">Kennis</h2>
-        <h3 class="text-center">Open vragen</h3>
-        <h3 class="text-center">Meerkeuze</h3>
-        <h3 class="text-center">Rubrics</h3>
-        <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
         <hr />
     </div>
     <div>
         <h2 class="text-center">Vaardigheiden</h2>
-        <h3 class="text-center">Open vragen</h3>
-        <h3 class="text-center">Meerkeuze</h3>
-        <h3 class="text-center">Rubrics</h3>
-        <div id="chartContainer3" style="height: 370px; width: 100%;"></div>
-        <hr />
+        
     </div>
 
     
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    
 </body>
 </html>

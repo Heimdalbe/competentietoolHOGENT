@@ -83,3 +83,12 @@
 .mynav_dropdown:hover .mynav_dropdown-content {
     display: block;
 }
+
+.rubrics:nth-child(2) {
+    border-left: solid 2px black;
+    border-right: solid 2px black;
+}
+.rubrics ul {
+    text-align: center;
+    list-style: none;
+}
