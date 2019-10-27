@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompetentieTool.Models.Domain;
+using System;
 
 namespace CompetentieTool.Domain
 {
@@ -8,6 +9,7 @@ namespace CompetentieTool.Domain
         public String VraagStelling { get; set; }
         public Competentie Competentie { get; set; }
         public String CompetentieId { get; set; }
-
+        public TemplateInvulveld invulveld;
+        public TemplateOutput output;
     }
 }
