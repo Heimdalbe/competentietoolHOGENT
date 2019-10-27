@@ -50,9 +50,16 @@ namespace CompetentieTool.Controllers
 
             foreach (var item in vm.CompetentieIds)
             {
+                // als item geen aanvulling heeft OF schrapoptie niet is aangeduid
                 if (!item.HeeftAanvulling || !IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
                 {
-                    templist.Add(_competentieRepository.GetBy(item.Id));
+                    if (item.HeeftAanvulling)
+                    {
+                        temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
+                    } else
+                    {
+                        templist.Add(_competentieRepository.GetBy(item.Id));
+                    }
                 }
             }
 
@@ -131,14 +138,6 @@ namespace CompetentieTool.Controllers
         {
             var templist = new List<Competentie>();
 
-            foreach (var item in vm.CompetentieIds)
-            {
-                if (!item.HeeftAanvulling || !IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
-                {
-                    templist.Add(_competentieRepository.GetBy(item.Id));
-                }
-            }
-
             var temp = new Vacature
             {
                 Id = vm.Id,
@@ -147,6 +146,22 @@ namespace CompetentieTool.Controllers
             };
 
             temp.CompetentiesLijst = new List<VacatureCompetentie>();
+
+            foreach (var item in vm.CompetentieIds)
+            {
+                // als item geen aanvulling heeft OF schrapoptie niet is aangeduid
+                if (!item.HeeftAanvulling || !IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
+                {
+                    if (item.HeeftAanvulling)
+                    {
+                        temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
+                    }
+                    else
+                    {
+                        templist.Add(_competentieRepository.GetBy(item.Id));
+                    }
+                }
+            }
 
             temp.AddCompetenties(templist);
 

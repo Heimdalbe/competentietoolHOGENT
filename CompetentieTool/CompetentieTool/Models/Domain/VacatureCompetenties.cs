@@ -15,6 +15,8 @@ namespace CompetentieTool.Models.Domain
 
         public Vacature Vacature { get; set; }
 
+        public String GeselecteerdeOptie { get; set; }
+
         public Competentie Competentie { get; set; }
         #endregion
 

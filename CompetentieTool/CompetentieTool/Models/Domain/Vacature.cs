@@ -21,7 +21,30 @@ namespace CompetentieTool.Models.Domain
         public void AddCompetenties(ICollection<Competentie> competenties)
         {
             foreach (Competentie comp in competenties)
-                CompetentiesLijst.Add(new VacatureCompetentie { Vacature = this, VacatureId = this.Id, Competentie = comp, CompetentieId = comp.Id });
+                AddCompetentie(comp);
+        }
+
+        public void AddCompetentie(Competentie competentie)
+        {
+            CompetentiesLijst.Add(new VacatureCompetentie
+            {
+                Vacature = this,
+                VacatureId = this.Id,
+                Competentie = competentie,
+                CompetentieId = competentie.Id
+            });
+        }
+
+        public void AddCompetentie(Competentie competentie, String geselecteerdeOptie)
+        {
+            CompetentiesLijst.Add(new VacatureCompetentie
+            {
+                Vacature = this,
+                VacatureId = this.Id,
+                Competentie = competentie,
+                CompetentieId = competentie.Id,
+                GeselecteerdeOptie = geselecteerdeOptie
+            });
         }
 
         public Vacature()
