@@ -47,7 +47,7 @@ namespace CompetentieTool.Controllers
                     res.Vignet = ((VraagCasus)comp.Vraag).Vignet.Beschrijving;
                     foreach(Mogelijkheid opt in ((VraagCasus)comp.Vraag).Opties)
                     {
-                        res.opties.Add(opt.Beschrijving);
+                        res.opties.Add(opt);
                     }
                 }
                 models.Add(res);
@@ -73,7 +73,7 @@ namespace CompetentieTool.Controllers
             {
                 foreach(var item in group.Values)
                 {
-                    vac.responses.Add(new Response { Aanvulling = item.Redenering, VraagId = item.VraagId, OptieKeuze = item.OptieKeuze });
+                    vac.responses.Add(new Response { Aanvulling = item.Redenering, VraagId = item.VraagId, OptieKeuzeId = item.OptieKeuzeId });
                 }
             }
             _ingevuldeVacatureRepository.Add(vac);

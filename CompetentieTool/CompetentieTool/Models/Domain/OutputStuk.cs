@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace CompetentieTool.Models.Domain
 {
-    public class TemplateInvulveld
+    public class OutputStuk
     {
-        public String uitleg { get; set; }
-        public IEnumerable<Mogelijkheid> mogelijkheden { get; set; }
+        public String Id { get; set; }
+        public String beschrijving { get; set; }
     }
 }
