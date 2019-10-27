@@ -119,7 +119,6 @@ namespace CompetentieTool.Controllers
                     Aanvulling = item.Competentie.Aanvulling?.Beschrijving,
                     AanvulOpties = item.Competentie.Aanvulling?.Opties,
                     HeeftAanvulling = (item.Competentie.Aanvulling != null),
-                    IsSelected = IsCompetentieInVacature(vac, item.Competentie.Id),
                     AanvulOptieGeselecteerd = item.GeselecteerdeOptie
                 });
             }
