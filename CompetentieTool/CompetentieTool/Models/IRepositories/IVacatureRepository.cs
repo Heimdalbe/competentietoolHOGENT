@@ -1,4 +1,5 @@
-﻿using CompetentieTool.Models.Domain;
+﻿using CompetentieTool.Domain;
+using CompetentieTool.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace CompetentieTool.Models.IRepositories
         void Delete(string id);
         void Update(Vacature vacature);
         List<VacatureCompetentie> GetVacatureCompetenties(string vacatureId);
+        IEnumerable<IVraag> GetAllQuestions();
     }
 }

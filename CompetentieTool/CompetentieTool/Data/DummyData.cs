@@ -96,7 +96,7 @@ namespace CompetentieTool.Data
             }
 
             // use this to initialize vacature test data
-             //AddVacatures(context);
+             AddVacatures(context);
         }
 
         public static void AddVacatures(ApplicationDbContext context)
@@ -194,9 +194,8 @@ namespace CompetentieTool.Data
             IList<Mogelijkheid> opties13 = new List<Mogelijkheid>()
             {
                 new Mogelijkheid { Input = "niet van belang, in de zorgsector zijn we hulpverleners, geen managers" },
-                new Mogelijkheid { Input = "de verantwoordelijkheid van de leidinggevende(n). Mijn verantwoordelijkheid is het verstrekken van goede zorg" },
-                new Mogelijkheid { Input = "ik maak dit bespreekbaar bij  de cliënt" },
-                new Mogelijkheid { Input = "ook voor mij van belang. Elke zorgverlener waakt  mee over de financiële gezondheid van de voorziening." }
+                new Mogelijkheid { Input = "de verantwoordelijkheid van de leidinggevende(n). Mijn verantwoordelijkheid is het verstrekken van goede zorg" , Aanvulling = "is de verantwoordelijkheid van de leidinggevende(n)"},
+                new Mogelijkheid { Input = "ook voor mij van belang. Elke zorgverlener waakt  mee over de financiële gezondheid van de voorziening.", Aanvulling = "indien genoodzaakt moeten we de zorg mede afstemmen op financiële haalbaarheid van de voorziening." }
             };
 
 
@@ -230,6 +229,12 @@ namespace CompetentieTool.Data
             context.Competenties.Add(comp3);
             context.Competenties.Add(comp73);
             context.Competenties.Add(comp13);
+
+            context.Vragen.Add(vraag1);
+            context.Vragen.Add(vraag2);
+            context.Vragen.Add(vraag3);
+            context.Vragen.Add(vraag73);
+            context.Vragen.Add(vraag13);
 
             context.Vacature.Add(vac1);
             context.Vacature.Add(vac2);

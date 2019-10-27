@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompetentieTool.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,5 +11,6 @@ namespace CompetentieTool.Models.Domain
         public String Id { get; set; }
         public String Input { get; set; }
         public String Output { get; set; }
+        public String Aanvulling { get; set; }
     }
 }

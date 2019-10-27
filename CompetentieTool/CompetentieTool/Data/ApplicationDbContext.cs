@@ -16,6 +16,7 @@ namespace CompetentieTool.Data
         public DbSet<Sollicitant> Sollicitanten { get; set; }
         public DbSet<Organisatie> Bedrijven { get; set; }
         public DbSet<IngevuldeVacature> IngevuldeVacatures { get; set; }
+        public DbSet<IVraag> Vragen { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -43,6 +44,9 @@ namespace CompetentieTool.Data
 
             builder.Entity<IngevuldeVacature>().HasMany(v => v.responses).WithOne();
             builder.Entity<IngevuldeVacature>().HasOne(v => v.Vacature);
+
+            builder.Entity<Response>().HasOne(r => r.Vraag);
+            builder.Entity<Response>().HasOne(r => r.OptieKeuze);
         }
     }
 }

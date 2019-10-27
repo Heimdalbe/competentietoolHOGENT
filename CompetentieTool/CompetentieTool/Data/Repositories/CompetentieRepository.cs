@@ -13,6 +13,7 @@ namespace CompetentieTool.Data.Repositories
         private readonly ApplicationDbContext _context;
         private readonly DbSet<Competentie> _competenties;
 
+
         public IEnumerable<Competentie> GetAll()
         {
             return _competenties.Include(c => c.Vraag).Include(c => c.Aanvulling).ThenInclude(a => a.Opties);
@@ -23,6 +24,8 @@ namespace CompetentieTool.Data.Repositories
             return _competenties.Include(c => c.Vraag).Include(c => c.Aanvulling).ThenInclude(a => a.Opties)
                 .FirstOrDefault(c => c.Id.Equals(id));
         }
+
+
 
         public void SaveChanges()
         {
