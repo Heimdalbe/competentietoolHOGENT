@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191015090643_m1")]
-    partial class m1
+    [Migration("20191027161024_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,10 +21,24 @@ namespace CompetentieTool.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CompetentieTool.Domain.Aanvulling", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Beschrijving");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Aanvulling");
+                });
+
             modelBuilder.Entity("CompetentieTool.Domain.Competentie", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AanvullingId");
 
                     b.Property<string>("Beschrijving");
 
@@ -37,6 +51,8 @@ namespace CompetentieTool.Migrations
                     b.Property<string>("VraagId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AanvullingId");
 
                     b.HasIndex("VraagId")
                         .IsUnique()
@@ -74,6 +90,24 @@ namespace CompetentieTool.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vignet");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.AanvulOptie", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AanvullingId");
+
+                    b.Property<bool>("IsSchrapOptie");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AanvullingId");
+
+                    b.ToTable("AanvulOptie");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.IngevuldeVacature", b =>
@@ -145,6 +179,8 @@ namespace CompetentieTool.Migrations
                     b.Property<string>("VacatureId");
 
                     b.Property<string>("CompetentieId");
+
+                    b.Property<string>("GeselecteerdeOptie");
 
                     b.HasKey("VacatureId", "CompetentieId");
 
@@ -390,9 +426,20 @@ namespace CompetentieTool.Migrations
 
             modelBuilder.Entity("CompetentieTool.Domain.Competentie", b =>
                 {
+                    b.HasOne("CompetentieTool.Domain.Aanvulling", "Aanvulling")
+                        .WithMany()
+                        .HasForeignKey("AanvullingId");
+
                     b.HasOne("CompetentieTool.Domain.IVraag", "Vraag")
                         .WithOne("Competentie")
                         .HasForeignKey("CompetentieTool.Domain.Competentie", "VraagId");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.AanvulOptie", b =>
+                {
+                    b.HasOne("CompetentieTool.Domain.Aanvulling")
+                        .WithMany("Opties")
+                        .HasForeignKey("AanvullingId");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.IngevuldeVacature", b =>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CompetentieTool.Data.Repositories;
 using CompetentieTool.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -10,6 +11,7 @@ namespace CompetentieTool.Controllers
 {
     public class RapportController : Controller
     {
+        private readonly IngevuldeVacatureRepository _ingevuldeVacatureRepository;
         public IActionResult Index()
         {
             List<Double> lijst1 = new List<double>();

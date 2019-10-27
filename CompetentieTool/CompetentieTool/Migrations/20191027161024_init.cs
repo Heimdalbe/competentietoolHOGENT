@@ -4,10 +4,22 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class m1 : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Aanvulling",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Beschrijving = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Aanvulling", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -88,6 +100,26 @@ namespace CompetentieTool.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vignet", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AanvulOptie",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Value = table.Column<string>(nullable: true),
+                    IsSchrapOptie = table.Column<bool>(nullable: false),
+                    AanvullingId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AanvulOptie", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AanvulOptie_Aanvulling_AanvullingId",
+                        column: x => x.AanvullingId,
+                        principalTable: "Aanvulling",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -265,11 +297,18 @@ namespace CompetentieTool.Migrations
                     Verklaring = table.Column<string>(nullable: true),
                     IsBasisCompetentie = table.Column<bool>(nullable: false),
                     VraagId = table.Column<string>(nullable: true),
-                    Beschrijving = table.Column<string>(nullable: true)
+                    Beschrijving = table.Column<string>(nullable: true),
+                    AanvullingId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Competenties", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Competenties_Aanvulling_AanvullingId",
+                        column: x => x.AanvullingId,
+                        principalTable: "Aanvulling",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Competenties_IVraag_VraagId",
                         column: x => x.VraagId,
@@ -302,7 +341,8 @@ namespace CompetentieTool.Migrations
                 columns: table => new
                 {
                     VacatureId = table.Column<string>(nullable: false),
-                    CompetentieId = table.Column<string>(nullable: false)
+                    CompetentieId = table.Column<string>(nullable: false),
+                    GeselecteerdeOptie = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -320,6 +360,11 @@ namespace CompetentieTool.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AanvulOptie_AanvullingId",
+                table: "AanvulOptie",
+                column: "AanvullingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -361,6 +406,11 @@ namespace CompetentieTool.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Competenties_AanvullingId",
+                table: "Competenties",
+                column: "AanvullingId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Competenties_VraagId",
                 table: "Competenties",
                 column: "VraagId",
@@ -395,6 +445,9 @@ namespace CompetentieTool.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AanvulOptie");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -433,6 +486,9 @@ namespace CompetentieTool.Migrations
 
             migrationBuilder.DropTable(
                 name: "Vacature");
+
+            migrationBuilder.DropTable(
+                name: "Aanvulling");
 
             migrationBuilder.DropTable(
                 name: "IVraag");
