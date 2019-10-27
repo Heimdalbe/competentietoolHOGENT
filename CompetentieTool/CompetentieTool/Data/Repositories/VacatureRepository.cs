@@ -41,7 +41,11 @@ namespace CompetentieTool.Data.Repositories
                 .Include(v => v.CompetentiesLijst)
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Vraag)
-                .ThenInclude(v => (v as VraagCasus).Opties);
+                .ThenInclude(v => (v as VraagCasus).Opties)
+                .Include(v => v.CompetentiesLijst)
+                .ThenInclude(c => c.Competentie)
+                .ThenInclude(c => c.Aanvulling)
+                .ThenInclude(a => a.Opties);
         }
 
         public Vacature GetBy(string id)
@@ -54,6 +58,10 @@ namespace CompetentieTool.Data.Repositories
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Vraag)
                 .ThenInclude(v => (v as VraagCasus).Opties)
+                .Include(v => v.CompetentiesLijst)
+                .ThenInclude(c => c.Competentie)
+                .ThenInclude(c => c.Aanvulling)
+                .ThenInclude(a => a.Opties)
                 .Where(v => v.Id.Equals(id)).SingleOrDefault();
         }
 
@@ -66,6 +74,16 @@ namespace CompetentieTool.Data.Repositories
         {
             _vacatures.Update(vacature);
             SaveChanges();
+        }
+
+        public List<VacatureCompetentie> GetVacatureCompetenties(string vacatureId)
+        {
+            return GetAll().FirstOrDefault(v => v.Id.Equals(vacatureId)).CompetentiesLijst.ToList();
+        }
+
+        public VacatureCompetentie GetVacatureCompetentie(string id, string vacatureId)
+        {
+            return GetBy(vacatureId).CompetentiesLijst.FirstOrDefault(c => c.CompetentieId.Equals(id));
         }
     }
 }

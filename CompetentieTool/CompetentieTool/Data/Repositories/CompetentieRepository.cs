@@ -15,12 +15,13 @@ namespace CompetentieTool.Data.Repositories
 
         public IEnumerable<Competentie> GetAll()
         {
-            return _competenties.Include(c => c.Vraag);
+            return _competenties.Include(c => c.Vraag).Include(c => c.Aanvulling).ThenInclude(a => a.Opties);
         }
 
         public Competentie GetBy(string id)
         {
-            return _competenties.FirstOrDefault(c => c.Id.Equals(id));
+            return _competenties.Include(c => c.Vraag).Include(c => c.Aanvulling).ThenInclude(a => a.Opties)
+                .FirstOrDefault(c => c.Id.Equals(id));
         }
 
         public void SaveChanges()

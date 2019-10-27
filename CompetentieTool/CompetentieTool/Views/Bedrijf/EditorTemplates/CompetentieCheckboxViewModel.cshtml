@@ -2,6 +2,27 @@
 <tr>
     <th scope="row">@Model.Naam</th>
     <td>@Model.Verklaring</td>
-    <td>@Html.CheckBoxFor(x => x.IsSelected)</td>
+    <td></td>
     @Html.HiddenFor(x => x.Id)
 </tr>
+@if (Model.HeeftAanvulling)
+{
+    <tr>
+        <td></td>
+        <th colspan="2">@Model.Aanvulling</th>
+    </tr>
+    @foreach (var item in Model.AanvulOpties)
+    {
+        <tr>
+            <td></td>
+            <td>
+                @item.Value
+            </td>
+            <td>
+                @Html.RadioButtonFor(model => model.AanvulOptieGeselecteerd, item.Id)
+            </td>
+        </tr>
+        @Html.HiddenFor(x => x.Id)
+        @Html.HiddenFor(x => x.HeeftAanvulling)
+    }
+}

@@ -96,27 +96,62 @@ namespace CompetentieTool.Data
             }
 
             // use this to initialize vacature test data
-            AddVacatures(context);
+            // AddVacatures(context);
         }
 
         public static void AddVacatures(ApplicationDbContext context)
         {
             Vacature vac1 = new Vacature { Beschrijving = "Verpleger voor thuiszorg bij het gele kruis", Functie = "Verpleger voor thuiszorg" };
             Vacature vac2 = new Vacature { Beschrijving = "Verpleger in ziekenhuis UZ te Gent", Functie = "Verpleger" };
-            Vacature vac3 = new Vacature { Beschrijving = "medewerker die helpt bij bloedinzamelingen", Functie = "Rode kruis medewerker" };
+            Vacature vac3 = new Vacature { Beschrijving = "Medewerker die helpt bij bloedinzamelingen", Functie = "Rode kruis medewerker" };
+
+
+            Aanvulling aanvulling13 = new Aanvulling
+            {
+                Beschrijving = "Geef onderstaand  aan welke houding u verwacht van uw medewerker aangaande marktgerichtheid en medezorg voor financiële gezonde status van de organisatie",
+                Opties = new List<AanvulOptie>
+                {
+                    new AanvulOptie
+                    {
+                        Value = "niet van belang",
+                        IsSchrapOptie = true
+                    },
+                    new AanvulOptie
+                    {
+                        Value = "is de verantwoordelijkheid van de leidinggevende(n)",
+                    },
+                    new AanvulOptie
+                    {
+                        Value = "indien genoodzaakt moeten we de zorg mede afstemmen op financiële haalbaarheid van de voorziening."
+                    }
+                }
+            };
+
+            Competentie comp1 = new Competentie {
+                Naam = "Niet veroordelen",
+                Verklaring = "De hulpverlener veroordeelt niet en is zich hierbij bewust van de invloed van zijn eigen waarde, opvoedings- en normenkader op zijn denken"
+            };
+            Competentie comp2 = new Competentie {
+                Naam = "Situationeel handelen",
+                Verklaring = "De hulpverlener kan een inschatting maken wanneer een interventie al dan niet noodzakelijk is binnen het hulpverleningstrauct en beroept zich hiervoor op geïnternaliseerde ethisch en theoretische kaders."
+            };
+            Competentie comp3 = new Competentie {
+                Naam = "Respecteren Zelfbeschikkingsrecht",
+                Verklaring = "De hulpverlener respecteert het recht van de cliënt om zelf te beslissen  over zijn/haar situatie, ook al wijkt de beslissing af van de visie van de hulpverlener. Interventies die gericht zijn op het “overnemen” van de situatie bespreekt hij op voorhand met de cliënt zelf."
+            };
+            Competentie comp73 = new Competentie {
+                Naam = "Omgaan met tegenoverdracht",
+                Verklaring = "De hulpverlener is zich bewust van gevoelens van tegenoverdracht.  Hij/zij is in staat om te reflecteren van waaruit dit zou komt en kan dit bespreekbaar stellen."
+            };
+            Competentie comp13 = new Competentie {
+                Naam = "Organisatiegericht denken",
+                Verklaring = "De hulpverlener denkt actief mee over het efficiënt inzetten van middelen en eigen zorgactiviteiten in functie van de zorg.",
+                Aanvulling = aanvulling13
+            };
 
 
 
 
-            Competentie comp1 = new Competentie { Naam = "Niet veroordelen", Verklaring = "De hulpverlener veroordeelt niet en is zich hierbij bewust van de invloed van zijn eigen waarde, opvoedings- en normenkader op zijn denken" };
-            Competentie comp2 = new Competentie { Naam = "Situationeel denken", Verklaring = "De hulpverlener kan een inschatting maken wanneer een interventie al dan niet noodzakelijk is binnen het hulpverleningstrauct en beroept zich hiervoor op geïnternaliseerde ethisch en theoretische kaders." };
-            Competentie comp3 = new Competentie { Naam = "Respecteren Zelfbeschikkingsrecht", Verklaring = "De hulpverlener respecteert het recht van de cliënt om zelf te beslissen  over zijn/haar situatie, ook al wijkt de beslissing af van de visie van de hulpverlener. Interventies die gericht zijn op het “overnemen” van de situatie bespreekt hij op voorhand met de cliënt zelf." };
-            Competentie comp4 = new Competentie { Naam = "Omgaan met tegenoverdracht", Verklaring = "De hulpverlener is zich bewust van gevoelens van tegenoverdracht.  Hij/zij is in staat om te reflecteren van waaruit dit zou komt en kan dit bespreekbaar stellen." };
-
-                       
-
-
-            
 
             Vignet vignet1 = new Vignet { Beschrijving = "Boris woont alleen in een uitgewoonde studio in een verpauperde buurt van de gemeente. Na een residentiële opname van drie maanden werd hij  aangemeld voor mobiele psychiatrische zorg zodat jij zijn opvolging doet sinds een aantal weken. De begeleiding loopt in jouw opinie wat stroever, Boris heeft het vooral over praktische zaken die in orde zouden moeten gebracht worden.Boris heeft een zoon van 17 en een dochter van 12 waar hij het vaak over heeft, maar hij ziet hen relatief weinig.Enkele maanden geleden had Boris het over het feit dat hij het zeer jammer vindt dat hij voor de feestdagen geen geschenku voor zijn kinderen kan kopen. u brengt dit ter sprake bij de bewindvoerder die begin december 300 euro extra voorziet op zijn wekelijks bedrag van 100 euro.Bij jouw volgende huisbezoek zie u dat Boris een nieuwe smartphone heeft met een driedubbele camera." };
             Mogelijkheid optie11 = new Mogelijkheid { Beschrijving = "U spreekt Boris aan over het feit dat U het jammer vindt dat hij het zorgsysteem misbruikt heeft" };
@@ -145,12 +180,23 @@ namespace CompetentieTool.Data
             Mogelijkheid optie33 = new Mogelijkheid { Beschrijving = "ik maak dit bespreekbaar bij  de cliënt" };
             Mogelijkheid optie34 = new Mogelijkheid { Beschrijving = "ik contacteer mijn  leidinggevende om tot een oplossing te komen" };
             Mogelijkheid optie35 = new Mogelijkheid { Beschrijving = "ik onderneem  stappen om de relatie van mijn kant te proberen verbeteren" };
-            IList<Mogelijkheid> opties3 = new List<Mogelijkheid>();
-            opties3.Add(optie31);
-            opties3.Add(optie32);
-            opties3.Add(optie33);
-            opties3.Add(optie34);
-            opties3.Add(optie35);
+
+            IList<Mogelijkheid> opties3 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Beschrijving = "ik ga voor mezelf op zoek naar de reden" },
+                new Mogelijkheid { Beschrijving = "ik contacteer  een collega om mijn gevoel te bespreken" },
+                new Mogelijkheid { Beschrijving = "ik maak dit bespreekbaar bij  de cliënt" },
+                new Mogelijkheid { Beschrijving = "ik contacteer mijn  leidinggevende om tot een oplossing te komen" },
+                new Mogelijkheid { Beschrijving = "ik onderneem  stappen om de relatie van mijn kant te proberen verbeteren" }
+            };
+
+            IList<Mogelijkheid> opties13 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Beschrijving = "niet van belang, in de zorgsector zijn we hulpverleners, geen managers" },
+                new Mogelijkheid { Beschrijving = "de verantwoordelijkheid van de leidinggevende(n). Mijn verantwoordelijkheid is het verstrekken van goede zorg" },
+                new Mogelijkheid { Beschrijving = "ik maak dit bespreekbaar bij  de cliënt" },
+                new Mogelijkheid { Beschrijving = "ook voor mij van belang. Elke zorgverlener waakt  mee over de financiële gezondheid van de voorziening." }
+            };
 
 
 
@@ -161,17 +207,17 @@ namespace CompetentieTool.Data
             comp2.Vraag = vraag2;
             IVraag vraag3 = new VraagCasus { VraagStelling = "Wat doet U?", Vignet = vignet2, Opties = opties2, Competentie = comp3 };
             comp3.Vraag = vraag3;
-            IVraag vraag4 = new VraagCasus { VraagStelling = "Je komt bij een nieuwe cliënt aan huis waar je bijna onmiddellijk een antipathie voor voelt. Dit gevoel blijft ook na de volgende bezoeken aanwezig. Wat doet u?", Opties = opties3, Vignet = vignet1,  Competentie = comp4 };
-            comp4.Vraag = vraag4;
-
-
+            IVraag vraag73 = new VraagCasus { VraagStelling = "Je komt bij een nieuwe cliënt aan huis waar je bijna onmiddellijk een antipathie voor voelt. Dit gevoel blijft ook na de volgende bezoeken aanwezig. Wat doet u?", Opties = opties3, Vignet = vignet1,  Competentie = comp73 };
+            comp73.Vraag = vraag73;
+            IVraag vraag13 = new VraagInschaling { VraagStelling = "De financiële rendabiliteit van een afdeling/dienst is: ", Opties = opties13, Competentie = comp13 };
+            comp13.Vraag = vraag13;
 
 
             ICollection<Competentie> competenties = new List<Competentie>();
             competenties.Add(comp1);
-            //competenties.Add(comp2);
+            // competenties.Add(comp2);
             competenties.Add(comp3);
-            competenties.Add(comp4);
+            competenties.Add(comp73);
 
             vac1.AddCompetenties(competenties);
             vac3.AddCompetenties(competenties);
@@ -179,7 +225,8 @@ namespace CompetentieTool.Data
             context.Competenties.Add(comp1);
             context.Competenties.Add(comp2);
             context.Competenties.Add(comp3);
-            context.Competenties.Add(comp4);
+            context.Competenties.Add(comp73);
+            context.Competenties.Add(comp13);
 
             context.Vacature.Add(vac1);
             context.Vacature.Add(vac2);

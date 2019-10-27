@@ -15,6 +15,10 @@
   <ItemGroup>
     <Compile Remove="Migrations\20190925163856_checktest.cs" />
     <Compile Remove="Migrations\20190925163856_checktest.Designer.cs" />
+    <Compile Remove="Migrations\20191022145934_aanvulling.cs" />
+    <Compile Remove="Migrations\20191022145934_aanvulling.Designer.cs" />
+    <Compile Remove="Migrations\20191022150037_Aanvulling.cs" />
+    <Compile Remove="Migrations\20191022150037_Aanvulling.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -50,7 +50,12 @@ namespace CompetentieTool.Controllers
 
             foreach (var item in vm.CompetentieIds)
             {
-                if(item.IsSelected)
+                // als item geen aanvulling heeft OF schrapoptie niet is aangeduid
+                if (item.HeeftAanvulling)
+                {
+                    temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
+                }
+                else
                 {
                     templist.Add(_competentieRepository.GetBy(item.Id));
                 }
@@ -63,6 +68,23 @@ namespace CompetentieTool.Controllers
             return RedirectToAction("VacaturesList");
         }
 
+        private Boolean IsSchrapOptie(String expectedId, String competentieId)
+        {
+            var comp = _competentieRepository.GetBy(competentieId);
+
+            if (comp.Aanvulling != null)
+            {
+                foreach (var item in comp.Aanvulling.Opties)
+                {
+                    if (item.IsSchrapOptie)
+                    {
+                        return item.Id.Equals(expectedId);
+                    }
+                }
+            }
+            return false;
+        }
+
         public IActionResult SelecteerCompetenties(VacatureViewModel vm)
         {
 
@@ -72,7 +94,10 @@ namespace CompetentieTool.Controllers
                 {
                     Naam = item.Naam,
                     Id = item.Id,
-                    Verklaring = item.Verklaring
+                    Verklaring = item.Verklaring,
+                    Aanvulling = item.Aanvulling?.Beschrijving,
+                    AanvulOpties = item.Aanvulling?.Opties,
+                    HeeftAanvulling = (item.Aanvulling != null)
                 });
             }
 
@@ -84,14 +109,17 @@ namespace CompetentieTool.Controllers
             var vac = _vacatureRepository.GetBy(id);
             var temp = new VacatureViewModel(vac);
 
-            foreach (var item in _competentieRepository.GetAll())
+            foreach (var item in _vacatureRepository.GetVacatureCompetenties(id))
             {
                 temp.CompetentieIds.Add(new CompetentieCheckboxViewModel
                 {
-                    Naam = item.Naam,
-                    Id = item.Id,
-                    Verklaring = item.Verklaring,
-                    IsSelected = IsCompetentieInVacature(vac, item.Id)
+                    Naam = item.Competentie.Naam,
+                    Id = item.Competentie.Id,
+                    Verklaring = item.Competentie.Verklaring,
+                    Aanvulling = item.Competentie.Aanvulling?.Beschrijving,
+                    AanvulOpties = item.Competentie.Aanvulling?.Opties,
+                    HeeftAanvulling = (item.Competentie.Aanvulling != null),
+                    AanvulOptieGeselecteerd = item.GeselecteerdeOptie
                 });
             }
 
@@ -108,14 +136,6 @@ namespace CompetentieTool.Controllers
         {
             var templist = new List<Competentie>();
 
-            foreach (var item in vm.CompetentieIds)
-            {
-                if (item.IsSelected)
-                {
-                    templist.Add(_competentieRepository.GetBy(item.Id));
-                }
-            }
-
             var temp = new Vacature
             {
                 Id = vm.Id,
@@ -125,11 +145,23 @@ namespace CompetentieTool.Controllers
 
             temp.CompetentiesLijst = new List<VacatureCompetentie>();
 
+            foreach (var item in vm.CompetentieIds)
+            {
+                if (item.HeeftAanvulling)
+                {
+                    temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
+                }
+                else
+                {
+                    templist.Add(_competentieRepository.GetBy(item.Id));
+                }
+            }
+
             temp.AddCompetenties(templist);
 
             _vacatureRepository.Update(temp);
 
-            return Details(vm.Id);
+            return RedirectToAction("VacaturesList");
         }
 
         public IActionResult Delete(String id)
