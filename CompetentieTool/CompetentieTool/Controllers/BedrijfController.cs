@@ -51,15 +51,13 @@ namespace CompetentieTool.Controllers
             foreach (var item in vm.CompetentieIds)
             {
                 // als item geen aanvulling heeft OF schrapoptie niet is aangeduid
-                if (!item.HeeftAanvulling || !IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
+                if (item.HeeftAanvulling)
                 {
-                    if (item.HeeftAanvulling)
-                    {
-                        temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
-                    } else
-                    {
-                        templist.Add(_competentieRepository.GetBy(item.Id));
-                    }
+                    temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
+                }
+                else
+                {
+                    templist.Add(_competentieRepository.GetBy(item.Id));
                 }
             }
 
@@ -111,17 +109,18 @@ namespace CompetentieTool.Controllers
             var vac = _vacatureRepository.GetBy(id);
             var temp = new VacatureViewModel(vac);
 
-            foreach (var item in _competentieRepository.GetAll())
+            foreach (var item in _vacatureRepository.GetVacatureCompetenties(id))
             {
                 temp.CompetentieIds.Add(new CompetentieCheckboxViewModel
                 {
-                    Naam = item.Naam,
-                    Id = item.Id,
-                    Verklaring = item.Verklaring,
-                    Aanvulling = item.Aanvulling?.Beschrijving,
-                    AanvulOpties = item.Aanvulling?.Opties,
-                    HeeftAanvulling = (item.Aanvulling != null),
-                    IsSelected = IsCompetentieInVacature(vac, item.Id)
+                    Naam = item.Competentie.Naam,
+                    Id = item.Competentie.Id,
+                    Verklaring = item.Competentie.Verklaring,
+                    Aanvulling = item.Competentie.Aanvulling?.Beschrijving,
+                    AanvulOpties = item.Competentie.Aanvulling?.Opties,
+                    HeeftAanvulling = (item.Competentie.Aanvulling != null),
+                    IsSelected = IsCompetentieInVacature(vac, item.Competentie.Id),
+                    AanvulOptieGeselecteerd = item.GeselecteerdeOptie
                 });
             }
 
@@ -149,17 +148,13 @@ namespace CompetentieTool.Controllers
 
             foreach (var item in vm.CompetentieIds)
             {
-                // als item geen aanvulling heeft OF schrapoptie niet is aangeduid
-                if (!item.HeeftAanvulling || !IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
+                if (item.HeeftAanvulling)
                 {
-                    if (item.HeeftAanvulling)
-                    {
-                        temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
-                    }
-                    else
-                    {
-                        templist.Add(_competentieRepository.GetBy(item.Id));
-                    }
+                    temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
+                }
+                else
+                {
+                    templist.Add(_competentieRepository.GetBy(item.Id));
                 }
             }
 
@@ -167,7 +162,7 @@ namespace CompetentieTool.Controllers
 
             _vacatureRepository.Update(temp);
 
-            return Details(vm.Id);
+            return RedirectToAction("VacaturesList");
         }
 
         public IActionResult Delete(String id)

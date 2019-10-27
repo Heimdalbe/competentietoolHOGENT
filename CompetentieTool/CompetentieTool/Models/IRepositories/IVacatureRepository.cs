@@ -14,5 +14,6 @@ namespace CompetentieTool.Models.IRepositories
         void Add(Vacature vacature);
         void Delete(string id);
         void Update(Vacature vacature);
+        List<VacatureCompetentie> GetVacatureCompetenties(string vacatureId);
     }
 }
