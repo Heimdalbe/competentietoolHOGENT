@@ -16,5 +16,6 @@ namespace CompetentieTool.Domain
         public IVraag Vraag { get; set; }
         public String Beschrijving { get; set; }
         public Aanvulling Aanvulling { get; set; }
+        public CompetentieType type { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CompetentieTool.Data.Repositories;
 using CompetentieTool.Models.Domain;
+using CompetentieTool.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -12,19 +13,68 @@ namespace CompetentieTool.Controllers
     public class RapportController : Controller
     {
         private readonly IngevuldeVacatureRepository _ingevuldeVacatureRepository;
-        public IActionResult Index()
+        public IActionResult Index(String id)
         {
+
             List<Double> lijst1 = new List<double>();
             List<Double> lijst2 = new List<double>();
             List<Double> lijst3 = new List<double>();
+
+
+            IngevuldeVacature vac = _ingevuldeVacatureRepository.GetBy(id);
+            ICollection<RapportViewModel> models = new List<RapportViewModel>();
+            foreach (Response r in vac.responses)
+            {
+                RapportViewModel rvm = new RapportViewModel();
+                rvm.CompetentieNaam = r.Vraag.Competentie.Naam;
+                rvm.VraagStelling = r.Vraag.VraagStelling;
+                rvm.OptieKeuze = r.OptieKeuze.Output;
+                rvm.Vignet = r.Vraag.Vignet.Beschrijving;
+                rvm.Redenering = r.Aanvulling;
+
+                /* hier moet nog gezorgd worden dat de rubric kan vergeleken worden (dus soli en bedrijf antwoorden matchen)
+                if (r.Vraag.type.Equals(VraagType.RUBRIC))
+                {
+                    int result = r.OptieKeuze.Equals(r.Aanvulling) ? 1 : 0;
+                    if (r.Vraag.Competentie.type.Equals(CompetentieType.GRONDHOUDING))
+                    {
+                        lijst1.Add(result);
+                    }
+                    if (r.Vraag.Competentie.type.Equals(CompetentieType.KENNIS))
+                    {
+                        lijst2.Add(result);
+                    }
+                    if (r.Vraag.Competentie.type.Equals(CompetentieType.VAARDIGHEDEN))
+                    {
+                        lijst3.Add(result);
+                    }
+                }
+                */
+                models.Add(rvm);
+                
+
+
+            }
+            ICollection<Group<string, RapportViewModel>> groups = new List<Group<string, RapportViewModel>>();
+            var results = models.GroupBy(m => m.Vignet).ToList();
+
+
+            /*
+             Hier moeten de opties van de rubric worden berekend. Als opties gelijk zijn dan 1, anders 0
+             
+             */
 
             lijst1.Add(1); lijst1.Add(1); lijst1.Add(0); lijst1.Add(1); lijst1.Add(0); lijst1.Add(1);
             lijst2.Add(0); lijst2.Add(0); lijst2.Add(1); lijst2.Add(0); lijst2.Add(0); lijst2.Add(1); lijst2.Add(0);
             lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(0); lijst3.Add(0); lijst3.Add(0);
             FixDonutDiagrammen(lijst1, lijst2, lijst3);
-            
 
-            return View();
+
+            foreach (var item in results)
+            {
+                groups.Add(new Group<string, RapportViewModel> { Key = item.Key, Values = item.ToList() });
+            }
+            return View(groups);
         }
 
         public void FixDonutDiagrammen(List<Double> grondhoudingRubrics, List<Double> kennisRubrics, List<Double> vaardighedenRubrics)
