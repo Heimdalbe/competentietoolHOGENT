@@ -13,11 +13,13 @@ namespace CompetentieTool.Data.Repositories
     {
         private readonly ApplicationDbContext _context;
         private readonly DbSet<Vacature> _vacatures;
+        private readonly DbSet<IVraag> _vragen;
 
         public VacatureRepository(ApplicationDbContext context)
         {
             _context = context;
             _vacatures = context.Vacature;
+            _vragen = context.Vragen;
         }
 
         public void Add(Vacature vacature)
@@ -84,6 +86,11 @@ namespace CompetentieTool.Data.Repositories
         public VacatureCompetentie GetVacatureCompetentie(string id, string vacatureId)
         {
             return GetBy(vacatureId).CompetentiesLijst.FirstOrDefault(c => c.CompetentieId.Equals(id));
+        }
+
+        public IEnumerable<IVraag> GetAllQuestions()
+        {
+            return _vragen.Include(v => (v as VraagCasus).Opties);
         }
     }
 }

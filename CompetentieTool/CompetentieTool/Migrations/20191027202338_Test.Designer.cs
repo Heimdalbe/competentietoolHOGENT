@@ -4,14 +4,16 @@ using CompetentieTool.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191027202338_Test")]
+    partial class Test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -159,15 +161,13 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("OptieKeuzeId");
 
+                    b.Property<string>("Vraag");
+
                     b.Property<string>("VraagId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IngevuldeVacatureId");
-
-                    b.HasIndex("OptieKeuzeId");
-
-                    b.HasIndex("VraagId");
 
                     b.ToTable("Response");
                 });
@@ -477,14 +477,6 @@ namespace CompetentieTool.Migrations
                     b.HasOne("CompetentieTool.Models.Domain.IngevuldeVacature")
                         .WithMany("responses")
                         .HasForeignKey("IngevuldeVacatureId");
-
-                    b.HasOne("CompetentieTool.Models.Domain.Mogelijkheid", "OptieKeuze")
-                        .WithMany()
-                        .HasForeignKey("OptieKeuzeId");
-
-                    b.HasOne("CompetentieTool.Domain.IVraag", "Vraag")
-                        .WithMany()
-                        .HasForeignKey("VraagId");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetentie", b =>

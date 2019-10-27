@@ -9,7 +9,6 @@ namespace CompetentieTool.Domain
     public class VraagCasus : IVraag
     {
         public IEnumerable<Mogelijkheid> Opties { get; set; }
-        public Vignet Vignet { get; set; }
 
     }
 }

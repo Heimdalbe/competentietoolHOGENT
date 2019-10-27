@@ -4,14 +4,16 @@ using CompetentieTool.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191027155150_OutputQuestions")]
+    partial class OutputQuestions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,15 +73,11 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("OutputString");
 
-                    b.Property<string>("VignetId");
-
                     b.Property<string>("VraagStelling");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VignetId");
-
-                    b.ToTable("Vragen");
+                    b.ToTable("IVraag");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("IVraag");
                 });
@@ -133,8 +131,6 @@ namespace CompetentieTool.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Aanvulling");
-
                     b.Property<string>("Input");
 
                     b.Property<string>("Output");
@@ -166,8 +162,6 @@ namespace CompetentieTool.Migrations
                     b.HasIndex("IngevuldeVacatureId");
 
                     b.HasIndex("OptieKeuzeId");
-
-                    b.HasIndex("VraagId");
 
                     b.ToTable("Response");
                 });
@@ -401,6 +395,9 @@ namespace CompetentieTool.Migrations
                 {
                     b.HasBaseType("CompetentieTool.Domain.IVraag");
 
+                    b.Property<string>("VignetId");
+
+                    b.HasIndex("VignetId");
 
                     b.ToTable("VraagCasus");
 
@@ -444,13 +441,6 @@ namespace CompetentieTool.Migrations
                         .HasForeignKey("CompetentieTool.Domain.Competentie", "VraagId");
                 });
 
-            modelBuilder.Entity("CompetentieTool.Domain.IVraag", b =>
-                {
-                    b.HasOne("CompetentieTool.Domain.Vignet", "Vignet")
-                        .WithMany()
-                        .HasForeignKey("VignetId");
-                });
-
             modelBuilder.Entity("CompetentieTool.Models.Domain.AanvulOptie", b =>
                 {
                     b.HasOne("CompetentieTool.Domain.Aanvulling")
@@ -481,10 +471,6 @@ namespace CompetentieTool.Migrations
                     b.HasOne("CompetentieTool.Models.Domain.Mogelijkheid", "OptieKeuze")
                         .WithMany()
                         .HasForeignKey("OptieKeuzeId");
-
-                    b.HasOne("CompetentieTool.Domain.IVraag", "Vraag")
-                        .WithMany()
-                        .HasForeignKey("VraagId");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetentie", b =>
@@ -543,6 +529,13 @@ namespace CompetentieTool.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CompetentieTool.Domain.VraagCasus", b =>
+                {
+                    b.HasOne("CompetentieTool.Domain.Vignet", "Vignet")
+                        .WithMany()
+                        .HasForeignKey("VignetId");
                 });
 #pragma warning restore 612, 618
         }

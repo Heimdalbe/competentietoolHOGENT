@@ -96,7 +96,7 @@ namespace CompetentieTool.Data
             }
 
             // use this to initialize vacature test data
-            //AddVacatures(context);
+             AddVacatures(context);
         }
 
         public static void AddVacatures(ApplicationDbContext context)
@@ -154,54 +154,56 @@ namespace CompetentieTool.Data
 
 
             Vignet vignet1 = new Vignet { Beschrijving = "Boris woont alleen in een uitgewoonde studio in een verpauperde buurt van de gemeente. Na een residentiële opname van drie maanden werd hij  aangemeld voor mobiele psychiatrische zorg zodat jij zijn opvolging doet sinds een aantal weken. De begeleiding loopt in jouw opinie wat stroever, Boris heeft het vooral over praktische zaken die in orde zouden moeten gebracht worden.Boris heeft een zoon van 17 en een dochter van 12 waar hij het vaak over heeft, maar hij ziet hen relatief weinig.Enkele maanden geleden had Boris het over het feit dat hij het zeer jammer vindt dat hij voor de feestdagen geen geschenku voor zijn kinderen kan kopen. u brengt dit ter sprake bij de bewindvoerder die begin december 300 euro extra voorziet op zijn wekelijks bedrag van 100 euro.Bij jouw volgende huisbezoek zie u dat Boris een nieuwe smartphone heeft met een driedubbele camera." };
-            Mogelijkheid optie11 = new Mogelijkheid { Beschrijving = "U spreekt Boris aan over het feit dat U het jammer vindt dat hij het zorgsysteem misbruikt heeft" };
-            Mogelijkheid optie12 = new Mogelijkheid { Beschrijving = "U spreekt Boris aan over het feit dat hij uw vertrouwen misbruikt heeft" };
-            Mogelijkheid optie13 = new Mogelijkheid { Beschrijving = "U spreekt Boris aan en wijst hem op zijn verantwoordelijkheid als vader." };
-            Mogelijkheid optie14 = new Mogelijkheid { Beschrijving = "U onderneemt niks" };
-            IList<Mogelijkheid> opties1 = new List<Mogelijkheid>();
+
+            Mogelijkheid optie11 = new Mogelijkheid { Input = "U spreekt Boris aan over het feit dat U het jammer vindt dat hij het zorgsysteem misbruikt heeft", Output = "de cliënt aanspreekt over zijn/haar gedrag" };
+            Mogelijkheid optie12 = new Mogelijkheid { Input = "U spreekt Boris aan over het feit dat hij uw vertrouwen misbruikt heeft",  Output = "de cliënt aanspreekt over zijn/haar gevoel hierbij"};
+            Mogelijkheid optie13 = new Mogelijkheid { Input = "U spreekt Boris aan en wijst hem op zijn verantwoordelijkheid als vader.", Output = "de cliënt aanspreekt over zijn verantwoordelijkheid als vader"};
+            Mogelijkheid optie14 = new Mogelijkheid { Input = "U onderneemt niks", Output = "niks onderneemt"};
+            IList <Mogelijkheid> opties1 = new List<Mogelijkheid>();
             opties1.Add(optie11);
             opties1.Add(optie12);
             opties1.Add(optie13);
             opties1.Add(optie14);
 
             Vignet vignet2 = new Vignet { Beschrijving = "Een cliënt geeft aan dat hij naar Thailand op reis wil gaan. Gezien zijn instabiele psychotische problematiek en risico tot herval in middelengebruik vindt U dit geen goed idee." };
-            Mogelijkheid optie21 = new Mogelijkheid { Beschrijving = "interveniëren via derden (bv. psychiater) om het reisplan af te laten lassen omwille van de risico’s." };
-            Mogelijkheid optie22 = new Mogelijkheid { Beschrijving = "niks, dit is zijn individuele keuze en die moet gerespecteerd worden ongeacht de risico’s" };
-            Mogelijkheid optie23 = new Mogelijkheid { Beschrijving = "proberen door gesprek zelfreflectie te stimuleren om toch het idee tot reizen te proberen veranderen" };
-            Mogelijkheid optie24 = new Mogelijkheid { Beschrijving = "adviseren om niet te reizen gezien de risico’s die hieraan verbonden zijn." };
+            Mogelijkheid optie21 = new Mogelijkheid { Input = "interveniëren via derden (bv. psychiater) om het reisplan af te laten lassen omwille van de risico’s." };
+            Mogelijkheid optie22 = new Mogelijkheid { Input = "niks, dit is zijn individuele keuze en die moet gerespecteerd worden ongeacht de risico’s" };
+            Mogelijkheid optie23 = new Mogelijkheid { Input = "proberen door gesprek zelfreflectie te stimuleren om toch het idee tot reizen te proberen veranderen" };
+            Mogelijkheid optie24 = new Mogelijkheid { Input = "adviseren om niet te reizen gezien de risico’s die hieraan verbonden zijn." };
             IList<Mogelijkheid> opties2 = new List<Mogelijkheid>();
             opties2.Add(optie21);
             opties2.Add(optie22);
             opties2.Add(optie23);
             opties2.Add(optie24);
 
-            Mogelijkheid optie31 = new Mogelijkheid { Beschrijving = "ik ga voor mezelf op zoek naar de reden" };
-            Mogelijkheid optie32 = new Mogelijkheid { Beschrijving = "ik contacteer  een collega om mijn gevoel te bespreken" };
-            Mogelijkheid optie33 = new Mogelijkheid { Beschrijving = "ik maak dit bespreekbaar bij  de cliënt" };
-            Mogelijkheid optie34 = new Mogelijkheid { Beschrijving = "ik contacteer mijn  leidinggevende om tot een oplossing te komen" };
-            Mogelijkheid optie35 = new Mogelijkheid { Beschrijving = "ik onderneem  stappen om de relatie van mijn kant te proberen verbeteren" };
+            Mogelijkheid optie31 = new Mogelijkheid { Input = "ik ga voor mezelf op zoek naar de reden" };
+            Mogelijkheid optie32 = new Mogelijkheid { Input = "ik contacteer  een collega om mijn gevoel te bespreken" };
+            Mogelijkheid optie33 = new Mogelijkheid { Input = "ik maak dit bespreekbaar bij  de cliënt" };
+            Mogelijkheid optie34 = new Mogelijkheid { Input = "ik contacteer mijn  leidinggevende om tot een oplossing te komen" };
+            Mogelijkheid optie35 = new Mogelijkheid { Input = "ik onderneem  stappen om de relatie van mijn kant te proberen verbeteren" };
 
             IList<Mogelijkheid> opties3 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Beschrijving = "ik ga voor mezelf op zoek naar de reden" },
-                new Mogelijkheid { Beschrijving = "ik contacteer  een collega om mijn gevoel te bespreken" },
-                new Mogelijkheid { Beschrijving = "ik maak dit bespreekbaar bij  de cliënt" },
-                new Mogelijkheid { Beschrijving = "ik contacteer mijn  leidinggevende om tot een oplossing te komen" },
-                new Mogelijkheid { Beschrijving = "ik onderneem  stappen om de relatie van mijn kant te proberen verbeteren" }
+                new Mogelijkheid { Input = "ik ga voor mezelf op zoek naar de reden" },
+                new Mogelijkheid { Input = "ik contacteer  een collega om mijn gevoel te bespreken" },
+                new Mogelijkheid { Input = "ik maak dit bespreekbaar bij  de cliënt" },
+                new Mogelijkheid { Input = "ik contacteer mijn  leidinggevende om tot een oplossing te komen" },
+                new Mogelijkheid { Input = "ik onderneem  stappen om de relatie van mijn kant te proberen verbeteren" }
             };
 
             IList<Mogelijkheid> opties13 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Beschrijving = "niet van belang, in de zorgsector zijn we hulpverleners, geen managers" },
-                new Mogelijkheid { Beschrijving = "de verantwoordelijkheid van de leidinggevende(n). Mijn verantwoordelijkheid is het verstrekken van goede zorg" },
-                new Mogelijkheid { Beschrijving = "ik maak dit bespreekbaar bij  de cliënt" },
-                new Mogelijkheid { Beschrijving = "ook voor mij van belang. Elke zorgverlener waakt  mee over de financiële gezondheid van de voorziening." }
+                new Mogelijkheid { Input = "niet van belang, in de zorgsector zijn we hulpverleners, geen managers" },
+                new Mogelijkheid { Input = "de verantwoordelijkheid van de leidinggevende(n). Mijn verantwoordelijkheid is het verstrekken van goede zorg" , Aanvulling = "is de verantwoordelijkheid van de leidinggevende(n)"},
+                new Mogelijkheid { Input = "ook voor mij van belang. Elke zorgverlener waakt  mee over de financiële gezondheid van de voorziening.", Aanvulling = "indien genoodzaakt moeten we de zorg mede afstemmen op financiële haalbaarheid van de voorziening." }
             };
 
 
+            String outputs1 = "Dit vignet gaat over de manier waarop de sollicitant al dan niet een oordeel velt over de situatie waarin een cliënt een dure GSM koopt terwijl hij beschikt over weinig middelen. De sollicitant geeft hierbij aan dat hij && " +
+                "Hij geeft hierbij volgende toelichting $$ Vanuit onderzoek geven cliënten sterk aan dat ze elke vorm van veroordeling over hun gedrag afwijzen.";
+           
 
-
-            IVraag vraag1 = new VraagCasus { VraagStelling = "Welke actie onderneemt U?", Vignet = vignet1, Opties = opties1, Competentie = comp1 };
+            IVraag vraag1 = new VraagCasus { VraagStelling = "Welke actie onderneemt U?", Vignet = vignet1, Opties = opties1, Competentie = comp1 , OutputString = outputs1};
             comp1.Vraag = vraag1;
             IVraag vraag2 = new VraagOpen { VraagStelling = "Verklaar waarom u dit zou doen", Competentie = comp2 };
             comp2.Vraag = vraag2;
@@ -227,6 +229,12 @@ namespace CompetentieTool.Data
             context.Competenties.Add(comp3);
             context.Competenties.Add(comp73);
             context.Competenties.Add(comp13);
+
+            context.Vragen.Add(vraag1);
+            context.Vragen.Add(vraag2);
+            context.Vragen.Add(vraag3);
+            context.Vragen.Add(vraag73);
+            context.Vragen.Add(vraag13);
 
             context.Vacature.Add(vac1);
             context.Vacature.Add(vac2);

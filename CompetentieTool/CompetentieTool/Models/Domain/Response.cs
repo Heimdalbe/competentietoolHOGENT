@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompetentieTool.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,8 +10,8 @@ namespace CompetentieTool.Models.Domain
     {
         public String Id { get; set; }
 
-        public String OptieKeuze { get; set; }
+        public Mogelijkheid OptieKeuze { get; set; }
         public String Aanvulling { get; set; }
-        public String VraagId { get; set; }
+        public IVraag Vraag { get; set; }
     }
 }

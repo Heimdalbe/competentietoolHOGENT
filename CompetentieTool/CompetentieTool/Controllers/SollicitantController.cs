@@ -44,10 +44,10 @@ namespace CompetentieTool.Controllers
                 res.VraagId = comp.Vraag.Id;
                 if(comp.Vraag is VraagCasus)
                 {
-                    res.Vignet = ((VraagCasus)comp.Vraag).Vignet.Beschrijving;
+                    res.Vignet = comp.Vraag.Vignet?.Beschrijving;
                     foreach(Mogelijkheid opt in ((VraagCasus)comp.Vraag).Opties)
                     {
-                        res.opties.Add(opt.Beschrijving);
+                        res.opties.Add(opt);
                     }
                 }
                 models.Add(res);
@@ -68,14 +68,24 @@ namespace CompetentieTool.Controllers
         public IActionResult Submit(List<Group<string, VraagViewModel>> models, string id)
         {
             IngevuldeVacature vac = new IngevuldeVacature();
-           vac.Vacature = _vacatureRepository.GetBy(id);
+            vac.Vacature = _vacatureRepository.GetBy(id);
+            IEnumerable<IVraag> vragen = _vacatureRepository.GetAllQuestions();
+            IVraag vraag = null;
+            Mogelijkheid optie = null;
+
             foreach(var group in models)
             {
                 foreach(var item in group.Values)
                 {
-                    vac.responses.Add(new Response { Aanvulling = item.Redenering, VraagId = item.VraagId, OptieKeuze = item.OptieKeuze });
+                    vraag = vragen.SingleOrDefault(v => v.Id.Equals(item.VraagId));
+                    if (vraag is VraagCasus)
+                    {
+                        optie = ((VraagCasus)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
+                    }
+                    vac.responses.Add(new Response { Aanvulling = item.Redenering, Vraag = vraag, OptieKeuze= optie });
                 }
             }
+
             _ingevuldeVacatureRepository.Add(vac);
             int i = 1;
             return RedirectToAction("Index", "Home");

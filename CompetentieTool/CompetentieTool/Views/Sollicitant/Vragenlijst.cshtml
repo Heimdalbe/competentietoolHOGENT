@@ -53,9 +53,9 @@
                                     @foreach (var opt in Model[i].Values[j].opties)
                                     {
                                         <div class="radio">
-                                            @Html.RadioButtonFor(m => Model[i].Values[j].OptieKeuze, opt)
+                                            @Html.RadioButtonFor(m => Model[i].Values[j].OptieKeuzeId, opt.Id)
                                             <label>
-                                                @opt
+                                                @opt.Input
                                             </label>
                                         </div>
 
