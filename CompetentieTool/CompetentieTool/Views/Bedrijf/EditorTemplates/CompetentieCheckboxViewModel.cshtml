@@ -2,14 +2,7 @@
 <tr>
     <th scope="row">@Model.Naam</th>
     <td>@Model.Verklaring</td>
-    @if (!Model.HeeftAanvulling)
-    {
-        <td>@Html.CheckBoxFor(x => x.IsSelected)</td>
-    }
-    else
-    {
-        <td></td>
-    }
+    <td></td>
     @Html.HiddenFor(x => x.Id)
 </tr>
 @if (Model.HeeftAanvulling)
