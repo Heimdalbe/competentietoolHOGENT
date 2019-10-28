@@ -96,7 +96,7 @@ namespace CompetentieTool.Data
             }
 
             // use this to initialize vacature test data
-             AddVacatures(context);
+             //AddVacatures(context);
         }
 
         public static void AddVacatures(ApplicationDbContext context)
@@ -139,9 +139,11 @@ namespace CompetentieTool.Data
                 Verklaring = "De hulpverlener denkt actief mee over het efficiënt inzetten van middelen en eigen zorgactiviteiten in functie van de zorg.",
                 Aanvulling = aanvulling13
             };
-
-
-
+            Competentie comp32 = new Competentie
+            {
+                Naam = "Evidence based werken",
+                Verklaring = "De hulpverlener combineert in zijn zorginterventies eigen expertise,  wetenschappelijke evidentie ervaringskennis en vertaalt dit naar de  individuele situatie van de cliënt."
+            };
 
 
             Vignet vignet1 = new Vignet { Beschrijving = "Boris woont alleen in een uitgewoonde studio in een verpauperde buurt van de gemeente. Na een residentiële opname van drie maanden werd hij  aangemeld voor mobiele psychiatrische zorg zodat jij zijn opvolging doet sinds een aantal weken. De begeleiding loopt in jouw opinie wat stroever, Boris heeft het vooral over praktische zaken die in orde zouden moeten gebracht worden.Boris heeft een zoon van 17 en een dochter van 12 waar hij het vaak over heeft, maar hij ziet hen relatief weinig.Enkele maanden geleden had Boris het over het feit dat hij het zeer jammer vindt dat hij voor de feestdagen geen geschenku voor zijn kinderen kan kopen. u brengt dit ter sprake bij de bewindvoerder die begin december 300 euro extra voorziet op zijn wekelijks bedrag van 100 euro.Bij jouw volgende huisbezoek zie u dat Boris een nieuwe smartphone heeft met een driedubbele camera." };
@@ -197,16 +199,31 @@ namespace CompetentieTool.Data
             comp73.Vraag = vraag73;
             IVraag vraag13 = new VraagRubrics { VraagStelling = "De financiële rendabiliteit van een afdeling/dienst is: ", Opties = opties13, Competentie = comp13 };
             comp13.Vraag = vraag13;
+            IVraag vraag32 = new VraagOpen { VraagStelling = "Hoe ziet u de verhouding tussen wetenschappelijke evidentie, eigen expertise en ervaringskennis binnen het verlenen van een goede kwaliteit van zorg? Licht bondig toe?", Competentie = comp32, OutputString = "De sollicitant geeft aan dat hij het conceptualiseren van goede zorg op basis van evidence based handelen als volgt ziet: $$ Belangrijk hierbij is dat de sollicitant achterliggende principes van richtlijnen, meetinstrumenten, concepten, modellen, tools etc. kent en het gebruik ervan niet reduceert tot een louter uitvoering ervan."};
 
 
-            ICollection<Competentie> competenties = new List<Competentie>();
+            ICollection <Competentie> competenties = new List<Competentie>();
             competenties.Add(comp1);
             // competenties.Add(comp2);
             competenties.Add(comp3);
             competenties.Add(comp73);
+            competenties.Add(comp13);
+            competenties.Add(comp32);
 
             vac1.AddCompetenties(competenties);
             vac3.AddCompetenties(competenties);
+
+            // ingevulde vacature
+            IList<Response> responses = new List<Response>()
+            {
+                new Response { Vraag = vraag1, OptieKeuze = optie12, Aanvulling = "Dit is een aanvulling op vraag over Boris"},
+                new Response { Vraag = vraag3, OptieKeuze = optie34, Aanvulling = "Dit is een aanvulling op een random vraag"},
+                new Response { Vraag = vraag73, OptieKeuze = opties3.FirstOrDefault(), Aanvulling = "ben benieuwd of deze werkt"},
+                new Response { Vraag = vraag13, Aanvulling = "hier zijn we dan weer voor nog een vraag"}
+            };
+
+            IngevuldeVacature ingevuldeVac1 = new IngevuldeVacature { Vacature = vac1, responses = responses};
+
 
             context.Competenties.Add(comp1);
             context.Competenties.Add(comp2);
@@ -226,5 +243,7 @@ namespace CompetentieTool.Data
 
             context.SaveChanges();
         }
+
+        
     }
 }
