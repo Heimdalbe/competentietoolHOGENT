@@ -39,11 +39,11 @@ namespace CompetentieTool.Data.Repositories
             return _context.Vacature.Include(v => v.CompetentiesLijst)
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Vraag)
-                .ThenInclude(v => (v as VraagCasus).Vignet)
+                .ThenInclude(v => (v as VraagMeerkeuze).Vignet)
                 .Include(v => v.CompetentiesLijst)
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Vraag)
-                .ThenInclude(v => (v as VraagCasus).Opties)
+                .ThenInclude(v => (v as VraagMeerkeuze).Opties)
                 .Include(v => v.CompetentiesLijst)
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Aanvulling)
@@ -55,11 +55,11 @@ namespace CompetentieTool.Data.Repositories
             return _vacatures.Include(v => v.CompetentiesLijst)
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Vraag)
-                .ThenInclude(v => (v as VraagCasus).Vignet)
+                .ThenInclude(v => (v as VraagMeerkeuze).Vignet)
                 .Include(v => v.CompetentiesLijst)
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Vraag)
-                .ThenInclude(v => (v as VraagCasus).Opties)
+                .ThenInclude(v => (v as VraagMeerkeuze).Opties)
                 .Include(v => v.CompetentiesLijst)
                 .ThenInclude(c => c.Competentie)
                 .ThenInclude(c => c.Aanvulling)
@@ -90,7 +90,7 @@ namespace CompetentieTool.Data.Repositories
 
         public IEnumerable<IVraag> GetAllQuestions()
         {
-            return _vragen.Include(v => (v as VraagCasus).Opties);
+            return _vragen.Include(v => (v as VraagMeerkeuze).Opties);
         }
     }
 }

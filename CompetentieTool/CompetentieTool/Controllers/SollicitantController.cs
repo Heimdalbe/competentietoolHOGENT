@@ -42,10 +42,10 @@ namespace CompetentieTool.Controllers
                 VraagViewModel res = new VraagViewModel();
                 res.VraagStelling = comp.Vraag.VraagStelling;
                 res.VraagId = comp.Vraag.Id;
-                if(comp.Vraag is VraagCasus)
+                if(comp.Vraag is VraagMeerkeuze)
                 {
                     res.Vignet = comp.Vraag.Vignet?.Beschrijving;
-                    foreach(Mogelijkheid opt in ((VraagCasus)comp.Vraag).Opties)
+                    foreach(Mogelijkheid opt in ((VraagMeerkeuze)comp.Vraag).Opties)
                     {
                         res.opties.Add(opt);
                     }
@@ -78,9 +78,9 @@ namespace CompetentieTool.Controllers
                 foreach(var item in group.Values)
                 {
                     vraag = vragen.SingleOrDefault(v => v.Id.Equals(item.VraagId));
-                    if (vraag is VraagCasus)
+                    if (vraag is VraagMeerkeuze)
                     {
-                        optie = ((VraagCasus)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
+                        optie = ((VraagMeerkeuze)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
                     }
                     vac.responses.Add(new Response { Aanvulling = item.Redenering, Vraag = vraag, OptieKeuze= optie });
                 }

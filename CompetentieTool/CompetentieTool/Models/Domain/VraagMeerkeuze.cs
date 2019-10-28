@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CompetentieTool.Domain
 {
-    public class VraagCasus : IVraag
+    public class VraagMeerkeuze : IVraag
     {
         public IEnumerable<Mogelijkheid> Opties { get; set; }
 

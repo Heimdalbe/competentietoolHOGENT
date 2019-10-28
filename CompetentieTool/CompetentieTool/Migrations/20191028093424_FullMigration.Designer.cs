@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191027204350_ResponseObjects")]
-    partial class ResponseObjects
+    [Migration("20191028093424_FullMigration")]
+    partial class FullMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,6 +50,8 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("VraagId");
 
+                    b.Property<int>("type");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AanvullingId");
@@ -76,6 +78,8 @@ namespace CompetentieTool.Migrations
                     b.Property<string>("VignetId");
 
                     b.Property<string>("VraagStelling");
+
+                    b.Property<int>("type");
 
                     b.HasKey("Id");
 
@@ -141,11 +145,11 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("Output");
 
-                    b.Property<string>("VraagCasusId");
+                    b.Property<string>("VraagMeerkeuzeId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VraagCasusId");
+                    b.HasIndex("VraagMeerkeuzeId");
 
                     b.ToTable("Mogelijkheid");
                 });
@@ -399,14 +403,14 @@ namespace CompetentieTool.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CompetentieTool.Domain.VraagCasus", b =>
+            modelBuilder.Entity("CompetentieTool.Domain.VraagMeerkeuze", b =>
                 {
                     b.HasBaseType("CompetentieTool.Domain.IVraag");
 
 
-                    b.ToTable("VraagCasus");
+                    b.ToTable("VraagMeerkeuze");
 
-                    b.HasDiscriminator().HasValue("VraagCasus");
+                    b.HasDiscriminator().HasValue("VraagMeerkeuze");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Organisatie", b =>
@@ -469,9 +473,9 @@ namespace CompetentieTool.Migrations
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Mogelijkheid", b =>
                 {
-                    b.HasOne("CompetentieTool.Domain.VraagCasus")
+                    b.HasOne("CompetentieTool.Domain.VraagMeerkeuze")
                         .WithMany("Opties")
-                        .HasForeignKey("VraagCasusId");
+                        .HasForeignKey("VraagMeerkeuzeId");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Response", b =>

@@ -19,6 +19,20 @@
     <Compile Remove="Migrations\20191022145934_aanvulling.Designer.cs" />
     <Compile Remove="Migrations\20191022150037_Aanvulling.cs" />
     <Compile Remove="Migrations\20191022150037_Aanvulling.Designer.cs" />
+    <Compile Remove="Migrations\20191027155150_OutputQuestions.cs" />
+    <Compile Remove="Migrations\20191027155150_OutputQuestions.Designer.cs" />
+    <Compile Remove="Migrations\20191027161024_init.cs" />
+    <Compile Remove="Migrations\20191027161024_init.Designer.cs" />
+    <Compile Remove="Migrations\20191027192202_Aanvullingen.cs" />
+    <Compile Remove="Migrations\20191027192202_Aanvullingen.Designer.cs" />
+    <Compile Remove="Migrations\20191027202338_Test.cs" />
+    <Compile Remove="Migrations\20191027202338_Test.Designer.cs" />
+    <Compile Remove="Migrations\20191027204350_ResponseObjects.cs" />
+    <Compile Remove="Migrations\20191027204350_ResponseObjects.Designer.cs" />
+    <Compile Remove="Migrations\20191028092425_Vragen.cs" />
+    <Compile Remove="Migrations\20191028092425_Vragen.Designer.cs" />
+    <Compile Remove="Migrations\20191028093002_Test2.cs" />
+    <Compile Remove="Migrations\20191028093002_Test2.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

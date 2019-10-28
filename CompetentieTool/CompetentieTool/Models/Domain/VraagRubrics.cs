@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CompetentieTool.Domain
 {
-    public class VraagInschaling : IVraag
+    public class VraagRubrics : IVraag
     {
         public IEnumerable<Mogelijkheid> Opties { get; set; }
     }

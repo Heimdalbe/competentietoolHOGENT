@@ -203,15 +203,15 @@ namespace CompetentieTool.Data
                 "Hij geeft hierbij volgende toelichting $$ Vanuit onderzoek geven cliënten sterk aan dat ze elke vorm van veroordeling over hun gedrag afwijzen.";
            
 
-            IVraag vraag1 = new VraagCasus { VraagStelling = "Welke actie onderneemt U?", Vignet = vignet1, Opties = opties1, Competentie = comp1 , OutputString = outputs1};
+            IVraag vraag1 = new VraagMeerkeuze { VraagStelling = "Welke actie onderneemt U?", Vignet = vignet1, Opties = opties1, Competentie = comp1 , OutputString = outputs1};
             comp1.Vraag = vraag1;
             IVraag vraag2 = new VraagOpen { VraagStelling = "Verklaar waarom u dit zou doen", Competentie = comp2 };
             comp2.Vraag = vraag2;
-            IVraag vraag3 = new VraagCasus { VraagStelling = "Wat doet U?", Vignet = vignet2, Opties = opties2, Competentie = comp3 };
+            IVraag vraag3 = new VraagMeerkeuze { VraagStelling = "Wat doet U?", Vignet = vignet2, Opties = opties2, Competentie = comp3 };
             comp3.Vraag = vraag3;
-            IVraag vraag73 = new VraagCasus { VraagStelling = "Je komt bij een nieuwe cliënt aan huis waar je bijna onmiddellijk een antipathie voor voelt. Dit gevoel blijft ook na de volgende bezoeken aanwezig. Wat doet u?", Opties = opties3, Vignet = vignet1,  Competentie = comp73 };
+            IVraag vraag73 = new VraagMeerkeuze { VraagStelling = "Je komt bij een nieuwe cliënt aan huis waar je bijna onmiddellijk een antipathie voor voelt. Dit gevoel blijft ook na de volgende bezoeken aanwezig. Wat doet u?", Opties = opties3, Vignet = vignet1,  Competentie = comp73 };
             comp73.Vraag = vraag73;
-            IVraag vraag13 = new VraagInschaling { VraagStelling = "De financiële rendabiliteit van een afdeling/dienst is: ", Opties = opties13, Competentie = comp13 };
+            IVraag vraag13 = new VraagRubrics { VraagStelling = "De financiële rendabiliteit van een afdeling/dienst is: ", Opties = opties13, Competentie = comp13 };
             comp13.Vraag = vraag13;
 
 
