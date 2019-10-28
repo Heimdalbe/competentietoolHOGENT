@@ -8,6 +8,6 @@ namespace CompetentieTool.Domain
     {
         public String Id { get; set; }
         public String Beschrijving { get; set; }
-        public List<AanvulOptie> Opties { get; set; }
+        public List<Mogelijkheid> Opties { get; set; }
     }
 }

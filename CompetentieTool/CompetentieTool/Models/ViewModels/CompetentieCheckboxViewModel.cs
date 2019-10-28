@@ -12,7 +12,7 @@ namespace CompetentieTool.Models.ViewModels
         public String Verklaring { get; set; }
         public String Id { get; set; }
         public String Aanvulling { get; set; }
-        public List<AanvulOptie> AanvulOpties { get; set; }
+        public List<Mogelijkheid> AanvulOpties { get; set; }
         public String AanvulOptieGeselecteerd { get; set; }
         public bool HeeftAanvulling { get; set; }
     }

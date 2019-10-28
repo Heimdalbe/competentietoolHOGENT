@@ -105,26 +105,17 @@ namespace CompetentieTool.Data
             Vacature vac2 = new Vacature { Beschrijving = "Verpleger in ziekenhuis UZ te Gent", Functie = "Verpleger" };
             Vacature vac3 = new Vacature { Beschrijving = "Medewerker die helpt bij bloedinzamelingen", Functie = "Rode kruis medewerker" };
 
+            IList<Mogelijkheid> opties13 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "niet van belang, in de zorgsector zijn we hulpverleners, geen managers", Aanvulling = "niet van belang" },
+                new Mogelijkheid { Input = "de verantwoordelijkheid van de leidinggevende(n). Mijn verantwoordelijkheid is het verstrekken van goede zorg" , Aanvulling = "is de verantwoordelijkheid van de leidinggevende(n)"},
+                new Mogelijkheid { Input = "ook voor mij van belang. Elke zorgverlener waakt  mee over de financiële gezondheid van de voorziening.", Aanvulling = "indien genoodzaakt moeten we de zorg mede afstemmen op financiële haalbaarheid van de voorziening." }
+            };
 
             Aanvulling aanvulling13 = new Aanvulling
             {
                 Beschrijving = "Geef onderstaand  aan welke houding u verwacht van uw medewerker aangaande marktgerichtheid en medezorg voor financiële gezonde status van de organisatie",
-                Opties = new List<AanvulOptie>
-                {
-                    new AanvulOptie
-                    {
-                        Value = "niet van belang",
-                        IsSchrapOptie = true
-                    },
-                    new AanvulOptie
-                    {
-                        Value = "is de verantwoordelijkheid van de leidinggevende(n)",
-                    },
-                    new AanvulOptie
-                    {
-                        Value = "indien genoodzaakt moeten we de zorg mede afstemmen op financiële haalbaarheid van de voorziening."
-                    }
-                }
+                Opties = opties13.ToList()
             };
 
             Competentie comp1 = new Competentie {
@@ -189,13 +180,6 @@ namespace CompetentieTool.Data
                 new Mogelijkheid { Input = "ik maak dit bespreekbaar bij  de cliënt" },
                 new Mogelijkheid { Input = "ik contacteer mijn  leidinggevende om tot een oplossing te komen" },
                 new Mogelijkheid { Input = "ik onderneem  stappen om de relatie van mijn kant te proberen verbeteren" }
-            };
-
-            IList<Mogelijkheid> opties13 = new List<Mogelijkheid>()
-            {
-                new Mogelijkheid { Input = "niet van belang, in de zorgsector zijn we hulpverleners, geen managers" },
-                new Mogelijkheid { Input = "de verantwoordelijkheid van de leidinggevende(n). Mijn verantwoordelijkheid is het verstrekken van goede zorg" , Aanvulling = "is de verantwoordelijkheid van de leidinggevende(n)"},
-                new Mogelijkheid { Input = "ook voor mij van belang. Elke zorgverlener waakt  mee over de financiële gezondheid van de voorziening.", Aanvulling = "indien genoodzaakt moeten we de zorg mede afstemmen op financiële haalbaarheid van de voorziening." }
             };
 
 

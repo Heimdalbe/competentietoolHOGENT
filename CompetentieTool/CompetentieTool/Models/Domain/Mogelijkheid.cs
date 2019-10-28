@@ -12,5 +12,7 @@ namespace CompetentieTool.Models.Domain
         public String Input { get; set; }
         public String Output { get; set; }
         public String Aanvulling { get; set; }
+        public bool IsSchrapOptie { get; set; }
+
     }
 }
