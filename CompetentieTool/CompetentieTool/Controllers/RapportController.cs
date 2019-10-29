@@ -30,7 +30,8 @@ namespace CompetentieTool.Controllers
 
             IngevuldeVacature vac = _ingevuldeVacatureRepository.GetBy(id);
             ICollection<RapportViewModel> models = new List<RapportViewModel>();
-            foreach (Response r in vac.responses)
+            
+            foreach (Response r in vac.Responses)
             {
                 RapportViewModel rvm = new RapportViewModel();
                 rvm.CompetentieNaam = r.Vraag.Competentie.Naam;
@@ -38,6 +39,7 @@ namespace CompetentieTool.Controllers
                 rvm.OptieKeuze = r.OptieKeuze.Output;
                 rvm.Vignet = r.Vraag.Vignet.Beschrijving;
                 rvm.Redenering = r.Aanvulling;
+                rvm.mail = vac.Sollicitant.Email;
 
                 /* hier moet nog gezorgd worden dat de rubric kan vergeleken worden (dus soli en bedrijf antwoorden matchen)
                 if (r.Vraag.type.Equals(VraagType.RUBRIC))

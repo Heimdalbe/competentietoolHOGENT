@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class huhsofieisblondwhut : Migration
+    public partial class temp : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -243,11 +243,19 @@ namespace CompetentieTool.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    VacatureId = table.Column<string>(nullable: true)
+                    VacatureId = table.Column<string>(nullable: true),
+                    SollicitantId = table.Column<string>(nullable: true),
+                    DatumIngevuld = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IngevuldeVacatures", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_IngevuldeVacatures_AspNetUsers_SollicitantId",
+                        column: x => x.SollicitantId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_IngevuldeVacatures_Vacature_VacatureId",
                         column: x => x.VacatureId,
@@ -423,6 +431,11 @@ namespace CompetentieTool.Migrations
                 column: "VraagId",
                 unique: true,
                 filter: "[VraagId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IngevuldeVacatures_SollicitantId",
+                table: "IngevuldeVacatures",
+                column: "SollicitantId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_IngevuldeVacatures_VacatureId",

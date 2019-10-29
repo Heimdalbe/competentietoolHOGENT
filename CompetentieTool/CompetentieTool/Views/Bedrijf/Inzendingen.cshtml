@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CompetentieTool.Models.Domain.IngevuldeVacature>
+<h2>
+    Inzendingen
+</h2>
+@if (Model.Count() == 0)
+{
+    <div class="alert alert-danger">
+        <h4>Er zijn nog geen inzendingen voor deze vacature</h4>
+    </div>
+
+} else{
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sollicitant)
+            </th>
+            <th>
+                Datum van inzending
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sollicitant.Voornaam + " " + item.Sollicitant.Achternaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumIngevuld)
+                </td>
+                <td>
+                    <!--asp-route-id="item.Id"-->
+                    <a asp-controller="Rapport" asp-action="Index">Download</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+}

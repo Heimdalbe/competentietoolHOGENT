@@ -42,7 +42,7 @@ namespace CompetentieTool.Data
             builder.Entity<VraagMeerkeuze>().HasOne(v => v.Vignet).WithMany();
             builder.Entity<VraagMeerkeuze>().HasMany(v => v.Opties).WithOne();
 
-            builder.Entity<IngevuldeVacature>().HasMany(v => v.responses).WithOne();
+            builder.Entity<IngevuldeVacature>().HasMany(v => v.Responses).WithOne();
             builder.Entity<IngevuldeVacature>().HasOne(v => v.Vacature);
 
             builder.Entity<Response>().HasOne(r => r.Vraag);

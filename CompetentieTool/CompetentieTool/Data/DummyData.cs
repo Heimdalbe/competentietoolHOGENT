@@ -251,7 +251,7 @@ namespace CompetentieTool.Data
                 new Response { Vraag = vraag13, Aanvulling = "hier zijn we dan weer voor nog een vraag"}
             };
 
-            IngevuldeVacature ingevuldeVac1 = new IngevuldeVacature { Vacature = vac1, responses = responses};
+            IngevuldeVacature ingevuldeVac1 = new IngevuldeVacature { Vacature = vac1, Responses = responses};
 
 
             context.Competenties.Add(comp1);

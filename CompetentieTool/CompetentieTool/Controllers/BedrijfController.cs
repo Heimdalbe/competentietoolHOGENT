@@ -18,6 +18,19 @@ namespace CompetentieTool.Controllers
         private readonly ICompetentieRepository _competentieRepository;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IIngevuldeVacatureRepository _ingevuldeVacatureRepository;
+
+        public BedrijfController(IVacatureRepository vacatureRepository, ICompetentieRepository competentieRepository,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager, IIngevuldeVacatureRepository ingevuldeVacatureRepository)
+        {
+            _vacatureRepository = vacatureRepository;
+            _competentieRepository = competentieRepository;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _ingevuldeVacatureRepository = ingevuldeVacatureRepository;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -194,15 +207,16 @@ namespace CompetentieTool.Controllers
 
             return View(temp);
         }
-
-        public BedrijfController(IVacatureRepository vacatureRepository, ICompetentieRepository competentieRepository,
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+        public IActionResult Inzendingen(String id)
         {
-            _vacatureRepository = vacatureRepository;
-            _competentieRepository = competentieRepository;
-            _userManager = userManager;
-            _signInManager = signInManager;
+            IEnumerable<IngevuldeVacature> ingevuldeVacatures = _ingevuldeVacatureRepository.GetAllByVacature(id);
+            
+            
+            return View(ingevuldeVacatures);
         }
+
+
+
+
     }
 }

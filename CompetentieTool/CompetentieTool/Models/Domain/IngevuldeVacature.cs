@@ -9,11 +9,14 @@ namespace CompetentieTool.Models.Domain
     {
         public string Id { get; set; }
         public Vacature Vacature { get; set; }
-        public IList<Response> responses { get; set; }
+        public IList<Response> Responses { get; set; }
+        public Sollicitant Sollicitant { get; set; }
+        public DateTime DatumIngevuld { get; set; }
 
         public IngevuldeVacature()
         {
-            responses = new List<Response>();
+            DatumIngevuld = DateTime.Now;
+            Responses = new List<Response>();
         }
     }
 }

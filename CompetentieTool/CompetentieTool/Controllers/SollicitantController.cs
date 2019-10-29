@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using CompetentieTool.Data.Repositories;
 using CompetentieTool.Domain;
 using CompetentieTool.Models.Domain;
+using CompetentieTool.Models.Identities;
 using CompetentieTool.Models.IRepositories;
 using CompetentieTool.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CompetentieTool.Controllers
@@ -16,8 +18,11 @@ namespace CompetentieTool.Controllers
         private readonly IVacatureRepository _vacatureRepository;
         private readonly IIngevuldeVacatureRepository _ingevuldeVacatureRepository;
 
-        public SollicitantController(IVacatureRepository vacatureRepository, IIngevuldeVacatureRepository ingevuldeVacatureRepository)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public SollicitantController(IVacatureRepository vacatureRepository, IIngevuldeVacatureRepository ingevuldeVacatureRepository, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             this._vacatureRepository = vacatureRepository;
             _ingevuldeVacatureRepository = ingevuldeVacatureRepository;
         }
@@ -72,8 +77,9 @@ namespace CompetentieTool.Controllers
             IEnumerable<IVraag> vragen = _vacatureRepository.GetAllQuestions();
             IVraag vraag = null;
             Mogelijkheid optie = null;
-
-            foreach(var group in models)
+            vac.Sollicitant = (Sollicitant) _userManager.GetUserAsync(HttpContext.User).Result;
+             
+            foreach (var group in models)
             {
                 foreach(var item in group.Values)
                 {
@@ -82,7 +88,7 @@ namespace CompetentieTool.Controllers
                     {
                         optie = ((VraagMeerkeuze)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
                     }
-                    vac.responses.Add(new Response { Aanvulling = item.Redenering, Vraag = vraag, OptieKeuze= optie });
+                    vac.Responses.Add(new Response { Aanvulling = item.Redenering, Vraag = vraag, OptieKeuze= optie });
                 }
             }
 

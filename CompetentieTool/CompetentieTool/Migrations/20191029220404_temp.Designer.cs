@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191029172545_huhsofieisblondwhut")]
-    partial class huhsofieisblondwhut
+    [Migration("20191029220404_temp")]
+    partial class temp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -107,9 +107,15 @@ namespace CompetentieTool.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DatumIngevuld");
+
+                    b.Property<string>("SollicitantId");
+
                     b.Property<string>("VacatureId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SollicitantId");
 
                     b.HasIndex("VacatureId");
 
@@ -451,6 +457,10 @@ namespace CompetentieTool.Migrations
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.IngevuldeVacature", b =>
                 {
+                    b.HasOne("CompetentieTool.Models.Domain.Sollicitant", "Sollicitant")
+                        .WithMany()
+                        .HasForeignKey("SollicitantId");
+
                     b.HasOne("CompetentieTool.Models.Domain.Vacature", "Vacature")
                         .WithMany()
                         .HasForeignKey("VacatureId");
@@ -470,7 +480,7 @@ namespace CompetentieTool.Migrations
             modelBuilder.Entity("CompetentieTool.Models.Domain.Response", b =>
                 {
                     b.HasOne("CompetentieTool.Models.Domain.IngevuldeVacature")
-                        .WithMany("responses")
+                        .WithMany("Responses")
                         .HasForeignKey("IngevuldeVacatureId");
 
                     b.HasOne("CompetentieTool.Models.Domain.Mogelijkheid", "OptieKeuze")

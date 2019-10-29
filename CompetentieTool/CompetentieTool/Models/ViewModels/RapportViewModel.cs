@@ -12,6 +12,7 @@ namespace CompetentieTool.Models.ViewModels
         public String Vignet { get; set; }
         public String OptieKeuze{ get; set; }
         public String Redenering { get; set; }
+        public String mail { get; set; }
         public RapportViewModel()
         {
 
