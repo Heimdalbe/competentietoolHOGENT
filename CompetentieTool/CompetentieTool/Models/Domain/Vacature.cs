@@ -18,6 +18,8 @@ namespace CompetentieTool.Models.Domain
 
         public ICollection<VacatureCompetentie> CompetentiesLijst { get; set; }
 
+        public Organisatie organisatie { get; set; }
+
         public void AddCompetenties(ICollection<Competentie> competenties)
         {
             foreach (Competentie comp in competenties)

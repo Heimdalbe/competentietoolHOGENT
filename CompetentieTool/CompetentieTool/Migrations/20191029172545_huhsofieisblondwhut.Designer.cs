@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191028094933_thomasisros")]
-    partial class thomasisros
+    [Migration("20191029172545_huhsofieisblondwhut")]
+    partial class huhsofieisblondwhut
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -175,7 +175,11 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("Functie");
 
+                    b.Property<string>("organisatieId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("organisatieId");
 
                     b.ToTable("Vacature");
                 });
@@ -476,6 +480,13 @@ namespace CompetentieTool.Migrations
                     b.HasOne("CompetentieTool.Domain.IVraag", "Vraag")
                         .WithMany()
                         .HasForeignKey("VraagId");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.Vacature", b =>
+                {
+                    b.HasOne("CompetentieTool.Models.Domain.Organisatie", "organisatie")
+                        .WithMany()
+                        .HasForeignKey("organisatieId");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetentie", b =>

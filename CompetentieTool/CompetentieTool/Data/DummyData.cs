@@ -67,9 +67,10 @@ namespace CompetentieTool.Data
                 }
                 id1 = user.Id;
             }
+            var user1 = new Organisatie();
             if (await userManager.FindByNameAsync("testerboy420") == null)
             {
-                var user1 = new Organisatie();
+                
                 var input1 = new RegisterModel.InputModel();
                 input1.Achternaam = "bobbie";
                 input1.Voornaam = "Bob";
@@ -94,16 +95,44 @@ namespace CompetentieTool.Data
                 }
                 id2  = user1.Id;
             }
+            var user2 = new Organisatie();
+            if (await userManager.FindByNameAsync("testerboy420") == null)
+            {
+
+                var input1 = new RegisterModel.InputModel();
+                input1.Achternaam = "bobbie";
+                input1.Voornaam = "Bob";
+                input1.Email = "test2@test.be";
+                input1.GsmNummer = "0123456789";
+                input1.Geslacht = "V";
+                input1.Huisnummer = "20";
+                input1.Straat = "koekusstraat";
+                input1.Nationaliteit = "Belg";
+                input1.Geboortedatum = new DateTime(1990, 12, 10);
+                input1.Gemeente = "Gent";
+                input1.Postcode = "9000";
+                input1.OrganisatieNaam = "Coca-Cola";
+                input1.Btwnummer = "0123456789";
+                user2.SetGegevensWerkgever(input1);
+
+                var result = await userManager.CreateAsync(user2);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user2, password);
+                    await userManager.AddToRoleAsync(user2, role1);
+                }
+                id2 = user2.Id;
+            }
 
             // use this to initialize vacature test data
-             AddVacatures(context);
+            AddVacatures(context, user1, user2);
         }
 
-        public static void AddVacatures(ApplicationDbContext context)
+        public static void AddVacatures(ApplicationDbContext context, ApplicationUser bedrijf, ApplicationUser bedrijf2)
         {
-            Vacature vac1 = new Vacature { Beschrijving = "Verpleger voor thuiszorg bij het gele kruis", Functie = "Verpleger voor thuiszorg" };
-            Vacature vac2 = new Vacature { Beschrijving = "Verpleger in ziekenhuis UZ te Gent", Functie = "Verpleger" };
-            Vacature vac3 = new Vacature { Beschrijving = "Medewerker die helpt bij bloedinzamelingen", Functie = "Rode kruis medewerker" };
+            Vacature vac1 = new Vacature { Beschrijving = "Verpleger voor thuiszorg bij het gele kruis", Functie = "Verpleger voor thuiszorg", organisatie = (Organisatie)bedrijf };
+            Vacature vac2 = new Vacature { Beschrijving = "Verpleger in ziekenhuis UZ te Gent", Functie = "Verpleger", organisatie = (Organisatie)bedrijf };
+            Vacature vac3 = new Vacature { Beschrijving = "Medewerker die helpt bij bloedinzamelingen", Functie = "Rode kruis medewerker", organisatie = (Organisatie)bedrijf2 };
 
             IList<Mogelijkheid> opties13 = new List<Mogelijkheid>()
             {

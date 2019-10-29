@@ -173,7 +173,11 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("Functie");
 
+                    b.Property<string>("organisatieId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("organisatieId");
 
                     b.ToTable("Vacature");
                 });
@@ -474,6 +478,13 @@ namespace CompetentieTool.Migrations
                     b.HasOne("CompetentieTool.Domain.IVraag", "Vraag")
                         .WithMany()
                         .HasForeignKey("VraagId");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.Vacature", b =>
+                {
+                    b.HasOne("CompetentieTool.Models.Domain.Organisatie", "organisatie")
+                        .WithMany()
+                        .HasForeignKey("organisatieId");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.VacatureCompetentie", b =>

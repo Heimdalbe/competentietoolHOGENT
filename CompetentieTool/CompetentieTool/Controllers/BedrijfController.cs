@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using CompetentieTool.Domain;
 using CompetentieTool.Models.Domain;
+using CompetentieTool.Models.Identities;
 using CompetentieTool.Models.IRepositories;
 using CompetentieTool.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CompetentieTool.Controllers
@@ -14,7 +16,8 @@ namespace CompetentieTool.Controllers
     {
         private readonly IVacatureRepository _vacatureRepository;
         private readonly ICompetentieRepository _competentieRepository;
-
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         public IActionResult Index()
         {
             return View();
@@ -22,8 +25,11 @@ namespace CompetentieTool.Controllers
 
         public IActionResult VacaturesList()
         {
-            //TODO(Joren): filter op bedrijf
-            return View(_vacatureRepository.GetAll());
+            var organisatie = (Organisatie)_userManager.GetUserAsync(HttpContext.User).Result;
+            //TODO(Joren): filter op bedrijf$
+            IEnumerable<Vacature> vacatures = _vacatureRepository.GetAll().Where(v => v.organisatie != null && v.organisatie.Id.Equals(organisatie.Id));
+
+            return View(vacatures);
         }
 
         public IActionResult Create()
@@ -45,6 +51,7 @@ namespace CompetentieTool.Controllers
                 Functie = vm.Functie,
                 Beschrijving = vm.Beschrijving,
             };
+            temp.organisatie = (Organisatie) _userManager.GetUserAsync(HttpContext.User).Result;
 
             var templist = new List<Competentie>();
 
@@ -188,10 +195,14 @@ namespace CompetentieTool.Controllers
             return View(temp);
         }
 
-        public BedrijfController(IVacatureRepository vacatureRepository, ICompetentieRepository competentieRepository)
+        public BedrijfController(IVacatureRepository vacatureRepository, ICompetentieRepository competentieRepository,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager)
         {
             _vacatureRepository = vacatureRepository;
             _competentieRepository = competentieRepository;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
     }
 }

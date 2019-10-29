@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CompetentieTool.Data.Repositories;
 using CompetentieTool.Models.Domain;
+using CompetentieTool.Models.IRepositories;
 using CompetentieTool.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -12,7 +13,13 @@ namespace CompetentieTool.Controllers
 {
     public class RapportController : Controller
     {
-        private readonly IngevuldeVacatureRepository _ingevuldeVacatureRepository;
+        
+        private readonly IIngevuldeVacatureRepository _ingevuldeVacatureRepository;
+
+        public RapportController(IIngevuldeVacatureRepository ingevuldeVacatureRepository)
+        {
+            _ingevuldeVacatureRepository = ingevuldeVacatureRepository;
+        }
         public IActionResult Index(String id)
         {
 
