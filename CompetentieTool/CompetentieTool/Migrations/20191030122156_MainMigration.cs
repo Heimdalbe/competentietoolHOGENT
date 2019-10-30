@@ -303,7 +303,8 @@ namespace CompetentieTool.Migrations
                     Aanvulling = table.Column<string>(nullable: true),
                     IsSchrapOptie = table.Column<bool>(nullable: false),
                     AanvullingId = table.Column<string>(nullable: true),
-                    VraagMeerkeuzeId = table.Column<string>(nullable: true)
+                    VraagMeerkeuzeId = table.Column<string>(nullable: true),
+                    VraagRubricsId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -317,6 +318,12 @@ namespace CompetentieTool.Migrations
                     table.ForeignKey(
                         name: "FK_Mogelijkheid_Vragen_VraagMeerkeuzeId",
                         column: x => x.VraagMeerkeuzeId,
+                        principalTable: "Vragen",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Mogelijkheid_Vragen_VraagRubricsId",
+                        column: x => x.VraagRubricsId,
                         principalTable: "Vragen",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -450,6 +457,11 @@ namespace CompetentieTool.Migrations
                 name: "IX_Mogelijkheid_VraagMeerkeuzeId",
                 table: "Mogelijkheid",
                 column: "VraagMeerkeuzeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Mogelijkheid_VraagRubricsId",
+                table: "Mogelijkheid",
+                column: "VraagRubricsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Response_IngevuldeVacatureId",

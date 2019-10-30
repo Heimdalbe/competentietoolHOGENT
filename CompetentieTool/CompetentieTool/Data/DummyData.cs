@@ -152,7 +152,8 @@ namespace CompetentieTool.Data
             Competentie comp1 = new Competentie
             {
                 Naam = "Niet veroordelen",
-                Verklaring = "De hulpverlener veroordeelt niet en is zich hierbij bewust van de invloed van zijn eigen waarde, opvoedings- en normenkader op zijn denken"
+                Verklaring = "De hulpverlener veroordeelt niet en is zich hierbij bewust van de invloed van zijn eigen waarde, opvoedings- en normenkader op zijn denken",
+                Type = CompetentieType.GRONDHOUDING
             };
 
             Mogelijkheid optie11 = new Mogelijkheid { Input = "U spreekt Boris aan over het feit dat U het jammer vindt dat hij het zorgsysteem misbruikt heeft", Output = "de cliënt aanspreekt over zijn/haar gedrag" };
@@ -176,7 +177,8 @@ namespace CompetentieTool.Data
             Competentie comp3 = new Competentie
             {
                 Naam = "Respecteren Zelfbeschikkingsrecht",
-                Verklaring = "De hulpverlener respecteert het recht van de cliënt om zelf te beslissen  over zijn/haar situatie, ook al wijkt de beslissing af van de visie van de hulpverlener. Interventies die gericht zijn op het “overnemen” van de situatie bespreekt hij op voorhand met de cliënt zelf."
+                Verklaring = "De hulpverlener respecteert het recht van de cliënt om zelf te beslissen  over zijn/haar situatie, ook al wijkt de beslissing af van de visie van de hulpverlener. Interventies die gericht zijn op het “overnemen” van de situatie bespreekt hij op voorhand met de cliënt zelf.",
+                Type = CompetentieType.GRONDHOUDING
             };
 
 
@@ -199,7 +201,8 @@ namespace CompetentieTool.Data
             Competentie comp12 = new Competentie
             {
                 Naam = "Ondernemingszin",
-                Verklaring = "De hulpverlener creëert actief kansen en omstandigheden om de situatie van de cliënt te verbeteren. Hij/zij zet hiertoe in op verschillende niveaus: in de relatie met de cliënt, binnen de eigen organisatie, tussen organisaties én binnen een ruime maatschappelijke context."
+                Verklaring = "De hulpverlener creëert actief kansen en omstandigheden om de situatie van de cliënt te verbeteren. Hij/zij zet hiertoe in op verschillende niveaus: in de relatie met de cliënt, binnen de eigen organisatie, tussen organisaties én binnen een ruime maatschappelijke context.",
+                Type = CompetentieType.GRONDHOUDING
             };
 
 
@@ -226,7 +229,8 @@ namespace CompetentieTool.Data
             Competentie comp15 = new Competentie
             {
                 Naam = "Zorgzaamheid",
-                Verklaring = "De hulpverlener vertoont een authentieke betrokkenheid en zorgzame houding naar cliënten en collega’s"
+                Verklaring = "De hulpverlener vertoont een authentieke betrokkenheid en zorgzame houding naar cliënten en collega’s",
+                Type = CompetentieType.GRONDHOUDING
             };
 
 
@@ -255,7 +259,8 @@ namespace CompetentieTool.Data
             Competentie comp42 = new Competentie
             {
                 Naam = "Kunnen afronden van een hulpverlenersrelatie",
-                Verklaring = "De hulpverlener is er zich van bewust dat het afronden van een hulpverlenersrelatie voor cliënten betekent dat er afscheid moet worden genomen van een intieme vertrouwensrelatie.  De hulpverlener zorgt voor een graduele overgang en betrekt indien nodig reeds op voorhand de hulpverleners of mantelzorgers die de zorg zullen overnemen."
+                Verklaring = "De hulpverlener is er zich van bewust dat het afronden van een hulpverlenersrelatie voor cliënten betekent dat er afscheid moet worden genomen van een intieme vertrouwensrelatie.  De hulpverlener zorgt voor een graduele overgang en betrekt indien nodig reeds op voorhand de hulpverleners of mantelzorgers die de zorg zullen overnemen.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
 
@@ -284,7 +289,8 @@ namespace CompetentieTool.Data
             Competentie comp43 = new Competentie
             {
                 Naam = "Going the extra mile",
-                Verklaring = "De hulpverlener durft op basis van rationele overwegingen acties te ondernemen om cliënten te ondersteunen, zelfs indien deze afwijken van het gebruikelijke patroon of afspraken in het team.."
+                Verklaring = "De hulpverlener durft op basis van rationele overwegingen acties te ondernemen om cliënten te ondersteunen, zelfs indien deze afwijken van het gebruikelijke patroon of afspraken in het team..",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
 
@@ -313,7 +319,8 @@ namespace CompetentieTool.Data
             Competentie comp45 = new Competentie
             {
                 Naam = "Professionele nabijheid",
-                Verklaring = "De hulpverlener is authentiek betrokken op de cliënt en zijn situatie. Hij/zij varieert in de mate van emotionele afstand om in overleg met het team het therapeutisch handelen te waarborgen."
+                Verklaring = "De hulpverlener is authentiek betrokken op de cliënt en zijn situatie. Hij/zij varieert in de mate van emotionele afstand om in overleg met het team het therapeutisch handelen te waarborgen.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
 
@@ -341,7 +348,8 @@ namespace CompetentieTool.Data
             Competentie comp46 = new Competentie
             {
                 Naam = "Adviseren & individuele psycho-educatie",
-                Verklaring = "De hulpverlener kan een inschatting maken wanneer advies een meerwaarde betekent en kan dit op een correcte en niet-belerende manier overbrengen."
+                Verklaring = "De hulpverlener kan een inschatting maken wanneer advies een meerwaarde betekent en kan dit op een correcte en niet-belerende manier overbrengen.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
 
@@ -368,7 +376,8 @@ namespace CompetentieTool.Data
             Competentie comp49 = new Competentie
             {
                 Naam = "Omgaan met grensoverschrijdend gedrag",
-                Verklaring = "De hulpverlener kan omgaan met situaties die zijn persoonlijke grenzen overschrijden zoals intimidatie en agressie."
+                Verklaring = "De hulpverlener kan omgaan met situaties die zijn persoonlijke grenzen overschrijden zoals intimidatie en agressie.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
 
@@ -398,7 +407,8 @@ namespace CompetentieTool.Data
             Competentie comp60 = new Competentie
             {
                 Naam = "Omgaan met onmacht en eigen frustratie",
-                Verklaring = "De hulpverlener kan zijn onmacht kanaliseren via het team en kan hierbij eigen frustraties op een respectvolle manier ventileren naar collega’s."
+                Verklaring = "De hulpverlener kan zijn onmacht kanaliseren via het team en kan hierbij eigen frustraties op een respectvolle manier ventileren naar collega’s.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
 
@@ -427,7 +437,8 @@ namespace CompetentieTool.Data
             Competentie comp73 = new Competentie
             {
                 Naam = "Omgaan met tegenoverdracht",
-                Verklaring = "De hulpverlener is zich bewust van gevoelens van tegenoverdracht.  Hij/zij is in staat om te reflecteren van waaruit dit komt en kan dit bespreekbaar stellen."
+                Verklaring = "De hulpverlener is zich bewust van gevoelens van tegenoverdracht.  Hij/zij is in staat om te reflecteren van waaruit dit komt en kan dit bespreekbaar stellen.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
 
@@ -457,7 +468,8 @@ namespace CompetentieTool.Data
             Competentie comp75 = new Competentie
             {
                 Naam = "Positive risk taking",
-                Verklaring = "De wens van de cliënt volgen kan in sommige gevallen een zeker risico inhouden. De hulpverlener maakt hierbij een bewuste afweging tussen de eigen inschatting van een situatie enerzijds  en de manier waarop de cliënt de situatie ziet."
+                Verklaring = "De wens van de cliënt volgen kan in sommige gevallen een zeker risico inhouden. De hulpverlener maakt hierbij een bewuste afweging tussen de eigen inschatting van een situatie enerzijds  en de manier waarop de cliënt de situatie ziet.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
 
@@ -483,7 +495,8 @@ namespace CompetentieTool.Data
             Competentie comp81 = new Competentie
             {
                 Naam = "Controleren",
-                Verklaring = "De hulpverlener is er zich van bewust dat controle gericht is op het ondersteunen van de cliënt en dus niet tot een automatisme mag verworden. Controle vereist immers het mandaat van de cliënt. Controle als interventie moet op regelmatige basis samen met de cliënt op zijn therapeutische meerwaarde worden geëvalueerd."
+                Verklaring = "De hulpverlener is er zich van bewust dat controle gericht is op het ondersteunen van de cliënt en dus niet tot een automatisme mag verworden. Controle vereist immers het mandaat van de cliënt. Controle als interventie moet op regelmatige basis samen met de cliënt op zijn therapeutische meerwaarde worden geëvalueerd.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
 
@@ -541,7 +554,8 @@ namespace CompetentieTool.Data
             Competentie comp10 = new Competentie
             {
                 Naam = "Betrouwbaar en echtheid",
-                Verklaring = "De acties die de hulpverlener stelt zijn congruent met diens persoonlijkheid, uitstraling, bedoelingen uitspraken en acties. De hulpverlener doet wat hij zegt en zegt wat hij doet."
+                Verklaring = "De acties die de hulpverlener stelt zijn congruent met diens persoonlijkheid, uitstraling, bedoelingen uitspraken en acties. De hulpverlener doet wat hij zegt en zegt wat hij doet.",
+                Type = CompetentieType.GRONDHOUDING
             };
 
             String output10 = "Indien er een keuze moet gemaakt worden tussen het voeren van een vooraf gepland gesprek en de last minute bespreking van een cliënt die de sollicitant zou begeleiden zal de sollicitant volgend ondernemen << Onderstaand zijn beweegreden hiertoe $$ Hulp ter interpretatie: cliënten geven aan dat ze het zeer belangrijk vinden dat hulpverleners zich aan hun woord houden.";
@@ -559,7 +573,8 @@ namespace CompetentieTool.Data
             Competentie comp32 = new Competentie
             {
                 Naam = "Evidence based werken",
-                Verklaring = "De hulpverlener combineert in zijn zorginterventies eigen expertise, wetenschappelijke evidentie ervaringskennis en vertaalt dit naar de individuele situatie van de cliënt."
+                Verklaring = "De hulpverlener combineert in zijn zorginterventies eigen expertise, wetenschappelijke evidentie ervaringskennis en vertaalt dit naar de individuele situatie van de cliënt.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
             String output32 = "De sollicitant geeft aan dat hij het conceptualiseren van goede zorg op basis van evidence based handelen als volgt ziet: >> Belangrijk hierbij is dat de sollicitant achterliggende principes van richtlijnen, meetinstrumenten, concepten, modellen, tools etc. kent en het gebruik ervan niet reduceert tot een louter uitvoering ervan.";
@@ -576,7 +591,8 @@ namespace CompetentieTool.Data
             Competentie comp41 = new Competentie
             {
                 Naam = "Connectie maken via dagdagelijksheid",
-                Verklaring = "De hulpverlener gebruikt de dagdagelijkse context om een authentiek contact met de cliënt te bewerkstelligen en tot verdieping te komen in de gesprekken."
+                Verklaring = "De hulpverlener gebruikt de dagdagelijkse context om een authentiek contact met de cliënt te bewerkstelligen en tot verdieping te komen in de gesprekken.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
             String output41 = "Onderstaand wordt weergegeven hoe de sollicitant kijkt naar alledaagse gesprekken. >> Uit ons onderzoek blijkt dat het bewust aanwenden van dagdagelijkse gesprekken als belangrijke competentie wordt geacht om contact te bewerkstelligen en in een latere fase mogelijke verandering te initiëren.";
@@ -593,7 +609,8 @@ namespace CompetentieTool.Data
             Competentie comp51 = new Competentie
             {
                 Naam = "Bieden hoop- en zingeving",
-                Verklaring = "De hulpverlener blijft de cliënt prikkelen om in zichzelf en zijn krachten te geloven."
+                Verklaring = "De hulpverlener blijft de cliënt prikkelen om in zichzelf en zijn krachten te geloven.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
             String output51 = "Onderstaand geeft de sollicitant weer hoe hij als hulpverlener bijdraagt tot het bieden van hoop- en zingeving. >> Beperkt zich dit tot concreet niveau of is dit abstracter? Kadert dit in een kwaliteitsvol bestaan? is dit ingebed in het dagdagelijks denken en handelen ?";
@@ -611,7 +628,8 @@ namespace CompetentieTool.Data
             Competentie comp56 = new Competentie
             {
                 Naam = "Luistervaardigheden",
-                Verklaring = "De hulpverlener maakt tijd om op een onbevangen manier naar de cliënt te luisteren zonder zijn eigen bedenkingen of ideeën in te laten overheersen."
+                Verklaring = "De hulpverlener maakt tijd om op een onbevangen manier naar de cliënt te luisteren zonder zijn eigen bedenkingen of ideeën in te laten overheersen.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
             String output56 = "Onderstaand beschrijft de sollicitant op welke manier hij/zij zou reageren op de casus van Anna. >> Naast de eventuele uiting van subjectieve interpretaties kan u nagaan of de sollicitant eerder gericht is op actieve tussenkomsten dan wel op luisterbereidheid. Uit ons onderzoek blijkt immers dat in functie van de vertrouwensband goed luisteren naar het probleem erg belangrijk is vooraleer tot actie wordt overgegaan.Deze casus  is sterk gericht op de crisissituatie.Toch is het van belang om ook na te gaan of de sollicitant spontaan de sterktes van Anna benoemt en ermee aan de slag gaat in het gesprek.";
@@ -629,7 +647,8 @@ namespace CompetentieTool.Data
             Competentie comp69 = new Competentie
             {
                 Naam = "De vraag achter de hulpvraag detecteren",
-                Verklaring = "De hulpverlener exploreert de eigenlijke noden en vragen die zich achter de initiële hulpvraag of -appel schuilhouden."
+                Verklaring = "De hulpverlener exploreert de eigenlijke noden en vragen die zich achter de initiële hulpvraag of -appel schuilhouden.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
             String output69 = "De sollicitant geeft aan dat als mening over de stelling \"hulpverleners moeten blijven zoeken naar het waarom achter de initiële hulpvraag\" >> Uit onderzoek blijkt dat het van belang is dat de hulpvraag veelal evolueert doorheen de tijd en vorm krijgt doorheen het proces van de therapeutische relatie.";
@@ -646,7 +665,8 @@ namespace CompetentieTool.Data
             Competentie comp76 = new Competentie
             {
                 Naam = "Zorgplan opmaken",
-                Verklaring = "De hulpverlener kan een zorgplan opmaken dat gefaseerd is en subdoelstellingen evenals evaluatiemomenten bevat. Hij monitort dit continu en past het plan aan wanneer en waar nodig."
+                Verklaring = "De hulpverlener kan een zorgplan opmaken dat gefaseerd is en subdoelstellingen evenals evaluatiemomenten bevat. Hij monitort dit continu en past het plan aan wanneer en waar nodig.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
             String output76 = "De sollicitant geeft op basis van het vignet van Kurt onderstaand rudimentair zorgplan weer. Om dit te interpreteren kan U volgende zaken in overweging nemen: \n-\t Komen verschillende levensdomeinen, voldoende aan bod? \n-\t Worden er evaluatiemomenten ingebouwd? \n-\t Worden  sterktes ook geëxploreerd? \n-\t Wordt de cliënt gehoord, zorg voor context? \n-\t Is de intensiteit van het zorgplan afgestemd op de noden van de cliënt(niet te veel, niet te weinig)? \n-\t Wordt alles “gepathologiseerd” of wordt de reflectie gemaakt dat bepaald gedrag misschien perfect normaal is? \n-\t Op welke manier wordt er rekening gehouden met het sociaal isolement van de cliënt? \n-\t Worden andere organisaties betrokken of zal de sollicitant alles alleen opnemen ? (netwerkgerichtheid)";
@@ -664,7 +684,8 @@ namespace CompetentieTool.Data
             Competentie comp79 = new Competentie
             {
                 Naam = "Succeservaringen creëren en bekrachtigen",
-                Verklaring = "De hulpverlener creëert of expliciteert succeservaringen en maakt tijd om deze samen met de cliënt te valoriseren."
+                Verklaring = "De hulpverlener creëert of expliciteert succeservaringen en maakt tijd om deze samen met de cliënt te valoriseren.",
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
             String output79 = "Via een vignet wordt nagegaan in welke mate de sollicitant succeservaringen zal bekrachtigen; onderstaand wordt het antwoord gegeven van de sollicitant op de vraag hoe hij met de situatie zou omgaan indien de cliënt de job heeft >> Voor de interpretatie is het van belang te  checken of de sollicitant hierbij de focus zal leggen op de bevestiging van het succes enerzijds of op potentiële valkuilen anderzijds";
@@ -714,7 +735,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Presentie",
                 Verklaring = "De hulpverlener is nabij en beschikbaar voor ondersteuning, ook al zijn er geen handelingen of interventies nodig. Hij is deelgenoot van moeilijke en positieve momenten in het leven van de cliënt.",
-                Aanvulling = aanvulling8
+                Aanvulling = aanvulling8,
+                Type = CompetentieType.GRONDHOUDING
             };
 
             IVraag vraag8 = new VraagRubrics
@@ -745,7 +767,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Empathie",
                 Verklaring = "De hulpverlener kan zich inleven in de situatie van de cliënt en kan hierbij diens gedachtengang, gevoelens en verlangens capteren en terugkoppelen.",
-                Aanvulling = aanvulling9
+                Aanvulling = aanvulling9,
+                Type = CompetentieType.GRONDHOUDING
             };
 
             IVraag vraag9 = new VraagRubrics
@@ -776,7 +799,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Organisatiegericht denken",
                 Verklaring = "De hulpverlener denkt actief mee over het efficiënt inzetten van middelen en eigen zorgactiviteiten in functie van de zorg.",
-                Aanvulling = aanvulling13
+                Aanvulling = aanvulling13,
+                Type = CompetentieType.GRONDHOUDING
             };
 
             IVraag vraag13 = new VraagRubrics
@@ -807,7 +831,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Levenslang en breed leren",
                 Verklaring = "De hulpverlener volgt de actuele ontwikkelingen in het werkgebied nauwgezet op. Hij/zij werkt continu bewust aan zijn/haar zelfontwikkeling, ook los van de werksituatie.",
-                Aanvulling = aanvulling16
+                Aanvulling = aanvulling16,
+                Type = CompetentieType.GRONDHOUDING
             };
 
             IVraag vraag16 = new VraagRubrics
@@ -839,7 +864,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Zelfonthulling",
                 Verklaring = "De hulpverlener kan bewust en gericht zaken over zijn eigen leefsituatie inbrengen die de cliënt kunnen vooruit helpen of contact faciliteren (drempelverlagend, verhoogt herkenbaarheid).",
-                Aanvulling = aanvulling18
+                Aanvulling = aanvulling18,
+                Type = CompetentieType.GRONDHOUDING
             };
 
             IVraag vraag18 = new VraagRubrics
@@ -869,7 +895,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Circulair denken",
                 Verklaring = "De hulpverlener is er zich van bewust dat er niet altijd een direct verband is tussen een bepaalde gedraging en de problemen die optreden. Een directe oplossing om de probleem te verhelpen bestaat meestal niet. De hulpverlener kan patronen van interacties herkennen in ruimere context.",
-                Aanvulling = aanvulling19
+                Aanvulling = aanvulling19,
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
             IVraag vraag19 = new VraagRubrics
@@ -900,7 +927,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Psychopathologie",
                 Verklaring = "De hulpverlener heeft kennis over psychopathologie, etiologie, symptomen en de potentiële impact van een psychiatrische pathologie op de mens.",
-                Aanvulling = aanvulling20
+                Aanvulling = aanvulling20,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag20 = new VraagRubrics
@@ -930,7 +958,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Psychofarmacologie",
                 Verklaring = "De hulpverlener heeft kennis over de werking, bijwerking van psychofarmacologie, alsook interventies die medicatietrouw kunnen bevorderen.",
-                Aanvulling = aanvulling21
+                Aanvulling = aanvulling21,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag21 = new VraagRubrics
@@ -961,7 +990,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Somatische problemen",
                 Verklaring = "De hulpverlener heeft kennis over de meest voorkomende somatische problemen die voorkomen binnen een aantal doelgroepen in de GGZ.",
-                Aanvulling = aanvulling22
+                Aanvulling = aanvulling22,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag22 = new VraagRubrics
@@ -992,7 +1022,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Preventie- en leefstijlfactoren",
                 Verklaring = "De hulpverlener heeft kennis over leefstijlfactoren die somatische risico’s inhouden en kan gericht preventieve acties ondernemen op cliënt- en organisatieniveau.",
-                Aanvulling = aanvulling23
+                Aanvulling = aanvulling23,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag23 = new VraagRubrics
@@ -1023,7 +1054,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Vakgebied andere professionals",
                 Verklaring = "De hulpverlener kent de beroepsspecifieke invalshoeken van andere disciplines en (h)erkent de complementariteit tussen de disciplines actief binnen en buiten de organisatie.",
-                Aanvulling = aanvulling24
+                Aanvulling = aanvulling24,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag24 = new VraagRubrics
@@ -1055,7 +1087,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Kritische life-events (rouwverwerking)",
                 Verklaring = "De hulpverlener heeft kennis over rouwverwerking",
-                Aanvulling = aanvulling25a
+                Aanvulling = aanvulling25a,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag25a = new VraagRubrics
@@ -1087,7 +1120,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Kritische life-events (traumaverwerking)",
                 Verklaring = "De hulpverlener heeft kennis over traumaverwerking",
-                Aanvulling = aanvulling25b
+                Aanvulling = aanvulling25b,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag25b = new VraagRubrics
@@ -1118,7 +1152,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Wetenschappelijke literatuur",
                 Verklaring = "De hulpverlener weet waar hij betrouwbare wetenschappelijke literatuur kan consulteren, kan de kwaliteit beoordelen en de inhoud interpreteren.",
-                Aanvulling = aanvulling26
+                Aanvulling = aanvulling26,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag26 = new VraagRubrics
@@ -1150,7 +1185,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Beroepsgeheim ",
                 Verklaring = "De hulpverlener heeft kennis van de principes van het gedeeld beroepsgeheim en hanteert het nice to know/need to know principe in samenwerking met andere organisaties.",
-                Aanvulling = aanvulling27
+                Aanvulling = aanvulling27,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag27 = new VraagRubrics
@@ -1182,7 +1218,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Rechten (administratief)",
                 Verklaring = "De hulpverlener heeft kennis over de administratieve rechten van de cliënt in zijn situatie.",
-                Aanvulling = aanvulling28a
+                Aanvulling = aanvulling28a,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag28a = new VraagRubrics
@@ -1214,7 +1251,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Rechten (Financieel)",
                 Verklaring = "De hulpverlener heeft kennis over de financiële rechten van de cliënt in zijn situatie.",
-                Aanvulling = aanvulling28b
+                Aanvulling = aanvulling28b,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag28b = new VraagRubrics
@@ -1246,7 +1284,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Projectmanagement",
                 Verklaring = "De hulpverlener kent de principes van projectmanagement en kan ingeschakeld worden in (een deel van) de uitwerking van een project binnen de organisatie.",
-                Aanvulling = aanvulling30
+                Aanvulling = aanvulling30,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag30 = new VraagRubrics
@@ -1276,7 +1315,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Gerichte doorverwijzing",
                 Verklaring = "De hulpverlener heeft kennis over het vinden van instanties die oplossingen op-maat kunnen bieden voor concrete vragen aangaande noden op diverse levensdomeinen",
-                Aanvulling = aanvulling31
+                Aanvulling = aanvulling31,
+                Type = CompetentieType.KENNIS
             };
 
             IVraag vraag31 = new VraagRubrics
@@ -1310,7 +1350,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Agendabeheer",
                 Verklaring = "De hulpverlener kan zijn agenda en afspraken correct beheren en leeft zijn afspraken na naar cliënten en team toe.",
-                Aanvulling = aanvulling34
+                Aanvulling = aanvulling34,
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
             IVraag vraag34 = new VraagRubrics
@@ -1342,7 +1383,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "",
                 Verklaring = "",
-                Aanvulling = aanvulling35
+                Aanvulling = aanvulling35,
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
             IVraag vraag35 = new VraagRubrics
