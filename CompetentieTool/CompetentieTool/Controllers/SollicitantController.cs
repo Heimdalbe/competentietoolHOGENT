@@ -47,10 +47,17 @@ namespace CompetentieTool.Controllers
                 VraagViewModel res = new VraagViewModel();
                 res.VraagStelling = comp.Vraag.VraagStelling;
                 res.VraagId = comp.Vraag.Id;
+                res.Vignet = comp.Vraag.Vignet?.Beschrijving;
                 if(comp.Vraag is VraagMeerkeuze)
                 {
-                    res.Vignet = comp.Vraag.Vignet?.Beschrijving;
                     foreach(Mogelijkheid opt in ((VraagMeerkeuze)comp.Vraag).Opties)
+                    {
+                        res.opties.Add(opt);
+                    }
+                }
+                if (comp.Vraag is VraagRubrics)
+                {
+                    foreach (Mogelijkheid opt in ((VraagRubrics)comp.Vraag).Opties)
                     {
                         res.opties.Add(opt);
                     }

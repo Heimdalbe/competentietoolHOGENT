@@ -33,6 +33,12 @@
     <Compile Remove="Migrations\20191028092425_Vragen.Designer.cs" />
     <Compile Remove="Migrations\20191028093002_Test2.cs" />
     <Compile Remove="Migrations\20191028093002_Test2.Designer.cs" />
+    <Compile Remove="Migrations\20191029214407_Hello.cs" />
+    <Compile Remove="Migrations\20191029214407_Hello.Designer.cs" />
+    <Compile Remove="Migrations\20191029215943_Hello.cs" />
+    <Compile Remove="Migrations\20191029215943_Hello.Designer.cs" />
+    <Compile Remove="Migrations\20191029220303_Hell.cs" />
+    <Compile Remove="Migrations\20191029220303_Hell.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
