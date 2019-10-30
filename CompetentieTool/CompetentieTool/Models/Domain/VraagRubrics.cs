@@ -9,5 +9,6 @@ namespace CompetentieTool.Domain
     public class VraagRubrics : IVraag
     {
         public IEnumerable<Mogelijkheid> Opties { get; set; }
+        
     }
 }

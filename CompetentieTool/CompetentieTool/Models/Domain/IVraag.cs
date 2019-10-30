@@ -12,5 +12,6 @@ namespace CompetentieTool.Domain
         public String CompetentieId { get; set; }
         public String OutputString { get; set; }
         public Vignet Vignet { get; set; }
-        public VraagType type { get; set; }    }
+        public VraagType type { get; set; }
+    }
 }
