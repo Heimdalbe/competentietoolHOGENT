@@ -35,6 +35,7 @@ namespace CompetentieTool.Models.Identities
 
         }
         
+        
         public string Achternaam {
             get { return _achternaam; }
             set
@@ -150,5 +151,6 @@ namespace CompetentieTool.Models.Identities
 
         public abstract void SetGegevensSollicitant(RegisterSollicitantModel.InputModel input);
         public abstract String GetType();
+        public string VolledigeNaam => Voornaam + " " + Achternaam;
     }
 }

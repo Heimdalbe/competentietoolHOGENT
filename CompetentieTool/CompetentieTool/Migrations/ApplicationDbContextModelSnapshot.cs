@@ -42,11 +42,11 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("Naam");
 
+                    b.Property<int>("Type");
+
                     b.Property<string>("Verklaring");
 
                     b.Property<string>("VraagId");
-
-                    b.Property<int>("type");
 
                     b.HasKey("Id");
 

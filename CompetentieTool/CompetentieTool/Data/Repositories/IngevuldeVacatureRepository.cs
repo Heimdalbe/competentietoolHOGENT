@@ -32,7 +32,8 @@ namespace CompetentieTool.Data.Repositories
 
         public int GetAantalByVacature(Vacature vac)
         {
-            return _context.IngevuldeVacatures.Where(v => v.Vacature.Id.Equals(vac.Id)).Count();
+            return _context.IngevuldeVacatures.Include(s => s.Sollicitant).Include(s => s.Vacature)
+                .Where(v => v.Vacature.Id.Equals(vac.Id)).Count();
         }
 
         public IEnumerable<IngevuldeVacature> GetAll()

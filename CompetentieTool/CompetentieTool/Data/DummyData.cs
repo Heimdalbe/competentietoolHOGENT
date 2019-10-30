@@ -37,11 +37,11 @@ namespace CompetentieTool.Data
             {
                 await roleManager.CreateAsync(new ApplicationRole(role2, desc2, DateTime.Now));
             }
-            
-            
+
+            var user = new Sollicitant();
             if (await userManager.FindByNameAsync("thomass123") == null)
             {
-                var user = new Sollicitant();
+                
                 var input = new RegisterSollicitantModel.InputModel();
                 input.Achternaam = "Schuddinck";
                 input.Voornaam = "Thomas";
@@ -125,14 +125,14 @@ namespace CompetentieTool.Data
             }
 
             // use this to initialize vacature test data
-            AddVacatures(context, user1, user2);
+            AddVacatures(context, user1, user2, user);
         }
 
-        public static void AddVacatures(ApplicationDbContext context, ApplicationUser bedrijf, ApplicationUser bedrijf2)
+        public static void AddVacatures(ApplicationDbContext context, ApplicationUser bedrijf, ApplicationUser bedrijf2, ApplicationUser sollicitant)
         {
-            Vacature vac1 = new Vacature { Beschrijving = "Verpleger voor thuiszorg bij het gele kruis", Functie = "Verpleger voor thuiszorg" };
-            Vacature vac2 = new Vacature { Beschrijving = "Verpleger in ziekenhuis UZ te Gent", Functie = "Verpleger" };
-            Vacature vac3 = new Vacature { Beschrijving = "Medewerker die helpt bij bloedinzamelingen", Functie = "Rode kruis medewerker" };
+            Vacature vac1 = new Vacature { Beschrijving = "Verpleger voor thuiszorg bij het gele kruis", Functie = "Verpleger voor thuiszorg", organisatie= (Organisatie)bedrijf };
+            Vacature vac2 = new Vacature { Beschrijving = "Verpleger in ziekenhuis UZ te Gent", Functie = "Verpleger", organisatie = (Organisatie)bedrijf };
+            Vacature vac3 = new Vacature { Beschrijving = "Medewerker die helpt bij bloedinzamelingen", Functie = "Rode kruis medewerker", organisatie = (Organisatie)bedrijf2 };
 
             //Vignets
             Vignet boris = new Vignet { Beschrijving = "Boris woont alleen in een uitgewoonde studio in een verpauperde buurt van de gemeente. Na een residentiële opname van drie maanden werd hij  aangemeld voor mobiele psychiatrische zorg zodat jij zijn opvolging doet sinds een aantal weken. De begeleiding loopt in jouw opinie wat stroever, Boris heeft het vooral over praktische zaken die in orde zouden moeten gebracht worden.Boris heeft een zoon van 17 en een dochter van 12 waar hij het vaak over heeft, maar hij ziet hen relatief weinig.Enkele maanden geleden had Boris het over het feit dat hij het zeer jammer vindt dat hij voor de feestdagen geen geschenku voor zijn kinderen kan kopen. u brengt dit ter sprake bij de bewindvoerder die begin december 300 euro extra voorziet op zijn wekelijks bedrag van 100 euro.Bij jouw volgende huisbezoek zie u dat Boris een nieuwe smartphone heeft met een driedubbele camera." };
@@ -1490,7 +1490,7 @@ namespace CompetentieTool.Data
                 new Response { Vraag = vraag13, Aanvulling = "hier zijn we dan weer voor nog een vraag"}
             };
 
-            IngevuldeVacature ingevuldeVac1 = new IngevuldeVacature { Vacature = vac1, Responses = responses};
+            IngevuldeVacature ingevuldeVac1 = new IngevuldeVacature { Vacature = vac1, Responses = responses, Sollicitant = (Sollicitant)sollicitant };
 
             // add to context
             context.Competenties.Add(comp1);

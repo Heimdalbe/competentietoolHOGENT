@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191030122156_MainMigration")]
-    partial class MainMigration
+    [Migration("20191030155607_temp")]
+    partial class temp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,11 +44,11 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("Naam");
 
+                    b.Property<int>("Type");
+
                     b.Property<string>("Verklaring");
 
                     b.Property<string>("VraagId");
-
-                    b.Property<int>("type");
 
                     b.HasKey("Id");
 
