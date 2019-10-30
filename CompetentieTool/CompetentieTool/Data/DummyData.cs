@@ -541,7 +541,7 @@ namespace CompetentieTool.Data
             Competentie comp10 = new Competentie
             {
                 Naam = "Betrouwbaar en echtheid",
-                Beschrijving = "De acties die de hulpverlener stelt zijn congruent met diens persoonlijkheid, uitstraling, bedoelingen uitspraken en acties. De hulpverlener doet wat hij zegt en zegt wat hij doet."
+                Verklaring = "De acties die de hulpverlener stelt zijn congruent met diens persoonlijkheid, uitstraling, bedoelingen uitspraken en acties. De hulpverlener doet wat hij zegt en zegt wat hij doet."
             };
 
             String output10 = "Indien er een keuze moet gemaakt worden tussen het voeren van een vooraf gepland gesprek en de last minute bespreking van een cliënt die de sollicitant zou begeleiden zal de sollicitant volgend ondernemen << Onderstaand zijn beweegreden hiertoe $$ Hulp ter interpretatie: cliënten geven aan dat ze het zeer belangrijk vinden dat hulpverleners zich aan hun woord houden.";
@@ -559,7 +559,7 @@ namespace CompetentieTool.Data
             Competentie comp32 = new Competentie
             {
                 Naam = "Evidence based werken",
-                Beschrijving = "De hulpverlener combineert in zijn zorginterventies eigen expertise, wetenschappelijke evidentie ervaringskennis en vertaalt dit naar de individuele situatie van de cliënt."
+                Verklaring = "De hulpverlener combineert in zijn zorginterventies eigen expertise, wetenschappelijke evidentie ervaringskennis en vertaalt dit naar de individuele situatie van de cliënt."
             };
 
             String output32 = "De sollicitant geeft aan dat hij het conceptualiseren van goede zorg op basis van evidence based handelen als volgt ziet: >> Belangrijk hierbij is dat de sollicitant achterliggende principes van richtlijnen, meetinstrumenten, concepten, modellen, tools etc. kent en het gebruik ervan niet reduceert tot een louter uitvoering ervan.";
@@ -576,7 +576,7 @@ namespace CompetentieTool.Data
             Competentie comp41 = new Competentie
             {
                 Naam = "Connectie maken via dagdagelijksheid",
-                Beschrijving = "De hulpverlener gebruikt de dagdagelijkse context om een authentiek contact met de cliënt te bewerkstelligen en tot verdieping te komen in de gesprekken."
+                Verklaring = "De hulpverlener gebruikt de dagdagelijkse context om een authentiek contact met de cliënt te bewerkstelligen en tot verdieping te komen in de gesprekken."
             };
 
             String output41 = "Onderstaand wordt weergegeven hoe de sollicitant kijkt naar alledaagse gesprekken. >> Uit ons onderzoek blijkt dat het bewust aanwenden van dagdagelijkse gesprekken als belangrijke competentie wordt geacht om contact te bewerkstelligen en in een latere fase mogelijke verandering te initiëren.";
@@ -593,7 +593,7 @@ namespace CompetentieTool.Data
             Competentie comp51 = new Competentie
             {
                 Naam = "Bieden hoop- en zingeving",
-                Beschrijving = "De hulpverlener blijft de cliënt prikkelen om in zichzelf en zijn krachten te geloven."
+                Verklaring = "De hulpverlener blijft de cliënt prikkelen om in zichzelf en zijn krachten te geloven."
             };
 
             String output51 = "Onderstaand geeft de sollicitant weer hoe hij als hulpverlener bijdraagt tot het bieden van hoop- en zingeving. >> Beperkt zich dit tot concreet niveau of is dit abstracter? Kadert dit in een kwaliteitsvol bestaan? is dit ingebed in het dagdagelijks denken en handelen ?";
@@ -611,7 +611,7 @@ namespace CompetentieTool.Data
             Competentie comp56 = new Competentie
             {
                 Naam = "Luistervaardigheden",
-                Beschrijving = "De hulpverlener maakt tijd om op een onbevangen manier naar de cliënt te luisteren zonder zijn eigen bedenkingen of ideeën in te laten overheersen."
+                Verklaring = "De hulpverlener maakt tijd om op een onbevangen manier naar de cliënt te luisteren zonder zijn eigen bedenkingen of ideeën in te laten overheersen."
             };
 
             String output56 = "Onderstaand beschrijft de sollicitant op welke manier hij/zij zou reageren op de casus van Anna. >> Naast de eventuele uiting van subjectieve interpretaties kan u nagaan of de sollicitant eerder gericht is op actieve tussenkomsten dan wel op luisterbereidheid. Uit ons onderzoek blijkt immers dat in functie van de vertrouwensband goed luisteren naar het probleem erg belangrijk is vooraleer tot actie wordt overgegaan.Deze casus  is sterk gericht op de crisissituatie.Toch is het van belang om ook na te gaan of de sollicitant spontaan de sterktes van Anna benoemt en ermee aan de slag gaat in het gesprek.";
@@ -629,7 +629,7 @@ namespace CompetentieTool.Data
             Competentie comp69 = new Competentie
             {
                 Naam = "De vraag achter de hulpvraag detecteren",
-                Beschrijving = "De hulpverlener exploreert de eigenlijke noden en vragen die zich achter de initiële hulpvraag of -appel schuilhouden."
+                Verklaring = "De hulpverlener exploreert de eigenlijke noden en vragen die zich achter de initiële hulpvraag of -appel schuilhouden."
             };
 
             String output69 = "De sollicitant geeft aan dat als mening over de stelling \"hulpverleners moeten blijven zoeken naar het waarom achter de initiële hulpvraag\" >> Uit onderzoek blijkt dat het van belang is dat de hulpvraag veelal evolueert doorheen de tijd en vorm krijgt doorheen het proces van de therapeutische relatie.";
@@ -646,7 +646,7 @@ namespace CompetentieTool.Data
             Competentie comp76 = new Competentie
             {
                 Naam = "Zorgplan opmaken",
-                Beschrijving = "De hulpverlener kan een zorgplan opmaken dat gefaseerd is en subdoelstellingen evenals evaluatiemomenten bevat. Hij monitort dit continu en past het plan aan wanneer en waar nodig."
+                Verklaring = "De hulpverlener kan een zorgplan opmaken dat gefaseerd is en subdoelstellingen evenals evaluatiemomenten bevat. Hij monitort dit continu en past het plan aan wanneer en waar nodig."
             };
 
             String output76 = "De sollicitant geeft op basis van het vignet van Kurt onderstaand rudimentair zorgplan weer. Om dit te interpreteren kan U volgende zaken in overweging nemen: \n-\t Komen verschillende levensdomeinen, voldoende aan bod? \n-\t Worden er evaluatiemomenten ingebouwd? \n-\t Worden  sterktes ook geëxploreerd? \n-\t Wordt de cliënt gehoord, zorg voor context? \n-\t Is de intensiteit van het zorgplan afgestemd op de noden van de cliënt(niet te veel, niet te weinig)? \n-\t Wordt alles “gepathologiseerd” of wordt de reflectie gemaakt dat bepaald gedrag misschien perfect normaal is? \n-\t Op welke manier wordt er rekening gehouden met het sociaal isolement van de cliënt? \n-\t Worden andere organisaties betrokken of zal de sollicitant alles alleen opnemen ? (netwerkgerichtheid)";
@@ -664,7 +664,7 @@ namespace CompetentieTool.Data
             Competentie comp79 = new Competentie
             {
                 Naam = "Succeservaringen creëren en bekrachtigen",
-                Beschrijving = "De hulpverlener creëert of expliciteert succeservaringen en maakt tijd om deze samen met de cliënt te valoriseren."
+                Verklaring = "De hulpverlener creëert of expliciteert succeservaringen en maakt tijd om deze samen met de cliënt te valoriseren."
             };
 
             String output79 = "Via een vignet wordt nagegaan in welke mate de sollicitant succeservaringen zal bekrachtigen; onderstaand wordt het antwoord gegeven van de sollicitant op de vraag hoe hij met de situatie zou omgaan indien de cliënt de job heeft >> Voor de interpretatie is het van belang te  checken of de sollicitant hierbij de focus zal leggen op de bevestiging van het succes enerzijds of op potentiële valkuilen anderzijds";

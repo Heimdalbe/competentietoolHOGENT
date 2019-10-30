@@ -14,7 +14,6 @@ namespace CompetentieTool.Domain
         public bool IsBasisCompetentie { get; set; }
         public String VraagId { get; set; }
         public IVraag Vraag { get; set; }
-        public String Beschrijving { get; set; }
         public Aanvulling Aanvulling { get; set; }
         public CompetentieType type { get; set; }
     }

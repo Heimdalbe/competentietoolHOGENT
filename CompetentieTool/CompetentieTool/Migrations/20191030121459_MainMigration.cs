@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class temp : Migration
+    public partial class MainMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -273,7 +273,6 @@ namespace CompetentieTool.Migrations
                     Verklaring = table.Column<string>(nullable: true),
                     IsBasisCompetentie = table.Column<bool>(nullable: false),
                     VraagId = table.Column<string>(nullable: true),
-                    Beschrijving = table.Column<string>(nullable: true),
                     AanvullingId = table.Column<string>(nullable: true),
                     type = table.Column<int>(nullable: false)
                 },
