@@ -39,8 +39,6 @@
     <Compile Remove="Migrations\20191029215943_Hello.Designer.cs" />
     <Compile Remove="Migrations\20191029220303_Hell.cs" />
     <Compile Remove="Migrations\20191029220303_Hell.Designer.cs" />
-    <Compile Remove="Migrations\20191030121233_CompetentieBeschrijvingWeg.cs" />
-    <Compile Remove="Migrations\20191030121233_CompetentieBeschrijvingWeg.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
