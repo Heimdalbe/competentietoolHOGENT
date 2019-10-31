@@ -38,17 +38,34 @@ namespace CompetentieTool.Data.Repositories
 
         public IEnumerable<IngevuldeVacature> GetAll()
         {
-            return _context.IngevuldeVacatures;
+            return _context.IngevuldeVacatures
+                .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.Competentie).ThenInclude(c => c.Vraag)
+                .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.GeselecteerdeOptie)
+                .Include(i => i.Vacature).ThenInclude(i => i.organisatie)
+                .Include(i => i.Responses).ThenInclude(r => r.OptieKeuze)
+                .Include(i => i.Sollicitant);
         }
 
         public IEnumerable<IngevuldeVacature> GetAllByVacature(String id)
         {
-            return _context.IngevuldeVacatures.Where(v => v.Vacature.Id.Equals(id));
+            return _context.IngevuldeVacatures
+                .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.Competentie).ThenInclude(c => c.Vraag)
+                .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst)//.ThenInclude(c => c.GeselecteerdeOptie)
+                .Include(i => i.Vacature).ThenInclude(i => i.organisatie)
+                .Include(i => i.Responses).ThenInclude(r => r.OptieKeuze)
+                .Include(i => i.Sollicitant)
+                .Where(v => v.Vacature.Id.Equals(id));
         }
 
         public IngevuldeVacature GetBy(string Id)
         {
-            return _context.IngevuldeVacatures.Include(v => v.Responses).Where(v => v.Id.Equals(Id)).SingleOrDefault();
+            return _context.IngevuldeVacatures
+                .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.Competentie).ThenInclude(c => c.Vraag)
+                .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.GeselecteerdeOptie)
+                .Include(i => i.Vacature).ThenInclude(i => i.organisatie)
+                .Include(i => i.Responses).ThenInclude(r => r.OptieKeuze)
+                .Include(i => i.Sollicitant)
+                .Where(v => v.Id.Equals(Id)).SingleOrDefault();
         }
 
         public void SaveChanges()
