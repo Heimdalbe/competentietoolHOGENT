@@ -330,31 +330,6 @@ namespace CompetentieTool.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VacatureCompetentie",
-                columns: table => new
-                {
-                    VacatureId = table.Column<string>(nullable: false),
-                    CompetentieId = table.Column<string>(nullable: false),
-                    GeselecteerdeOptie = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VacatureCompetentie", x => new { x.VacatureId, x.CompetentieId });
-                    table.ForeignKey(
-                        name: "FK_VacatureCompetentie_Competenties_CompetentieId",
-                        column: x => x.CompetentieId,
-                        principalTable: "Competenties",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_VacatureCompetentie_Vacature_VacatureId",
-                        column: x => x.VacatureId,
-                        principalTable: "Vacature",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Response",
                 columns: table => new
                 {
@@ -385,6 +360,37 @@ namespace CompetentieTool.Migrations
                         principalTable: "Vragen",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VacatureCompetentie",
+                columns: table => new
+                {
+                    VacatureId = table.Column<string>(nullable: false),
+                    CompetentieId = table.Column<string>(nullable: false),
+                    GeselecteerdeOptieId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VacatureCompetentie", x => new { x.VacatureId, x.CompetentieId });
+                    table.ForeignKey(
+                        name: "FK_VacatureCompetentie_Competenties_CompetentieId",
+                        column: x => x.CompetentieId,
+                        principalTable: "Competenties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_VacatureCompetentie_Mogelijkheid_GeselecteerdeOptieId",
+                        column: x => x.GeselecteerdeOptieId,
+                        principalTable: "Mogelijkheid",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_VacatureCompetentie_Vacature_VacatureId",
+                        column: x => x.VacatureId,
+                        principalTable: "Vacature",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -489,6 +495,11 @@ namespace CompetentieTool.Migrations
                 column: "CompetentieId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_VacatureCompetentie_GeselecteerdeOptieId",
+                table: "VacatureCompetentie",
+                column: "GeselecteerdeOptieId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Vragen_VignetId",
                 table: "Vragen",
                 column: "VignetId");
@@ -524,10 +535,10 @@ namespace CompetentieTool.Migrations
                 name: "IngevuldeVacatures");
 
             migrationBuilder.DropTable(
-                name: "Mogelijkheid");
+                name: "Competenties");
 
             migrationBuilder.DropTable(
-                name: "Competenties");
+                name: "Mogelijkheid");
 
             migrationBuilder.DropTable(
                 name: "Vacature");

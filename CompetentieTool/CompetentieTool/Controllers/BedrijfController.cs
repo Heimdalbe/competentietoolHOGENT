@@ -39,11 +39,8 @@ namespace CompetentieTool.Controllers
         public IActionResult VacaturesList()
         {
             var organisatie = (Organisatie)_userManager.GetUserAsync(HttpContext.User).Result;
-            //TODO(Joren): filter op bedrijf$
-            IEnumerable<Vacature> vacatures1 = _vacatureRepository.GetAll();
-            IEnumerable<Vacature> vacatures2 = vacatures1.Where(v => v.organisatie != null && v.organisatie.Id.Equals(organisatie.Id));
             IEnumerable<Vacature> vacatures = _vacatureRepository.GetAll().Where(v => v.organisatie != null && v.organisatie.Id.Equals(organisatie.Id));
-            var test = 1;
+
             return View(vacatures);
         }
 

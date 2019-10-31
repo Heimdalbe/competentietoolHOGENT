@@ -245,7 +245,7 @@ namespace CompetentieTool.Data
                 new Mogelijkheid { Input = "intensiteit contacten verhogen" }
             };
 
-            String output15 = "Op basis van een vignet wordt gevraagd wat de sollicitant zou doen indien een cliënt met een afhankelijkheidsproblematiek stevig doordrinkt en als hulpverlener niet meer wordt toegelaten. De sollicitant geeft aan dat hij in een soortgelijke situatie onderstaand zou ondernemen && rationale:$$";
+            String output15 = "Op Basis van een vignet wordt gevraagd wat de sollicitant zou doen indien een cliënt met een afhankelijkheidsproblematiek stevig doordrinkt en als hulpverlener niet meer wordt toegelaten. De sollicitant geeft aan dat hij in een soortgelijke situatie onderstaand zou ondernemen && rationale:$$";
 
             IVraag vraag15 = new VraagMeerkeuze
             {
@@ -270,10 +270,10 @@ namespace CompetentieTool.Data
 
             IList<Mogelijkheid> opties42 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "deze stopt, want de cliënt is weg van de afdeling. Het contact stopt volledig", Output = "hij stopt het contact volledig"},
-                new Mogelijkheid { Input = "deze stopt want de cliënt is weg, maar ik neem nog sporadisch telefonisch contact", Output = "hij neemt nog sporadisch telefonisch contact" },
-                new Mogelijkheid { Input = "de cliënt heeft nood aan opvolging, dus ik ga frequent langs in samenspraak met het mobiel team.", Output = "hij gaat frequent langs, samen met de diensten die de zorg verder zullen opnemen"},
-                new Mogelijkheid { Input = "deze moet gradueel afgerond worden in samenspraak met het mobiel team en ik pleit ervoor om nog aan huis te gaan", Output = "hij zal het contact gradueel afronden en de transitie naar een andere dienst faciliteren" }
+                new Mogelijkheid { Input = "Deze stopt, want de cliënt is weg van de afdeling. Het contact stopt volledig", Output = "hij stopt het contact volledig"},
+                new Mogelijkheid { Input = "Deze stopt want de cliënt is weg, maar ik neem nog sporadisch telefonisch contact", Output = "hij neemt nog sporadisch telefonisch contact" },
+                new Mogelijkheid { Input = "De cliënt heeft nood aan opvolging, dus ik ga frequent langs in samenspraak met het mobiel team.", Output = "hij gaat frequent langs, samen met de diensten die de zorg verder zullen opnemen"},
+                new Mogelijkheid { Input = "Deze moet gradueel afgerond worden in samenspraak met het mobiel team en ik pleit ervoor om nog aan huis te gaan", Output = "hij zal het contact gradueel afronden en de transitie naar een andere dienst faciliteren" }
             };
 
             String output42 = "In functie van het gradueel kunnen afronden van een hulpverlenersrelatie ziet de sollicitant onderstaande act als reactie op het plotse ontslag van een cliënt op de dienst && Volgend wordt weergeven om deze keuze te verantwoorden: $$";
@@ -294,20 +294,20 @@ namespace CompetentieTool.Data
             Competentie comp43 = new Competentie
             {
                 Naam = "Going the extra mile",
-                Verklaring = "De hulpverlener durft op basis van rationele overwegingen acties te ondernemen om cliënten te ondersteunen, zelfs indien deze afwijken van het gebruikelijke patroon of afspraken in het team..",
+                Verklaring = "De hulpverlener durft op Basis van rationele overwegingen acties te ondernemen om cliënten te ondersteunen, zelfs indien deze afwijken van het gebruikelijke patroon of afspraken in het team..",
                 Type = CompetentieType.VAARDIGHEDEN
             };
 
 
             IList<Mogelijkheid> opties43 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = " Niet doen. Dit is tegen de regels van de organisatie en leidt tot willekeur.", Output = "regels volgen eerder dan tegemoet komen aan de noden van de cliënt."},
+                new Mogelijkheid { Input = "Niet doen. Dit is tegen de regels van de organisatie en leidt tot willekeur.", Output = "regels volgen eerder dan tegemoet komen aan de noden van de cliënt."},
                 new Mogelijkheid { Input = "Voorlopig niet doen. Ik weet het niet en vraag toestemming bij het afdelingshoofd of de psychiater.", Output = "afwijkingen bevragen bij oversten." },
                 new Mogelijkheid { Input = "Niet doen. Dit zorgt ervoor dat Kurt afhankelijk blijft van de hulpverlening en dient vermeden te worden", Output = "aftoetsen wat de cliënt toekomstgericht kan helpen in functie van zelfredzaamheid eerder dan een instantoplossing aan te reiken." },
-                new Mogelijkheid { Input = " Doen. Kurt wordt op deze manier geholpen, zelfs al is dit tegen de regels", Output = "de hulpverlenersreflex volgen" }
+                new Mogelijkheid { Input = "Doen. Kurt wordt op deze manier geholpen, zelfs al is dit tegen de regels", Output = "de hulpverlenersreflex volgen" }
             };
 
-            String output43 = "De sollicitant zal aangaande het gericht afwijken van protocollen en richtlijnen het volgende ondernemen op basis van een casus: && Hij geeft hierbij volgende rationale weer: $$ Indien de sollicitant “doen” aangeeft en geen rationale geeft, kan dit eventueel wijzen op het volgen van hulpverlenersreflex/buikgevoel zonder toepassing van een kader.";
+            String output43 = "De sollicitant zal aangaande het gericht afwijken van protocollen en richtlijnen het volgende ondernemen op Basis van een casus: && Hij geeft hierbij volgende rationale weer: $$ Indien de sollicitant “doen” aangeeft en geen rationale geeft, kan dit eventueel wijzen op het volgen van hulpverlenersreflex/buikgevoel zonder toepassing van een kader.";
 
             IVraag vraag43 = new VraagMeerkeuze
             {
@@ -490,7 +490,7 @@ namespace CompetentieTool.Data
                 new Mogelijkheid { Input = "binnenhouden" }
             };
 
-            String output75 = "Op basis van de vraag of de sollicitant een door hem suïcidaal geachte cliënt uitgang zou verlenen wordt zijn attitude tot positive risk taking ingeschat. De sollicitant zou in dit geval de cliënt && Hij baseert zich hiervoor op volgende gedachtengang $$ Binnen onderzoek geven cliënten en medewerkers aan dat het belangrijk is dat hulpverleners beslissingen nemen die de cliënt en zijn situatie ten goede komen, maar die een mogelijks risico kunnen inhouden.";
+            String output75 = "Op Basis van de vraag of de sollicitant een door hem suïcidaal geachte cliënt uitgang zou verlenen wordt zijn attitude tot positive risk taking ingeschat. De sollicitant zou in dit geval de cliënt && Hij baseert zich hiervoor op volgende gedachtengang $$ Binnen onderzoek geven cliënten en medewerkers aan dat het belangrijk is dat hulpverleners beslissingen nemen die de cliënt en zijn situatie ten goede komen, maar die een mogelijks risico kunnen inhouden.";
 
             IVraag vraag75 = new VraagMeerkeuze
             {
@@ -507,7 +507,7 @@ namespace CompetentieTool.Data
             Competentie comp81 = new Competentie
             {
                 Naam = "Controleren",
-                Verklaring = "De hulpverlener is er zich van bewust dat controle gericht is op het ondersteunen van de cliënt en dus niet tot een automatisme mag verworden. Controle vereist immers het mandaat van de cliënt. Controle als interventie moet op regelmatige basis samen met de cliënt op zijn therapeutische meerwaarde worden geëvalueerd.",
+                Verklaring = "De hulpverlener is er zich van bewust dat controle gericht is op het ondersteunen van de cliënt en dus niet tot een automatisme mag verworden. Controle vereist immers het mandaat van de cliënt. Controle als interventie moet op regelmatige Basis samen met de cliënt op zijn therapeutische meerwaarde worden geëvalueerd.",
                 Type = CompetentieType.VAARDIGHEDEN
             };
 
@@ -591,7 +591,7 @@ namespace CompetentieTool.Data
                 Type = CompetentieType.VAARDIGHEDEN
             };
 
-            String output32 = "De sollicitant geeft aan dat hij het conceptualiseren van goede zorg op basis van evidence based handelen als volgt ziet: >> Belangrijk hierbij is dat de sollicitant achterliggende principes van richtlijnen, meetinstrumenten, concepten, modellen, tools etc. kent en het gebruik ervan niet reduceert tot een louter uitvoering ervan.";
+            String output32 = "De sollicitant geeft aan dat hij het conceptualiseren van goede zorg op Basis van evidence based handelen als volgt ziet: >> Belangrijk hierbij is dat de sollicitant achterliggende principes van richtlijnen, meetinstrumenten, concepten, modellen, tools etc. kent en het gebruik ervan niet reduceert tot een louter uitvoering ervan.";
 
             IVraag vraag32 = new VraagOpen
             {
@@ -688,7 +688,7 @@ namespace CompetentieTool.Data
                 Type = CompetentieType.VAARDIGHEDEN
             };
 
-            String output76 = "De sollicitant geeft op basis van het vignet van Kurt onderstaand rudimentair zorgplan weer. Om dit te interpreteren kan U volgende zaken in overweging nemen: \n-\t Komen verschillende levensdomeinen, voldoende aan bod? \n-\t Worden er evaluatiemomenten ingebouwd? \n-\t Worden  sterktes ook geëxploreerd? \n-\t Wordt de cliënt gehoord, zorg voor context? \n-\t Is de intensiteit van het zorgplan afgestemd op de noden van de cliënt(niet te veel, niet te weinig)? \n-\t Wordt alles “gepathologiseerd” of wordt de reflectie gemaakt dat bepaald gedrag misschien perfect normaal is? \n-\t Op welke manier wordt er rekening gehouden met het sociaal isolement van de cliënt? \n-\t Worden andere organisaties betrokken of zal de sollicitant alles alleen opnemen ? (netwerkgerichtheid)";
+            String output76 = "De sollicitant geeft op Basis van het vignet van Kurt onderstaand rudimentair zorgplan weer. Om dit te interpreteren kan U volgende zaken in overweging nemen: \n-\t Komen verschillende levensdomeinen, voldoende aan bod? \n-\t Worden er evaluatiemomenten ingebouwd? \n-\t Worden  sterktes ook geëxploreerd? \n-\t Wordt de cliënt gehoord, zorg voor context? \n-\t Is de intensiteit van het zorgplan afgestemd op de noden van de cliënt(niet te veel, niet te weinig)? \n-\t Wordt alles “gepathologiseerd” of wordt de reflectie gemaakt dat bepaald gedrag misschien perfect normaal is? \n-\t Op welke manier wordt er rekening gehouden met het sociaal isolement van de cliënt? \n-\t Worden andere organisaties betrokken of zal de sollicitant alles alleen opnemen ? (netwerkgerichtheid)";
 
             IVraag vraag76 = new VraagOpen
             {
@@ -840,9 +840,9 @@ namespace CompetentieTool.Data
             // comp 16
             IList<Mogelijkheid> opties16 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "in mijn werk baseer ik me vooral  op de expertise en voorbeeldfunctie van ervaren collega’s", Aanvulling = "te leunen op de expertise van collega’s" },
-                new Mogelijkheid { Input = "in mijn werk durf ik mezelf toelaten om fouten te maken om hieruit te leren" , Aanvulling = "zichzelf toe te laten fouten te maken en hieruit te leren"},
-                new Mogelijkheid { Input = " in mijn werk volg ik ontwikkelingen in het werkveld op de voet via diverse kanalen om hieruit te leren (vb. tijdschriften, websites, etc.)", Aanvulling = "ontwikkelingen in het werkveld op de voet te volgen via diverse media" }
+                new Mogelijkheid { Input = "In mijn werk baseer ik me vooral  op de expertise en voorbeeldfunctie van ervaren collega’s", Aanvulling = "te leunen op de expertise van collega’s" },
+                new Mogelijkheid { Input = "In mijn werk durf ik mezelf toelaten om fouten te maken om hieruit te leren" , Aanvulling = "zichzelf toe te laten fouten te maken en hieruit te leren"},
+                new Mogelijkheid { Input = "In mijn werk volg ik ontwikkelingen in het werkveld op de voet via diverse kanalen om hieruit te leren (vb. tijdschriften, websites, etc.)", Aanvulling = "ontwikkelingen in het werkveld op de voet te volgen via diverse media" }
             };
 
             Aanvulling aanvulling16 = new Aanvulling
@@ -873,10 +873,10 @@ namespace CompetentieTool.Data
             // comp 18
             IList<Mogelijkheid> opties18 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "zo weinig mogelijk te onthullen over mijzelf", Aanvulling = "zo weinig mogelijk te onthullen over mijzelf", Output = "niks te onthullen over zichzelf" },
-                new Mogelijkheid { Input = "een vriend te zijn voor de cliënt" , Aanvulling = "een vriend te zijn voor de cliënt", Output = "een vriend te zijn voor cliënten" },
-                new Mogelijkheid { Input = "veel over te brengen omdat dit mij tot een “echter” persoon maakt", Aanvulling = "veel over te brengen omdat dit mij tot een “echter” persoon maakt", Output = "veel te brengen over zichzelf" },
-                new Mogelijkheid { Input = "af en toe iets te zeggen over mezelf waarvan ik vermoed  dat het de therapeutische relatie kan versterken", Aanvulling = "af en toe iets te zeggen over mezelf waarvan ik vermoed  dat het de therapeutische relatie kan versterken", Output = "veel te brengen over zichzelf"}
+                new Mogelijkheid { Input = "Zo weinig mogelijk te onthullen over mijzelf", Aanvulling = "zo weinig mogelijk te onthullen over mijzelf", Output = "niks te onthullen over zichzelf" },
+                new Mogelijkheid { Input = "Een vriend te zijn voor de cliënt" , Aanvulling = "een vriend te zijn voor de cliënt", Output = "een vriend te zijn voor cliënten" },
+                new Mogelijkheid { Input = "Veel over te brengen omdat dit mij tot een “echter” persoon maakt", Aanvulling = "veel over te brengen omdat dit mij tot een “echter” persoon maakt", Output = "veel te brengen over zichzelf" },
+                new Mogelijkheid { Input = "Af en toe iets te zeggen over mezelf waarvan ik vermoed  dat het de therapeutische relatie kan versterken", Aanvulling = "af en toe iets te zeggen over mezelf waarvan ik vermoed  dat het de therapeutische relatie kan versterken", Output = "veel te brengen over zichzelf"}
             };
 
             Aanvulling aanvulling18 = new Aanvulling
@@ -907,8 +907,8 @@ namespace CompetentieTool.Data
             // comp 19
             IList<Mogelijkheid> opties19 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "naar directe oorzaken te zoeken van bepaald gedrag en om hierop gericht  in te spelen", Aanvulling = "Lineair denken: oorzaak-gevolg, gaat op zoek naar oplossingen eerder dan naar dynamieken", Output = "lineair" },
-                new Mogelijkheid { Input = "niet op zoek te gaan naar directe oorzaken maar vanuit een bredere context het gedrag te proberen begrijpen en hierop in te spelen" , Aanvulling = "circulair: gaat op zoek naar systemen die problemen of situaties in stand houden ipv oplossingen te detecteren", Output = "circulair" }
+                new Mogelijkheid { Input = "Naar directe oorzaken te zoeken van bepaald gedrag en om hierop gericht  in te spelen", Aanvulling = "Lineair denken: oorzaak-gevolg, gaat op zoek naar oplossingen eerder dan naar dynamieken", Output = "lineair" },
+                new Mogelijkheid { Input = "Niet op zoek te gaan naar directe oorzaken maar vanuit een bredere context het gedrag te proberen begrijpen en hierop in te spelen" , Aanvulling = "circulair: gaat op zoek naar systemen die problemen of situaties in stand houden ipv oplossingen te detecteren", Output = "circulair" }
             };
 
             Aanvulling aanvulling19 = new Aanvulling
@@ -939,9 +939,9 @@ namespace CompetentieTool.Data
             // comp 20
             IList<Mogelijkheid> opties20 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig kennis van psychopathologie", Aanvulling = "geen/weinig kennis van psychopathologie", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "basiskennis over alle frequent voorkomende psychiatrische aandoeningen" , Aanvulling = "basiskennis"},
-                new Mogelijkheid { Input = "een vergevorderde kennis over alle frequent voorkomende psychiatrische aandoeningen", Aanvulling = "vergevorderde kennis" }
+                new Mogelijkheid { Input = "Weinig kennis van psychopathologie", Aanvulling = "geen/weinig kennis van psychopathologie", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Basiskennis over alle frequent voorkomende psychiatrische aandoeningen" , Aanvulling = "Basiskennis"},
+                new Mogelijkheid { Input = "Een vergevorderde kennis over alle frequent voorkomende psychiatrische aandoeningen", Aanvulling = "vergevorderde kennis" }
             };
 
             Aanvulling aanvulling20 = new Aanvulling
@@ -973,7 +973,7 @@ namespace CompetentieTool.Data
             IList<Mogelijkheid> opties21 = new List<Mogelijkheid>()
             {
                 new Mogelijkheid { Input = "weinig kennis over psychofarmaca", Aanvulling = " geen/weinig kennis over psychofarmaca", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "basiskennis over de effecten en bijwerking van de  meest courante psychofarmaca" , Aanvulling = "basiskennis"},
+                new Mogelijkheid { Input = "Basiskennis over de effecten en bijwerking van de  meest courante psychofarmaca" , Aanvulling = "Basiskennis"},
                 new Mogelijkheid { Input = "een vergevorderde kennis over de effecten  en bijwerking van de meest courante psychofarmaca", Aanvulling = "vergevorderde kennis" }
             };
 
@@ -1005,9 +1005,9 @@ namespace CompetentieTool.Data
             // comp 22
             IList<Mogelijkheid> opties22 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig kennis over lichamelijke problematieken", Aanvulling = "geen/weinig kennis", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "basiskennis over lichamelijke  aandoeningen" , Aanvulling = "basiskennis"},
-                new Mogelijkheid { Input = "een gevorderde kennis over lichamelijke aandoeningen", Aanvulling = "gevorderde kennis" }
+                new Mogelijkheid { Input = "Weinig kennis over lichamelijke problematieken", Aanvulling = "geen/weinig kennis", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Basiskennis over lichamelijke  aandoeningen" , Aanvulling = "Basiskennis"},
+                new Mogelijkheid { Input = "Een gevorderde kennis over lichamelijke aandoeningen", Aanvulling = "gevorderde kennis" }
             };
 
             Aanvulling aanvulling22 = new Aanvulling
@@ -1038,9 +1038,9 @@ namespace CompetentieTool.Data
             // comp 23
             IList<Mogelijkheid> opties23 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig kennis over leefstijlfactoren die somatische risico’s inhouden", Aanvulling = "geen/weinig kennis", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "basiskennis over leefstijlfactoren die somatisch risico inhouden" , Aanvulling = "basiskennis"},
-                new Mogelijkheid { Input = "gevorderde kennis over leefstijlfactoren die somatische risico’s inhouden.", Aanvulling = "gevorderde kennis" }
+                new Mogelijkheid { Input = "Weinig kennis over leefstijlfactoren die somatische risico’s inhouden", Aanvulling = "geen/weinig kennis", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Basiskennis over leefstijlfactoren die somatisch risico inhouden" , Aanvulling = "Basiskennis"},
+                new Mogelijkheid { Input = "Gevorderde kennis over leefstijlfactoren die somatische risico’s inhouden.", Aanvulling = "gevorderde kennis" }
             };
 
             Aanvulling aanvulling23 = new Aanvulling
@@ -1071,9 +1071,9 @@ namespace CompetentieTool.Data
             // comp 24
             IList<Mogelijkheid> opties24 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "k heb weinig kennis over de invalshoek van andere disciplines", Aanvulling = "geen of weinig kennis over de invalshoek van andere disciplines nodig", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "ik heb enig zicht op de focus van andere beroepsgroepen" , Aanvulling = "enig zicht op de focus van andere beroepsgroepen"},
-                new Mogelijkheid { Input = "ik kan benoemen welke kaders en invalshoeken andere disciplines gebruiken.", Aanvulling = " kunnen benoemen welke kaders en invalshoeken andere disciplines gebruiken" }
+                new Mogelijkheid { Input = "Ik heb weinig kennis over de invalshoek van andere disciplines", Aanvulling = "geen of weinig kennis over de invalshoek van andere disciplines nodig", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Ik heb enig zicht op de focus van andere beroepsgroepen" , Aanvulling = "enig zicht op de focus van andere beroepsgroepen"},
+                new Mogelijkheid { Input = "Ik kan benoemen welke kaders en invalshoeken andere disciplines gebruiken.", Aanvulling = " kunnen benoemen welke kaders en invalshoeken andere disciplines gebruiken" }
             };
 
             Aanvulling aanvulling24 = new Aanvulling
@@ -1104,10 +1104,10 @@ namespace CompetentieTool.Data
              // comp 25a
             IList<Mogelijkheid> opties25a = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig", Aanvulling = "minimaal", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "matig" , Aanvulling = "matig"},
-                new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
-                new Mogelijkheid { Input = "itstekend", Aanvulling = "uitstekend"}
+                new Mogelijkheid { Input = "Weinig", Aanvulling = "minimaal", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Matig" , Aanvulling = "Matig"},
+                new Mogelijkheid { Input = "Goed", Aanvulling = "goed" },
+                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend"}
             };
 
             Aanvulling aanvulling25a = new Aanvulling
@@ -1138,10 +1138,10 @@ namespace CompetentieTool.Data
             // comp 25b
             IList<Mogelijkheid> opties25b = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig", Aanvulling = "minimaal", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "matig" , Aanvulling = "matig"},
-                new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
-                new Mogelijkheid { Input = "itstekend", Aanvulling = "uitstekend"}
+                new Mogelijkheid { Input = "Weinig", Aanvulling = "minimaal", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Matig" , Aanvulling = "Matig"},
+                new Mogelijkheid { Input = "Goed", Aanvulling = "Goed" },
+                new Mogelijkheid { Input = "Úitstekend", Aanvulling = "Uitstekend"}
             };
 
             Aanvulling aanvulling25b = new Aanvulling
@@ -1172,8 +1172,8 @@ namespace CompetentieTool.Data
             // comp 26
             IList<Mogelijkheid> opties26 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "gericht opzoeken van wetenschappelijk literatuur is moeilijk", Aanvulling = "niet relevant" },
-                new Mogelijkheid { Input = "ik kan gericht opzoeken, maar heb moeilijkheden met het begrijpen van wetenschappelijk vakjargon" , Aanvulling = "gericht opzoeken"},
+                new Mogelijkheid { Input = "Gericht opzoeken van wetenschappelijk literatuur is moeilijk", Aanvulling = "niet relevant" },
+                new Mogelijkheid { Input = "Ik kan gericht opzoeken, maar heb moeilijkheden met het begrijpen van wetenschappelijk vakjargon" , Aanvulling = "gericht opzoeken"},
                 new Mogelijkheid { Input = "Ik kan gericht opzoeken en vakjargon begrijpen in functie van de praktijk", Aanvulling = " gericht opzoeken en vakjargon begrijpen in functie van de praktijk" }
             };
 
@@ -1205,10 +1205,10 @@ namespace CompetentieTool.Data
             // comp 27
             IList<Mogelijkheid> opties27 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "alle informatie te delen gezien dit een basisvoorwaarde is voor een goede samenwerking", Aanvulling = "alle informatie delen gezien dit een basisvoorwaarde is om een goede samenwerking te bestendigen" },
-                new Mogelijkheid { Input = "om het beroepsgeheim volledig te respecteren en zo weinig mogelijk informatie te delen" , Aanvulling = "zo weinig mogelijk informatie delen gezien dit het beroepsgeheim schendt"},
-                new Mogelijkheid { Input = "enkel die informatie te delen die volgens u relevant is voor andere organisatie(s)", Aanvulling = "enkel die informatie delen die relevant is voor andere organisatie(s)" },
-                new Mogelijkheid { Input = "enkel die informatie te delen waarover de cliënt expliciet toestemming gegeven heeft om dit te delen", Aanvulling = "enkel die informatie delen waarover de cliënt expliciet toestemming gegeven heeft om dit te delen" }
+                new Mogelijkheid { Input = "Alle informatie te delen gezien dit een Basisvoorwaarde is voor een goede samenwerking", Aanvulling = "alle informatie delen gezien dit een Basisvoorwaarde is om een goede samenwerking te bestendigen" },
+                new Mogelijkheid { Input = "Om het beroepsgeheim volledig te respecteren en zo weinig mogelijk informatie te delen" , Aanvulling = "zo weinig mogelijk informatie delen gezien dit het beroepsgeheim schendt"},
+                new Mogelijkheid { Input = "Enkel die informatie te delen die volgens u relevant is voor andere organisatie(s)", Aanvulling = "enkel die informatie delen die relevant is voor andere organisatie(s)" },
+                new Mogelijkheid { Input = "Enkel die informatie te delen waarover de cliënt expliciet toestemming gegeven heeft om dit te delen", Aanvulling = "enkel die informatie delen waarover de cliënt expliciet toestemming gegeven heeft om dit te delen" }
             };
 
             Aanvulling aanvulling27 = new Aanvulling
@@ -1241,7 +1241,7 @@ namespace CompetentieTool.Data
             {
                 new Mogelijkheid { Input = "Ik heb een beperkte kennis", Aanvulling = "beperkte kennis", IsSchrapOptie = true},
                 new Mogelijkheid { Input = "Ik weet naar welke instanties ik cliënten kan doorverwijzen" , Aanvulling = "doorverwijzend"},
-                new Mogelijkheid { Input = "Ik heb een goede basiskennis en kan zelf concrete adviezen formuleren", Aanvulling = "basiskennis" },
+                new Mogelijkheid { Input = "Ik heb een goede Basiskennis en kan zelf concrete adviezen formuleren", Aanvulling = "Basiskennis" },
                 new Mogelijkheid { Input = "Ik ben goed op de hoogte en kan zelf gespecialiseerde adviezen formuleren", Aanvulling = "gespecialiseerde kennis" }
             };
 
@@ -1275,7 +1275,7 @@ namespace CompetentieTool.Data
             {
                 new Mogelijkheid { Input = "Ik heb een beperkte kennis", Aanvulling = "beperkte kennis", IsSchrapOptie = true },
                 new Mogelijkheid { Input = "Ik weet naar welke instanties ik cliënten kan doorverwijzen" , Aanvulling = "doorverwijzend"},
-                new Mogelijkheid { Input = "Ik heb een goede basiskennis en kan zelf concrete adviezen formuleren", Aanvulling = "basiskennis" },
+                new Mogelijkheid { Input = "Ik heb een goede Basiskennis en kan zelf concrete adviezen formuleren", Aanvulling = "Basiskennis" },
                 new Mogelijkheid { Input = "Ik ben goed op de hoogte en kan zelf gespecialiseerde adviezen formuleren", Aanvulling = "gespecialiseerde kennis" }
             };
 
@@ -1307,10 +1307,10 @@ namespace CompetentieTool.Data
             // comp 30
             IList<Mogelijkheid> opties30 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "ik ken daar weinig van", Aanvulling = "niet", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "ik kan uitvoerend een aantal zaken opnemen onder supervisie binnen een bestaand project" , Aanvulling = "uitvoerend onder supervisie"},
-                new Mogelijkheid { Input = "ik kan autonoom een aantal zaken opnemen binnen een bestaand project", Aanvulling = "autonoom opnemen van een aantal zaken binnen een bestaand projectkader" },
-                new Mogelijkheid { Input = "ik kan zelf projecten opstarten en coördineren", Aanvulling = "zelf opstarten en coördineren van projecten" }
+                new Mogelijkheid { Input = "Ik ken daar weinig van", Aanvulling = "niet", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Ik kan uitvoerend een aantal zaken opnemen onder supervisie binnen een bestaand project" , Aanvulling = "uitvoerend onder supervisie"},
+                new Mogelijkheid { Input = "Ik kan autonoom een aantal zaken opnemen binnen een bestaand project", Aanvulling = "autonoom opnemen van een aantal zaken binnen een bestaand projectkader" },
+                new Mogelijkheid { Input = "Ik kan zelf projecten opstarten en coördineren", Aanvulling = "zelf opstarten en coördineren van projecten" }
             };
 
             Aanvulling aanvulling30 = new Aanvulling
@@ -1341,8 +1341,8 @@ namespace CompetentieTool.Data
             // comp 31
             IList<Mogelijkheid> opties31 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "ik heb zelf weinig ervaring met het doorverwijzen van cliënten naar andere instanties", Aanvulling = "minimaal", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "ik heb kennis en/of ervaring met doorverwijzen van cliënten naar andere instanties" , Aanvulling = "uitgebreider"}
+                new Mogelijkheid { Input = "Ik heb zelf weinig ervaring met het doorverwijzen van cliënten naar andere instanties", Aanvulling = "minimaal", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Ik heb kennis en/of ervaring met doorverwijzen van cliënten naar andere instanties" , Aanvulling = "uitgebreider"}
             };
 
             Aanvulling aanvulling31 = new Aanvulling
@@ -1373,11 +1373,11 @@ namespace CompetentieTool.Data
             // comp 34
             IList<Mogelijkheid> opties34 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid{ Input = "", Aanvulling = "niet belangrijk", IsSchrapOptie = true},
-                new Mogelijkheid { Input = "ik ben goed in het opvolgen van een planning die door anderen is opgesteld", Aanvulling = "dient extern gestuurd te worden" },
-                new Mogelijkheid { Input = "ik kan kan mits hulp van collega’s een planning opmaken waar ik me aan houd" , Aanvulling = "kan mits enige sturing van collega’s een planning opmaken"},
-                new Mogelijkheid { Input = "kan zelfstandig een planning opmaken en ik houd mij aan de opgemaakte planning", Aanvulling = "kan zelfstandig een planning opmaken en deze strikt opvolgen" },
-                new Mogelijkheid { Input = "kan dit zelfstandig opmaken en ik kan flexibel met mijn agenda omgaan", Aanvulling = "maakt zorgvuldige dagplanningen en kan hiermee flexibel omspringen" }
+                new Mogelijkheid{ Input = "Niet belangrijk", Aanvulling = "niet belangrijk", IsSchrapOptie = true},
+                new Mogelijkheid { Input = "Ik ben goed in het opvolgen van een planning die door anderen is opgesteld", Aanvulling = "dient extern gestuurd te worden" },
+                new Mogelijkheid { Input = "Ik kan kan mits hulp van collega’s een planning opmaken waar ik me aan houd" , Aanvulling = "kan mits enige sturing van collega’s een planning opmaken"},
+                new Mogelijkheid { Input = "Ik kan zelfstandig een planning opmaken en ik houd mij aan de opgemaakte planning", Aanvulling = "kan zelfstandig een planning opmaken en deze strikt opvolgen" },
+                new Mogelijkheid { Input = "Ik kan dit zelfstandig opmaken en ik kan flexibel met mijn agenda omgaan", Aanvulling = "maakt zorgvuldige dagplanningen en kan hiermee flexibel omspringen" }
             };
 
             Aanvulling aanvulling34 = new Aanvulling
@@ -1408,7 +1408,7 @@ namespace CompetentieTool.Data
             // comp 35
             IList<Mogelijkheid> opties35 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "niet zo goed omgaan met crisissituaties", Aanvulling = "niet relevant", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "iet zo goed omgaan met crisissituaties", Aanvulling = "niet relevant", IsSchrapOptie = true },
                 new Mogelijkheid { Input = "het ontstaan van crisissituaties goed inschatten en hierop anticiperen" , Aanvulling = "ontstaan van crisissituaties kunnen inschatten en hierop anticiperen"},
                 new Mogelijkheid { Input = "goed omgaan met dreigend escalerende crisissituatie", Aanvulling = "goed kunnen omgaan met dreigend escalerende crisissituaties" },
                 new Mogelijkheid { Input = "kordaat optreden indien een crisissituatie zich voordoet en een passende interventie uitvoeren", Aanvulling = "kordaat optreden indien er zich een crisissituatie voordoet en een passende interventie kunnen uitvoeren" }
@@ -1477,10 +1477,10 @@ namespace CompetentieTool.Data
             // comp 37a
             IList<Mogelijkheid> opties37a = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig", Aanvulling = "nihil", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "matig" , Aanvulling = "basaal"},
-                new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
-                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend" }
+                new Mogelijkheid { Input = "Weinig", Aanvulling = "Nihil", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Matig" , Aanvulling = "Basis"},
+                new Mogelijkheid { Input = "Goed", Aanvulling = "Goed" },
+                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend" }
             };
 
             Aanvulling aanvulling37a = new Aanvulling
@@ -1511,10 +1511,10 @@ namespace CompetentieTool.Data
             // comp 37b
             IList<Mogelijkheid> opties37b = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig", Aanvulling = "nihil", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "matig" , Aanvulling = "basaal"},
+                new Mogelijkheid { Input = "Weinig", Aanvulling = "Nihil", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Matig" , Aanvulling = "Basis"},
                 new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
-                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend" }
+                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend" }
             };
 
             Aanvulling aanvulling37b = new Aanvulling
@@ -1545,10 +1545,10 @@ namespace CompetentieTool.Data
             // comp 37c
             IList<Mogelijkheid> opties37c = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig", Aanvulling = "nihil", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "matig" , Aanvulling = "basaal"},
-                new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
-                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend" }
+                new Mogelijkheid { Input = "Weinig", Aanvulling = "Nihil", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Matig" , Aanvulling = "Basis"},
+                new Mogelijkheid { Input = "Goed", Aanvulling = "Goed" },
+                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend" }
             };
 
             Aanvulling aanvulling37c = new Aanvulling

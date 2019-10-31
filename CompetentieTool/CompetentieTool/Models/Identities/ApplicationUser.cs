@@ -17,6 +17,7 @@ namespace CompetentieTool.Models.Identities
         private string _voornaam;
         private string _gsm;
         private string _geslacht;
+
         private DateTime _geboorteDatum;
         private string _nationaliteit;
         private string _gemeente;

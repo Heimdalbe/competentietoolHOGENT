@@ -196,11 +196,13 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("CompetentieId");
 
-                    b.Property<string>("GeselecteerdeOptie");
+                    b.Property<string>("GeselecteerdeOptieId");
 
                     b.HasKey("VacatureId", "CompetentieId");
 
                     b.HasIndex("CompetentieId");
+
+                    b.HasIndex("GeselecteerdeOptieId");
 
                     b.ToTable("VacatureCompetentie");
                 });
@@ -519,6 +521,10 @@ namespace CompetentieTool.Migrations
                         .WithMany()
                         .HasForeignKey("CompetentieId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CompetentieTool.Models.Domain.Mogelijkheid", "GeselecteerdeOptie")
+                        .WithMany()
+                        .HasForeignKey("GeselecteerdeOptieId");
 
                     b.HasOne("CompetentieTool.Models.Domain.Vacature", "Vacature")
                         .WithMany("CompetentiesLijst")
