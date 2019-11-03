@@ -1497,7 +1497,7 @@ namespace CompetentieTool.Data
             // comp 36
             IList<Mogelijkheid> opties36 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid {Aanvulling = "niet relevant", IsSchrapOptie = true}, 
+                new Mogelijkheid { Input = "", Aanvulling = "niet relevant", IsSchrapOptie = true}, 
                 new Mogelijkheid { Input = "minder goed groepen aansturen en ben meer gericht op individueel werken met cliënten", Aanvulling = "minimale competentie, eerder gericht op individueel werken met cliënten" },
                 new Mogelijkheid { Input = "een groep aansturen mits ondersteuning van collega’s bv. vrijetijdsactiviteiten" , Aanvulling = "groep aansturen mits ondersteuning van collega’s"},
                 new Mogelijkheid { Input = "de groepsdynamiek bewaken in functie van het bereiken van een vooraf bepaald  doel bv. kooksessie", Aanvulling = "een groep kunnen aansturen en werken naar een vooraf bepaald doel" },
@@ -1667,7 +1667,7 @@ namespace CompetentieTool.Data
             // comp 39
             IList<Mogelijkheid> opties39 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Aanvulling = "niet relevant", IsSchrapOptie = true},
+                new Mogelijkheid { Input = "", Aanvulling = "niet relevant", IsSchrapOptie = true},
                 new Mogelijkheid { Input = "Ik houd niet van veel  verandering en verkies een stabiele werkomgeving", Aanvulling = "functioneert best in stabiele werkomgeving zonder al te veel veranderingen" },
                 new Mogelijkheid { Input = "Veranderingen zijn inherent aan de job en ik pas me aan" , Aanvulling = "volgzaamheid zonder kritische benadering"},
                 new Mogelijkheid { Input = "indien iemand een veranderingsvoorstel heeft zal ik dit kritisch bekijken en mijn feedback weergeven", Aanvulling = "positief-kritische benadering" },
@@ -2307,7 +2307,15 @@ namespace CompetentieTool.Data
             competenties.Add(comp78);
             competenties.Add(comp82);
 
+            ICollection<Competentie> competenties2 = new List<Competentie>();
+            competenties2.Add(comp58);
+            competenties2.Add(comp59);
+            competenties2.Add(comp8);
+            competenties2.Add(comp45);
+            competenties2.Add(comp46);
+
             vac1.AddCompetenties(competenties);
+            vac2.AddCompetenties(competenties2);
             vac3.AddCompetenties(competenties);
 
             // ingevulde vacature

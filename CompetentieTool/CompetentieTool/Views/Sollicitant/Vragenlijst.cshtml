@@ -1,14 +1,14 @@
 ﻿@model List<CompetentieTool.Models.ViewModels.Group<string, CompetentieTool.Models.ViewModels.VraagViewModel>>
-
 @{
     ViewData["Title"] = "Vragenlijst";
 }
 @{
     int counter = 1;
+    int tabCounter = 0;
+    int questionCounter = 0;
 }
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="~/js/wizard.js"></script>
-
 
 <h2>Vragenlijst</h2>
 <form asp-controller="Sollicitant" asp-action="Submit" asp-route-id="@ViewData["id"]" method="post" class="form-group">
@@ -28,63 +28,97 @@
             </div>
             @for (int i = 0; i < Model.Count; i++)
             {
+                if (Model[i].Key == null)
+                {
+                    <div role="tabpanel" class="tab-pane" id="@tabCounter">
+                        @for (int j = questionCounter; j < Model[i].Values.Count(); j++)
+                        {
 
-                <div role="tabpanel" class="tab-pane" id="@Model[i].Key">
-                    @if (Model[i].Key != null)
-                    {
-                        <div class="panel">
-                            <h2>Casus</h2>
-                            <div class="panel-body">@Model[i].Key</div>
-                        </div>
-                    }
-
-                    @for (int j = 0; j < Model[i].Values.Count(); j++)
-                    {
-
-                        <div class="panel">
-                            <h2 class="panel-heading">Vraag @counter</h2>
-                            @{counter++;}
-                            <div class="panel-body">
-
-                                <div>@Model[i].Values[j].VraagStelling</div>
-                                @if (Model[i].Values[j].opties.Count > 0)
-                                {
-
-                                    @foreach (var opt in Model[i].Values[j].opties)
+                            <div class="panel">
+                                <h2 class="panel-heading">Vraag @counter</h2>
+                                @{counter++;}
+                                <div class="panel-body">
+                                    <div>@Model[i].Values[j].VraagStelling</div>
+                                    @if (Model[i].Values[j].opties.Count > 0)
                                     {
-                                        <div class="radio">
-                                            @Html.RadioButtonFor(m => Model[i].Values[j].OptieKeuzeId, opt.Id)
-                                            <label>
-                                                @opt.Input
-                                            </label>
-                                        </div>
 
+                                        @foreach (var opt in Model[i].Values[j].opties)
+                                        {
+                                            @if (opt.Input != "")
+                                            {
+                                                <div class="radio">
+                                                    <label>@Html.RadioButtonFor(m => Model[i].Values[j].OptieKeuzeId, opt.Id) @opt.Input</label>
+                                                </div>
+                                            }
+
+                                        }
+                                        <br />
+                                        <p>Geef uw redenering</p>
                                     }
-                                    <br />
-                                    <p>Geef uw redenering</p>
-                                }
-                                <textarea asp-for="@Model[i].Values[j].Redenering" rows="5" id="@Model[i].Values[j].VraagId"></textarea>
-                                @Html.HiddenFor(m => Model[i].Values[j].VraagId)
+                                    <textarea asp-for="@Model[i].Values[j].Redenering" rows="5" id="@Model[i].Values[j].VraagId"></textarea>
+                                    @Html.HiddenFor(m => Model[i].Values[j].VraagId)
+                                </div>
                             </div>
+                            questionCounter++;
+
+                        }
                         </div>
-                    }
-                </div>
-            }
-            <div role="tabpanel" class="tab-pane" id="finish">
-                <div class="panel">
-                    <div class="panel-body text-center" >
-                        <h3>Dank u voor het invullen van de vragenlijst. Klik hier om uw resultaten op te slaan</h3>
+                        }
+                        else
+                        {
+                        <div role="tabpanel" class="tab-pane" id="@Model[i].Key">
+                            <div class="panel">
+                                <h2>Casus</h2>
+                                <div class="panel-body">@Model[i].Key</div>
+                            </div>
+                            @for (int j = 0; j < Model[i].Values.Count(); j++)
+                            {
+                                <div class="panel">
+                                    <h2 class="panel-heading">Vraag @counter</h2>
+                                    @{counter++;}
+                                    <div class="panel-body">
+                                        <div>@Model[i].Values[j].VraagStelling</div>
+                                        @if (Model[i].Values[j].opties.Count > 0)
+                                        {
+
+                                            @foreach (var opt in Model[i].Values[j].opties)
+                                            {
+                                                @if (opt.Input != "")
+                                                {
+                                                    <div class="radio">
+                                                        <label>@Html.RadioButtonFor(m => Model[i].Values[j].OptieKeuzeId, opt.Id) @opt.Input</label>
+                                                    </div>
+                                                }
+
+                                            }
+                                            <br />
+                                            <p>Geef uw redenering</p>
+                                        }
+                                        <textarea asp-for="@Model[i].Values[j].Redenering" rows="5" id="@Model[i].Values[j].VraagId"></textarea>
+                                        @Html.HiddenFor(m => Model[i].Values[j].VraagId)
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+
+                        }
+                        }
+                        <div role="tabpanel" class="tab-pane" id="finish">
+                            <div class="panel">
+                                <div class="panel-body text-center">
+                                    <h3>Dank u voor het invullen van de vragenlijst. Klik hier om uw resultaten op te slaan</h3>
+                                </div>
+                                <div class="panel-footer text-center">
+                                    <input type="submit" value="opslaan" class="btn btn-success" />
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
-                    <div class="panel-footer text-center">
-                        <input type="submit" value="opslaan" class="btn btn-success" />
-                    </div>
+                    <!--<button class="btn btn-default pull-right">SAVE</button>-->
                 </div>
-                
-                
-            </div>
-        </div>
-        <!--<button class="btn btn-default pull-right">SAVE</button>-->
-    </div>
-    
+
 </form>
 <button class="nexttab btn btn-default">Volgende</button>
