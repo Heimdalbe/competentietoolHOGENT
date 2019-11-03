@@ -95,6 +95,10 @@ namespace CompetentieTool.Controllers
                     {
                         optie = ((VraagMeerkeuze)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
                     }
+                    if( vraag is VraagRubrics)
+                    {
+                        optie = ((VraagRubrics)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
+                    }
                     vac.Responses.Add(new Response { Aanvulling = item.Redenering, Vraag = vraag, OptieKeuze= optie });
                 }
             }

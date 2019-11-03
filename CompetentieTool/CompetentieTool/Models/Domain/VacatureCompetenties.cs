@@ -20,6 +20,5 @@ namespace CompetentieTool.Models.Domain
 
         public Competentie Competentie { get; set; }
         #endregion
-
     }
 }
