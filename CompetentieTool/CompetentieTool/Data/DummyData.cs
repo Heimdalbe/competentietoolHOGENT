@@ -443,6 +443,61 @@ namespace CompetentieTool.Data
 
             comp60.Vraag = vraag60;
 
+            // comp 66
+            IList<Mogelijkheid> opties66 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "iedereen hetzelfde kader en dezelfde visie gebruikt om handelingen maximaal op elkaar af te stemmen", Output = "iedereen hetzelfde kader en visie gebruikt om handelingen maximaal op elkaar af te stemmen" },
+                new Mogelijkheid { Input = "ik mijn beroepseigen kader maximaal kan inzetten" , Output = "hij zijn  beroepseigen kader maximaal kan aanspreken"},
+                new Mogelijkheid { Input = "ik mijn beroepseigen kader kan afstemmen op de visie van de afdeling", Output = "hij zijn beroepseigen kader kan afstemmen op de visie van de afdeling" }
+            };
+
+            Competentie comp66 = new Competentie
+            {
+                Naam = "Beroepsinvalshoek bewaren",
+                Verklaring = "De hulpverlener zoekt afstemming van zijn beroepseigen kaders met de basisvisie van de organisatie zelf alsook met de professionele achtergrond van collega’s. Hij/zij  laat de kennis en de kaders die inherent zijn aan de eigen beroepsachtergrond niet overheersen op die van anderen in het team.Omgekeerd gooit hij/zij eigen referentiekaders evenmin overboord.",
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag66 = new VraagMeerkeuze
+            {
+                VraagStelling = "Ik vind het belangrijk dat in een team:",
+                Opties = opties66,
+                Competentie = comp66,
+                OutputString = "De sollicitant geeft aan dat hij het belangrijk vindt dat &&",
+                type = VraagType.MEERKEUZE
+            };
+
+            comp66.Vraag = vraag66;
+
+            // comp 67
+            IList<Mogelijkheid> opties67 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "is iets dat organisch moet groeien, daar heb ik als individu weinig vat op", Output = "iets is dat organisch moet groeien, waar  u geen vat op hebt", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "is iets waar een leidinggevende over moet waken" , Output = "iets is waar een afdelingshoofd over moet waken"},
+                new Mogelijkheid { Input = "is iets waar ikzelf samen met mijn collega’s een bijdrage aan kan leveren", Output = "iets is waar hijzelf samen met mijn collega’s een bijdrage aan kan leveren" },
+                new Mogelijkheid { Input = "is één van mijn expliciete verantwoordelijkheden als teamlid", Output = "ziet als één van zijn expliciete verantwoordelijkheden is als teamlid" }
+            };
+
+
+
+            Competentie comp67 = new Competentie
+            {
+                Naam = "Veiligheid installeren en bewaken",
+                Verklaring = "De hulpverlener bouwt actief mee aan een cultuur van vertrouwen en veiligheid binnen zijn team.",
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag67 = new VraagMeerkeuze
+            {
+                VraagStelling = "Het creëren van veiligheid in een team",
+                Opties = opties67,
+                Competentie = comp67,
+                OutputString = "De sollicitant geeft aan dat het creëren van veiligheid in een team &&",
+                type = VraagType.MEERKEUZE
+            };
+
+            comp67.Vraag = vraag67;
+
             // comp 73
             Competentie comp73 = new Competentie
             {
@@ -1678,39 +1733,511 @@ namespace CompetentieTool.Data
 
             comp40.Vraag = vraag40;
 
-            // temp
-            IList<Mogelijkheid> opties = new List<Mogelijkheid>()
+            // comp 47
+            IList<Mogelijkheid> opties47 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "", Aanvulling = "", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "" , Aanvulling = ""},
-                new Mogelijkheid { Input = "", Aanvulling = "" },
-                new Mogelijkheid { Input = "", Aanvulling = "" }
+                new Mogelijkheid { Input = "ligt mij minder goed", Aanvulling = "geen benodigde competentie", IsSchrapOptie = true, Output = "beperkt is" },
+                new Mogelijkheid { Input = "doe ik het liefst  ondersteund door een collega" , Aanvulling = "in groep kunnen geven met collega", Output = "goed is mits ondersteuning van een collega"},
+                new Mogelijkheid { Input = "kan ik  zelfstandig opnemen", Aanvulling = "zelfstandig in groep kunnen geven", Output = "goed  is en hij/zij geeft aan sessies autonoom te kunnen geven" }
             };
 
-            Aanvulling aanvulling = new Aanvulling
+            Aanvulling aanvulling47 = new Aanvulling
             {
-                Beschrijving = "",
-                Opties = opties.ToList()
+                Beschrijving = "Geef aan wat U verwacht aangaande psycho-educatieve interventies",
+                Opties = opties47.ToList()
             };
 
-            Competentie comp = new Competentie
+            Competentie comp47 = new Competentie
             {
-                Naam = "",
-                Verklaring = "",
-                Aanvulling = aanvulling,
-                //Type = CompetentieType
+                Naam = "Psycho-educatie in groep",
+                Verklaring = "De hulpverlener kan psycho-educatieve sessies geven aan een groep cliënten en andere betrokkenen.",
+                Aanvulling = aanvulling47,
+                Type = CompetentieType.VAARDIGHEDEN
             };
 
-            IVraag vraag = new VraagRubrics
+            IVraag vraag47 = new VraagRubrics
             {
-                VraagStelling = "",
-                Opties = opties,
-                Competentie = comp,
-                OutputString = "",
+                VraagStelling = "Het  geven van psycho-educatie in groep schat ik als volgt in:",
+                Opties = opties47,
+                Competentie = comp47,
+                OutputString = "De sollicitant geeft aan dat zijn competentie om psycho-educatieve sessies in groep te geven && De sollicitant geeft onderstaand aan wanneer hij dit laatst gedaan heeft en waarover $$",
                 type = VraagType.RUBRIC
             };
 
-            comp.Vraag = vraag;
+            comp47.Vraag = vraag47;
+            
+            // comp 48a
+            IList<Mogelijkheid> opties48a = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "weinig", Aanvulling = "nihil", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "matig" , Aanvulling = "basaal"},
+                new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
+                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend" }
+            };
+
+            Aanvulling aanvulling48a = new Aanvulling
+            {
+                Beschrijving = "Over welk kennisniveau aangaande onderstaande gespecialiseerde gesprekstechnieken wenst u dat de toekomstige werknemer beschikt?\n Motivationele gespreksvoering:",
+                Opties = opties48a.ToList()
+            };
+
+            Competentie comp48a = new Competentie
+            {
+                Naam = "Gespecialiseerde gesprekstechnieken (motivationele gespreksvoering)",
+                Verklaring = "De hulpverlener beschikt over motivationele gespreksvaardigheden.",
+                Aanvulling = aanvulling48a,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag48a = new VraagRubrics
+            {
+                VraagStelling = "Mijn kennis over omgaan met motivationele gespreksvoering is",
+                Opties = opties48a,
+                Competentie = comp48a,
+                OutputString = "De sollicitant geeft aan een && kennis te hebben over motivationele gespreksvoering \n Hij/zij heeft deze kennis aangaande motivationele gespreksvoering verworven via $$",
+                type = VraagType.RUBRIC
+            };
+
+            comp48a.Vraag = vraag48a;
+
+            // comp 48b
+            IList<Mogelijkheid> opties48b = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "weinig", Aanvulling = "nihil", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "matig" , Aanvulling = "basaal"},
+                new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
+                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend" }
+            };
+
+            Aanvulling aanvulling48b = new Aanvulling
+            {
+                Beschrijving = "Over welk kennisniveau aangaande onderstaande gespecialiseerde gesprekstechnieken wenst u dat de toekomstige werknemer beschikt?\n Oplossingsgericht gespreksvoering:",
+                Opties = opties48b.ToList()
+            };
+
+            Competentie comp48b = new Competentie
+            {
+                Naam = "Gespecialiseerde gesprekstechnieken (Oplossingsgerichte gespreksvoering)",
+                Verklaring = "De hulpverlener beschikt over oplossingsgerichte gespreksvaardigheden.",
+                Aanvulling = aanvulling48b,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag48b = new VraagRubrics
+            {
+                VraagStelling = "Mijn kennis over oplossingsgerichte gespreksvoering is",
+                Opties = opties48b,
+                Competentie = comp48b,
+                OutputString = "De sollicitant geeft aan een && kennis te hebben over omgaan over oplossingsgerichte gespreksvoering. \n Hij/zij heeft deze kennis aangaande oplossingsgerichte gespreksvoering verworven via $$",
+                type = VraagType.RUBRIC
+            };
+
+            comp48b.Vraag = vraag48b;
+
+            // comp 54
+            IList<Mogelijkheid> opties54 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "", Aanvulling = " niet van belang", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Ik ben minder goed in telefonische contacten, ik heb liever contact met cliënten in levende lijve", Aanvulling = "telefoongesprekken zijn in de organisatie sporadisch en contact vindt vooral in “levende lijve” plaats"},
+                new Mogelijkheid { Input = "Telefonische gesprekken met cliënten schrikken me niet af, maar ik beperk ze liever tot crisissituaties en/of  een belangrijke aanvulling op de zorg in levende lijve" , Aanvulling = "telefoongesprekken zijn in mijn organisatie vooral van belang in crisissituaties en/of  een belangrijke aanvulling op de zorg"},
+                new Mogelijkheid { Input = "Telefoongesprekken doe ik graag, het is naar mijn mening een communicatievorm die veel voordelen biedt", Aanvulling = " telefoongesprekken zijn in mijn organisatie van groot belang in functie van doorverwijzing of als vorm van directe ondersteuning" }
+                
+            };
+
+            Aanvulling aanvulling54 = new Aanvulling
+            {
+                Beschrijving = "Geef aan in welke mate uw toekomstige werknemer affiniteit moet hebben  met het voeren van telefonische hulpverleningsgesprekken",
+                Opties = opties54.ToList()
+            };
+
+            Competentie comp54 = new Competentie
+            {
+                Naam = "Telefonische vaardigheden",
+                Verklaring = "De hulpverlener kan op een kwaliteitsvolle manier met cliënten, betrokkenen uit de omgeving en professionelen telefonisch communiceren. ",
+                Aanvulling = aanvulling54,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag54 = new VraagRubrics
+            {
+                VraagStelling = "",
+                Opties = opties54,
+                Competentie = comp54,
+                OutputString = "De sollicitant geeft aan dat hij in volgende mate affiniteit heeft met het voeren van telefonische telefoongesprekken &&",
+                type = VraagType.RUBRIC
+            };
+
+            comp54.Vraag = vraag54;
+
+            // comp 55
+            IList<Mogelijkheid> opties55 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "Ik geloof vooral in de kracht van hulpverlening in levende lijve.  Ik ben een koele minnaar van online hulp", Aanvulling = " IT hulpverlening bestaat hier (nog) niet, we blijven vooral gericht op in vivo hulpverlening", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Ik denk dat onlinehulpverlening de contacten in levende lijve deels  kan ondersteunen, maar nooit helemaal kan vervangen" , Aanvulling = "Onlinehulpverlening is hier reeds als ondersteunend middel in gebruik"},
+                new Mogelijkheid { Input = "onlinehulpverlening kan een goed alternatief zijn om cliënten op te volgen ook zonder contact \"in levende lijve\"", Aanvulling = "We hopen ertoe te komen dat sommige cliënten grotendeels of zelfs uitsluitend  via onlinehulpverlening kunnen worden geholpen" }
+            };
+
+            Aanvulling aanvulling55 = new Aanvulling
+            {
+                Beschrijving = "Geef aan in welke mate onlinehulpverlening  in uw setting wordt gebruikt:",
+                Opties = opties55.ToList()
+            };
+
+            Competentie comp55 = new Competentie
+            {
+                Naam = "Online hulpverlening",
+                Verklaring = "De hulpverlener maakt gebruik van online toepassingen om cliënten efficiënter te ondersteunen en de hulpverlenersrelatie te versterken.",
+                Aanvulling = aanvulling55,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag55 = new VraagRubrics
+            {
+                VraagStelling = "Geef aan welke stelling het beste bij uw visie op onlinehulpverlening past:",
+                Opties = opties55,
+                Competentie = comp55,
+                OutputString = "De sollicitant geeft aan dat hij er volgende visie op nahoudt wat hulpverlening via online hulpverlening  betreft: &&",
+                type = VraagType.RUBRIC
+            };
+
+            comp55.Vraag = vraag55;
+
+            // comp 58
+            IList<Mogelijkheid> opties58 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "U zwijgt", Aanvulling = "zwijgen om de gemoederen te laten bedaren" },
+                new Mogelijkheid { Input = "U zwijgt en wacht uw moment later op de week af om dit open te trekken met de collega" , Aanvulling = "zwijgen en later individueel opnemen met de betreffende collega"},
+                new Mogelijkheid { Input = "U zwijgt en spreekt de collega direct aan na de teamvergadering", Aanvulling = "zwijgen en direct na het overleg opnemen met de betreffende collega" },
+                new Mogelijkheid { Input = "U  geeft uw feedback weer op de teamvergadering zelf", Aanvulling = "feedback op teamvergadering zelf brengen naar de betreffende collega toe" }
+            };
+
+            Aanvulling aanvulling58 = new Aanvulling
+            {
+                Beschrijving = "Op een teamoverleg ontwikkelt er zich een meningsverschil tussen de sollicitant en een collega over de aanpak van een cliënt met borderline. Welke feedbackvaardigheid verwacht u van de sollicitant? Hou hierbij het team in rekening waar de sollicitant zal terecht komen.",
+                Opties = opties58.ToList()
+            };
+
+            Competentie comp58 = new Competentie
+            {
+                Naam = "Feedback kunnen geven",
+                Verklaring = "De hulpverlener kan vanuit een positief-kritische kijk op een correcte manier feedback formuleren die cliënten of collega’s stimuleert om hieruit te leren.",
+                Aanvulling = aanvulling58,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag58 = new VraagRubrics
+            {
+                VraagStelling = "Wat doet u op de teamvergadering indien uw collega dit brengt?",
+                Opties = opties58,
+                Competentie = comp58,
+                OutputString = "De sollicitant geeft aan dat hij volgend gedrag zal stellen indien hij zij zich  onterecht aangesproken voelt door een collega op een teamvergadering &&",
+                type = VraagType.RUBRIC,
+                Vignet = team
+            };
+
+            comp58.Vraag = vraag58;
+
+            // comp 59
+            IList<Mogelijkheid> opties59 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "U geeft aan dat u niet begrijpt waarom dit op een vergadering moest komen en niet eerst met jou persoonlijk werd besproken", Aanvulling = "Een assertieve houding vanuit een ik-boodschap" },
+                new Mogelijkheid { Input = "U luistert naar uw collega en doet u best om de collegiale relatie niet te beschadigen" , Aanvulling = "Algemeen luisterende houding met het oog op behoud van een  goede verstandhouding met de collega"},
+                new Mogelijkheid { Input = "U luistert naar de argumenten van uw collega en probeert na te gaan wat de drijfveren zijn geweest van zijn/haar reactie", Aanvulling = "Kunnen luisteren naar de argumenten van de collega en proberen nagaan welke emotie er achter de feedback ligt" },
+                new Mogelijkheid { Input = "U luistert naar de argumenten van uw collega en probeert de inhoud van haar argumenten te gebruiken om uw manier van opvolging te evalueren", Aanvulling = "luisteren naar de argumenten van de collega en proberen de manier van eigen werken kritisch te benaderen en eventueel aan te passen" }
+            };
+
+            Aanvulling aanvulling59 = new Aanvulling
+            {
+                Beschrijving = "Welke feedbackvaardigheid verwacht u van de toekomstige werknemer indien hij feedback krijgt? Hou hierbij het team in rekening waar de sollicitant zal terecht komen.",
+                Opties = opties59.ToList()
+            };
+
+            Competentie comp59 = new Competentie
+            {
+                Naam = "Feedback kunnen ontvangen",
+                Verklaring = "De hulpverlener accepteert feedback en beschouwt deze feedback als een leerkans.",
+                Aanvulling = aanvulling59,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag59 = new VraagRubrics
+            {
+                VraagStelling = "Dezelfde collega spreekt u na de teamvergadering zelf aan en geeft de redenen aan waarom ze dit op de teamvergadering gebracht heeft. Wat doet u?",
+                Opties = opties59,
+                Competentie = comp59,
+                OutputString = "De sollicitant geeft aan dat hij volgend gedrag zal stellen indien hij feedback krijgt &&",
+                type = VraagType.RUBRIC,
+                Vignet = team
+            };
+
+            comp59.Vraag = vraag59;
+
+            // comp 61
+            IList<Mogelijkheid> opties61 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "Ik ben niet zo goed in vergaderen en zie er het nut niet van in", Aanvulling = "geen - niet relevant", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Ik ga naar vergaderingen maar meng we weinig in discussies" , Aanvulling = "eerder passief"},
+                new Mogelijkheid { Input = "Vooral indien het onderwerp me interesseert en/of aanbelangt doe ik actief mee. Anders hou ik me op de achtergrond", Aanvulling = "actieve inbreng indien de medewerker onderwerp relevant vindt" },
+                new Mogelijkheid { Input = "Ik ben één van de mensen die veelal het woord neemt in een vergadering", Aanvulling = "actieve inbreng in elk overleg" },
+                new Mogelijkheid { Input = "Ik kan een vergadering leiden", Aanvulling = "moet een vergadering kunnen leiden"}
+            };
+
+            Aanvulling aanvulling61 = new Aanvulling
+            {
+                Beschrijving = "Over welke houding dient de toekomstige medewerker te beschikken?",
+                Opties = opties61.ToList()
+            };
+
+            Competentie comp61 = new Competentie
+            {
+                Naam = "Vergadertechnieken",
+                Verklaring = "De hulpverlener kan efficiënt  en doelgericht vergaderen (participeren en leiden)",
+                Aanvulling = aanvulling61,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag61 = new VraagRubrics
+            {
+                VraagStelling = "Welke stellingname aangaande vergaderen past het best bij u?",
+                Opties = opties61,
+                Competentie = comp61,
+                OutputString = "De sollicitant geeft aan dat hij/zij er onderstaande houding t.a.v. vergaderen op nahoudt: && Ik heb deze competentie verworven via $$",
+                type = VraagType.RUBRIC
+            };
+
+            comp61.Vraag = vraag61;
+
+            // comp 64
+            IList<Mogelijkheid> opties64 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "ik continu collega’s rond mij heen heb die ik onmiddellijk persoonlijk om raad kan vragen", Aanvulling = "niet/weinig", IsSchrapOptie = true, Output = "continue collega’s om zich heen te hebben waar hij op kan terugvallen" },
+                new Mogelijkheid { Input = "er een cultuur onder collega’s is waarbij we elkaar vlot en laagdrempelig willen ondersteunen (vb. telefonisch)" , Aanvulling = "in mindere mate, collega’s zijn snel consulteerbaar", Output = "collega’s snel te kunnen bereiken"},
+                new Mogelijkheid { Input = "er een cultuur is waarbij we elkaar consulteren bij echt moeilijke kwesties", Aanvulling = "moet kunnen terugvallen op collega’s indien nodig", Output = "te kunnen terugvallen op collega’s indien nodig" },
+                new Mogelijkheid { Input = "zo zelfstandig mogelijk kan werken", Aanvulling = "moet volledig zelfstandig kunnen werken", Output = "zelfstandig te werken" }
+            };
+
+            Aanvulling aanvulling64 = new Aanvulling
+            {
+                Beschrijving = "Geef aan hoe in welke mate de toekomstig medewerker zelfstandig moet zijn in de toekomstige werksetting",
+                Opties = opties64.ToList()
+            };
+
+            Competentie comp64 = new Competentie
+            {
+                Naam = "Zelfstandig werken",
+                Verklaring = "De hulpverlener werkt zelfstandig in teamverband en leunt hierbij op zijn inschattingsvermogen, ethisch/theoretische kaders, eigen expertise en op de expertise en ondersteuning van collega’s.",
+                Aanvulling = aanvulling64,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag64 = new VraagRubrics
+            {
+                VraagStelling = "Ik vind het belangrijk dat",
+                Opties = opties64,
+                Competentie = comp64,
+                OutputString = "De sollicitant geeft aan dat hij het belangrijk vind om &&",
+                type = VraagType.RUBRIC
+            };
+
+            comp64.Vraag = vraag64;
+
+            // comp 70
+            IList<Mogelijkheid> opties70 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "", Aanvulling = "niet relevant", IsSchrapOptie = true  },
+                new Mogelijkheid { Input = "Het werken met familie en context maakt de zorg soms te complex en is vaak niet mogelijk. ik focus mij  vooral op de cliënt", Aanvulling = "eerder werken met het individu dan met de context"},
+                new Mogelijkheid { Input = "De cliënt staat centraal voor mij. Ik  verwijs het werken met de context en familie liever door" , Aanvulling = "werken met familie en context kunnen doorverwijzen naar meer gespecialiseerde organisaties"},
+                new Mogelijkheid { Input = "ik kan zelf omgaan met de soms tegenstrijdige boodschappen en verwachtingen die bestaan tussen context en cliënt", Aanvulling = "kunnen omgaan met meerzijdige partijdigheid" }
+            };
+
+            Aanvulling aanvulling70 = new Aanvulling
+            {
+                Beschrijving = "Geef aan welke minimale competenties u vooropstelt voor de toekomstige medewerker aangaande het betrekken van de familie en het omgaan met meerzijdige partijdigheid",
+                Opties = opties70.ToList()
+            };
+
+            Competentie comp70 = new Competentie
+            {
+                Naam = "Betrekken van familie en omgaan met meerzijdige partijdigheid",
+                Verklaring = "De hulpverlener is aanspreekbaar voor en betrokken op iedereen die een significante betekenis heeft in de situatie waarin de cliënt zich bevindt. ",
+                Aanvulling = aanvulling70,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag70 = new VraagRubrics
+            {
+                VraagStelling = "Duid aan wat het best past bij uw mening",
+                Opties = opties70,
+                Competentie = comp70,
+                OutputString = "De sollicitant geeft aan dat hij inzake het omgaan met het betrekken van familie en omgaan met meerzijdige partijdigheid volgend vooropstelt &&",
+                type = VraagType.RUBRIC
+            };
+
+            comp70.Vraag = vraag70;
+
+            // comp 74
+            IList<Mogelijkheid> opties74 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "", Aanvulling = "niet van toepassing", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "Mijn werk is mijn werk en mijn vrije tijd is belangrijk" , Aanvulling = "niet gedreven noch gepassioneerd, maar rationeel in work/life balance", Output = "niet gedreven noch gepassioneerd, maar rationeel in work/life balance"},
+                new Mogelijkheid { Input = "het dagdagelijkse werken met cliënten geeft mij veel energie. Ik heb niet het gevoel dat ik van mijn werk moet bekomen", Aanvulling = "iemand die uit het werk voldoening en energie haalt", Output = "iemand die uit het werk voldoening en energie haalt"},
+                new Mogelijkheid { Input = "ik ben gedreven en gepassioneerd maar voel mijn grenzen niet altijd even goed aan", Aanvulling = "gedreven en gepassioneerd, maar kan dient grenzen bewust te bewaken", Output = "gedreven en gepassioneerd, maar dient grenzen te bewaken" },
+                new Mogelijkheid { Input = "ik ben uitermate gedreven en gepassioneerd en dit voedt de kwaliteit van mijn dagelijkse werk. mijn werk is meteen ook mijn passie en mijn leven", Aanvulling = "erg gedreven en gepassioneerd met dynamische effecten op de werkvloer", Output = "erg gedreven en gepassioneerd met dynamische effecten op de werkvloer, maar met mogelijks risico op burn-out" }
+            };
+
+            Aanvulling aanvulling74 = new Aanvulling
+            {
+                Beschrijving = "Geef aan welk \"type\" medewerker u zoekt naar gedrevenheid toe.",
+                Opties = opties74.ToList()
+            };
+
+            Competentie comp74 = new Competentie
+            {
+                Naam = "Zelfzorg en emotionele zelfregularisatie",
+                Verklaring = "De hulpverlener (h)erkent de nood aan zelfzorg. Hij/zij participeert binnen de organisatie aan zelfzorgactiviteiten die en zorgt buiten de professionele context voor rustpunten en zingevende activiteiten die energie en inspiratie geven.",
+                Aanvulling = aanvulling74,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag74 = new VraagRubrics
+            {
+                VraagStelling = "",
+                Opties = opties74,
+                Competentie = comp74,
+                OutputString = "De sollicitant omschrijft zichzelf als &&",
+                type = VraagType.RUBRIC
+            };
+
+            comp74.Vraag = vraag74;
+
+            // comp 77
+            IList<Mogelijkheid> opties77 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "", Aanvulling = "wordt niet verwacht", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "ik vind het moeilijk om hier op in te gaan en zou doorverwijzen naar een psychotherapeut" , Aanvulling = "kunnen detecteren en doorverwijzen", Output = "doorverwijzen"},
+                new Mogelijkheid { Input = "ik ben in staat om dit thema met Jozefien op te nemen en haar verder te begeleiden", Aanvulling = "zelf kunnen opnemen en verder begeleiden", Output = "zelf opnemen" },
+                new Mogelijkheid { Input = "", Aanvulling = "" }
+            };
+
+            Aanvulling aanvulling77 = new Aanvulling
+            {
+                Beschrijving = "Welk niveau wordt verwacht aangaande het omgaan met schuldgevoelens van cliënten?",
+                Opties = opties77.ToList()
+            };
+
+            Competentie comp77 = new Competentie
+            {
+                Naam = "Omgaan schuldgevoelens",
+                Verklaring = "De hulpverlener herkent dynamieken van zelfstigmatisering en kan schuldgevoelens van cliënt en omgeving erkennen en opvangen.",
+                Aanvulling = aanvulling77,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag77 = new VraagRubrics
+            {
+                VraagStelling = "Op de laatste afspraak vermeldt Jozefien dat ze het gevoel heeft dat haar kinderen veel moederlijke warmte hebben moeten missen door haar postnatale depressie. Ze vraagt zich wat de effecten zullen zijn op hun latere ontwikkeling.",
+                Opties = opties77,
+                Competentie = comp77,
+                OutputString = "Het gebeurt vaak dat cliënten worstelen met schuldgevoelens ten aanzien van hun naasten bv. ten aanzien van hun kinderen, gevolgen van middelenmisbruik op de financiële toestand gezin etc. De sollicitant geeft aan dat hij/zij aangaande het omgaan met schuldvragen van cliënten volgende actie zou ondernemen && Hij/zij geeft volgende aanvullingen $$",
+                type = VraagType.RUBRIC,
+                Vignet = jozefien
+            };
+
+            comp77.Vraag = vraag77;
+
+            // comp 78
+            IList<Mogelijkheid> opties78 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = " Het pad dat de cliënt voor zichzelf uitstippelt te respecteren. Het recht op zelfbeschikking primeert voor u, groei inzake functioneren volgt vanzelf", Output = "enkel pad volgen dat cliënt uitstippelt" },
+                new Mogelijkheid { Input = "Te proberen om de cliënt uit te dagen om uit zijn comfortzone te komen, ook al weet u dat het tegen zijn of haar zin is. Het maximaal aanspreken van potentiële mogelijkheden inzake functioneren primeert voor u" , Output = "bewust uitdagingen installeren, terwijl u niet weet hoe de cliënt hierop zal reageren"}
+            };
+
+
+            Competentie comp78 = new Competentie
+            {
+                Naam = "Uitdagen",
+                Verklaring = "De hulpverlener daagt de cliënt uit om uit zijn comfortzone te komen. Belangrijk blijft evenwel dat  het geschikte moment correct wordt ingeschat en het  tempo op maat van de  cliënt plaatsvindt.",
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag78 = new VraagMeerkeuze
+            {
+                VraagStelling = "Binnen een therapeutische relatie met uw cliënten  is het voor u belangrijk om:",
+                Opties = opties78,
+                Competentie = comp78,
+                OutputString = "Onderstaand wordt beschreven hoe de sollicitant de cliënt uit zijn comfortzone haalt en op een professionele manier “prikkelt” en hem stimuleert om zijn grenzen te verleggen. && En geeft hiervoor volgende verklaring weer $$ Uit ons onderzoek blijkt dat cliënten aangeven op het juiste tijdstip nood te hebben aan interventies die hen uit hun comfortzone halen. Dit mag echter geen constante zijn in het hulpverleningsparcours.",
+                type = VraagType.RUBRIC
+            };
+
+            comp78.Vraag = vraag78;
+
+            // comp 82
+            IList<Mogelijkheid> opties82 = new List<Mogelijkheid>()
+            {
+                new Mogelijkheid { Input = "beperkt", Aanvulling = "nihil", IsSchrapOptie = true },
+                new Mogelijkheid { Input = "matig " , Aanvulling = "basaal"},
+                new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
+                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend" }
+            };
+
+            Aanvulling aanvulling82 = new Aanvulling
+            {
+                Beschrijving = "In welke mate moet de sollicitant kunnen gebruik maken van wetenschappelijk onderbouwde meetinstrumenten en begeleidingstools?",
+                Opties = opties82.ToList()
+            };
+
+            Competentie comp82 = new Competentie
+            {
+                Naam = "Kunnen gebruik maken van tools en instrumenten",
+                Verklaring = "De hulpverlener kent de voor- en nadelen van het gebruik van wetenschappelijk onderbouwde meetinstrumenten- en begeleidingstools en zet deze in wanneer deze een meerwaarde betekenen.",
+                Aanvulling = aanvulling82,
+                Type = CompetentieType.VAARDIGHEDEN
+            };
+
+            IVraag vraag82 = new VraagRubrics
+            {
+                VraagStelling = "Mijn kennis over het gebruik van wetenschappelijke meetinstrumenten en begeleidingstools is",
+                Opties = opties82,
+                Competentie = comp82,
+                OutputString = "De sollicitant geeft aan te beschikken over onderstaande kennis aangaande het gebruik maken van wetenschappelijk onderbouwde meetinstrumenten en begeleidingstools && Hij heeft deze kennis verworven in volgende setting $$",
+                type = VraagType.RUBRIC
+            };
+
+            comp82.Vraag = vraag82;
+
+            //// temp
+            //IList<Mogelijkheid> opties = new List<Mogelijkheid>()
+            //{
+            //    new Mogelijkheid { Input = "", Aanvulling = "", IsSchrapOptie = true },
+            //    new Mogelijkheid { Input = "" , Aanvulling = ""},
+            //    new Mogelijkheid { Input = "", Aanvulling = "" },
+            //    new Mogelijkheid { Input = "", Aanvulling = "" }
+            //};
+
+            //Aanvulling aanvulling = new Aanvulling
+            //{
+            //    Beschrijving = "",
+            //    Opties = opties.ToList()
+            //};
+
+            //Competentie comp = new Competentie
+            //{
+            //    Naam = "",
+            //    Verklaring = "",
+            //    Aanvulling = aanvulling,
+            //    Type = CompetentieType.VAARDIGHEDEN
+            //};
+
+            //IVraag vraag = new VraagRubrics
+            //{
+            //    VraagStelling = "",
+            //    Opties = opties,
+            //    Competentie = comp,
+            //    OutputString = "",
+            //    type = VraagType.RUBRIC
+            //};
+
+            //comp.Vraag = vraag;
 
 
             // rustig
@@ -1765,6 +2292,20 @@ namespace CompetentieTool.Data
             competenties.Add(comp38);
             competenties.Add(comp39);
             competenties.Add(comp40);
+            competenties.Add(comp47);
+            competenties.Add(comp48a);
+            competenties.Add(comp48b);
+            competenties.Add(comp54);
+            competenties.Add(comp55);
+            competenties.Add(comp58);
+            competenties.Add(comp59);
+            competenties.Add(comp61);
+            competenties.Add(comp64);
+            competenties.Add(comp70);
+            competenties.Add(comp74);
+            competenties.Add(comp77);
+            competenties.Add(comp78);
+            competenties.Add(comp82);
 
             vac1.AddCompetenties(competenties);
             vac3.AddCompetenties(competenties);
@@ -1831,6 +2372,20 @@ namespace CompetentieTool.Data
             context.Competenties.Add(comp38);
             context.Competenties.Add(comp39);
             context.Competenties.Add(comp40);
+            context.Competenties.Add(comp47);
+            context.Competenties.Add(comp48a);
+            context.Competenties.Add(comp48b);
+            context.Competenties.Add(comp54);
+            context.Competenties.Add(comp55);
+            context.Competenties.Add(comp58);
+            context.Competenties.Add(comp59);
+            context.Competenties.Add(comp61);
+            context.Competenties.Add(comp64);
+            context.Competenties.Add(comp70);
+            context.Competenties.Add(comp74);
+            context.Competenties.Add(comp77);
+            context.Competenties.Add(comp78);
+            context.Competenties.Add(comp82);
 
             context.Vragen.Add(vraag1);
             context.Vragen.Add(vraag3);
