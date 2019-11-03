@@ -234,8 +234,6 @@ namespace CompetentieTool.Controllers
         public IActionResult Inzendingen(String id)
         {
             IEnumerable<IngevuldeVacature> ingevuldeVacatures = _ingevuldeVacatureRepository.GetAllByVacature(id);
-            
-            
             return View(ingevuldeVacatures);
         }
 

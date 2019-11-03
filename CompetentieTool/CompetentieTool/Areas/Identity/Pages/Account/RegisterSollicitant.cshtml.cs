@@ -57,7 +57,8 @@ namespace CompetentieTool.Areas.Identity.Pages.Account
             public string Achternaam { get; set; }
 
             [Required(ErrorMessage = "Geboortedatum is verplicht in te vullen")]
-            [DataType(DataType.Date)]
+            [RegularExpression(@"^(3[01]|[12][0-9]|0[1-9])[-/](1[0-2]|0[1-9])[-/][0-9]{4}$", ErrorMessage= "Geen geldige geboortedatum")]
+            [DataType(DataType.Date, ErrorMessage = "Ongeldige datum")]
             public DateTime Geboortedatum { get; set; }
 
             [Required(ErrorMessage = "Huisnummer is verplicht in te vullen")]

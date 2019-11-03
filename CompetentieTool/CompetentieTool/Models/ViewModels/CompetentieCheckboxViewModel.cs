@@ -14,7 +14,7 @@ namespace CompetentieTool.Models.ViewModels
         public String Aanvulling { get; set; }
         public CompetentieType Type { get; set; }
         public List<Mogelijkheid> AanvulOpties { get; set; }
-        public String AanvulOptieGeselecteerd { get; set; }
+        public Mogelijkheid AanvulOptieGeselecteerd { get; set; }
         public bool HeeftAanvulling { get; set; }
     }
 }

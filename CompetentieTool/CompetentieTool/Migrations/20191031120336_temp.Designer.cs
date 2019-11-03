@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191030122156_MainMigration")]
-    partial class MainMigration
+    [Migration("20191031120336_temp")]
+    partial class temp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,11 +44,11 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("Naam");
 
+                    b.Property<int>("Type");
+
                     b.Property<string>("Verklaring");
 
                     b.Property<string>("VraagId");
-
-                    b.Property<int>("type");
 
                     b.HasKey("Id");
 
@@ -198,11 +198,13 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("CompetentieId");
 
-                    b.Property<string>("GeselecteerdeOptie");
+                    b.Property<string>("GeselecteerdeOptieId");
 
                     b.HasKey("VacatureId", "CompetentieId");
 
                     b.HasIndex("CompetentieId");
+
+                    b.HasIndex("GeselecteerdeOptieId");
 
                     b.ToTable("VacatureCompetentie");
                 });
@@ -521,6 +523,10 @@ namespace CompetentieTool.Migrations
                         .WithMany()
                         .HasForeignKey("CompetentieId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CompetentieTool.Models.Domain.Mogelijkheid", "GeselecteerdeOptie")
+                        .WithMany()
+                        .HasForeignKey("GeselecteerdeOptieId");
 
                     b.HasOne("CompetentieTool.Models.Domain.Vacature", "Vacature")
                         .WithMany("CompetentiesLijst")

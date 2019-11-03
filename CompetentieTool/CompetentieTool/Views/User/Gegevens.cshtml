@@ -104,7 +104,7 @@
                 <div class="form-group col-sm-12">
                     <div class="col-sm-6">
                         @Html.Label("Input.Email", "Email")
-                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @readonly = "readonly" })
                     </div>
                     <div class="col-sm-6">
                         @Html.Label("Input.GsmNummer", "Gsm")

@@ -37,7 +37,7 @@ namespace CompetentieTool.Models.Domain
             });
         }
 
-        public void AddCompetentie(Competentie competentie, String geselecteerdeOptie)
+        public void AddCompetentie(Competentie competentie, Mogelijkheid geselecteerdeOptie)
         {
             CompetentiesLijst.Add(new VacatureCompetentie
             {

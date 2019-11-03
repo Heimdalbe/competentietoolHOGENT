@@ -17,6 +17,7 @@ namespace CompetentieTool.Models.Identities
         private string _voornaam;
         private string _gsm;
         private string _geslacht;
+
         private DateTime _geboorteDatum;
         private string _nationaliteit;
         private string _gemeente;
@@ -34,6 +35,7 @@ namespace CompetentieTool.Models.Identities
             }
 
         }
+        
         
         public string Achternaam {
             get { return _achternaam; }
@@ -150,5 +152,6 @@ namespace CompetentieTool.Models.Identities
 
         public abstract void SetGegevensSollicitant(RegisterSollicitantModel.InputModel input);
         public abstract String GetType();
+        public string VolledigeNaam => Voornaam + " " + Achternaam;
     }
 }
