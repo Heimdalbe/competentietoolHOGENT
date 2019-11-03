@@ -1,4 +1,5 @@
 ﻿using CompetentieTool.Domain;
+using CompetentieTool.Models.Domain;
 using CompetentieTool.Models.IRepositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,7 +17,7 @@ namespace CompetentieTool.Data.Repositories
 
         public IEnumerable<Competentie> GetAll()
         {
-            return _competenties.Include(c => c.Vraag).Include(c => c.Aanvulling).ThenInclude(a => a.Opties);
+            return _competenties.Include(c => c.Vraag).ThenInclude(v => v.Vignet).Include(c => c.Aanvulling).ThenInclude(a => a.Opties);
         }
 
         public Competentie GetBy(string id)
@@ -25,7 +26,10 @@ namespace CompetentieTool.Data.Repositories
                 .FirstOrDefault(c => c.Id.Equals(id));
         }
 
-
+        public IEnumerable<Competentie> GetByType(CompetentieType type)
+        {
+            return GetAll().Where(c => c.Type.Equals(type));
+        }
 
         public void SaveChanges()
         {

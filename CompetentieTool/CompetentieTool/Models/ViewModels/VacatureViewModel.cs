@@ -32,6 +32,13 @@ namespace CompetentieTool.Models.ViewModels
 
         public List<CompetentieCheckboxViewModel> CompetentieIds { get; set; }
 
+        public List<CompetentieCheckboxViewModel> CompetentieGrondhoudingAanTeVullenIds { get; set; }
+        public List<CompetentieCheckboxViewModel> CompetentieKennisAanTeVullenIds { get; set; }
+        public List<CompetentieCheckboxViewModel> CompetentieVaardighedenAanTeVullenIds { get; set; }
+        public List<CompetentieCheckboxViewModel> CompetentieGrondhoudingBasisIds { get; set; }
+        public List<CompetentieCheckboxViewModel> CompetentieKennisBasisIds { get; set; }
+        public List<CompetentieCheckboxViewModel> CompetentieVaardighedenBasisIds { get; set; }
+
         public VacatureViewModel()
         {
             VacatureCompetenties = new List<string>();

@@ -39,7 +39,6 @@ namespace CompetentieTool.Controllers
         public IActionResult VacaturesList()
         {
             var organisatie = (Organisatie)_userManager.GetUserAsync(HttpContext.User).Result;
-            //TODO(Joren): filter op bedrijf$
             IEnumerable<Vacature> vacatures = _vacatureRepository.GetAll().Where(v => v.organisatie != null && v.organisatie.Id.Equals(organisatie.Id));
 
             return View(vacatures);
@@ -68,17 +67,33 @@ namespace CompetentieTool.Controllers
 
             var templist = new List<Competentie>();
 
-            foreach (var item in vm.CompetentieIds)
+            foreach (var item in vm.CompetentieGrondhoudingAanTeVullenIds)
             {
-                // als item geen aanvulling heeft OF schrapoptie niet is aangeduid
-                if (item.HeeftAanvulling)
-                {
+                if (!IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
                     temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
-                }
-                else
-                {
-                    templist.Add(_competentieRepository.GetBy(item.Id));
-                }
+            }
+            foreach (var item in vm.CompetentieKennisAanTeVullenIds)
+            {
+                if (!IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
+                    temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
+            }
+            foreach (var item in vm.CompetentieVaardighedenAanTeVullenIds)
+            {
+                if (!IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
+                    temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
+            }
+
+            foreach (var item in vm.CompetentieGrondhoudingBasisIds)
+            {
+                templist.Add(_competentieRepository.GetBy(item.Id));
+            }
+            foreach (var item in vm.CompetentieKennisBasisIds)
+            {
+                templist.Add(_competentieRepository.GetBy(item.Id));
+            }
+            foreach (var item in vm.CompetentieVaardighedenBasisIds)
+            {
+                templist.Add(_competentieRepository.GetBy(item.Id));
             }
 
             temp.AddCompetenties(templist);
@@ -117,8 +132,17 @@ namespace CompetentieTool.Controllers
                     Verklaring = item.Verklaring,
                     Aanvulling = item.Aanvulling?.Beschrijving,
                     AanvulOpties = item.Aanvulling?.Opties,
-                    HeeftAanvulling = (item.Aanvulling != null)
+                    HeeftAanvulling = (item.Aanvulling != null),
+                    Type = item.Type
                 });
+
+                vm.CompetentieGrondhoudingAanTeVullenIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.GRONDHOUDING) && c.HeeftAanvulling).ToList();
+                vm.CompetentieKennisAanTeVullenIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.KENNIS) && c.HeeftAanvulling).ToList();
+                vm.CompetentieVaardighedenAanTeVullenIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.VAARDIGHEDEN) && c.HeeftAanvulling).ToList();
+
+                vm.CompetentieGrondhoudingBasisIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.GRONDHOUDING) && !c.HeeftAanvulling).ToList();
+                vm.CompetentieKennisBasisIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.KENNIS) && !c.HeeftAanvulling).ToList();
+                vm.CompetentieVaardighedenBasisIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.VAARDIGHEDEN) && !c.HeeftAanvulling).ToList();
             }
 
             return View(vm);

@@ -1,6 +1,6 @@
 ﻿@model CompetentieTool.Models.ViewModels.VacatureViewModel
 @inject CompetentieTool.Models.IRepositories.ICompetentieRepository compRep
-<h2>Selecteer Competenties</h2>
+<h1>Selecteer Competenties</h1>
 <hr />
 <div class="row">
     <div class="col-md-8">
@@ -8,6 +8,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.HiddenFor(x => x.Functie)
             @Html.HiddenFor(x => x.Beschrijving)
+            <h2 class="h2">Aan te vullen competenties</h2>
+            <h3 class="h3">Grondhouding</h3>
             <table class="table">
                 <thead>
                     <tr>
@@ -16,7 +18,68 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @Html.EditorFor(m => m.CompetentieIds)
+                    @Html.EditorFor(m => m.CompetentieGrondhoudingAanTeVullenIds)
+                </tbody>
+            </table>
+            <h3 class="h3">Kennis</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Naam</th>
+                        <th scope="col">Verklaring</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.EditorFor(m => m.CompetentieKennisAanTeVullenIds)
+                </tbody>
+            </table>
+            <h3 class="h3">Vaardigheden</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Naam</th>
+                        <th scope="col">Verklaring</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.EditorFor(m => m.CompetentieVaardighedenAanTeVullenIds)
+                </tbody>
+            </table>
+            <h2 class="h2">Verplichte competenties</h2>
+            <h3 class="h3">Grondhouding</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Naam</th>
+                        <th scope="col">Verklaring</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.EditorFor(m => m.CompetentieGrondhoudingBasisIds)
+                </tbody>
+            </table>
+            <h3 class="h3">Kennis</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Naam</th>
+                        <th scope="col">Verklaring</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.EditorFor(m => m.CompetentieKennisBasisIds)
+                </tbody>
+            </table>
+            <h3 class="h3">Vaardigheden</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Naam</th>
+                        <th scope="col">Verklaring</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.EditorFor(m => m.CompetentieVaardighedenBasisIds)
                 </tbody>
             </table>
             <div class="form-group">
