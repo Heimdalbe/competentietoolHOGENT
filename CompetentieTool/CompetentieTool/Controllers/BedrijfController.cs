@@ -70,17 +70,27 @@ namespace CompetentieTool.Controllers
             foreach (var item in vm.CompetentieGrondhoudingAanTeVullenIds)
             {
                 if (!IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
-                    temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
+                {
+                    var comp = _competentieRepository.GetBy(item.Id);
+                    temp.AddCompetentie(comp, comp.Aanvulling.Opties.FirstOrDefault(o => o.Id.Equals(item.AanvulOptieGeselecteerd)));
+                }
+
             }
             foreach (var item in vm.CompetentieKennisAanTeVullenIds)
             {
                 if (!IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
-                    temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
+                {
+                    var comp = _competentieRepository.GetBy(item.Id);
+                    temp.AddCompetentie(comp, comp.Aanvulling.Opties.FirstOrDefault(o => o.Id.Equals(item.AanvulOptieGeselecteerd)));
+                }
             }
             foreach (var item in vm.CompetentieVaardighedenAanTeVullenIds)
             {
                 if (!IsSchrapOptie(item.AanvulOptieGeselecteerd, item.Id))
-                    temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
+                {
+                    var comp = _competentieRepository.GetBy(item.Id);
+                    temp.AddCompetentie(comp, comp.Aanvulling.Opties.FirstOrDefault(o => o.Id.Equals(item.AanvulOptieGeselecteerd)));
+                }
             }
 
             foreach (var item in vm.CompetentieGrondhoudingBasisIds)
@@ -106,18 +116,7 @@ namespace CompetentieTool.Controllers
         private Boolean IsSchrapOptie(String expectedId, String competentieId)
         {
             var comp = _competentieRepository.GetBy(competentieId);
-
-            if (comp.Aanvulling != null)
-            {
-                foreach (var item in comp.Aanvulling.Opties)
-                {
-                    if (item.IsSchrapOptie)
-                    {
-                        return item.Id.Equals(expectedId);
-                    }
-                }
-            }
-            return false;
+            return comp.Aanvulling.Opties.FirstOrDefault(o => o.Id.Equals(expectedId)).IsSchrapOptie;
         }
 
         public IActionResult SelecteerCompetenties(VacatureViewModel vm)
@@ -148,66 +147,6 @@ namespace CompetentieTool.Controllers
             return View(vm);
         }
 
-        public IActionResult Edit(String id)
-        {
-            var vac = _vacatureRepository.GetBy(id);
-            var temp = new VacatureViewModel(vac);
-
-            foreach (var item in _vacatureRepository.GetVacatureCompetenties(id))
-            {
-                temp.CompetentieIds.Add(new CompetentieCheckboxViewModel
-                {
-                    Naam = item.Competentie.Naam,
-                    Id = item.Competentie.Id,
-                    Verklaring = item.Competentie.Verklaring,
-                    Aanvulling = item.Competentie.Aanvulling?.Beschrijving,
-                    AanvulOpties = item.Competentie.Aanvulling?.Opties,
-                    HeeftAanvulling = (item.Competentie.Aanvulling != null),
-                    AanvulOptieGeselecteerd = item.GeselecteerdeOptie
-                });
-            }
-
-            return View(temp);
-        }
-
-        private bool IsCompetentieInVacature(Vacature vacature, String competentieId)
-        {
-            return vacature.CompetentiesLijst.Select(c => c.CompetentieId).Contains(competentieId);
-        }
-
-        [HttpPost]
-        public IActionResult Edit(VacatureViewModel vm)
-        {
-            var templist = new List<Competentie>();
-
-            var temp = new Vacature
-            {
-                Id = vm.Id,
-                Functie = vm.Functie,
-                Beschrijving = vm.Beschrijving,
-            };
-
-            temp.CompetentiesLijst = new List<VacatureCompetentie>();
-
-            foreach (var item in vm.CompetentieIds)
-            {
-                if (item.HeeftAanvulling)
-                {
-                    temp.AddCompetentie(_competentieRepository.GetBy(item.Id), item.AanvulOptieGeselecteerd);
-                }
-                else
-                {
-                    templist.Add(_competentieRepository.GetBy(item.Id));
-                }
-            }
-
-            temp.AddCompetenties(templist);
-
-            _vacatureRepository.Update(temp);
-
-            return RedirectToAction("VacaturesList");
-        }
-
         public IActionResult Delete(String id)
         {
             var vac = _vacatureRepository.GetBy(id);
@@ -231,14 +170,11 @@ namespace CompetentieTool.Controllers
 
             return View(temp);
         }
+
         public IActionResult Inzendingen(String id)
         {
             IEnumerable<IngevuldeVacature> ingevuldeVacatures = _ingevuldeVacatureRepository.GetAllByVacature(id);
             return View(ingevuldeVacatures);
         }
-
-
-
-
     }
 }

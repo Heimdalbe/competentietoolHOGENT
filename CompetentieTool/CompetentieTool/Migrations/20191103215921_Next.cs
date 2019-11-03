@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class temp : Migration
+    public partial class Next : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -82,6 +82,7 @@ namespace CompetentieTool.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
+                    Naam = table.Column<string>(nullable: true),
                     Beschrijving = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
