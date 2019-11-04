@@ -30,16 +30,41 @@ namespace CompetentieTool.Controllers
 
             IngevuldeVacature vac = _ingevuldeVacatureRepository.GetBy(id);
             ICollection<RapportViewModel> models = new List<RapportViewModel>();
-            
+            ViewBag.mail = vac.Sollicitant.Email;
+            ViewBag.title = vac.Vacature.Functie;
+            ViewBag.desc = vac.Vacature.Beschrijving;
+            ViewBag.datum = vac.DatumIngevuld;
             foreach (Response r in vac.Responses)
             {
                 RapportViewModel rvm = new RapportViewModel();
                 rvm.CompetentieNaam = r.Vraag.Competentie.Naam;
+                rvm.Verklaring = r.Vraag.Competentie.Verklaring;
                 rvm.VraagStelling = r.Vraag.VraagStelling;
-                rvm.OptieKeuze = r.OptieKeuze.Output;
-                rvm.Vignet = r.Vraag.Vignet.Beschrijving;
+                if(r.OptieKeuze != null)
+                {
+                    if(r.OptieKeuze.Output == null)
+                    {
+                        rvm.OptieKeuze = r.OptieKeuze.Input;
+                    }
+                    else
+                    {
+                        rvm.OptieKeuze = r.OptieKeuze.Output;
+                    }
+                }
+
+
+                if (r.Vraag.Vignet != null)
+                {
+                    rvm.Vignet = "Vignet " + r.Vraag.Vignet.Naam;
+                }
+                else
+                {
+                    rvm.Vignet = "LEEG";
+                }
                 rvm.Redenering = r.Aanvulling;
-                rvm.mail = vac.Sollicitant.Email;
+                
+                rvm.CompetentieType = r.Vraag.Competentie.Type;
+                rvm.VraagType = r.Vraag.type;
 
                 /* hier moet nog gezorgd worden dat de rubric kan vergeleken worden (dus soli en bedrijf antwoorden matchen)
                 if (r.Vraag.type.Equals(VraagType.RUBRIC))
@@ -65,7 +90,7 @@ namespace CompetentieTool.Controllers
 
             }
             ICollection<Group<string, RapportViewModel>> groups = new List<Group<string, RapportViewModel>>();
-            var results = models.GroupBy(m => m.Vignet).ToList();
+            var results = models.GroupBy(m => m.CompetentieType).ToList();
 
 
             /*
@@ -81,7 +106,7 @@ namespace CompetentieTool.Controllers
 
             foreach (var item in results)
             {
-                groups.Add(new Group<string, RapportViewModel> { Key = item.Key, Values = item.ToList() });
+                groups.Add(new Group<string, RapportViewModel> { Key = item.Key.ToString(), Values = item.ToList() });
             }
             return View(groups);
         }

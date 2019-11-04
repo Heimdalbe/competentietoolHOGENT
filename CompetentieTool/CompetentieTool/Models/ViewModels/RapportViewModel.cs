@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompetentieTool.Models.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +13,10 @@ namespace CompetentieTool.Models.ViewModels
         public String Vignet { get; set; }
         public String OptieKeuze{ get; set; }
         public String Redenering { get; set; }
-        public String mail { get; set; }
+        public CompetentieType CompetentieType { get; set; }
+        public VraagType VraagType { get; set; }
+        public string Verklaring { get; set; }
+
         public RapportViewModel()
         {
 
