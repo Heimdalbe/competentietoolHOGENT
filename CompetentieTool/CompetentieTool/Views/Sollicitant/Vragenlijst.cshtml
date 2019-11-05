@@ -58,7 +58,7 @@
 
                                             }
                                             <br />
-                                            <p>Geef uw redenering</p>
+                                            <p>Verklaar uw antwoord</p>
                                         }
                                         <textarea asp-for="@Model[i].Values[questionCounter].Redenering" rows="5" id="@Model[i].Values[questionCounter].VraagId"></textarea>
                                         @Html.HiddenFor(m => Model[i].Values[questionCounter].VraagId)
@@ -101,7 +101,7 @@
 
                                         }
                                         <br />
-                                        <p>Geef uw redenering</p>
+                                        <p>Verklaar uw antwoord</p>
                                     }
                                     <textarea asp-for="@Model[i].Values[j].Redenering" rows="5" id="@Model[i].Values[j].VraagId"></textarea>
                                     @Html.HiddenFor(m => Model[i].Values[j].VraagId)
@@ -127,4 +127,4 @@
         <!--<button class="btn btn-default pull-right">SAVE</button>-->
     </div>
 </form>
-<button class="nexttab btn btn-default">Volgende</button>
+<button class="nexttab btn btn-default" id="nextBtn" onclick="topFunction()">Volgende</button>
