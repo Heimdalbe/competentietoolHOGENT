@@ -803,7 +803,7 @@ namespace CompetentieTool.Data
 
             Aanvulling aanvulling8 = new Aanvulling
             {
-                Beschrijving = "",
+                Beschrijving = "Ik vind het belangrijk om",
                 Opties = opties8.ToList()
             };
 
@@ -836,7 +836,7 @@ namespace CompetentieTool.Data
 
             Aanvulling aanvulling9 = new Aanvulling
             {
-                Beschrijving = "",
+                Beschrijving = "Ik denk dat",
                 Opties = opties9.ToList()
             };
 
@@ -936,7 +936,7 @@ namespace CompetentieTool.Data
 
             Aanvulling aanvulling18 = new Aanvulling
             {
-                Beschrijving = "",
+                Beschrijving = "Ik vind het belangrijk om ten opzichte van cliënten.",
                 Opties = opties18.ToList()
             };
 
@@ -1710,7 +1710,7 @@ namespace CompetentieTool.Data
 
             Aanvulling aanvulling40 = new Aanvulling
             {
-                Beschrijving = "",
+                Beschrijving = "De sollicitant geeft aan wat het beste bij diens situatie past: In welke mate gebruikt u humor tijdens uw werk?",
                 Opties = opties40.ToList()
             };
 
@@ -2115,8 +2115,7 @@ namespace CompetentieTool.Data
             {
                 new Mogelijkheid { Input = "", Aanvulling = "wordt niet verwacht", IsSchrapOptie = true },
                 new Mogelijkheid { Input = "ik vind het moeilijk om hier op in te gaan en zou doorverwijzen naar een psychotherapeut" , Aanvulling = "kunnen detecteren en doorverwijzen", Output = "doorverwijzen"},
-                new Mogelijkheid { Input = "ik ben in staat om dit thema met Jozefien op te nemen en haar verder te begeleiden", Aanvulling = "zelf kunnen opnemen en verder begeleiden", Output = "zelf opnemen" },
-                new Mogelijkheid { Input = "", Aanvulling = "" }
+                new Mogelijkheid { Input = "ik ben in staat om dit thema met Jozefien op te nemen en haar verder te begeleiden", Aanvulling = "zelf kunnen opnemen en verder begeleiden", Output = "zelf opnemen" }
             };
 
             Aanvulling aanvulling77 = new Aanvulling
