@@ -39,11 +39,12 @@ namespace CompetentieTool.Data.Repositories
         public IEnumerable<IngevuldeVacature> GetAll()
         {
             return _context.IngevuldeVacatures
-                .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.Competentie).ThenInclude(c => c.Vraag)
-                .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.Competentie).ThenInclude(co => co.Vraag).ThenInclude(v => v.Vignet)
-                .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.GeselecteerdeOptie)
-                .Include(i => i.Vacature).ThenInclude(i => i.organisatie)
-                .Include(i => i.Responses).ThenInclude(r => r.OptieKeuze)
+                //.Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.Competentie).ThenInclude(c => c.Vraag)
+                //.Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.Competentie).ThenInclude(co => co.Vraag).ThenInclude(v => v.Vignet)
+                //.Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.GeselecteerdeOptie)
+                //.Include(i => i.Vacature).ThenInclude(i => i.organisatie)
+                //.Include(i => i.Responses).ThenInclude(r => r.OptieKeuze)
+                .Include(i => i.Vacature)
                 .Include(i => i.Sollicitant);
         }
 

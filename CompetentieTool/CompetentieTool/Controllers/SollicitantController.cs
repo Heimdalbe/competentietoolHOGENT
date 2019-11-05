@@ -29,7 +29,20 @@ namespace CompetentieTool.Controllers
         public IActionResult Vacatures()
         {
             IEnumerable<Vacature> vacatures = _vacatureRepository.GetAll();
-            return View(vacatures);
+
+            var sollicitant = (Sollicitant)_userManager.GetUserAsync(HttpContext.User).Result;
+            IList<IngevuldeVacature> ingVacatures = _ingevuldeVacatureRepository.GetAll().Where(i => i.Sollicitant.Id.Equals(sollicitant.Id)).ToList();
+
+            IList<Vacature> vacaturesSol = new List<Vacature>();
+            foreach (Vacature vac in vacatures)
+            {
+                if(ingVacatures.SingleOrDefault(i => i.Vacature.Id.Equals(vac.Id)) == null)
+                {
+                    vacaturesSol.Add(vac);
+                }
+            }
+            
+            return View(vacaturesSol);
         }
 
         public IActionResult Uitnodigingen()
