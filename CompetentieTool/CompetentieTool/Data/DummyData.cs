@@ -2399,11 +2399,11 @@ namespace CompetentieTool.Data
             context.Vragen.Add(vraag73);
             context.Vragen.Add(vraag13);
 
-            context.Vacature.Add(vac1);
-            context.Vacature.Add(vac2);
-            context.Vacature.Add(vac3);
+            //context.Vacature.Add(vac1);
+            //context.Vacature.Add(vac2);
+            //context.Vacature.Add(vac3);
 
-            context.IngevuldeVacatures.Add(ingevuldeVac1);
+            //context.IngevuldeVacatures.Add(ingevuldeVac1);
 
             context.SaveChanges();
         }

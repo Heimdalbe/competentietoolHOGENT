@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191103215921_Next")]
-    partial class Next
+    [Migration("20191104212245_tester1")]
+    partial class tester1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
