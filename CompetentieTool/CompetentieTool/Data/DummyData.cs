@@ -2115,8 +2115,7 @@ namespace CompetentieTool.Data
             {
                 new Mogelijkheid { Input = "", Aanvulling = "wordt niet verwacht", IsSchrapOptie = true },
                 new Mogelijkheid { Input = "ik vind het moeilijk om hier op in te gaan en zou doorverwijzen naar een psychotherapeut" , Aanvulling = "kunnen detecteren en doorverwijzen", Output = "doorverwijzen"},
-                new Mogelijkheid { Input = "ik ben in staat om dit thema met Jozefien op te nemen en haar verder te begeleiden", Aanvulling = "zelf kunnen opnemen en verder begeleiden", Output = "zelf opnemen" },
-                new Mogelijkheid { Input = "", Aanvulling = "" }
+                new Mogelijkheid { Input = "ik ben in staat om dit thema met Jozefien op te nemen en haar verder te begeleiden", Aanvulling = "zelf kunnen opnemen en verder begeleiden", Output = "zelf opnemen" }
             };
 
             Aanvulling aanvulling77 = new Aanvulling
@@ -2400,11 +2399,11 @@ namespace CompetentieTool.Data
             context.Vragen.Add(vraag73);
             context.Vragen.Add(vraag13);
 
-            context.Vacature.Add(vac1);
-            context.Vacature.Add(vac2);
-            context.Vacature.Add(vac3);
+            //context.Vacature.Add(vac1);
+            //context.Vacature.Add(vac2);
+            //context.Vacature.Add(vac3);
 
-            context.IngevuldeVacatures.Add(ingevuldeVac1);
+            //context.IngevuldeVacatures.Add(ingevuldeVac1);
 
             context.SaveChanges();
         }
