@@ -96,10 +96,32 @@ window.onload = function () {
         </div>
 
         <div class="alert alert-success">
+            <div class="row ">
+                <div class="col-sm-4"><h4>Grondhouding</h4></div>
+                <div class="col-sm-4"><h4>Kennis</h4></div>
+                <div class="col-sm-4"><h4>Vaardigheden</h4></div>
+            </div>
             <div class="row">
-                <div class="col-sm" style="width: 30%; display: inline-block;"><h4>Grondhouding</h4></div>
-                <div class="col-sm" style="width: 30%; display: inline-block;"><h4>Kennis</h4></div>
-                <div class="col-sm" style="width: 30%; display: inline-block;"><h4>Vaardigheden</h4></div>
+                <div class="col-sm-4">
+                    @foreach(var com in ViewBag.comp1)
+                    {
+                        <h5>@com</h5>
+                    }
+                </div>
+                <div class="col-sm-4">
+                    @foreach (var com in ViewBag.comp2)
+                    {
+                        <h5>@com</h5>
+                    }
+                </div>
+                
+            <div class="col-sm-4">
+                @foreach (var com in ViewBag.comp3)
+                {
+                    <h5>@com</h5>
+                }
+            </div>
+                </div>
             </div>
             <h5>Het diagram toont aan hoeveel de visie van de sollicitant overeen komt met die van u.</h5>
         </div>

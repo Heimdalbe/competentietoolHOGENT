@@ -27,6 +27,11 @@ namespace CompetentieTool.Controllers
             List<Double> lijst2 = new List<double>();
             List<Double> lijst3 = new List<double>();
 
+            List<String> comp1 = new List<string>();
+            List<String> comp2 = new List<string>();
+            List<String> comp3 = new List<string>();
+
+
 
             IngevuldeVacature vac = _ingevuldeVacatureRepository.GetBy(id);
             ICollection<RapportViewModel> models = new List<RapportViewModel>();
@@ -66,24 +71,42 @@ namespace CompetentieTool.Controllers
                 rvm.CompetentieType = r.Vraag.Competentie.Type;
                 rvm.VraagType = r.Vraag.type;
 
-                /* hier moet nog gezorgd worden dat de rubric kan vergeleken worden (dus soli en bedrijf antwoorden matchen)
+                /* hier moet nog gezorgd worden dat de rubric kan vergeleken worden (dus soli en bedrijf antwoorden matchen)*/
                 if (r.Vraag.type.Equals(VraagType.RUBRIC))
                 {
-                    int result = r.OptieKeuze.Equals(r.Aanvulling) ? 1 : 0;
-                    if (r.Vraag.Competentie.type.Equals(CompetentieType.GRONDHOUDING))
+
+                    int result;
+                    VacatureCompetentie temp = vac.Vacature.CompetentiesLijst.Where(c => c.Competentie.Vraag.Equals(r.Vraag)).FirstOrDefault();
+                    
+                    if (r.OptieKeuze == null || temp.GeselecteerdeOptie == null)
+                    {
+                        result = 0;
+                    }
+                    else
+                    {
+                        
+                        result = r.OptieKeuze.Id.Equals(temp.GeselecteerdeOptie.Id) ? 1 : 0;
+                    }
+                    
+                    if (r.Vraag.Competentie.Type.Equals(CompetentieType.GRONDHOUDING))
                     {
                         lijst1.Add(result);
+                        comp1.Add(r.Vraag.Competentie.Naam);
                     }
-                    if (r.Vraag.Competentie.type.Equals(CompetentieType.KENNIS))
+                    if (r.Vraag.Competentie.Type.Equals(CompetentieType.KENNIS))
                     {
                         lijst2.Add(result);
+                        comp2.Add(r.Vraag.Competentie.Naam);
                     }
-                    if (r.Vraag.Competentie.type.Equals(CompetentieType.VAARDIGHEDEN))
+                    if (r.Vraag.Competentie.Type.Equals(CompetentieType.VAARDIGHEDEN))
                     {
                         lijst3.Add(result);
+                        comp3.Add(r.Vraag.Competentie.Naam);
                     }
                 }
-                */
+                ViewBag.comp1 = comp1;
+                ViewBag.comp2 = comp2;
+                ViewBag.comp3 = comp3;
                 models.Add(rvm);
                 
 
@@ -97,10 +120,10 @@ namespace CompetentieTool.Controllers
              Hier moeten de opties van de rubric worden berekend. Als opties gelijk zijn dan 1, anders 0
              
              */
-
+             /*
             lijst1.Add(1); lijst1.Add(1); lijst1.Add(0); lijst1.Add(1); lijst1.Add(0); lijst1.Add(1);
             lijst2.Add(0); lijst2.Add(0); lijst2.Add(1); lijst2.Add(0); lijst2.Add(0); lijst2.Add(1); lijst2.Add(0);
-            lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(0); lijst3.Add(0); lijst3.Add(0);
+            lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(0); lijst3.Add(0); lijst3.Add(0);*/
             FixDonutDiagrammen(lijst1, lijst2, lijst3);
 
 
