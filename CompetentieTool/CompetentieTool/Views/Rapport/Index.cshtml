@@ -103,7 +103,7 @@ window.onload = function () {
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                    @foreach(var com in ViewBag.comp1)
+                    @foreach (var com in ViewBag.comp1)
                     {
                         <h5>@com</h5>
                     }
@@ -114,15 +114,15 @@ window.onload = function () {
                         <h5>@com</h5>
                     }
                 </div>
-                
-            <div class="col-sm-4">
-                @foreach (var com in ViewBag.comp3)
-                {
-                    <h5>@com</h5>
-                }
-            </div>
+
+                <div class="col-sm-4">
+                    @foreach (var com in ViewBag.comp3)
+                    {
+                        <h5>@com</h5>
+                    }
                 </div>
             </div>
+            <hr />
             <h5>Het diagram toont aan hoeveel de visie van de sollicitant overeen komt met die van u.</h5>
         </div>
         <hr />
@@ -139,8 +139,8 @@ window.onload = function () {
                 <h5><strong>Verklaring:</strong> @vraag.Verklaring</h5>
                 @if(vraag.Vignet != null && !vraag.Vignet.Trim().Equals("LEEG"))
                 {
-                    <div class="label label-info">
-                        <h5>Deze vraag hoort bij Vignet @vraag.Vignet</h5>
+                    <div class="alert alert-warning">
+                        <h5>Deze vraag hoort bij @vraag.Vignet</h5>
                     </div>
                     
                 }
