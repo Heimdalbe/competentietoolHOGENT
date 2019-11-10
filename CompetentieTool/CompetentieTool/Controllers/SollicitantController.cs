@@ -98,7 +98,7 @@ namespace CompetentieTool.Controllers
         }
 
         [HttpPost]
-        public IActionResult Submit(List<Group<string, VraagViewModel>> models, string id)
+        public IActionResult Submit(List<Group<string, CompetentieViewModel>> models, string id)
         {
             IngevuldeVacature vac = new IngevuldeVacature();
             vac.Vacature = _vacatureRepository.GetBy(id);
@@ -109,18 +109,27 @@ namespace CompetentieTool.Controllers
              
             foreach (var group in models)
             {
-                foreach(var item in group.Values)
+                foreach(var comp in group.Values)
                 {
-                    vraag = vragen.SingleOrDefault(v => v.Id.Equals(item.VraagId));
-                    if (vraag is VraagMeerkeuze)
-                    {
-                        optie = ((VraagMeerkeuze)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
+                    foreach(var item in comp.VraagViewModels)
+                    { 
+                        vraag = vragen.SingleOrDefault(v => v.Id.Equals(item.VraagId));
+                        if (vraag is VraagMeerkeuze)
+                        {
+                            optie = ((VraagMeerkeuze)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
+                            vac.Responses.Add(new Response { Vraag = vraag, OptieKeuze = optie });
+                        }
+                        else if( vraag is VraagRubrics)
+                        {
+                            optie = ((VraagRubrics)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
+                            vac.Responses.Add(new Response { Vraag = vraag, OptieKeuze = optie });
+                        }
+                        else
+                        {
+                            vac.Responses.Add(new Response { OpenAntwoord = item.Redenering, Vraag = vraag });
+                        }
+                        
                     }
-                    if( vraag is VraagRubrics)
-                    {
-                        optie = ((VraagRubrics)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
-                    }
-                    vac.Responses.Add(new Response { OpenAntwoord = item.Redenering, Vraag = vraag, OptieKeuze= optie });
                 }
             }
 
