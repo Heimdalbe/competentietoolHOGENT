@@ -57,25 +57,27 @@ namespace CompetentieTool.Controllers
             ICollection<VraagViewModel> models = new List<VraagViewModel>();
             foreach(Competentie comp in vac.Competenties)
             {
+                foreach (IVraag vraag in comp.Vragen) { 
                 VraagViewModel res = new VraagViewModel();
-                res.VraagStelling = comp.Vraag.VraagStelling;
-                res.VraagId = comp.Vraag.Id;
-                res.Vignet = comp.Vraag.Vignet?.Beschrijving;
-                if(comp.Vraag is VraagMeerkeuze)
+                res.VraagStelling = vraag.VraagStelling;
+                res.VraagId = vraag.Id;
+                res.Vignet = comp.Vignet?.Beschrijving;
+                if(vraag is VraagMeerkeuze)
                 {
-                    foreach(Mogelijkheid opt in ((VraagMeerkeuze)comp.Vraag).Opties)
+                    foreach(Mogelijkheid opt in ((VraagMeerkeuze)vraag).Opties)
                     {
-                        res.opties.Add(opt);
+                        res.Opties.Add(opt);
                     }
                 }
-                if (comp.Vraag is VraagRubrics)
+                if (vraag is VraagRubrics)
                 {
-                    foreach (Mogelijkheid opt in ((VraagRubrics)comp.Vraag).Opties)
+                    foreach (Mogelijkheid opt in ((VraagRubrics)vraag).Opties)
                     {
-                        res.opties.Add(opt);
+                        res.Opties.Add(opt);
                     }
                 }
                 models.Add(res);
+            }
             }
 
             ViewData["id"] = id;
@@ -112,7 +114,7 @@ namespace CompetentieTool.Controllers
                     {
                         optie = ((VraagRubrics)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
                     }
-                    vac.Responses.Add(new Response { Aanvulling = item.Redenering, Vraag = vraag, OptieKeuze= optie });
+                    vac.Responses.Add(new Response { OpenAntwoord = item.Redenering, Vraag = vraag, OptieKeuze= optie });
                 }
             }
 

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class tester1 : Migration
+    public partial class FinalMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -217,22 +217,29 @@ namespace CompetentieTool.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Vragen",
+                name: "Competenties",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    VraagStelling = table.Column<string>(nullable: true),
-                    CompetentieId = table.Column<string>(nullable: true),
-                    OutputString = table.Column<string>(nullable: true),
-                    VignetId = table.Column<string>(nullable: true),
-                    type = table.Column<int>(nullable: false),
-                    Discriminator = table.Column<string>(nullable: false)
+                    Naam = table.Column<string>(nullable: true),
+                    Verklaring = table.Column<string>(nullable: true),
+                    IsBasisCompetentie = table.Column<bool>(nullable: false),
+                    VraagId = table.Column<string>(nullable: true),
+                    AanvullingId = table.Column<string>(nullable: true),
+                    Type = table.Column<int>(nullable: false),
+                    VignetId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vragen", x => x.Id);
+                    table.PrimaryKey("PK_Competenties", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Vragen_Vignet_VignetId",
+                        name: "FK_Competenties_Aanvulling_AanvullingId",
+                        column: x => x.AanvullingId,
+                        principalTable: "Aanvulling",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Competenties_Vignet_VignetId",
                         column: x => x.VignetId,
                         principalTable: "Vignet",
                         principalColumn: "Id",
@@ -266,30 +273,24 @@ namespace CompetentieTool.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Competenties",
+                name: "Vragen",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    Naam = table.Column<string>(nullable: true),
-                    Verklaring = table.Column<string>(nullable: true),
-                    IsBasisCompetentie = table.Column<bool>(nullable: false),
-                    VraagId = table.Column<string>(nullable: true),
-                    AanvullingId = table.Column<string>(nullable: true),
-                    Type = table.Column<int>(nullable: false)
+                    VraagStelling = table.Column<string>(nullable: true),
+                    CompetentieId = table.Column<string>(nullable: true),
+                    OutputString = table.Column<string>(nullable: true),
+                    VraagVolgorde = table.Column<int>(nullable: false),
+                    type = table.Column<int>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Competenties", x => x.Id);
+                    table.PrimaryKey("PK_Vragen", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Competenties_Aanvulling_AanvullingId",
-                        column: x => x.AanvullingId,
-                        principalTable: "Aanvulling",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Competenties_Vragen_VraagId",
-                        column: x => x.VraagId,
-                        principalTable: "Vragen",
+                        name: "FK_Vragen_Competenties_CompetentieId",
+                        column: x => x.CompetentieId,
+                        principalTable: "Competenties",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -336,7 +337,7 @@ namespace CompetentieTool.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     OptieKeuzeId = table.Column<string>(nullable: true),
-                    Aanvulling = table.Column<string>(nullable: true),
+                    OpenAntwoord = table.Column<string>(nullable: true),
                     VraagId = table.Column<string>(nullable: true),
                     IngevuldeVacatureId = table.Column<string>(nullable: true)
                 },
@@ -439,11 +440,9 @@ namespace CompetentieTool.Migrations
                 column: "AanvullingId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Competenties_VraagId",
+                name: "IX_Competenties_VignetId",
                 table: "Competenties",
-                column: "VraagId",
-                unique: true,
-                filter: "[VraagId] IS NOT NULL");
+                column: "VignetId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_IngevuldeVacatures_SollicitantId",
@@ -501,9 +500,9 @@ namespace CompetentieTool.Migrations
                 column: "GeselecteerdeOptieId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Vragen_VignetId",
+                name: "IX_Vragen_CompetentieId",
                 table: "Vragen",
-                column: "VignetId");
+                column: "CompetentieId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -536,22 +535,22 @@ namespace CompetentieTool.Migrations
                 name: "IngevuldeVacatures");
 
             migrationBuilder.DropTable(
-                name: "Competenties");
-
-            migrationBuilder.DropTable(
                 name: "Mogelijkheid");
 
             migrationBuilder.DropTable(
                 name: "Vacature");
 
             migrationBuilder.DropTable(
-                name: "Aanvulling");
-
-            migrationBuilder.DropTable(
                 name: "Vragen");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Competenties");
+
+            migrationBuilder.DropTable(
+                name: "Aanvulling");
 
             migrationBuilder.DropTable(
                 name: "Vignet");

@@ -34,11 +34,11 @@ namespace CompetentieTool.Data
             builder.Entity<VacatureCompetentie>().HasOne(v => v.Vacature).WithMany(v => v.CompetentiesLijst).HasForeignKey(v => v.VacatureId);
             builder.Entity<VacatureCompetentie>().HasOne(v => v.Competentie).WithMany().HasForeignKey(v => v.CompetentieId);
 
-            builder.Entity<Competentie>().HasOne(v => v.Vraag).WithOne(c => c.Competentie).HasForeignKey<Competentie>(c => c.VraagId);
+            builder.Entity<Competentie>().HasMany(v => v.Vragen).WithOne(c => c.Competentie);
+            builder.Entity<Competentie>().HasOne(v => v.Vignet).WithMany();
 
             builder.Entity<IVraag>().HasKey(i => i.Id);
-            builder.Entity<IVraag>().HasOne(v => v.Vignet).WithMany();
-
+            
             builder.Entity<VraagMeerkeuze>().HasMany(v => v.Opties).WithOne();
             builder.Entity<VraagRubrics>().HasMany(v => v.Opties).WithOne();
 

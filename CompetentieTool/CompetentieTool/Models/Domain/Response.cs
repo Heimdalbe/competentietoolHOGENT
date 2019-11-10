@@ -12,7 +12,7 @@ namespace CompetentieTool.Models.Domain
 
         public Mogelijkheid OptieKeuze { get; set; }
         public String OptieKeuzeId { get; set; }
-        public String Aanvulling { get; set; }
+        public String OpenAntwoord { get; set; }
         public IVraag Vraag { get; set; }
         public String VraagId { get; set; }
     }

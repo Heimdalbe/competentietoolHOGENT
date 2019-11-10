@@ -44,10 +44,10 @@
                                     @{counter++;}
                                     <div class="panel-body">
                                         <div>@Model[i].Values[questionCounter].VraagStelling</div>
-                                        @if (Model[i].Values[questionCounter].opties.Count > 0)
+                                        @if (Model[i].Values[questionCounter].Opties.Count > 0)
                                         {
 
-                                            @foreach (var opt in Model[i].Values[questionCounter].opties)
+                                            @foreach (var opt in Model[i].Values[questionCounter].Opties)
                                             {
                                                 @if (opt.Input != "")
                                                 {
@@ -87,10 +87,10 @@
                                 @{counter++;}
                                 <div class="panel-body">
                                     <div>@Model[i].Values[j].VraagStelling</div>
-                                    @if (Model[i].Values[j].opties.Count > 0)
+                                    @if (Model[i].Values[j].Opties.Count > 0)
                                     {
 
-                                        @foreach (var opt in Model[i].Values[j].opties)
+                                        @foreach (var opt in Model[i].Values[j].Opties)
                                         {
                                             @if (opt.Input != "")
                                             {

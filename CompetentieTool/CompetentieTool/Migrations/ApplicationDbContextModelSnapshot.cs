@@ -15,7 +15,7 @@ namespace CompetentieTool.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -46,15 +46,15 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("Verklaring");
 
+                    b.Property<string>("VignetId");
+
                     b.Property<string>("VraagId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AanvullingId");
 
-                    b.HasIndex("VraagId")
-                        .IsUnique()
-                        .HasFilter("[VraagId] IS NOT NULL");
+                    b.HasIndex("VignetId");
 
                     b.ToTable("Competenties");
                 });
@@ -71,15 +71,15 @@ namespace CompetentieTool.Migrations
 
                     b.Property<string>("OutputString");
 
-                    b.Property<string>("VignetId");
-
                     b.Property<string>("VraagStelling");
+
+                    b.Property<int>("VraagVolgorde");
 
                     b.Property<int>("type");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VignetId");
+                    b.HasIndex("CompetentieId");
 
                     b.ToTable("Vragen");
 
@@ -155,9 +155,9 @@ namespace CompetentieTool.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Aanvulling");
-
                     b.Property<string>("IngevuldeVacatureId");
+
+                    b.Property<string>("OpenAntwoord");
 
                     b.Property<string>("OptieKeuzeId");
 
@@ -457,16 +457,16 @@ namespace CompetentieTool.Migrations
                         .WithMany()
                         .HasForeignKey("AanvullingId");
 
-                    b.HasOne("CompetentieTool.Domain.IVraag", "Vraag")
-                        .WithOne("Competentie")
-                        .HasForeignKey("CompetentieTool.Domain.Competentie", "VraagId");
+                    b.HasOne("CompetentieTool.Domain.Vignet", "Vignet")
+                        .WithMany()
+                        .HasForeignKey("VignetId");
                 });
 
             modelBuilder.Entity("CompetentieTool.Domain.IVraag", b =>
                 {
-                    b.HasOne("CompetentieTool.Domain.Vignet", "Vignet")
-                        .WithMany()
-                        .HasForeignKey("VignetId");
+                    b.HasOne("CompetentieTool.Domain.Competentie", "Competentie")
+                        .WithMany("Vragen")
+                        .HasForeignKey("CompetentieId");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.IngevuldeVacature", b =>

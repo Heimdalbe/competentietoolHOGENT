@@ -153,7 +153,8 @@ namespace CompetentieTool.Data
             {
                 Naam = "Niet veroordelen",
                 Verklaring = "De hulpverlener veroordeelt niet en is zich hierbij bewust van de invloed van zijn eigen waarde, opvoedings- en normenkader op zijn denken",
-                Type = CompetentieType.GRONDHOUDING
+                Type = CompetentieType.GRONDHOUDING,
+                Vignet = boris
             };
 
             Mogelijkheid optie11 = new Mogelijkheid { Input = "U spreekt Boris aan over het feit dat U het jammer vindt dat hij het zorgsysteem misbruikt heeft", Output = "de cliënt aanspreekt over zijn/haar gedrag" };
@@ -170,8 +171,8 @@ namespace CompetentieTool.Data
             String outputs1 = "Dit vignet gaat over de manier waarop de sollicitant al dan niet een oordeel velt over de situatie waarin een cliënt een dure GSM koopt terwijl hij beschikt over weinig middelen. De sollicitant geeft hierbij aan dat hij && " +
                 "Hij geeft hierbij volgende toelichting $$ Vanuit onderzoek geven cliënten sterk aan dat ze elke vorm van veroordeling over hun gedrag afwijzen.";
 
-            IVraag vraag1 = new VraagMeerkeuze { VraagStelling = "Welke actie onderneemt U?", Vignet = boris, Opties = opties1, Competentie = comp1, OutputString = outputs1, type = VraagType.MEERKEUZE };
-            comp1.Vraag = vraag1;
+            IVraag vraag1 = new VraagMeerkeuze { VraagStelling = "Welke actie onderneemt U?", Opties = opties1, Competentie = comp1, OutputString = outputs1, type = VraagType.MEERKEUZE, VraagVolgorde = 1 };
+            comp1.Vragen.Add(vraag1);
 
             // comp 3
             Competentie comp3 = new Competentie
@@ -194,10 +195,11 @@ namespace CompetentieTool.Data
 
             IVraag vraag3 = new VraagMeerkeuze { VraagStelling = "Een cliënt geeft aan dat hij naar Thailand op reis wil gaan. Gezien zijn instabiele psychotische problematiek en risico tot herval in middelengebruik vindt u dit geen goed idee. Wat doet u?",
                 Opties = opties3, Competentie = comp3, OutputString = output3,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp3.Vraag = vraag3;
+            comp3.Vragen.Add(vraag3);
 
             // comp 12
             Competentie comp12 = new Competentie
@@ -223,17 +225,19 @@ namespace CompetentieTool.Data
                 Opties = opties12,
                 Competentie = comp12,
                 OutputString = output12,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp12.Vraag = vraag12;
+            comp12.Vragen.Add(vraag12);
 
             // comp 15
             Competentie comp15 = new Competentie
             {
                 Naam = "Zorgzaamheid",
                 Verklaring = "De hulpverlener vertoont een authentieke betrokkenheid en zorgzame houding naar cliënten en collega’s",
-                Type = CompetentieType.GRONDHOUDING
+                Type = CompetentieType.GRONDHOUDING,
+                Vignet = thomas
             };
 
 
@@ -253,18 +257,19 @@ namespace CompetentieTool.Data
                 Opties = opties15,
                 Competentie = comp15,
                 OutputString = output15,
-                Vignet = thomas,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp15.Vraag = vraag15;
+            comp15.Vragen.Add(vraag15);
 
             // comp 42 
             Competentie comp42 = new Competentie
             {
                 Naam = "Kunnen afronden van een hulpverlenersrelatie",
                 Verklaring = "De hulpverlener is er zich van bewust dat het afronden van een hulpverlenersrelatie voor cliënten betekent dat er afscheid moet worden genomen van een intieme vertrouwensrelatie.  De hulpverlener zorgt voor een graduele overgang en betrekt indien nodig reeds op voorhand de hulpverleners of mantelzorgers die de zorg zullen overnemen.",
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = kurt
             };
 
 
@@ -284,18 +289,19 @@ namespace CompetentieTool.Data
                 Opties = opties42,
                 Competentie = comp42,
                 OutputString = output42,
-                Vignet = kurt,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp42.Vraag = vraag42;
+            comp42.Vragen.Add(vraag42);
 
             // comp 43
             Competentie comp43 = new Competentie
             {
                 Naam = "Going the extra mile",
                 Verklaring = "De hulpverlener durft op Basis van rationele overwegingen acties te ondernemen om cliënten te ondersteunen, zelfs indien deze afwijken van het gebruikelijke patroon of afspraken in het team..",
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = kurt
             };
 
 
@@ -315,11 +321,11 @@ namespace CompetentieTool.Data
                 Opties = opties43,
                 Competentie = comp43,
                 OutputString = output43,
-                Vignet = kurt,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp43.Vraag = vraag43;
+            comp43.Vragen.Add(vraag43);
 
             //comp 45
             Competentie comp45 = new Competentie
@@ -346,10 +352,11 @@ namespace CompetentieTool.Data
                 Opties = opties45,
                 Competentie = comp45,
                 OutputString = output45,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp45.Vraag = vraag45;
+            comp45.Vragen.Add(vraag45);
 
             // comp 46
             Competentie comp46 = new Competentie
@@ -375,17 +382,19 @@ namespace CompetentieTool.Data
                 Opties = opties46,
                 Competentie = comp46,
                 OutputString = output46,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp46.Vraag = vraag46;
+            comp46.Vragen.Add(vraag46);
 
             // comp 49
             Competentie comp49 = new Competentie
             {
                 Naam = "Omgaan met grensoverschrijdend gedrag",
                 Verklaring = "De hulpverlener kan omgaan met situaties die zijn persoonlijke grenzen overschrijden zoals intimidatie en agressie.",
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = murat
             };
 
 
@@ -406,18 +415,19 @@ namespace CompetentieTool.Data
                 Opties = opties49,
                 Competentie = comp49,
                 OutputString = output49,
-                Vignet = murat,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp49.Vraag = vraag49;
+            comp49.Vragen.Add(vraag49);
 
             // comp 60
             Competentie comp60 = new Competentie
             {
                 Naam = "Omgaan met onmacht en eigen frustratie",
                 Verklaring = "De hulpverlener kan zijn onmacht kanaliseren via het team en kan hierbij eigen frustraties op een respectvolle manier ventileren naar collega’s.",
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = kamiel
             };
 
 
@@ -437,11 +447,11 @@ namespace CompetentieTool.Data
                 Opties = opties60,
                 Competentie = comp60,
                 OutputString = output60,
-                Vignet = kamiel,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp60.Vraag = vraag60;
+            comp60.Vragen.Add(vraag60);
 
             // comp 66
             IList<Mogelijkheid> opties66 = new List<Mogelijkheid>()
@@ -464,10 +474,11 @@ namespace CompetentieTool.Data
                 Opties = opties66,
                 Competentie = comp66,
                 OutputString = "De sollicitant geeft aan dat hij het belangrijk vindt dat &&",
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp66.Vraag = vraag66;
+            comp66.Vragen.Add(vraag66);
 
             // comp 67
             IList<Mogelijkheid> opties67 = new List<Mogelijkheid>()
@@ -493,17 +504,19 @@ namespace CompetentieTool.Data
                 Opties = opties67,
                 Competentie = comp67,
                 OutputString = "De sollicitant geeft aan dat het creëren van veiligheid in een team &&",
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp67.Vraag = vraag67;
+            comp67.Vragen.Add(vraag67);
 
             // comp 73
             Competentie comp73 = new Competentie
             {
                 Naam = "Omgaan met tegenoverdracht",
                 Verklaring = "De hulpverlener is zich bewust van gevoelens van tegenoverdracht.  Hij/zij is in staat om te reflecteren van waaruit dit komt en kan dit bespreekbaar stellen.",
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = boris
             };
 
 
@@ -524,11 +537,11 @@ namespace CompetentieTool.Data
                 Opties = opties73,
                 Competentie = comp73,
                 OutputString = output73,
-                Vignet = boris,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp73.Vraag = vraag73;
+            comp73.Vragen.Add(vraag73);
 
             // comp 75
             Competentie comp75 = new Competentie
@@ -553,17 +566,19 @@ namespace CompetentieTool.Data
                 Opties = opties75,
                 Competentie = comp75,
                 OutputString = output75,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp75.Vraag = vraag75;
+            comp75.Vragen.Add(vraag75);
 
             // comp 81
             Competentie comp81 = new Competentie
             {
                 Naam = "Controleren",
                 Verklaring = "De hulpverlener is er zich van bewust dat controle gericht is op het ondersteunen van de cliënt en dus niet tot een automatisme mag verworden. Controle vereist immers het mandaat van de cliënt. Controle als interventie moet op regelmatige Basis samen met de cliënt op zijn therapeutische meerwaarde worden geëvalueerd.",
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = thomas
             };
 
 
@@ -583,11 +598,11 @@ namespace CompetentieTool.Data
                 Opties = opties81,
                 Competentie = comp81,
                 OutputString = output81,
-                Vignet = thomas,
-                type = VraagType.MEERKEUZE
+                type = VraagType.MEERKEUZE,
+                VraagVolgorde = 1
             };
 
-            comp81.Vraag = vraag81;
+            comp81.Vragen.Add(vraag81);
 
             //// template vraagmeerkeuze
             //Competentie compM = new Competentie
@@ -633,10 +648,11 @@ namespace CompetentieTool.Data
                 VraagStelling = "U hebt een gesprek met een cliënt gepland. Uw afdelingshoofd vraagt u ‘s morgens om zeker aanwezig te zijn op de teambespreking omdat één van de cliënten die u opvolgt daar zal besproken worden.",
                 Competentie = comp10,
                 OutputString = output10,
-                type = VraagType.OPEN
+                type = VraagType.OPEN,
+                VraagVolgorde = 1
             };
 
-            comp10.Vraag = vraag10;
+            comp10.Vragen.Add(vraag10);
 
             // comp 32
             Competentie comp32 = new Competentie
@@ -653,9 +669,10 @@ namespace CompetentieTool.Data
                 VraagStelling = "Hoe ziet u de verhouding tussen wetenschappelijke evidentie, eigen expertise en ervaringskennis binnen het verlenen van een goede kwaliteit van zorg? Licht bondig toe?",
                 Competentie = comp32,
                 OutputString = output32,
-                type = VraagType.OPEN
+                type = VraagType.OPEN,
+                VraagVolgorde = 1
             };
-            comp32.Vraag = vraag32;
+            comp32.Vragen.Add(vraag32);
 
             // comp 41
             Competentie comp41 = new Competentie
@@ -672,9 +689,10 @@ namespace CompetentieTool.Data
                 VraagStelling = "Hoe kijkt u naar gesprekken over alledaagse zaken met cliënten (zoals over het weer, de voetbal, …) en hoe gaat u hiermee om?",
                 Competentie = comp41,
                 OutputString = output41,
-                type = VraagType.OPEN
+                type = VraagType.OPEN,
+                VraagVolgorde = 1
             };
-            comp41.Vraag = vraag41;
+            comp41.Vragen.Add(vraag41);
 
             // comp 51
             Competentie comp51 = new Competentie
@@ -692,16 +710,18 @@ namespace CompetentieTool.Data
                 VraagStelling = "Hoop en zingeving zijn belangrijke elementen voor een zinvol bestaan. Hoe kan u hiertoe bijdragen als hulpverlener? Geef een concreet voorbeeld",
                 Competentie = comp51,
                 OutputString = output51,
-                  type = VraagType.OPEN
+                  type = VraagType.OPEN,
+                  VraagVolgorde = 1
               };
-            comp51.Vraag = vraag51;
+            comp51.Vragen.Add(vraag51);
 
             // comp 56
             Competentie comp56 = new Competentie
             {
                 Naam = "Luistervaardigheden",
                 Verklaring = "De hulpverlener maakt tijd om op een onbevangen manier naar de cliënt te luisteren zonder zijn eigen bedenkingen of ideeën in te laten overheersen.",
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = anna
             };
 
             String output56 = "Onderstaand beschrijft de sollicitant op welke manier hij/zij zou reageren op de casus van Anna. >> Naast de eventuele uiting van subjectieve interpretaties kan u nagaan of de sollicitant eerder gericht is op actieve tussenkomsten dan wel op luisterbereidheid. Uit ons onderzoek blijkt immers dat in functie van de vertrouwensband goed luisteren naar het probleem erg belangrijk is vooraleer tot actie wordt overgegaan.Deze casus  is sterk gericht op de crisissituatie.Toch is het van belang om ook na te gaan of de sollicitant spontaan de sterktes van Anna benoemt en ermee aan de slag gaat in het gesprek.";
@@ -711,10 +731,10 @@ namespace CompetentieTool.Data
                 VraagStelling = "Wat doet u, wat denkt u en waarom? ",
                 Competentie = comp56,
                 OutputString = output56,
-                Vignet = anna,
-                type = VraagType.OPEN
+                type = VraagType.OPEN,
+                VraagVolgorde = 1
             };
-            comp56.Vraag = vraag56;
+            comp56.Vragen.Add(vraag56);
 
             // comp 69
             Competentie comp69 = new Competentie
@@ -731,16 +751,18 @@ namespace CompetentieTool.Data
                 VraagStelling = "Geef uw mening weer over onderstaande stelling \"Hulpverleners moeten blijven zoeken naar het waarom achter de initiële hulpvraag\"",
                 Competentie = comp69,
                 OutputString = output69,
-                type = VraagType.OPEN
+                type = VraagType.OPEN,
+                VraagVolgorde = 1
             };
-            comp69.Vraag = vraag69;
+            comp69.Vragen.Add(vraag69);
 
             // comp 76
             Competentie comp76 = new Competentie
             {
                 Naam = "Zorgplan opmaken",
                 Verklaring = "De hulpverlener kan een zorgplan opmaken dat gefaseerd is en subdoelstellingen evenals evaluatiemomenten bevat. Hij monitort dit continu en past het plan aan wanneer en waar nodig.",
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = thomas
             };
 
             String output76 = "De sollicitant geeft op Basis van het vignet van Kurt onderstaand rudimentair zorgplan weer. Om dit te interpreteren kan U volgende zaken in overweging nemen: \n-\t Komen verschillende levensdomeinen, voldoende aan bod? \n-\t Worden er evaluatiemomenten ingebouwd? \n-\t Worden  sterktes ook geëxploreerd? \n-\t Wordt de cliënt gehoord, zorg voor context? \n-\t Is de intensiteit van het zorgplan afgestemd op de noden van de cliënt(niet te veel, niet te weinig)? \n-\t Wordt alles “gepathologiseerd” of wordt de reflectie gemaakt dat bepaald gedrag misschien perfect normaal is? \n-\t Op welke manier wordt er rekening gehouden met het sociaal isolement van de cliënt? \n-\t Worden andere organisaties betrokken of zal de sollicitant alles alleen opnemen ? (netwerkgerichtheid)";
@@ -750,17 +772,18 @@ namespace CompetentieTool.Data
                 VraagStelling = "Maak een oplijsting in trefwoorden van maximum 10 prioritaire aandachtspunten en noteer per trefwoord in maximum 1 zin hoe u hiermee aan de slag zou gaan.",
                 Competentie = comp76,
                 OutputString = output76,
-                Vignet = kurt,
-                type = VraagType.OPEN
+                type = VraagType.OPEN,
+                VraagVolgorde = 1
             };
-            comp76.Vraag = vraag76;
+            comp76.Vragen.Add(vraag76);
 
             // comp 79
             Competentie comp79 = new Competentie
             {
                 Naam = "Succeservaringen creëren en bekrachtigen",
                 Verklaring = "De hulpverlener creëert of expliciteert succeservaringen en maakt tijd om deze samen met de cliënt te valoriseren.",
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = kurt
             };
 
             String output79 = "Via een vignet wordt nagegaan in welke mate de sollicitant succeservaringen zal bekrachtigen; onderstaand wordt het antwoord gegeven van de sollicitant op de vraag hoe hij met de situatie zou omgaan indien de cliënt de job heeft >> Voor de interpretatie is het van belang te  checken of de sollicitant hierbij de focus zal leggen op de bevestiging van het succes enerzijds of op potentiële valkuilen anderzijds";
@@ -770,10 +793,10 @@ namespace CompetentieTool.Data
                 VraagStelling = "Bij een volgende huisbezoek zegt Thomas dat hij  de job als taxichauffeur heeft. Hoe reageert u hierop?",
                 Competentie = comp79,
                 OutputString = output79,
-                Vignet = thomas,
-                type = VraagType.OPEN
+                type = VraagType.OPEN,
+                VraagVolgorde = 1
             };
-            comp79.Vraag = vraag79;
+            comp79.Vragen.Add(vraag79);
 
             //// temp
             //Competentie comp = new Competentie
@@ -821,10 +844,11 @@ namespace CompetentieTool.Data
                 Opties = opties8,
                 Competentie = comp8,
                 OutputString= "In deze sectie toetsen we wegens de complexiteit enkel de component “bereikbaarheid” af te toetsen als onderdeel van presentie. De sollicitant geeft aan dat hij in functie van bereikbaarheid wenst && Hij geeft hiervoor volgende toelichting weer $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp8.Vraag = vraag8;
+            comp8.Vragen.Add(vraag8);
 
 
             // comp 9
@@ -854,9 +878,10 @@ namespace CompetentieTool.Data
                 Opties = opties9,
                 Competentie = comp9, 
                 OutputString = "De sollicitant geeft aan dat hij zich && Hij geeft hiervoor volgende uitleg $$ Deze uitleg is belangrijk om in te schatten welke betekenis de sollicitant toekent aan empathie in een professionele relatie(eerder realistisch dan wel idealistisch). Tegelijkertijd kan worden gepeild naar de mate van zelfinzicht in bepaalde omstandigheden die empathie kan bemoeilijken bv.pedofilie, eigen ervaringen etc.",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
-            comp9.Vraag = vraag9;
+            comp9.Vragen.Add(vraag9);
 
             // comp 13
             IList<Mogelijkheid> opties13 = new List<Mogelijkheid>()
@@ -887,10 +912,11 @@ namespace CompetentieTool.Data
                 Opties = opties13,
                 Competentie = comp13,
                 OutputString = "Onderstaand geeft de sollicitant zijn mening weer weer over het belang van socioeconomie in de zorg",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp13.Vraag = vraag13;
+            comp13.Vragen.Add(vraag13);
 
             // comp 16
             IList<Mogelijkheid> opties16 = new List<Mogelijkheid>()
@@ -920,10 +946,11 @@ namespace CompetentieTool.Data
                 Opties = opties16,
                 Competentie = comp16,
                 OutputString = "De sollicitant geeft aan vooral te leren door &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp16.Vraag = vraag16;
+            comp16.Vragen.Add(vraag16);
 
             // comp 18
             IList<Mogelijkheid> opties18 = new List<Mogelijkheid>()
@@ -954,10 +981,11 @@ namespace CompetentieTool.Data
                 Opties = opties18,
                 Competentie = comp18, 
                 OutputString = "De sollicitant geeft aan dat hij het belangrijk vindt om && Bijkomende uitleg $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp18.Vraag = vraag18;
+            comp18.Vragen.Add(vraag18);
 
             // comp 19
             IList<Mogelijkheid> opties19 = new List<Mogelijkheid>()
@@ -986,10 +1014,11 @@ namespace CompetentieTool.Data
                 Opties = opties19,
                 Competentie = comp19, 
                 OutputString = "De sollicitant geeft aan dat hij er bij voorkeur een && denken op nahoudt. \nUit ons onderzoek blijkt dat een goed evenwicht tussen beide manieren van denken bij de hulpverlener belangrijk is. Daarnaast bleek ook dat op teamniveau een gezond evenwicht tussen de zogenaamde denkers en doeners  een belangrijke meerwaarde is",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp19.Vraag = vraag19;
+            comp19.Vragen.Add(vraag19);
 
             // comp 20
             IList<Mogelijkheid> opties20 = new List<Mogelijkheid>()
@@ -1019,10 +1048,11 @@ namespace CompetentieTool.Data
                 Opties = opties20,
                 Competentie = comp20,
                 OutputString = "De sollicitant geeft aan dat hij onderstaande kennis heeft over psychopathologie. && Hij heeft deze kennis verworven in $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp20.Vraag = vraag20;
+            comp20.Vragen.Add(vraag20);
 
             // comp 21
             IList<Mogelijkheid> opties21 = new List<Mogelijkheid>()
@@ -1052,10 +1082,11 @@ namespace CompetentieTool.Data
                 Opties = opties21,
                 Competentie = comp21,
                 OutputString = "De sollicitant geeft aan dat hij onderstaande kennis heeft over de effecten en bijwerkingen van psychofarmaca. &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp21.Vraag = vraag21;
+            comp21.Vragen.Add(vraag21);
 
             // comp 22
             IList<Mogelijkheid> opties22 = new List<Mogelijkheid>()
@@ -1085,10 +1116,11 @@ namespace CompetentieTool.Data
                 Opties = opties22,
                 Competentie = comp22,
                 OutputString = "De sollicitant geeft aan dat hij onderstaande kennis heeft over de somatische problematieken. &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp22.Vraag = vraag22;
+            comp22.Vragen.Add(vraag22);
 
             // comp 23
             IList<Mogelijkheid> opties23 = new List<Mogelijkheid>()
@@ -1118,10 +1150,11 @@ namespace CompetentieTool.Data
                 Opties = opties23,
                 Competentie = comp23,
                 OutputString = "De sollicitant geeft aan dat hij onderstaande kennis heeft over leefstijlfactoren die somatische risico’s inhouden &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp23.Vraag = vraag23;
+            comp23.Vragen.Add(vraag23);
 
             // comp 24
             IList<Mogelijkheid> opties24 = new List<Mogelijkheid>()
@@ -1151,12 +1184,13 @@ namespace CompetentieTool.Data
                 Opties = opties24,
                 Competentie = comp24,
                 OutputString = "De sollicitant geeft aan dat hij onderstaand kennisniveau heeft over de invalshoeken van diverse disciplines &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp24.Vraag = vraag24;
+            comp24.Vragen.Add(vraag24);
 
-             // comp 25a
+            // comp 25a
             IList<Mogelijkheid> opties25a = new List<Mogelijkheid>()
             {
                 new Mogelijkheid { Input = "Weinig", Aanvulling = "minimaal", IsSchrapOptie = true },
@@ -1185,10 +1219,11 @@ namespace CompetentieTool.Data
                 Opties = opties25a,
                 Competentie = comp25a,
                 OutputString = "De sollicitant geeft aan een && kennis te hebben over rouwverwerking",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp25a.Vraag = vraag25a;
+            comp25a.Vragen.Add(vraag25a);
 
             // comp 25b
             IList<Mogelijkheid> opties25b = new List<Mogelijkheid>()
@@ -1219,10 +1254,11 @@ namespace CompetentieTool.Data
                 Opties = opties25b,
                 Competentie = comp25b,
                 OutputString = "De sollicitant geeft aan een && kennis te hebben over traumaverwerking",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp25b.Vraag = vraag25b;
+            comp25b.Vragen.Add(vraag25b);
 
             // comp 26
             IList<Mogelijkheid> opties26 = new List<Mogelijkheid>()
@@ -1252,10 +1288,11 @@ namespace CompetentieTool.Data
                 Opties = opties26,
                 Competentie = comp26,
                 OutputString = "De sollicitant geeft aan dat hij over volgende competenties beschikt aangaande het opzoeken en consulteren van wetenschappelijke literatuur &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp26.Vraag = vraag26;
+            comp26.Vragen.Add(vraag26);
 
             // comp 27
             IList<Mogelijkheid> opties27 = new List<Mogelijkheid>()
@@ -1286,10 +1323,11 @@ namespace CompetentieTool.Data
                 Opties = opties27,
                 Competentie = comp27,
                 OutputString = "De sollicitant geeft aan dat hij binnen  de samenwerking met andere organisaties volgende houding prefereert naar inzet van beroepsgeheim toe: && Algemeen wordt aangenomen dat binnen samenwerkingen er enkel die informatie gedeeld wordt waar de cliënt expliciet toestemming heeft gegeven om deze te delen, tenzij het strikt noodzakelijk is voor de verdere opvolging van het te volgen traject.",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp27.Vraag = vraag27;
+            comp27.Vragen.Add(vraag27);
 
             // comp 28a
             IList<Mogelijkheid> opties28a = new List<Mogelijkheid>()
@@ -1320,10 +1358,11 @@ namespace CompetentieTool.Data
                 Opties = opties28a,
                 Competentie = comp28a,
                 OutputString = "De sollicitant geeft aan een && kennis te hebben over administratieve cliëntenrechten",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp28a.Vraag = vraag28a;
+            comp28a.Vragen.Add(vraag28a);
 
             // comp 28b
             IList<Mogelijkheid> opties28b = new List<Mogelijkheid>()
@@ -1354,10 +1393,11 @@ namespace CompetentieTool.Data
                 Opties = opties28b,
                 Competentie = comp28b,
                 OutputString = "De sollicitant geeft aan een && kennis te hebben over financiële cliëntenrechten",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp28b.Vraag = vraag28b;
+            comp28b.Vragen.Add(vraag28b);
 
             // comp 30
             IList<Mogelijkheid> opties30 = new List<Mogelijkheid>()
@@ -1388,10 +1428,11 @@ namespace CompetentieTool.Data
                 Opties = opties30,
                 Competentie = comp30,
                 OutputString = "De sollicitant geeft aan dat hij over volgende kennis beschikt aangaande projectopbouw en -management &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp30.Vraag = vraag30;
+            comp30.Vragen.Add(vraag30);
 
             // comp 31
             IList<Mogelijkheid> opties31 = new List<Mogelijkheid>()
@@ -1420,10 +1461,11 @@ namespace CompetentieTool.Data
                 Opties = opties31,
                 Competentie = comp31,
                 OutputString = "De sociale kaart dient om in te schatten op welk niveau de sollicitant al dan niet kan doorverwijzen. De sollicitant geeft aan dat hij over volgende kennis beschikt aangaande het gebruik van de sociale kaart && en gebruikt hiervoor volgende middelen $$" ,
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp31.Vraag = vraag31;
+            comp31.Vragen.Add(vraag31);
 
             // comp 34
             IList<Mogelijkheid> opties34 = new List<Mogelijkheid>()
@@ -1455,10 +1497,11 @@ namespace CompetentieTool.Data
                 Opties = opties34,
                 Competentie = comp34,
                 OutputString = "De sollicitant geeft onderstaand aan wat betreft zijn competentie tot agendabeheer: &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp34.Vraag = vraag34;
+            comp34.Vragen.Add(vraag34);
 
             // comp 35
             IList<Mogelijkheid> opties35 = new List<Mogelijkheid>()
@@ -1489,10 +1532,11 @@ namespace CompetentieTool.Data
                 Opties = opties35,
                 Competentie = comp35,
                 OutputString = "De sollicitant geeft aan dat hij zijn competenties aangaande omgaan met crisissituaties als volgt inschat && Hij heeft deze kennis geleerd via onderstaande kanalen: $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp35.Vraag = vraag35;
+            comp35.Vragen.Add(vraag35);
 
             // comp 36
             IList<Mogelijkheid> opties36 = new List<Mogelijkheid>()
@@ -1524,10 +1568,11 @@ namespace CompetentieTool.Data
                 Opties = opties36,
                 Competentie = comp36,
                 OutputString = "De sollicitant geeft aan dat hij zijn competenties aangaande omgaan met cliëntgroepen als volgt inschat: && Hij heeft deze kennis geleerd via onderstaande kanalen: $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp36.Vraag = vraag36;
+            comp36.Vragen.Add(vraag36);
 
             // comp 37a
             IList<Mogelijkheid> opties37a = new List<Mogelijkheid>()
@@ -1558,10 +1603,11 @@ namespace CompetentieTool.Data
                 Opties = opties37a,
                 Competentie = comp37a,
                 OutputString = "De sollicitant geeft aan een && kennis te hebben over omgaan met suïcide Hij/zij heeft deze kennis aangaande omgaan met suïcide verworven door $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp37a.Vraag = vraag37a;
+            comp37a.Vragen.Add(vraag37a);
 
             // comp 37b
             IList<Mogelijkheid> opties37b = new List<Mogelijkheid>()
@@ -1592,10 +1638,11 @@ namespace CompetentieTool.Data
                 Opties = opties37b,
                 Competentie = comp37b,
                 OutputString = "De sollicitant geeft aan een && kennis te hebben over omgaan met euthanasie Hij/zij heeft deze kennis aangaande omgaan met euthanasie verworven door $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp37b.Vraag = vraag37b;
+            comp37b.Vragen.Add(vraag37b);
 
             // comp 37c
             IList<Mogelijkheid> opties37c = new List<Mogelijkheid>()
@@ -1626,10 +1673,11 @@ namespace CompetentieTool.Data
                 Opties = opties37c,
                 Competentie = comp37c,
                 OutputString = "De sollicitant geeft aan een && kennis te hebben over omgaan met existentiële levensvragen Hij/zij heeft deze kennis aangaande omgaan met existentiële levensvragen verworven door $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp37c.Vraag = vraag37c;
+            comp37c.Vragen.Add(vraag37c);
 
             // comp 38
             IList<Mogelijkheid> opties38 = new List<Mogelijkheid>()
@@ -1659,10 +1707,11 @@ namespace CompetentieTool.Data
                 Opties = opties38,
                 Competentie = comp38,
                 OutputString = "De sollicitant geeft aan dat hij het best functioneert in een $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp38.Vraag = vraag38;
+            comp38.Vragen.Add(vraag38);
 
             // comp 39
             IList<Mogelijkheid> opties39 = new List<Mogelijkheid>()
@@ -1694,10 +1743,11 @@ namespace CompetentieTool.Data
                 Opties = opties39,
                 Competentie = comp39,
                 OutputString = "De sollicitant zal zich naar veranderingsgerichtheid als volgt opstellen: &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp39.Vraag = vraag39;
+            comp39.Vragen.Add(vraag39);
 
             // comp 40
             IList<Mogelijkheid> opties40 = new List<Mogelijkheid>()
@@ -1728,10 +1778,11 @@ namespace CompetentieTool.Data
                 Opties = opties40,
                 Competentie = comp40,
                 OutputString = "De sollicitant percipieert zichzelf als &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp40.Vraag = vraag40;
+            comp40.Vragen.Add(vraag40);
 
             // comp 47
             IList<Mogelijkheid> opties47 = new List<Mogelijkheid>()
@@ -1761,11 +1812,12 @@ namespace CompetentieTool.Data
                 Opties = opties47,
                 Competentie = comp47,
                 OutputString = "De sollicitant geeft aan dat zijn competentie om psycho-educatieve sessies in groep te geven && De sollicitant geeft onderstaand aan wanneer hij dit laatst gedaan heeft en waarover $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp47.Vraag = vraag47;
-            
+            comp47.Vragen.Add(vraag47);
+
             // comp 48a
             IList<Mogelijkheid> opties48a = new List<Mogelijkheid>()
             {
@@ -1795,10 +1847,11 @@ namespace CompetentieTool.Data
                 Opties = opties48a,
                 Competentie = comp48a,
                 OutputString = "De sollicitant geeft aan een && kennis te hebben over motivationele gespreksvoering \n Hij/zij heeft deze kennis aangaande motivationele gespreksvoering verworven via $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp48a.Vraag = vraag48a;
+            comp48a.Vragen.Add(vraag48a);
 
             // comp 48b
             IList<Mogelijkheid> opties48b = new List<Mogelijkheid>()
@@ -1829,10 +1882,11 @@ namespace CompetentieTool.Data
                 Opties = opties48b,
                 Competentie = comp48b,
                 OutputString = "De sollicitant geeft aan een && kennis te hebben over omgaan over oplossingsgerichte gespreksvoering. \n Hij/zij heeft deze kennis aangaande oplossingsgerichte gespreksvoering verworven via $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp48b.Vraag = vraag48b;
+            comp48b.Vragen.Add(vraag48b);
 
             // comp 54
             IList<Mogelijkheid> opties54 = new List<Mogelijkheid>()
@@ -1864,10 +1918,11 @@ namespace CompetentieTool.Data
                 Opties = opties54,
                 Competentie = comp54,
                 OutputString = "De sollicitant geeft aan dat hij in volgende mate affiniteit heeft met het voeren van telefonische telefoongesprekken &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp54.Vraag = vraag54;
+            comp54.Vragen.Add(vraag54);
 
             // comp 55
             IList<Mogelijkheid> opties55 = new List<Mogelijkheid>()
@@ -1897,10 +1952,11 @@ namespace CompetentieTool.Data
                 Opties = opties55,
                 Competentie = comp55,
                 OutputString = "De sollicitant geeft aan dat hij er volgende visie op nahoudt wat hulpverlening via online hulpverlening  betreft: &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp55.Vraag = vraag55;
+            comp55.Vragen.Add(vraag55);
 
             // comp 58
             IList<Mogelijkheid> opties58 = new List<Mogelijkheid>()
@@ -1922,7 +1978,8 @@ namespace CompetentieTool.Data
                 Naam = "Feedback kunnen geven",
                 Verklaring = "De hulpverlener kan vanuit een positief-kritische kijk op een correcte manier feedback formuleren die cliënten of collega’s stimuleert om hieruit te leren.",
                 Aanvulling = aanvulling58,
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = team
             };
 
             IVraag vraag58 = new VraagRubrics
@@ -1932,10 +1989,10 @@ namespace CompetentieTool.Data
                 Competentie = comp58,
                 OutputString = "De sollicitant geeft aan dat hij volgend gedrag zal stellen indien hij zij zich  onterecht aangesproken voelt door een collega op een teamvergadering &&",
                 type = VraagType.RUBRIC,
-                Vignet = team
+                VraagVolgorde = 1
             };
 
-            comp58.Vraag = vraag58;
+            comp58.Vragen.Add(vraag58);
 
             // comp 59
             IList<Mogelijkheid> opties59 = new List<Mogelijkheid>()
@@ -1957,7 +2014,8 @@ namespace CompetentieTool.Data
                 Naam = "Feedback kunnen ontvangen",
                 Verklaring = "De hulpverlener accepteert feedback en beschouwt deze feedback als een leerkans.",
                 Aanvulling = aanvulling59,
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = team
             };
 
             IVraag vraag59 = new VraagRubrics
@@ -1967,10 +2025,10 @@ namespace CompetentieTool.Data
                 Competentie = comp59,
                 OutputString = "De sollicitant geeft aan dat hij volgend gedrag zal stellen indien hij feedback krijgt &&",
                 type = VraagType.RUBRIC,
-                Vignet = team
+                VraagVolgorde = 1
             };
 
-            comp59.Vraag = vraag59;
+            comp59.Vragen.Add(vraag59);
 
             // comp 61
             IList<Mogelijkheid> opties61 = new List<Mogelijkheid>()
@@ -2002,10 +2060,11 @@ namespace CompetentieTool.Data
                 Opties = opties61,
                 Competentie = comp61,
                 OutputString = "De sollicitant geeft aan dat hij/zij er onderstaande houding t.a.v. vergaderen op nahoudt: && Ik heb deze competentie verworven via $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp61.Vraag = vraag61;
+            comp61.Vragen.Add(vraag61);
 
             // comp 64
             IList<Mogelijkheid> opties64 = new List<Mogelijkheid>()
@@ -2036,10 +2095,11 @@ namespace CompetentieTool.Data
                 Opties = opties64,
                 Competentie = comp64,
                 OutputString = "De sollicitant geeft aan dat hij het belangrijk vind om &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp64.Vraag = vraag64;
+            comp64.Vragen.Add(vraag64);
 
             // comp 70
             IList<Mogelijkheid> opties70 = new List<Mogelijkheid>()
@@ -2070,10 +2130,11 @@ namespace CompetentieTool.Data
                 Opties = opties70,
                 Competentie = comp70,
                 OutputString = "De sollicitant geeft aan dat hij inzake het omgaan met het betrekken van familie en omgaan met meerzijdige partijdigheid volgend vooropstelt &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp70.Vraag = vraag70;
+            comp70.Vragen.Add(vraag70);
 
             // comp 74
             IList<Mogelijkheid> opties74 = new List<Mogelijkheid>()
@@ -2105,10 +2166,11 @@ namespace CompetentieTool.Data
                 Opties = opties74,
                 Competentie = comp74,
                 OutputString = "De sollicitant omschrijft zichzelf als &&",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp74.Vraag = vraag74;
+            comp74.Vragen.Add(vraag74);
 
             // comp 77
             IList<Mogelijkheid> opties77 = new List<Mogelijkheid>()
@@ -2129,7 +2191,8 @@ namespace CompetentieTool.Data
                 Naam = "Omgaan schuldgevoelens",
                 Verklaring = "De hulpverlener herkent dynamieken van zelfstigmatisering en kan schuldgevoelens van cliënt en omgeving erkennen en opvangen.",
                 Aanvulling = aanvulling77,
-                Type = CompetentieType.VAARDIGHEDEN
+                Type = CompetentieType.VAARDIGHEDEN,
+                Vignet = jozefien
             };
 
             IVraag vraag77 = new VraagRubrics
@@ -2139,10 +2202,10 @@ namespace CompetentieTool.Data
                 Competentie = comp77,
                 OutputString = "Het gebeurt vaak dat cliënten worstelen met schuldgevoelens ten aanzien van hun naasten bv. ten aanzien van hun kinderen, gevolgen van middelenmisbruik op de financiële toestand gezin etc. De sollicitant geeft aan dat hij/zij aangaande het omgaan met schuldvragen van cliënten volgende actie zou ondernemen && Hij/zij geeft volgende aanvullingen $$",
                 type = VraagType.RUBRIC,
-                Vignet = jozefien
+                VraagVolgorde = 1
             };
 
-            comp77.Vraag = vraag77;
+            comp77.Vragen.Add(vraag77);
 
             // comp 78
             IList<Mogelijkheid> opties78 = new List<Mogelijkheid>()
@@ -2165,10 +2228,11 @@ namespace CompetentieTool.Data
                 Opties = opties78,
                 Competentie = comp78,
                 OutputString = "Onderstaand wordt beschreven hoe de sollicitant de cliënt uit zijn comfortzone haalt en op een professionele manier “prikkelt” en hem stimuleert om zijn grenzen te verleggen. && En geeft hiervoor volgende verklaring weer $$ Uit ons onderzoek blijkt dat cliënten aangeven op het juiste tijdstip nood te hebben aan interventies die hen uit hun comfortzone halen. Dit mag echter geen constante zijn in het hulpverleningsparcours.",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp78.Vraag = vraag78;
+            comp78.Vragen.Add(vraag78);
 
             // comp 82
             IList<Mogelijkheid> opties82 = new List<Mogelijkheid>()
@@ -2199,10 +2263,11 @@ namespace CompetentieTool.Data
                 Opties = opties82,
                 Competentie = comp82,
                 OutputString = "De sollicitant geeft aan te beschikken over onderstaande kennis aangaande het gebruik maken van wetenschappelijk onderbouwde meetinstrumenten en begeleidingstools && Hij heeft deze kennis verworven in volgende setting $$",
-                type = VraagType.RUBRIC
+                type = VraagType.RUBRIC,
+                VraagVolgorde = 1
             };
 
-            comp82.Vraag = vraag82;
+            comp82.Vragen.Add(vraag82);
 
             //// temp
             //IList<Mogelijkheid> opties = new List<Mogelijkheid>()
@@ -2241,7 +2306,7 @@ namespace CompetentieTool.Data
 
             // rustig
 
-            ICollection <Competentie> competenties = new List<Competentie>();
+            ICollection<Competentie> competenties = new List<Competentie>();
             competenties.Add(comp1);
             competenties.Add(comp3);
             competenties.Add(comp12);
@@ -2319,15 +2384,15 @@ namespace CompetentieTool.Data
 
             // ingevulde vacature
             //vac1.CompetentiesLijst.SingleOrDefault(v => v.CompetentieId.Equals(vraag13)).GeselecteerdeOptie = opties13.FirstOrDefault();
-            IList<Response> responses = new List<Response>()
-            {
-                new Response { Vraag = vraag1, OptieKeuze = optie12, Aanvulling = "Dit is een aanvulling op vraag over Boris"},
-                new Response { Vraag = vraag3, OptieKeuze = optie14, Aanvulling = "Dit is een aanvulling op een random vraag"},
-                new Response { Vraag = vraag73, OptieKeuze = opties3.FirstOrDefault(), Aanvulling = "ben benieuwd of deze werkt"},
-                new Response { Vraag = vraag13, Aanvulling = "hier zijn we dan weer voor nog een vraag"}
-            };
+            //IList<Response> responses = new List<Response>()
+            //{
+            //    new Response { Vraag = vraag1, OptieKeuze = optie12, Aanvulling = "Dit is een aanvulling op vraag over Boris"},
+            //    new Response { Vraag = vraag3, OptieKeuze = optie14, Aanvulling = "Dit is een aanvulling op een random vraag"},
+            //    new Response { Vraag = vraag73, OptieKeuze = opties3.FirstOrDefault(), Aanvulling = "ben benieuwd of deze werkt"},
+            //    new Response { Vraag = vraag13, Aanvulling = "hier zijn we dan weer voor nog een vraag"}
+            //};
 
-            IngevuldeVacature ingevuldeVac1 = new IngevuldeVacature { Vacature = vac1, Responses = responses, Sollicitant = (Sollicitant)sollicitant };
+            //IngevuldeVacature ingevuldeVac1 = new IngevuldeVacature { Vacature = vac1, Responses = responses, Sollicitant = (Sollicitant)sollicitant };
 
             // add to context
             context.Competenties.Add(comp1);
@@ -2399,9 +2464,9 @@ namespace CompetentieTool.Data
             context.Vragen.Add(vraag73);
             context.Vragen.Add(vraag13);
 
-            //context.Vacature.Add(vac1);
-            //context.Vacature.Add(vac2);
-            //context.Vacature.Add(vac3);
+            context.Vacature.Add(vac1);
+            context.Vacature.Add(vac2);
+            context.Vacature.Add(vac3);
 
             //context.IngevuldeVacatures.Add(ingevuldeVac1);
 

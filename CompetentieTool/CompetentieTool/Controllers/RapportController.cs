@@ -58,15 +58,15 @@ namespace CompetentieTool.Controllers
                 }
 
 
-                if (r.Vraag.Vignet != null)
+                if (r.Vraag.Competentie.Vignet != null)
                 {
-                    rvm.Vignet = "Vignet " + r.Vraag.Vignet.Naam;
+                    rvm.Vignet = "Vignet " + r.Vraag.Competentie.Vignet.Naam;
                 }
                 else
                 {
                     rvm.Vignet = "LEEG";
                 }
-                rvm.Redenering = r.Aanvulling;
+                rvm.Redenering = r.OpenAntwoord;
                 
                 rvm.CompetentieType = r.Vraag.Competentie.Type;
                 rvm.VraagType = r.Vraag.type;
@@ -76,7 +76,7 @@ namespace CompetentieTool.Controllers
                 {
 
                     int result;
-                    VacatureCompetentie temp = vac.Vacature.CompetentiesLijst.Where(c => c.Competentie.Vraag.Equals(r.Vraag)).FirstOrDefault();
+                    VacatureCompetentie temp = vac.Vacature.CompetentiesLijst.Where(c => c.Competentie.Vragen.FirstOrDefault().Equals(r.Vraag)).FirstOrDefault();
                     
                     if (r.OptieKeuze == null || temp.GeselecteerdeOptie == null)
                     {
