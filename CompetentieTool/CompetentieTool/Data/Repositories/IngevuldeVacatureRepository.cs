@@ -32,7 +32,7 @@ namespace CompetentieTool.Data.Repositories
 
         public int GetAantalByVacature(Vacature vac)
         {
-            return _context.IngevuldeVacatures.Include(s => s.Sollicitant).Include(s => s.Vacature)
+            return _context.IngevuldeVacatures.Include(s => s.Vacature)
                 .Where(v => v.Vacature.Id.Equals(vac.Id)).Count();
         }
 
@@ -44,8 +44,7 @@ namespace CompetentieTool.Data.Repositories
                 //.Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.GeselecteerdeOptie)
                 //.Include(i => i.Vacature).ThenInclude(i => i.organisatie)
                 //.Include(i => i.Responses).ThenInclude(r => r.OptieKeuze)
-                .Include(i => i.Vacature)
-                .Include(i => i.Sollicitant);
+                .Include(i => i.Vacature);
         }
 
         public IEnumerable<IngevuldeVacature> GetAllByVacature(String id)
@@ -56,7 +55,6 @@ namespace CompetentieTool.Data.Repositories
                 .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst)//.ThenInclude(c => c.GeselecteerdeOptie)
                 .Include(i => i.Vacature).ThenInclude(i => i.organisatie)
                 .Include(i => i.Responses).ThenInclude(r => r.OptieKeuze)
-                .Include(i => i.Sollicitant)
                 .Where(v => v.Vacature.Id.Equals(id));
         }
 
@@ -68,7 +66,6 @@ namespace CompetentieTool.Data.Repositories
                 .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.GeselecteerdeOptie)
                 .Include(i => i.Vacature).ThenInclude(i => i.organisatie)
                 .Include(i => i.Responses).ThenInclude(r => r.OptieKeuze)
-                .Include(i => i.Sollicitant)
                 .Where(v => v.Id.Equals(Id)).SingleOrDefault();
         }
 

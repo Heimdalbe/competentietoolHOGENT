@@ -37,36 +37,6 @@ namespace CompetentieTool.Data
             {
                 await roleManager.CreateAsync(new ApplicationRole(role2, desc2, DateTime.Now));
             }
-
-            var user = new Sollicitant();
-            if (await userManager.FindByNameAsync("thomass123") == null)
-            {
-                
-                var input = new RegisterSollicitantModel.InputModel();
-                input.Achternaam = "Schuddinck";
-                input.Voornaam = "Thomas";
-                input.Email = "thomas@test.be";
-                input.GsmNummer = "0491449500";
-                input.Geslacht = "M";
-                input.Huisnummer = "20";
-                input.Straat = "Beekstraat";
-                input.Nationaliteit = "Belg";
-                input.Geboortedatum = new DateTime(1997, 12, 20);
-                input.Gemeente = "Lokeren";
-                input.Postcode = "9160";
-                input.Opleiding = "Toegepaste Informatica";
-                input.Opleidingsniveau = Models.Opleidingsniveau.Professionele_Bachelor;
-
-                user.SetGegevensSollicitant(input);
-
-                var result = await userManager.CreateAsync(user);
-                if (result.Succeeded)
-                {
-                    await userManager.AddPasswordAsync(user, "Thomas1!");
-                    await userManager.AddToRoleAsync(user, role2);
-                }
-                id1 = user.Id;
-            }
             var user1 = new Organisatie();
             if (await userManager.FindByNameAsync("testerboy420") == null)
             {
@@ -125,10 +95,10 @@ namespace CompetentieTool.Data
             }
 
             // use this to initialize vacature test data
-            AddVacatures(context, user1, user2, user);
+            AddVacatures(context, user1, user2);
         }
 
-        public static void AddVacatures(ApplicationDbContext context, ApplicationUser bedrijf, ApplicationUser bedrijf2, ApplicationUser sollicitant)
+        public static void AddVacatures(ApplicationDbContext context, ApplicationUser bedrijf, ApplicationUser bedrijf2)
         {
             Vacature vac1 = new Vacature { Beschrijving = "Verpleger voor thuiszorg bij het gele kruis", Functie = "Verpleger voor thuiszorg", organisatie= (Organisatie)bedrijf };
             Vacature vac2 = new Vacature { Beschrijving = "Verpleger in ziekenhuis UZ te Gent", Functie = "Verpleger", organisatie = (Organisatie)bedrijf };

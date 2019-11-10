@@ -70,22 +70,6 @@
                         @Html.TextBoxFor(model => model.Postcode, new { @class = "form-control" })
                     </div>
                 </div>
-                @if (Model.IsSollicitant)
-                {
-                    <h3 class="col-sm-12">Opleiding</h3>
-                    <div class="form-group col-sm-12">
-                        <div class="col-sm-6">
-                            @Html.Label("Input.Opleidingsniveau", "Opleidingsniveau")
-                            @Html.DropDownListFor(m => m.Opleidingsniveau, Enum.GetValues(typeof(Opleidingsniveau)).Cast<Opleidingsniveau>().Select(c => new SelectListItem { Text = c.ToString(), Value = c.ToString() }), "Opleidingsniveau", new { @class = "form-control" })
-                        </div>
-                        <div class="col-sm-6">
-                            @Html.Label("Input.Opleiding", "Studie")
-                            @Html.TextBoxFor(model => model.Opleiding, new { @class = "form-control" })
-                        </div>
-                    </div>
-                }
-                else
-                {
                     <h3 class="col-sm-12">Organisatie</h3>
                     <div class="form-group col-sm-12">
                         <div class="col-sm-6">
@@ -97,7 +81,7 @@
                             @Html.TextBoxFor(model => model.Btwnummer, new { @class = "form-control" })
                         </div>
                     </div>
-                }
+                
 
 
                 <h3 class="col-sm-12">Contact informatie</h3>

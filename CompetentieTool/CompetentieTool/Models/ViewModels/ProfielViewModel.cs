@@ -83,24 +83,14 @@ namespace CompetentieTool.Models.ViewModels
             Geslacht = user.Geslacht;
             Gsm = user.Gsm;
             Email = user.Email;
-            if (user.GetType().Equals("Sollicitant"))
-            {
-                var user1 = (Sollicitant)user;
-                Opleiding = user1.Opleiding;
-                Opleidingsniveau = user1.Opleidingsniveau;
-                OrganisatieNaam = "leeg";
-                Btwnummer = "leeg";
-            }
-            else
-            {
-                var user2 = (Organisatie)user;
-                Opleiding = "leeg";
-                Opleidingsniveau = Opleidingsniveau.Basis_Onderwijs;
-                OrganisatieNaam = user2.OrganisatieNaam;
-                Btwnummer = user2.BtwNummer;
+            var user2 = (Organisatie)user;
+            Opleiding = "leeg";
+            Opleidingsniveau = Opleidingsniveau.Basis_Onderwijs;
+            OrganisatieNaam = user2.OrganisatieNaam;
+            Btwnummer = user2.BtwNummer;
             }
         }
 
     }
 
-}
+

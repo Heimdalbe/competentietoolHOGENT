@@ -13,7 +13,6 @@ namespace CompetentieTool.Data
     {
         public DbSet<Vacature> Vacature { get; set; }
         public DbSet<Competentie> Competenties {get; set; }
-        public DbSet<Sollicitant> Sollicitanten { get; set; }
         public DbSet<Organisatie> Bedrijven { get; set; }
         public DbSet<IngevuldeVacature> IngevuldeVacatures { get; set; }
         public DbSet<IVraag> Vragen { get; set; }

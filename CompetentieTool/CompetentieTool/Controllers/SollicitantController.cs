@@ -29,20 +29,9 @@ namespace CompetentieTool.Controllers
         public IActionResult Vacatures()
         {
             IEnumerable<Vacature> vacatures = _vacatureRepository.GetAll();
-
-            var sollicitant = (Sollicitant)_userManager.GetUserAsync(HttpContext.User).Result;
-            IList<IngevuldeVacature> ingVacatures = _ingevuldeVacatureRepository.GetAll().Where(i => i.Sollicitant.Id.Equals(sollicitant.Id)).ToList();
-
-            IList<Vacature> vacaturesSol = new List<Vacature>();
-            foreach (Vacature vac in vacatures)
-            {
-                if(ingVacatures.SingleOrDefault(i => i.Vacature.Id.Equals(vac.Id)) == null)
-                {
-                    vacaturesSol.Add(vac);
-                }
-            }
             
-            return View(vacaturesSol);
+            
+            return View(vacatures);
         }
 
         public IActionResult Uitnodigingen()
@@ -105,7 +94,8 @@ namespace CompetentieTool.Controllers
             IEnumerable<IVraag> vragen = _vacatureRepository.GetAllQuestions();
             IVraag vraag = null;
             Mogelijkheid optie = null;
-            vac.Sollicitant = (Sollicitant) _userManager.GetUserAsync(HttpContext.User).Result;
+            // Todo vervangen door velden voornaam, achternaam, email en telefoon
+            //vac.Sollicitant = (Sollicitant) _userManager.GetUserAsync(HttpContext.User).Result;
              
             foreach (var group in models)
             {

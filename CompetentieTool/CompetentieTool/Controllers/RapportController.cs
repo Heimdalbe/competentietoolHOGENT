@@ -35,7 +35,9 @@ namespace CompetentieTool.Controllers
 
             IngevuldeVacature vac = _ingevuldeVacatureRepository.GetBy(id);
             ICollection<RapportViewModel> models = new List<RapportViewModel>();
-            ViewBag.mail = vac.Sollicitant.Email;
+            ViewBag.naam = vac.VoornaamSollicitant + " " + vac.AchternaamSollicitant;
+            ViewBag.telefoon = vac.TelefoonSollicitant;
+            ViewBag.mail = vac.EmailSollicitant;
             ViewBag.title = vac.Vacature.Functie;
             ViewBag.desc = vac.Vacature.Beschrijving;
             ViewBag.datum = vac.DatumIngevuld;

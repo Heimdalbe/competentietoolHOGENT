@@ -149,8 +149,6 @@ namespace CompetentieTool.Models.Identities
         public abstract void wijzigGegevens(ProfielViewModel viewmodel);
 
         public abstract void SetGegevensWerkgever(RegisterModel.InputModel input);
-
-        public abstract void SetGegevensSollicitant(RegisterSollicitantModel.InputModel input);
         public abstract String GetType();
         public string VolledigeNaam => Voornaam + " " + Achternaam;
     }

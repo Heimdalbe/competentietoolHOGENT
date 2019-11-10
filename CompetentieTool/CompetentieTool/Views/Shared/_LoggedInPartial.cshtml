@@ -4,15 +4,6 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-@if (SignInManager.IsSignedIn(User) && User.IsInRole("Sollicitant"))
+    <a asp-area="" asp-controller="Sollicitant" asp-action="Vacatures">Vacatures Invullen</a>
+    <a asp-area="" asp-controller="Bedrijf" asp-action="VacaturesList">Vacatures Beheren</a>
 
-//if logged in as sollicitant
-{
-    <a asp-area="" asp-controller="Sollicitant" asp-action="Vacatures">Vacatures</a>
-    <a asp-area="" asp-controller="Sollicitant" asp-action="Uitnodigingen">Uitnodigingen</a>
-    
-}
-@if (SignInManager.IsSignedIn(User) && User.IsInRole("Werkgever"))
-{
-    <a asp-area="" asp-controller="Bedrijf" asp-action="VacaturesList">Vacatures</a>
-}

@@ -21,12 +21,7 @@ namespace CompetentieTool.Models.Domain
         {
             return "Werkgever";
         }
-
-        public override void SetGegevensSollicitant(RegisterSollicitantModel.InputModel input)
-        {
-            throw new InvalidOperationException("Gebruiker is geen sollicitant");
-        }
-
+        
 
         public override void SetGegevensWerkgever(RegisterModel.InputModel input)
         {
