@@ -7,7 +7,7 @@ namespace CompetentieTool.Models.ViewModels
 {
     public class CompetentieViewModel
     {
-
-        public ICollection<VraagViewModel> VraagViewModels { get; set; }
+        public String Vignet { get; set; }
+        public IList<VraagViewModel> VraagViewModels { get; set; }
     }
 }

@@ -168,11 +168,12 @@ namespace CompetentieTool.Data
             opties1.Add(optie13);
             opties1.Add(optie14);
 
-            String outputs1 = "Dit vignet gaat over de manier waarop de sollicitant al dan niet een oordeel velt over de situatie waarin een cliënt een dure GSM koopt terwijl hij beschikt over weinig middelen. De sollicitant geeft hierbij aan dat hij && " +
-                "Hij geeft hierbij volgende toelichting $$ Vanuit onderzoek geven cliënten sterk aan dat ze elke vorm van veroordeling over hun gedrag afwijzen.";
+            String outputs1 = "Dit vignet gaat over de manier waarop de sollicitant al dan niet een oordeel velt over de situatie waarin een cliënt een dure GSM koopt terwijl hij beschikt over weinig middelen. De sollicitant geeft hierbij aan dat hij $$";
 
             IVraag vraag1 = new VraagMeerkeuze { VraagStelling = "Welke actie onderneemt U?", Opties = opties1, Competentie = comp1, OutputString = outputs1, type = VraagType.MEERKEUZE, VraagVolgorde = 1 };
+            IVraag vraag1b = new VraagOpen { VraagStelling = "expliciteer uw keuze", OutputString = "Hij geeft hierbij volgende toelichting $$ Vanuit onderzoek geven cliënten sterk aan dat ze elke vorm van veroordeling over hun gedrag afwijzen.", Competentie = comp1, VraagVolgorde = 2, type = VraagType.OPEN };
             comp1.Vragen.Add(vraag1);
+            comp1.Vragen.Add(vraag1b);
 
             // comp 3
             Competentie comp3 = new Competentie

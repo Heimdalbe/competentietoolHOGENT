@@ -53,40 +53,46 @@ namespace CompetentieTool.Controllers
         public IActionResult Vragenlijst(String id)
         {
             Vacature vac = _vacatureRepository.GetBy(id);
+
+            ICollection<CompetentieViewModel> compModels = new List<CompetentieViewModel>();
             
-            ICollection<VraagViewModel> models = new List<VraagViewModel>();
             foreach(Competentie comp in vac.Competenties)
             {
-                foreach (IVraag vraag in comp.Vragen) { 
+                ICollection<IVraag> vragen = comp.Vragen.OrderBy(v => v.VraagVolgorde).ToList();
+                IList<VraagViewModel> models = new List<VraagViewModel>();
+                foreach (IVraag vraag in vragen) { 
                 VraagViewModel res = new VraagViewModel();
                 res.VraagStelling = vraag.VraagStelling;
                 res.VraagId = vraag.Id;
-                res.Vignet = comp.Vignet?.Beschrijving;
-                if(vraag is VraagMeerkeuze)
+                
+                if(vraag is VraagMeerkeuze vraagMeerkeuze)
                 {
-                    foreach(Mogelijkheid opt in ((VraagMeerkeuze)vraag).Opties)
+                    foreach(Mogelijkheid opt in (vraagMeerkeuze).Opties)
                     {
                         res.Opties.Add(opt);
                     }
                 }
-                if (vraag is VraagRubrics)
+                if (vraag is VraagRubrics vraagRubrics)
                 {
-                    foreach (Mogelijkheid opt in ((VraagRubrics)vraag).Opties)
+                    foreach (Mogelijkheid opt in (vraagRubrics).Opties)
                     {
                         res.Opties.Add(opt);
                     }
                 }
                 models.Add(res);
             }
+                
+                CompetentieViewModel compM = new CompetentieViewModel() { VraagViewModels = models, Vignet = comp.Vignet?.Beschrijving };
+                compModels.Add(compM);
             }
 
             ViewData["id"] = id;
 
-            ICollection<Group<string, VraagViewModel>> groups = new List<Group<string, VraagViewModel>>();
-            var results = models.GroupBy(m => m.Vignet).ToList();
+            ICollection<Group<string, CompetentieViewModel>> groups = new List<Group<string, CompetentieViewModel>>();
+            var results = compModels.GroupBy(m => m.Vignet).ToList();
             foreach(var item in results)
             {
-                groups.Add(new Group<string, VraagViewModel> { Key = item.Key, Values = item.ToList() });
+                groups.Add(new Group<string, CompetentieViewModel> { Key = item.Key, Values = item.ToList() });
             }
             return View(groups);
         }
