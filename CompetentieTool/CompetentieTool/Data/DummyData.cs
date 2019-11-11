@@ -849,25 +849,19 @@ namespace CompetentieTool.Data
             // comp 8
             IList<Mogelijkheid> opties8 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "contacten met cliënten te beperken tot eerder gemaakte afspraak bereikbaar te zijn voor ondersteuning tussen bepaalde uren (vb. kantooruren)", Aanvulling = "contacten met cliënten te beperken tot eerder gemaakte afspraak bereikbaar te zijn voor ondersteuning tussen bepaalde uren (vb. kantooruren)" },
-                new Mogelijkheid { Input = "ook buiten de werkuren bereikbaar te zijn indien de situatie dit vereist" , Aanvulling = "ook buiten de werkuren bereikbaar te zijn indien de situatie dit vereist"}
+                new Mogelijkheid { Input = "contacten met cliënten te beperken tot eerder gemaakte afspraak bereikbaar te zijn voor ondersteuning tussen bepaalde uren (vb. kantooruren)" },
+                new Mogelijkheid { Input = "ook buiten de werkuren bereikbaar te zijn indien de situatie dit vereist"}
             };
 
-            Aanvulling aanvulling8 = new Aanvulling
-            {
-                Beschrijving = "Ik vind het belangrijk om",
-                Opties = opties8.ToList()
-            };
 
             Competentie comp8 = new Competentie
             {
                 Naam = "Presentie",
                 Verklaring = "De hulpverlener is nabij en beschikbaar voor ondersteuning, ook al zijn er geen handelingen of interventies nodig. Hij is deelgenoot van moeilijke en positieve momenten in het leven van de cliënt.",
-                Aanvulling = aanvulling8,
                 Type = CompetentieType.GRONDHOUDING
             };
 
-            IVraag vraag8 = new VraagRubrics
+            IVraag vraag8 = new VraagMeerkeuze
             {
                 VraagStelling = "De financiële rendabiliteit van een afdeling/dienst is: ",
                 Opties = opties8,
@@ -1056,9 +1050,9 @@ namespace CompetentieTool.Data
             // comp 20
             IList<Mogelijkheid> opties20 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Weinig kennis van psychopathologie", Aanvulling = "geen/weinig kennis van psychopathologie", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Basiskennis over alle frequent voorkomende psychiatrische aandoeningen" , Aanvulling = "Basiskennis"},
-                new Mogelijkheid { Input = "Een vergevorderde kennis over alle frequent voorkomende psychiatrische aandoeningen", Aanvulling = "vergevorderde kennis" }
+                new Mogelijkheid { Input = "Weinig kennis van psychopathologie", Aanvulling = "geen/weinig kennis van psychopathologie", IsSchrapOptie = true, Score = 0},
+                new Mogelijkheid { Input = "Basiskennis over alle frequent voorkomende psychiatrische aandoeningen" , Aanvulling = "Basiskennis", Score = 1},
+                new Mogelijkheid { Input = "Een vergevorderde kennis over alle frequent voorkomende psychiatrische aandoeningen", Aanvulling = "vergevorderde kennis" , Score = 2}
             };
 
             Aanvulling aanvulling20 = new Aanvulling
@@ -1110,9 +1104,9 @@ namespace CompetentieTool.Data
             // comp 21
             IList<Mogelijkheid> opties21 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig kennis over psychofarmaca", Aanvulling = " geen/weinig kennis over psychofarmaca", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Basiskennis over de effecten en bijwerking van de  meest courante psychofarmaca" , Aanvulling = "Basiskennis"},
-                new Mogelijkheid { Input = "een vergevorderde kennis over de effecten  en bijwerking van de meest courante psychofarmaca", Aanvulling = "vergevorderde kennis" }
+                new Mogelijkheid { Input = "weinig kennis over psychofarmaca", Aanvulling = " geen/weinig kennis over psychofarmaca", IsSchrapOptie = true, Score = 1 },
+                new Mogelijkheid { Input = "Basiskennis over de effecten en bijwerking van de  meest courante psychofarmaca" , Aanvulling = "Basiskennis", Score = 2},
+                new Mogelijkheid { Input = "een vergevorderde kennis over de effecten  en bijwerking van de meest courante psychofarmaca", Aanvulling = "vergevorderde kennis" , Score = 3}
             };
 
             Aanvulling aanvulling21 = new Aanvulling
@@ -1163,9 +1157,9 @@ namespace CompetentieTool.Data
             // comp 22
             IList<Mogelijkheid> opties22 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Weinig kennis over lichamelijke problematieken", Aanvulling = "geen/weinig kennis", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Basiskennis over lichamelijke  aandoeningen" , Aanvulling = "Basiskennis"},
-                new Mogelijkheid { Input = "Een gevorderde kennis over lichamelijke aandoeningen", Aanvulling = "gevorderde kennis" }
+                new Mogelijkheid { Input = "Weinig kennis over lichamelijke problematieken", Aanvulling = "geen/weinig kennis", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "Basiskennis over lichamelijke  aandoeningen" , Aanvulling = "Basiskennis", Score = 1 },
+                new Mogelijkheid { Input = "Een gevorderde kennis over lichamelijke aandoeningen", Aanvulling = "gevorderde kennis", Score = 2 }
             };
 
             Aanvulling aanvulling22 = new Aanvulling
@@ -1218,9 +1212,9 @@ namespace CompetentieTool.Data
             // comp 23
             IList<Mogelijkheid> opties23 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Weinig kennis over leefstijlfactoren die somatische risico’s inhouden", Aanvulling = "geen/weinig kennis", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Basiskennis over leefstijlfactoren die somatisch risico inhouden" , Aanvulling = "Basiskennis"},
-                new Mogelijkheid { Input = "Gevorderde kennis over leefstijlfactoren die somatische risico’s inhouden.", Aanvulling = "gevorderde kennis" }
+                new Mogelijkheid { Input = "Weinig kennis over leefstijlfactoren die somatische risico’s inhouden", Aanvulling = "geen/weinig kennis", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "Basiskennis over leefstijlfactoren die somatisch risico inhouden" , Aanvulling = "Basiskennis", Score = 1 },
+                new Mogelijkheid { Input = "Gevorderde kennis over leefstijlfactoren die somatische risico’s inhouden.", Aanvulling = "gevorderde kennis", Score = 2 }
             };
 
             Aanvulling aanvulling23 = new Aanvulling
@@ -1275,9 +1269,9 @@ namespace CompetentieTool.Data
             // comp 24
             IList<Mogelijkheid> opties24 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Ik heb weinig kennis over de invalshoek van andere disciplines", Aanvulling = "geen of weinig kennis over de invalshoek van andere disciplines nodig", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Ik heb enig zicht op de focus van andere beroepsgroepen" , Aanvulling = "enig zicht op de focus van andere beroepsgroepen"},
-                new Mogelijkheid { Input = "Ik kan benoemen welke kaders en invalshoeken andere disciplines gebruiken.", Aanvulling = " kunnen benoemen welke kaders en invalshoeken andere disciplines gebruiken" }
+                new Mogelijkheid { Input = "Ik heb weinig kennis over de invalshoek van andere disciplines", Aanvulling = "geen of weinig kennis over de invalshoek van andere disciplines nodig", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "Ik heb enig zicht op de focus van andere beroepsgroepen" , Aanvulling = "enig zicht op de focus van andere beroepsgroepen", Score = 1 },
+                new Mogelijkheid { Input = "Ik kan benoemen welke kaders en invalshoeken andere disciplines gebruiken.", Aanvulling = " kunnen benoemen welke kaders en invalshoeken andere disciplines gebruiken", Score = 2 }
             };
 
             Aanvulling aanvulling24 = new Aanvulling
@@ -1321,10 +1315,10 @@ namespace CompetentieTool.Data
             // comp 25a
             IList<Mogelijkheid> opties25a = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Weinig", Aanvulling = "minimaal", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Matig" , Aanvulling = "Matig"},
-                new Mogelijkheid { Input = "Goed", Aanvulling = "goed" },
-                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend"}
+                new Mogelijkheid { Input = "Weinig", Aanvulling = "minimaal", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "Matig" , Aanvulling = "Matig", Score = 1},
+                new Mogelijkheid { Input = "Goed", Aanvulling = "goed", Score = 2 },
+                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend", Score = 3}
             };
 
             Aanvulling aanvulling25a = new Aanvulling
@@ -1374,10 +1368,10 @@ namespace CompetentieTool.Data
             // comp 25b
             IList<Mogelijkheid> opties25b = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Weinig", Aanvulling = "minimaal", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Matig" , Aanvulling = "Matig"},
-                new Mogelijkheid { Input = "Goed", Aanvulling = "Goed" },
-                new Mogelijkheid { Input = "Úitstekend", Aanvulling = "Uitstekend"}
+                new Mogelijkheid { Input = "Weinig", Aanvulling = "minimaal", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "Matig" , Aanvulling = "Matig", Score = 1},
+                new Mogelijkheid { Input = "Goed", Aanvulling = "Goed", Score = 2 },
+                new Mogelijkheid { Input = "Úitstekend", Aanvulling = "Uitstekend", Score = 3}
             };
 
             Aanvulling aanvulling25b = new Aanvulling
@@ -1428,9 +1422,9 @@ namespace CompetentieTool.Data
             // comp 26
             IList<Mogelijkheid> opties26 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Gericht opzoeken van wetenschappelijk literatuur is moeilijk", Aanvulling = "niet relevant" },
-                new Mogelijkheid { Input = "Ik kan gericht opzoeken, maar heb moeilijkheden met het begrijpen van wetenschappelijk vakjargon" , Aanvulling = "gericht opzoeken"},
-                new Mogelijkheid { Input = "Ik kan gericht opzoeken en vakjargon begrijpen in functie van de praktijk", Aanvulling = " gericht opzoeken en vakjargon begrijpen in functie van de praktijk" }
+                new Mogelijkheid { Input = "Gericht opzoeken van wetenschappelijk literatuur is moeilijk", Aanvulling = "niet relevant", Score = 0 },
+                new Mogelijkheid { Input = "Ik kan gericht opzoeken, maar heb moeilijkheden met het begrijpen van wetenschappelijk vakjargon" , Aanvulling = "gericht opzoeken", Score = 1},
+                new Mogelijkheid { Input = "Ik kan gericht opzoeken en vakjargon begrijpen in functie van de praktijk", Aanvulling = " gericht opzoeken en vakjargon begrijpen in functie van de praktijk", Score = 2 }
             };
 
             Aanvulling aanvulling26 = new Aanvulling
@@ -1500,10 +1494,10 @@ namespace CompetentieTool.Data
             // comp 28a
             IList<Mogelijkheid> opties28a = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Ik heb een beperkte kennis", Aanvulling = "beperkte kennis", IsSchrapOptie = true},
-                new Mogelijkheid { Input = "Ik weet naar welke instanties ik cliënten kan doorverwijzen" , Aanvulling = "doorverwijzend"},
-                new Mogelijkheid { Input = "Ik heb een goede Basiskennis en kan zelf concrete adviezen formuleren", Aanvulling = "Basiskennis" },
-                new Mogelijkheid { Input = "Ik ben goed op de hoogte en kan zelf gespecialiseerde adviezen formuleren", Aanvulling = "gespecialiseerde kennis" }
+                new Mogelijkheid { Input = "Ik heb een beperkte kennis", Aanvulling = "beperkte kennis", IsSchrapOptie = true, Score = 0},
+                new Mogelijkheid { Input = "Ik weet naar welke instanties ik cliënten kan doorverwijzen" , Aanvulling = "doorverwijzend", Score = 1},
+                new Mogelijkheid { Input = "Ik heb een goede Basiskennis en kan zelf concrete adviezen formuleren", Aanvulling = "Basiskennis", Score = 2 },
+                new Mogelijkheid { Input = "Ik ben goed op de hoogte en kan zelf gespecialiseerde adviezen formuleren", Aanvulling = "gespecialiseerde kennis", Score = 3 }
             };
 
             Aanvulling aanvulling28a = new Aanvulling
@@ -1553,10 +1547,10 @@ namespace CompetentieTool.Data
             // comp 28b
             IList<Mogelijkheid> opties28b = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Ik heb een beperkte kennis", Aanvulling = "beperkte kennis", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Ik weet naar welke instanties ik cliënten kan doorverwijzen" , Aanvulling = "doorverwijzend"},
-                new Mogelijkheid { Input = "Ik heb een goede Basiskennis en kan zelf concrete adviezen formuleren", Aanvulling = "Basiskennis" },
-                new Mogelijkheid { Input = "Ik ben goed op de hoogte en kan zelf gespecialiseerde adviezen formuleren", Aanvulling = "gespecialiseerde kennis" }
+                new Mogelijkheid { Input = "Ik heb een beperkte kennis", Aanvulling = "beperkte kennis", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "Ik weet naar welke instanties ik cliënten kan doorverwijzen" , Aanvulling = "doorverwijzend", Score = 1},
+                new Mogelijkheid { Input = "Ik heb een goede Basiskennis en kan zelf concrete adviezen formuleren", Aanvulling = "Basiskennis", Score = 2 },
+                new Mogelijkheid { Input = "Ik ben goed op de hoogte en kan zelf gespecialiseerde adviezen formuleren", Aanvulling = "gespecialiseerde kennis", Score = 3 }
             };
 
             Aanvulling aanvulling28b = new Aanvulling
@@ -1606,10 +1600,10 @@ namespace CompetentieTool.Data
             // comp 30
             IList<Mogelijkheid> opties30 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Ik ken daar weinig van", Aanvulling = "niet", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Ik kan uitvoerend een aantal zaken opnemen onder supervisie binnen een bestaand project" , Aanvulling = "uitvoerend onder supervisie"},
-                new Mogelijkheid { Input = "Ik kan autonoom een aantal zaken opnemen binnen een bestaand project", Aanvulling = "autonoom opnemen van een aantal zaken binnen een bestaand projectkader" },
-                new Mogelijkheid { Input = "Ik kan zelf projecten opstarten en coördineren", Aanvulling = "zelf opstarten en coördineren van projecten" }
+                new Mogelijkheid { Input = "Ik ken daar weinig van", Aanvulling = "niet", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "Ik kan uitvoerend een aantal zaken opnemen onder supervisie binnen een bestaand project" , Aanvulling = "uitvoerend onder supervisie", Score = 1},
+                new Mogelijkheid { Input = "Ik kan autonoom een aantal zaken opnemen binnen een bestaand project", Aanvulling = "autonoom opnemen van een aantal zaken binnen een bestaand projectkader", Score = 2 },
+                new Mogelijkheid { Input = "Ik kan zelf projecten opstarten en coördineren", Aanvulling = "zelf opstarten en coördineren van projecten", Score = 3 }
             };
 
             Aanvulling aanvulling30 = new Aanvulling
@@ -1692,9 +1686,9 @@ namespace CompetentieTool.Data
             // comp 33
             IList<Mogelijkheid> opties33 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig kennis over culturele eigenheden binnen de GGZ", Aanvulling = "minder van belang", IsSchrapOptie = true, Output = "Weinig" },
-                new Mogelijkheid { Input = "basiskennis over culturele eigenheden binnen de GGZ" , Aanvulling = "basiskennis", Output = "Basis" },
-                new Mogelijkheid { Input = "gevorderde kennis over culturele eigenheden binnen de GGZ.", Aanvulling = "gevorderde kennis", Output = "Gevorderd" }
+                new Mogelijkheid { Input = "weinig kennis over culturele eigenheden binnen de GGZ", Aanvulling = "minder van belang", IsSchrapOptie = true, Output = "Weinig", Score = 0 },
+                new Mogelijkheid { Input = "basiskennis over culturele eigenheden binnen de GGZ" , Aanvulling = "basiskennis", Output = "Basis", Score = 1 },
+                new Mogelijkheid { Input = "gevorderde kennis over culturele eigenheden binnen de GGZ.", Aanvulling = "gevorderde kennis", Output = "Gevorderd", Score = 2 }
             };
 
             Aanvulling aanvulling33 = new Aanvulling
@@ -1889,10 +1883,10 @@ namespace CompetentieTool.Data
             // comp 37a
             IList<Mogelijkheid> opties37a = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Weinig", Aanvulling = "Nihil", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Matig" , Aanvulling = "Basis"},
-                new Mogelijkheid { Input = "Goed", Aanvulling = "Goed" },
-                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend" }
+                new Mogelijkheid { Input = "Weinig", Aanvulling = "Nihil", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "Matig" , Aanvulling = "Basis", Score = 1},
+                new Mogelijkheid { Input = "Goed", Aanvulling = "Goed", Score = 2 },
+                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend", Score = 3}
             };
 
             Aanvulling aanvulling37a = new Aanvulling
@@ -1943,10 +1937,10 @@ namespace CompetentieTool.Data
             // comp 37b
             IList<Mogelijkheid> opties37b = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Weinig", Aanvulling = "Nihil", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Matig" , Aanvulling = "Basis"},
-                new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
-                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend" }
+                new Mogelijkheid { Input = "Weinig", Aanvulling = "Nihil", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "Matig" , Aanvulling = "Basis", Score = 1},
+                new Mogelijkheid { Input = "goed", Aanvulling = "goed", Score = 2 },
+                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend", Score = 3 }
             };
 
             Aanvulling aanvulling37b = new Aanvulling
@@ -1996,10 +1990,10 @@ namespace CompetentieTool.Data
             // comp 37c
             IList<Mogelijkheid> opties37c = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "Weinig", Aanvulling = "Nihil", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "Matig" , Aanvulling = "Basis"},
-                new Mogelijkheid { Input = "Goed", Aanvulling = "Goed" },
-                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend" }
+                new Mogelijkheid { Input = "Weinig", Aanvulling = "Nihil", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "Matig" , Aanvulling = "Basis", Score = 1},
+                new Mogelijkheid { Input = "Goed", Aanvulling = "Goed", Score = 2 },
+                new Mogelijkheid { Input = "Uitstekend", Aanvulling = "Uitstekend", Score = 3 }
             };
 
             Aanvulling aanvulling37c = new Aanvulling
@@ -2190,10 +2184,10 @@ namespace CompetentieTool.Data
             // comp 48a
             IList<Mogelijkheid> opties48a = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig", Aanvulling = "nihil", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "matig" , Aanvulling = "basaal"},
-                new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
-                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend" }
+                new Mogelijkheid { Input = "weinig", Aanvulling = "nihil", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "matig" , Aanvulling = "basaal", Score = 1},
+                new Mogelijkheid { Input = "goed", Aanvulling = "goed", Score = 2 },
+                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend", Score = 3 }
             };
 
             Aanvulling aanvulling48a = new Aanvulling
@@ -2243,10 +2237,10 @@ namespace CompetentieTool.Data
             // comp 48b
             IList<Mogelijkheid> opties48b = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "weinig", Aanvulling = "nihil", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "matig" , Aanvulling = "basaal"},
-                new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
-                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend" }
+                new Mogelijkheid { Input = "weinig", Aanvulling = "nihil", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "matig" , Aanvulling = "basaal", Score = 1 },
+                new Mogelijkheid { Input = "goed", Aanvulling = "goed", Score = 2 },
+                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend", Score = 3 }
             };
 
             Aanvulling aanvulling48b = new Aanvulling
@@ -2602,9 +2596,9 @@ namespace CompetentieTool.Data
             // comp 77
             IList<Mogelijkheid> opties77 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "", Aanvulling = "wordt niet verwacht", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "ik vind het moeilijk om hier op in te gaan en zou doorverwijzen naar een psychotherapeut" , Aanvulling = "kunnen detecteren en doorverwijzen", Output = "doorverwijzen"},
-                new Mogelijkheid { Input = "ik ben in staat om dit thema met Jozefien op te nemen en haar verder te begeleiden", Aanvulling = "zelf kunnen opnemen en verder begeleiden", Output = "zelf opnemen" }
+                new Mogelijkheid { Input = "", Aanvulling = "wordt niet verwacht", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "ik vind het moeilijk om hier op in te gaan en zou doorverwijzen naar een psychotherapeut" , Aanvulling = "kunnen detecteren en doorverwijzen", Output = "doorverwijzen", Score = 1},
+                new Mogelijkheid { Input = "ik ben in staat om dit thema met Jozefien op te nemen en haar verder te begeleiden", Aanvulling = "zelf kunnen opnemen en verder begeleiden", Output = "zelf opnemen", Score = 2 }
             };
 
             Aanvulling aanvulling77 = new Aanvulling
@@ -2671,10 +2665,10 @@ namespace CompetentieTool.Data
             // comp 82
             IList<Mogelijkheid> opties82 = new List<Mogelijkheid>()
             {
-                new Mogelijkheid { Input = "beperkt", Aanvulling = "nihil", IsSchrapOptie = true },
-                new Mogelijkheid { Input = "matig " , Aanvulling = "basaal"},
-                new Mogelijkheid { Input = "goed", Aanvulling = "goed" },
-                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend" }
+                new Mogelijkheid { Input = "beperkt", Aanvulling = "nihil", IsSchrapOptie = true, Score = 0 },
+                new Mogelijkheid { Input = "matig " , Aanvulling = "basaal", Score = 1},
+                new Mogelijkheid { Input = "goed", Aanvulling = "goed", Score = 2 },
+                new Mogelijkheid { Input = "uitstekend", Aanvulling = "uitstekend", Score = 3 }
             };
 
             Aanvulling aanvulling82 = new Aanvulling
