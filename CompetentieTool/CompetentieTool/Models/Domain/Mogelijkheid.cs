@@ -13,6 +13,7 @@ namespace CompetentieTool.Models.Domain
         public String Output { get; set; }
         public String Aanvulling { get; set; }
         public bool IsSchrapOptie { get; set; }
+        public int Score { get; set; }
 
     }
 }
