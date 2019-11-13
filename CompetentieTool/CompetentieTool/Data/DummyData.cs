@@ -2657,7 +2657,7 @@ namespace CompetentieTool.Data
                 VraagVolgorde = 1
             };
             //IVraag vraag = new VraagOpen { VraagStelling = "", OutputString = "", Competentie = comp, VraagVolgorde = 2, type = VraagType.OPEN };
-            IVraag vraag78b = new VraagOpen { VraagStelling = "Verklaar kort", OutputString = "En geeft hiervoor volgende verklaring weer $$ Uit ons onderzoek blijkt dat cliënten aangeven op het juiste tijdstip nood te hebben aan interventies die hen uit hun comfortzone halen. Dit mag echter geen constante zijn in het hulpverleningsparcours.", Competentie = comp78, VraagVolgorde = 2, type = VraagType.OPEN };
+            IVraag vraag78b = new VraagOpen { VraagStelling = "Verklaar kort", OutputString = "En geeft hiervoor volgende verklaring weer $$. Uit ons onderzoek blijkt dat cliënten aangeven op het juiste tijdstip nood te hebben aan interventies die hen uit hun comfortzone halen. Dit mag echter geen constante zijn in het hulpverleningsparcours.", Competentie = comp78, VraagVolgorde = 2, type = VraagType.OPEN };
 
             comp78.Vragen.Add(vraag78);
             comp78.Vragen.Add(vraag78b);
@@ -2829,16 +2829,19 @@ namespace CompetentieTool.Data
             vac3.AddCompetenties(competenties);
 
             // ingevulde vacature
-            //vac1.CompetentiesLijst.SingleOrDefault(v => v.CompetentieId.Equals(vraag13)).GeselecteerdeOptie = opties13.FirstOrDefault();
-            //IList<Response> responses = new List<Response>()
-            //{
-            //    new Response { Vraag = vraag1, OptieKeuze = optie12, Aanvulling = "Dit is een aanvulling op vraag over Boris"},
-            //    new Response { Vraag = vraag3, OptieKeuze = optie14, Aanvulling = "Dit is een aanvulling op een random vraag"},
-            //    new Response { Vraag = vraag73, OptieKeuze = opties3.FirstOrDefault(), Aanvulling = "ben benieuwd of deze werkt"},
-            //    new Response { Vraag = vraag13, Aanvulling = "hier zijn we dan weer voor nog een vraag"}
-            //};
+            vac1
+                .CompetentiesLijst
+                .SingleOrDefault(v => v.CompetentieId.Equals(vraag13))
+                .GeselecteerdeOptie = opties13.FirstOrDefault();
+            IList<Response> responses = new List<Response>()
+            {
+                new Response { Vraag = vraag1, OptieKeuze = optie12},
+                new Response { Vraag = vraag3, OptieKeuze = optie14},
+                new Response { Vraag = vraag73, OptieKeuze = opties3.FirstOrDefault()},
+                new Response { Vraag = vraag13, OpenAntwoord= "dit sieen antwoord voor een open vraag"}
+            };
 
-            //IngevuldeVacature ingevuldeVac1 = new IngevuldeVacature { Vacature = vac1, Responses = responses, Sollicitant = (Sollicitant)sollicitant };
+            IngevuldeVacature ingevuldeVac1 = new IngevuldeVacature { Vacature = vac1, Responses = responses, VoornaamSollicitant= "Thomas", AchternaamSollicitant="Schuddinck", EmailSollicitant="ditiseenemal@email.com", TelefoonSollicitant="0123456789", DatumIngevuld= DateTime.Today };
 
             // add to context
             context.Competenties.Add(comp1);
@@ -2914,7 +2917,7 @@ namespace CompetentieTool.Data
             context.Vacature.Add(vac2);
             context.Vacature.Add(vac3);
 
-            //context.IngevuldeVacatures.Add(ingevuldeVac1);
+            context.IngevuldeVacatures.Add(ingevuldeVac1);
 
             context.SaveChanges();
         }

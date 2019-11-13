@@ -51,11 +51,23 @@ namespace CompetentieTool.Controllers
                 {
                     if(r.OptieKeuze.Output == null)
                     {
-                        rvm.OptieKeuze = r.OptieKeuze.Input;
+                        rvm.OptieKeuze = r.Vraag.OutputString;
                     }
                     else
                     {
                         rvm.OptieKeuze = r.OptieKeuze.Output;
+                        if(r.OpenAntwoord != null && r.OpenAntwoord.Trim().Length != 0)
+                        {
+                            rvm.OptieKeuze.Replace("$$", r.OpenAntwoord);
+                        }
+                        else
+                        {
+                            if(r.OptieKeuze != null && r.OptieKeuze.Output.Trim().Length != 0)
+                            {
+                                rvm.OptieKeuze.Replace("$$", r.OptieKeuze.Output);
+                            }
+                        }
+                        
                     }
                 }
 
@@ -87,7 +99,7 @@ namespace CompetentieTool.Controllers
                     else
                     {
                         
-                        result = r.OptieKeuze.Id.Equals(temp.GeselecteerdeOptie.Id) ? 1 : 0;
+                        result = r.OptieKeuze.Score <= temp.GeselecteerdeOptie.Score ? 1 : 0;
                     }
                     
                     if (r.Vraag.Competentie.Type.Equals(CompetentieType.GRONDHOUDING))

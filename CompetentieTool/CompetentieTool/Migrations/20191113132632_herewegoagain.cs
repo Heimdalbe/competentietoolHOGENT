@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class FinalMigration : Migration
+    public partial class herewegoagain : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,9 +68,7 @@ namespace CompetentieTool.Migrations
                     Huisnummer = table.Column<string>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
                     OrganisatieNaam = table.Column<string>(nullable: true),
-                    BtwNummer = table.Column<string>(nullable: true),
-                    Opleidingsniveau = table.Column<int>(nullable: true),
-                    Opleiding = table.Column<string>(nullable: true)
+                    BtwNummer = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -252,18 +250,15 @@ namespace CompetentieTool.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     VacatureId = table.Column<string>(nullable: true),
-                    SollicitantId = table.Column<string>(nullable: true),
+                    VoornaamSollicitant = table.Column<string>(nullable: true),
+                    AchternaamSollicitant = table.Column<string>(nullable: true),
+                    EmailSollicitant = table.Column<string>(nullable: true),
+                    TelefoonSollicitant = table.Column<string>(nullable: true),
                     DatumIngevuld = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IngevuldeVacatures", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_IngevuldeVacatures_AspNetUsers_SollicitantId",
-                        column: x => x.SollicitantId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_IngevuldeVacatures_Vacature_VacatureId",
                         column: x => x.VacatureId,
@@ -304,6 +299,7 @@ namespace CompetentieTool.Migrations
                     Output = table.Column<string>(nullable: true),
                     Aanvulling = table.Column<string>(nullable: true),
                     IsSchrapOptie = table.Column<bool>(nullable: false),
+                    Score = table.Column<int>(nullable: false),
                     AanvullingId = table.Column<string>(nullable: true),
                     VraagMeerkeuzeId = table.Column<string>(nullable: true),
                     VraagRubricsId = table.Column<string>(nullable: true)
@@ -443,11 +439,6 @@ namespace CompetentieTool.Migrations
                 name: "IX_Competenties_VignetId",
                 table: "Competenties",
                 column: "VignetId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_IngevuldeVacatures_SollicitantId",
-                table: "IngevuldeVacatures",
-                column: "SollicitantId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_IngevuldeVacatures_VacatureId",

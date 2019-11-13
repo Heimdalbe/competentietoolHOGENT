@@ -82,8 +82,14 @@ window.onload = function () {
     <div class="alert alert-info">
         <h4>Uitleg:</h4>
         <h5>@ViewBag.desc</h5>
+        <hr />
+        <h3>Gegevens sollicitant</h3>
+        <h4>Naam:</h4>
+        <h5>@ViewBag.naam</h5>
         <h4>Email: </h4>
         <h5>@ViewBag.mail</h5>
+        <h4>Telefoon: </h4>
+        <h5>@ViewBag.telefoon</h5>
         <h4>Datum: </h4>
         <h5>@ViewBag.datum</h5>
     </div>
@@ -158,20 +164,20 @@ window.onload = function () {
                         <div class="container">
                             <h5>@vraag.OptieKeuze</h5>
                         </div>
-                        <h5><strong>Redenering sollicitant:</strong></h5>
+                        <!--<h5><strong>Redenering sollicitant:</strong></h5>
 
-                        @if (vraag.Redenering != null && !vraag.Redenering.Trim().Equals(""))
-                        {
-                            <div class="container">
-                                <h5>@vraag.Redenering</h5>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="container">
-                                <h5>De sollicitant gaf geen redenering</h5>
-                            </div>
-                        }
+    @if (vraag.Redenering != null && !vraag.Redenering.Trim().Equals(""))
+    {
+        <div class="container">
+            <h5>@vraag.Redenering</h5>
+        </div>
+    }
+    else
+    {
+        <div class="container">
+            <h5>De sollicitant gaf geen redenering</h5>
+        </div>
+    }-->
 
                     </div>
             </div>
