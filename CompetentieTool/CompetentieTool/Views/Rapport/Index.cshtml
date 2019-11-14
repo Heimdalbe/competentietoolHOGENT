@@ -139,48 +139,47 @@ window.onload = function () {
     <div>
         <h2 class="text-center">@opt.Key</h2>
         @foreach (var vraag in opt.Values)
-        {
-            <div class="container">
-                <h4><strong>Competentie:</strong> @vraag.CompetentieNaam</h4>
-                <h5><strong>Verklaring:</strong> @vraag.Verklaring</h5>
-                @if(vraag.Vignet != null && !vraag.Vignet.Trim().Equals("LEEG"))
-                {
-                    <div class="alert alert-warning">
-                        <h5>Deze vraag hoort bij @vraag.Vignet</h5>
-                    </div>
-                    
-                }
-
-                    <div class="alert alert-success">
-                        <h5><strong>Vraag:</strong> @vraag.VraagStelling</h5>
-                        @if (vraag.VraagType.Equals(CompetentieTool.Models.Domain.VraagType.OPEN))
-                        {
-                            <h5><strong>Antwoord sollicitant:</strong></h5>
-                        }
-                        else
-                        {
-                            <h5><strong>Keuze sollicitant:</strong></h5>
-                        }
-                        <div class="container">
-                            <h5>@vraag.OptieKeuze</h5>
-                        </div>
-                        <!--<h5><strong>Redenering sollicitant:</strong></h5>
-
-    @if (vraag.Redenering != null && !vraag.Redenering.Trim().Equals(""))
+        {<div class="container">
+    <h4><strong>Competentie:</strong> @vraag.CompetentieNaam</h4>
+    <h5><strong>Verklaring:</strong> @vraag.Verklaring</h5>
+    @if (vraag.Vignet != null && !vraag.Vignet.Trim().Equals("LEEG"))
     {
-        <div class="container">
-            <h5>@vraag.Redenering</h5>
+        <div class="alert alert-warning">
+            <h5>Deze vraag hoort bij @vraag.Vignet</h5>
         </div>
+
     }
-    else
-    {
-        <div class="container">
-            <h5>De sollicitant gaf geen redenering</h5>
-        </div>
-    }-->
 
-                    </div>
+    @foreach (var v in vraag.vms)
+    {
+
+
+
+        @if (!v.Antwoord.Equals("LEEG"))
+        {
+            <div class="alert alert-success">
+                <h5><strong>Vraag:</strong> @v.VraagStelling</h5>
+                @if (v.VraagType.Equals(CompetentieTool.Models.Domain.VraagType.OPEN))
+                {
+                    <h5><strong>Antwoord sollicitant:</strong></h5>
+                }
+                else
+                {
+                    <h5><strong>Keuze sollicitant:</strong></h5>
+                }
+                <div class="container">
+                    <h5>@v.Antwoord</h5>
+                </div>
+
+
+
+
             </div>
+        }
+
+    }
+</div>
+
         }
 
         <hr />

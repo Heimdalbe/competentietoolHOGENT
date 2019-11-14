@@ -46,29 +46,24 @@ namespace CompetentieTool.Controllers
                 RapportViewModel rvm = new RapportViewModel();
                 rvm.CompetentieNaam = r.Vraag.Competentie.Naam;
                 rvm.Verklaring = r.Vraag.Competentie.Verklaring;
-                rvm.VraagStelling = r.Vraag.VraagStelling;
-                if(r.OptieKeuze != null)
+               /* rvm.VraagStelling = r.Vraag.VraagStelling;
+                foreach()
+                rvm.Antwoord = r.Vraag.OutputString;
+                if(r.OpenAntwoord != null && r.OpenAntwoord.Trim().Length != 0)
                 {
-                    if(r.OptieKeuze.Output == null)
+                    rvm.Antwoord.Replace("$$", r.OpenAntwoord);
+                }
+                else
+                {
+                    if(r.OptieKeuze != null && r.OptieKeuze.Output.Trim().Length != 0)
                     {
-                        rvm.OptieKeuze = r.Vraag.OutputString;
+                        rvm.Antwoord.Replace("$$", r.OptieKeuze.Output);
                     }
                     else
                     {
-                        rvm.OptieKeuze = r.OptieKeuze.Output;
-                        if(r.OpenAntwoord != null && r.OpenAntwoord.Trim().Length != 0)
-                        {
-                            rvm.OptieKeuze.Replace("$$", r.OpenAntwoord);
-                        }
-                        else
-                        {
-                            if(r.OptieKeuze != null && r.OptieKeuze.Output.Trim().Length != 0)
-                            {
-                                rvm.OptieKeuze.Replace("$$", r.OptieKeuze.Output);
-                            }
-                        }
-                        
+                        rvm.Antwoord = "LEEG";
                     }
+                       
                 }
 
 
@@ -84,7 +79,7 @@ namespace CompetentieTool.Controllers
                 
                 rvm.CompetentieType = r.Vraag.Competentie.Type;
                 rvm.VraagType = r.Vraag.type;
-
+                */
                 /* hier moet nog gezorgd worden dat de rubric kan vergeleken worden (dus soli en bedrijf antwoorden matchen)*/
                 if (r.Vraag.type.Equals(VraagType.RUBRIC))
                 {
