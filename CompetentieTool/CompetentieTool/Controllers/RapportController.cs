@@ -41,85 +41,93 @@ namespace CompetentieTool.Controllers
             ViewBag.title = vac.Vacature.Functie;
             ViewBag.desc = vac.Vacature.Beschrijving;
             ViewBag.datum = vac.DatumIngevuld;
-            foreach (Response r in vac.Responses)
+            foreach (ResponseGroup rg in vac.ResponseGroup)
             {
-                RapportViewModel rvm = new RapportViewModel();
-                rvm.CompetentieNaam = r.Vraag.Competentie.Naam;
-                rvm.Verklaring = r.Vraag.Competentie.Verklaring;
-               /* rvm.VraagStelling = r.Vraag.VraagStelling;
-                foreach()
-                rvm.Antwoord = r.Vraag.OutputString;
-                if(r.OpenAntwoord != null && r.OpenAntwoord.Trim().Length != 0)
+                foreach (Response r in rg.Responses)
                 {
-                    rvm.Antwoord.Replace("$$", r.OpenAntwoord);
-                }
-                else
-                {
-                    if(r.OptieKeuze != null && r.OptieKeuze.Output.Trim().Length != 0)
+                    RapportViewModel rvm = new RapportViewModel();
+                    rvm.CompetentieNaam = r.Vraag.Competentie.Naam;
+                    rvm.Verklaring = r.Vraag.Competentie.Verklaring;
+                    rvm.VraagStelling = r.Vraag.VraagStelling;
+                    if (r.OptieKeuze != null)
                     {
-                        rvm.Antwoord.Replace("$$", r.OptieKeuze.Output);
+                        if (r.OptieKeuze.Output == null)
+                        {
+                            rvm.OptieKeuze = r.Vraag.OutputString;
+                        }
+                        else
+                        {
+                            rvm.OptieKeuze = r.OptieKeuze.Output;
+                            if (r.OpenAntwoord != null && r.OpenAntwoord.Trim().Length != 0)
+                            {
+                                rvm.OptieKeuze.Replace("$$", r.OpenAntwoord);
+                            }
+                            else
+                            {
+                                if (r.OptieKeuze != null && r.OptieKeuze.Output.Trim().Length != 0)
+                                {
+                                    rvm.OptieKeuze.Replace("$$", r.OptieKeuze.Output);
+                                }
+                            }
+
+                        }
+                    }
+
+
+                    if (r.Vraag.Competentie.Vignet != null)
+                    {
+                        rvm.Vignet = "Vignet " + r.Vraag.Competentie.Vignet.Naam;
                     }
                     else
                     {
-                        rvm.Antwoord = "LEEG";
+                        rvm.Vignet = "LEEG";
                     }
-                       
+                    rvm.Redenering = r.OpenAntwoord;
+
+                    rvm.CompetentieType = r.Vraag.Competentie.Type;
+                    rvm.VraagType = r.Vraag.type;
+
+                    /* hier moet nog gezorgd worden dat de rubric kan vergeleken worden (dus soli en bedrijf antwoorden matchen)*/
+                    if (r.Vraag.type.Equals(VraagType.RUBRIC))
+                    {
+
+                        int result;
+                        VacatureCompetentie temp = vac.Vacature.CompetentiesLijst.Where(c => c.Competentie.Vragen.FirstOrDefault().Equals(r.Vraag)).FirstOrDefault();
+
+                        if (r.OptieKeuze == null || temp.GeselecteerdeOptie == null)
+                        {
+                            result = 0;
+                        }
+                        else
+                        {
+
+                            result = r.OptieKeuze.Score <= temp.GeselecteerdeOptie.Score ? 1 : 0;
+                        }
+
+                        if (r.Vraag.Competentie.Type.Equals(CompetentieType.GRONDHOUDING))
+                        {
+                            lijst1.Add(result);
+                            comp1.Add(r.Vraag.Competentie.Naam);
+                        }
+                        if (r.Vraag.Competentie.Type.Equals(CompetentieType.KENNIS))
+                        {
+                            lijst2.Add(result);
+                            comp2.Add(r.Vraag.Competentie.Naam);
+                        }
+                        if (r.Vraag.Competentie.Type.Equals(CompetentieType.VAARDIGHEDEN))
+                        {
+                            lijst3.Add(result);
+                            comp3.Add(r.Vraag.Competentie.Naam);
+                        }
+                    }
+                    ViewBag.comp1 = comp1;
+                    ViewBag.comp2 = comp2;
+                    ViewBag.comp3 = comp3;
+                    models.Add(rvm);
+
+
+
                 }
-
-
-                if (r.Vraag.Competentie.Vignet != null)
-                {
-                    rvm.Vignet = "Vignet " + r.Vraag.Competentie.Vignet.Naam;
-                }
-                else
-                {
-                    rvm.Vignet = "LEEG";
-                }
-                rvm.Redenering = r.OpenAntwoord;
-                
-                rvm.CompetentieType = r.Vraag.Competentie.Type;
-                rvm.VraagType = r.Vraag.type;
-                */
-                /* hier moet nog gezorgd worden dat de rubric kan vergeleken worden (dus soli en bedrijf antwoorden matchen)*/
-                if (r.Vraag.type.Equals(VraagType.RUBRIC))
-                {
-
-                    int result;
-                    VacatureCompetentie temp = vac.Vacature.CompetentiesLijst.Where(c => c.Competentie.Vragen.FirstOrDefault().Equals(r.Vraag)).FirstOrDefault();
-                    
-                    if (r.OptieKeuze == null || temp.GeselecteerdeOptie == null)
-                    {
-                        result = 0;
-                    }
-                    else
-                    {
-                        
-                        result = r.OptieKeuze.Score <= temp.GeselecteerdeOptie.Score ? 1 : 0;
-                    }
-                    
-                    if (r.Vraag.Competentie.Type.Equals(CompetentieType.GRONDHOUDING))
-                    {
-                        lijst1.Add(result);
-                        comp1.Add(r.Vraag.Competentie.Naam);
-                    }
-                    if (r.Vraag.Competentie.Type.Equals(CompetentieType.KENNIS))
-                    {
-                        lijst2.Add(result);
-                        comp2.Add(r.Vraag.Competentie.Naam);
-                    }
-                    if (r.Vraag.Competentie.Type.Equals(CompetentieType.VAARDIGHEDEN))
-                    {
-                        lijst3.Add(result);
-                        comp3.Add(r.Vraag.Competentie.Naam);
-                    }
-                }
-                ViewBag.comp1 = comp1;
-                ViewBag.comp2 = comp2;
-                ViewBag.comp3 = comp3;
-                models.Add(rvm);
-                
-
-
             }
             ICollection<Group<string, RapportViewModel>> groups = new List<Group<string, RapportViewModel>>();
             var results = models.GroupBy(m => m.CompetentieType).ToList();

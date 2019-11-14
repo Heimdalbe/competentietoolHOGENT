@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class herewegoagain : Migration
+    public partial class FinalTest : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -291,6 +291,31 @@ namespace CompetentieTool.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ResponseGroup",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CompetentieId = table.Column<string>(nullable: true),
+                    IngevuldeVacatureId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ResponseGroup", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ResponseGroup_Competenties_CompetentieId",
+                        column: x => x.CompetentieId,
+                        principalTable: "Competenties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ResponseGroup_IngevuldeVacatures_IngevuldeVacatureId",
+                        column: x => x.IngevuldeVacatureId,
+                        principalTable: "IngevuldeVacatures",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Mogelijkheid",
                 columns: table => new
                 {
@@ -335,21 +360,21 @@ namespace CompetentieTool.Migrations
                     OptieKeuzeId = table.Column<string>(nullable: true),
                     OpenAntwoord = table.Column<string>(nullable: true),
                     VraagId = table.Column<string>(nullable: true),
-                    IngevuldeVacatureId = table.Column<string>(nullable: true)
+                    ResponseGroupId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Response", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Response_IngevuldeVacatures_IngevuldeVacatureId",
-                        column: x => x.IngevuldeVacatureId,
-                        principalTable: "IngevuldeVacatures",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Response_Mogelijkheid_OptieKeuzeId",
                         column: x => x.OptieKeuzeId,
                         principalTable: "Mogelijkheid",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Response_ResponseGroup_ResponseGroupId",
+                        column: x => x.ResponseGroupId,
+                        principalTable: "ResponseGroup",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -461,19 +486,29 @@ namespace CompetentieTool.Migrations
                 column: "VraagRubricsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Response_IngevuldeVacatureId",
-                table: "Response",
-                column: "IngevuldeVacatureId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Response_OptieKeuzeId",
                 table: "Response",
                 column: "OptieKeuzeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Response_ResponseGroupId",
+                table: "Response",
+                column: "ResponseGroupId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Response_VraagId",
                 table: "Response",
                 column: "VraagId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ResponseGroup_CompetentieId",
+                table: "ResponseGroup",
+                column: "CompetentieId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ResponseGroup_IngevuldeVacatureId",
+                table: "ResponseGroup",
+                column: "IngevuldeVacatureId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vacature_organisatieId",
@@ -523,22 +558,25 @@ namespace CompetentieTool.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "IngevuldeVacatures");
+                name: "ResponseGroup");
 
             migrationBuilder.DropTable(
                 name: "Mogelijkheid");
 
             migrationBuilder.DropTable(
-                name: "Vacature");
+                name: "IngevuldeVacatures");
 
             migrationBuilder.DropTable(
                 name: "Vragen");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Vacature");
 
             migrationBuilder.DropTable(
                 name: "Competenties");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Aanvulling");

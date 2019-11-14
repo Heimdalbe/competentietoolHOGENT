@@ -89,6 +89,5 @@ namespace CompetentieTool
             });
             DummyData.Initialize(context, userManager, roleManager).Wait();
         }
-        
     }
 }

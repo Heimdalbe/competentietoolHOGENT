@@ -25,8 +25,6 @@ namespace CompetentieTool.Data
             string desc2 = "";
             string id2 = "";
 
-
-
             string password = "P@ssw00rd!!";
 
             if (await roleManager.FindByIdAsync(role1) == null)
@@ -153,7 +151,6 @@ namespace CompetentieTool.Data
                 Type = CompetentieType.GRONDHOUDING
             };
 
-
             IList<Mogelijkheid> opties3 = new List<Mogelijkheid>()
             {
                 new Mogelijkheid { Input = "interveniëren via derden (bv. psychiater) om het reisplan af te laten lassen omwille van de risico’s." },
@@ -180,7 +177,6 @@ namespace CompetentieTool.Data
                 Verklaring = "De hulpverlener creëert actief kansen en omstandigheden om de situatie van de cliënt te verbeteren. Hij/zij zet hiertoe in op verschillende niveaus: in de relatie met de cliënt, binnen de eigen organisatie, tussen organisaties én binnen een ruime maatschappelijke context.",
                 Type = CompetentieType.GRONDHOUDING
             };
-
 
             IList<Mogelijkheid> opties12 = new List<Mogelijkheid>()
             {
@@ -211,7 +207,6 @@ namespace CompetentieTool.Data
                 Type = CompetentieType.GRONDHOUDING,
                 Vignet = thomas
             };
-
 
             IList<Mogelijkheid> opties15 = new List<Mogelijkheid>()
             {
@@ -246,7 +241,6 @@ namespace CompetentieTool.Data
                 Vignet = kurt
             };
 
-
             IList<Mogelijkheid> opties42 = new List<Mogelijkheid>()
             {
                 new Mogelijkheid { Input = "Deze stopt, want de cliënt is weg van de afdeling. Het contact stopt volledig", Output = "hij stopt het contact volledig"},
@@ -268,10 +262,8 @@ namespace CompetentieTool.Data
             };
             IVraag vraag42b = new VraagOpen { VraagStelling = "Licht jouw keuze indien gewenst toe", OutputString = "Volgend wordt weergeven om deze keuze te verantwoorden: $$", Competentie = comp42, VraagVolgorde = 2, type = VraagType.OPEN };
 
-
             comp42.Vragen.Add(vraag42);
             comp42.Vragen.Add(vraag42b);
-
 
             // comp 43
             Competentie comp43 = new Competentie
@@ -281,7 +273,6 @@ namespace CompetentieTool.Data
                 Type = CompetentieType.VAARDIGHEDEN,
                 Vignet = kurt
             };
-
 
             IList<Mogelijkheid> opties43 = new List<Mogelijkheid>()
             {
@@ -303,7 +294,6 @@ namespace CompetentieTool.Data
                 VraagVolgorde = 1
             };
             IVraag vraag43b = new VraagOpen { VraagStelling = "Licht jouw keuze indien gewenst toe", OutputString = "Hij geeft hierbij volgende rationale weer: $$ Indien de sollicitant \"doen\" aangeeft en geen rationale geeft, kan dit eventueel wijzen op het volgen van hulpverlenersreflex/buikgevoel zonder toepassing van een kader.", Competentie = comp43, VraagVolgorde = 2, type = VraagType.OPEN };
-
 
             comp43.Vragen.Add(vraag43);
             comp43.Vragen.Add(vraag43b);
@@ -2828,21 +2818,6 @@ namespace CompetentieTool.Data
             vac2.AddCompetenties(competenties2);
             vac3.AddCompetenties(competenties);
 
-            // ingevulde vacature
-            vac1
-                .CompetentiesLijst
-                .SingleOrDefault(v => v.CompetentieId.Equals(vraag13))
-                .GeselecteerdeOptie = opties13.FirstOrDefault();
-            IList<Response> responses = new List<Response>()
-            {
-                new Response { Vraag = vraag1, OptieKeuze = optie12},
-                new Response { Vraag = vraag3, OptieKeuze = optie14},
-                new Response { Vraag = vraag73, OptieKeuze = opties3.FirstOrDefault()},
-                new Response { Vraag = vraag13, OpenAntwoord= "dit sieen antwoord voor een open vraag"}
-            };
-
-            IngevuldeVacature ingevuldeVac1 = new IngevuldeVacature { Vacature = vac1, Responses = responses, VoornaamSollicitant= "Thomas", AchternaamSollicitant="Schuddinck", EmailSollicitant="ditiseenemal@email.com", TelefoonSollicitant="0123456789", DatumIngevuld= DateTime.Today };
-
             // add to context
             context.Competenties.Add(comp1);
             context.Competenties.Add(comp3);
@@ -2916,8 +2891,6 @@ namespace CompetentieTool.Data
             context.Vacature.Add(vac1);
             context.Vacature.Add(vac2);
             context.Vacature.Add(vac3);
-
-            context.IngevuldeVacatures.Add(ingevuldeVac1);
 
             context.SaveChanges();
         }

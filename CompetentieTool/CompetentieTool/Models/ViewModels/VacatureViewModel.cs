@@ -29,6 +29,7 @@ namespace CompetentieTool.Models.ViewModels
         {
             return !String.IsNullOrEmpty(VacatureCompetenties.FirstOrDefault(c => c.Equals(id)));
         }
+        public String UrlLink => "https://localhost:44348/Sollicitant/vragenlijst/" + Id;
 
         public List<CompetentieCheckboxViewModel> CompetentieIds { get; set; }
 
