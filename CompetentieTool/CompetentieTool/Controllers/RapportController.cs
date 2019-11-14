@@ -94,7 +94,7 @@ namespace CompetentieTool.Controllers
                     {
 
                         int result;
-                        VacatureCompetentie temp = vac.Vacature.CompetentiesLijst.Where(c => c.Competentie.Vragen.FirstOrDefault().Equals(r.Vraag)).FirstOrDefault();
+                        VacatureCompetentie temp = vac.Vacature.CompetentiesLijst.Where(c => c.Competentie.Vragen.OrderBy(co => co.VraagVolgorde).FirstOrDefault().Id.Equals(r.Vraag.Id)).FirstOrDefault();
 
                         if (r.OptieKeuze == null || temp.GeselecteerdeOptie == null)
                         {
@@ -125,11 +125,9 @@ namespace CompetentieTool.Controllers
                     ViewBag.comp1 = comp1;
                     ViewBag.comp2 = comp2;
                     ViewBag.comp3 = comp3;
-                    models.Add(rvm);
-
-
-
+                    rvm.vms.Add(avm);
                 }
+                models.Add(rvm);
             }
             ICollection<Group<string, RapportViewModel>> groups = new List<Group<string, RapportViewModel>>();
             var results = models.GroupBy(m => m.CompetentieType).ToList();

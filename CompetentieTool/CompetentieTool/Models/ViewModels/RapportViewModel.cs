@@ -12,11 +12,11 @@ namespace CompetentieTool.Models.ViewModels
         public String Vignet { get; set; }
         public CompetentieType CompetentieType { get; set; }
         public string Verklaring { get; set; }
-        public List<AntwoordViewModel> vms;
+        public IList<AntwoordViewModel> vms;
 
         public RapportViewModel()
         {
-
+            vms = new List<AntwoordViewModel>();
         }
     }
 }
