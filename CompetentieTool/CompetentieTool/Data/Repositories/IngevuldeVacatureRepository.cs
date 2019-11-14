@@ -54,7 +54,7 @@ namespace CompetentieTool.Data.Repositories
                 .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.Competentie).ThenInclude(co => co.Vragen)
                 .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst)//.ThenInclude(c => c.GeselecteerdeOptie)
                 .Include(i => i.Vacature).ThenInclude(i => i.organisatie)
-                .Include(i => i.Responses).ThenInclude(r => r.OptieKeuze)
+                .Include(i => i.ResponseGroup).ThenInclude(r => r.Responses).ThenInclude(r => r.OptieKeuze)
                 .Where(v => v.Vacature.Id.Equals(id));
         }
 
@@ -65,7 +65,7 @@ namespace CompetentieTool.Data.Repositories
                 .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.Competentie).ThenInclude(co => co.Vragen)
                 .Include(i => i.Vacature).ThenInclude(i => i.CompetentiesLijst).ThenInclude(c => c.GeselecteerdeOptie)
                 .Include(i => i.Vacature).ThenInclude(i => i.organisatie)
-                .Include(i => i.Responses).ThenInclude(r => r.OptieKeuze)
+                .Include(i => i.ResponseGroup).ThenInclude(r => r.Responses).ThenInclude(r => r.OptieKeuze)
                 .Where(v => v.Id.Equals(Id)).SingleOrDefault();
         }
 

@@ -41,6 +41,12 @@
     <Compile Remove="Migrations\20191029220303_Hell.Designer.cs" />
     <Compile Remove="Migrations\20191104212245_tester1.cs" />
     <Compile Remove="Migrations\20191104212245_tester1.Designer.cs" />
+    <Compile Remove="Migrations\20191113093136_ScoreAttribute.cs" />
+    <Compile Remove="Migrations\20191113093136_ScoreAttribute.Designer.cs" />
+    <Compile Remove="Migrations\20191113132632_herewegoagain.cs" />
+    <Compile Remove="Migrations\20191113132632_herewegoagain.Designer.cs" />
+    <Compile Remove="Migrations\20191114134454_FinalTest.cs" />
+    <Compile Remove="Migrations\20191114134454_FinalTest.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

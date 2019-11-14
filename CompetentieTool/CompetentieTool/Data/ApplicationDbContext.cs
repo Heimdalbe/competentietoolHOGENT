@@ -41,9 +41,10 @@ namespace CompetentieTool.Data
             builder.Entity<VraagMeerkeuze>().HasMany(v => v.Opties).WithOne();
             builder.Entity<VraagRubrics>().HasMany(v => v.Opties).WithOne();
 
-            builder.Entity<IngevuldeVacature>().HasMany(v => v.Responses).WithOne();
+            builder.Entity<IngevuldeVacature>().HasMany(v => v.ResponseGroup).WithOne();
             builder.Entity<IngevuldeVacature>().HasOne(v => v.Vacature);
 
+            builder.Entity<ResponseGroup>().HasMany(r => r.Responses).WithOne();
             builder.Entity<Response>().HasOne(r => r.Vraag).WithMany();
             builder.Entity<Response>().HasOne(r => r.OptieKeuze).WithMany();
         }
