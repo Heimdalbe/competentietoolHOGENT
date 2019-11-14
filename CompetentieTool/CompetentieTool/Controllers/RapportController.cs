@@ -47,7 +47,7 @@ namespace CompetentieTool.Controllers
                 rvm.CompetentieNaam = rg.Competentie.Naam;
                 rvm.Verklaring = rg.Competentie.Verklaring;
                 rvm.CompetentieType = rg.Competentie.Type;
-                if (rg.Competentie.Vignet.Naam != null)
+                if (rg.Competentie.Vignet!= null)
                 {
                     rvm.Vignet = rg.Competentie.Vignet.Naam;
                 }
@@ -62,16 +62,24 @@ namespace CompetentieTool.Controllers
                     
                     avm.VraagStelling = r.Vraag.VraagStelling;
                     
-                    avm.Antwoord = r.OptieKeuze.Output;
+                    avm.Antwoord = r.Vraag.OutputString;
                     if (r.OpenAntwoord != null && r.OpenAntwoord.Trim().Length != 0)
                     {
                         avm.Antwoord.Replace("$$", r.OpenAntwoord);
                     }
                     else
                     {
-                        if (r.OptieKeuze != null && r.OptieKeuze.Output.Trim().Length != 0)
+                        if (r.OptieKeuze != null)
                         {
-                            avm.Antwoord.Replace("$$", r.OptieKeuze.Output);
+                            if (r.OptieKeuze.Output != null && r.OptieKeuze.Output.Trim().Length != 0)
+                            {
+                                avm.Antwoord.Replace("$$", r.OptieKeuze.Output);
+                            }
+                            else
+                            {
+                                avm.Antwoord.Replace("$$", r.OptieKeuze.Input);
+                            }
+                            
                         }
                         else
                         {
