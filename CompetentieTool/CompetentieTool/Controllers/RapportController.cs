@@ -43,49 +43,43 @@ namespace CompetentieTool.Controllers
             ViewBag.datum = vac.DatumIngevuld;
             foreach (ResponseGroup rg in vac.ResponseGroup)
             {
+                RapportViewModel rvm = new RapportViewModel();
+                rvm.CompetentieNaam = rg.Competentie.Naam;
+                rvm.Verklaring = rg.Competentie.Verklaring;
+                rvm.CompetentieType = rg.Competentie.Type;
+                if (rg.Competentie.Vignet.Naam != null)
+                {
+                    rvm.Vignet = rg.Competentie.Vignet.Naam;
+                }
+                else
+                {
+                    rvm.Vignet = "LEEG";
+                }
+
                 foreach (Response r in rg.Responses)
                 {
-                    RapportViewModel rvm = new RapportViewModel();
-                    rvm.CompetentieNaam = r.Vraag.Competentie.Naam;
-                    rvm.Verklaring = r.Vraag.Competentie.Verklaring;
-                    rvm.VraagStelling = r.Vraag.VraagStelling;
-                    if (r.OptieKeuze != null)
+                    AntwoordViewModel avm = new AntwoordViewModel();
+                    
+                    avm.VraagStelling = r.Vraag.VraagStelling;
+                    
+                    avm.Antwoord = r.OptieKeuze.Output;
+                    if (r.OpenAntwoord != null && r.OpenAntwoord.Trim().Length != 0)
                     {
-                        if (r.OptieKeuze.Output == null)
-                        {
-                            rvm.OptieKeuze = r.Vraag.OutputString;
-                        }
-                        else
-                        {
-                            rvm.OptieKeuze = r.OptieKeuze.Output;
-                            if (r.OpenAntwoord != null && r.OpenAntwoord.Trim().Length != 0)
-                            {
-                                rvm.OptieKeuze.Replace("$$", r.OpenAntwoord);
-                            }
-                            else
-                            {
-                                if (r.OptieKeuze != null && r.OptieKeuze.Output.Trim().Length != 0)
-                                {
-                                    rvm.OptieKeuze.Replace("$$", r.OptieKeuze.Output);
-                                }
-                            }
-
-                        }
-                    }
-
-
-                    if (r.Vraag.Competentie.Vignet != null)
-                    {
-                        rvm.Vignet = "Vignet " + r.Vraag.Competentie.Vignet.Naam;
+                        avm.Antwoord.Replace("$$", r.OpenAntwoord);
                     }
                     else
                     {
-                        rvm.Vignet = "LEEG";
+                        if (r.OptieKeuze != null && r.OptieKeuze.Output.Trim().Length != 0)
+                        {
+                            avm.Antwoord.Replace("$$", r.OptieKeuze.Output);
+                        }
+                        else
+                        {
+                            avm.Antwoord = "LEEG";
+                        }
+                           
                     }
-                    rvm.Redenering = r.OpenAntwoord;
-
-                    rvm.CompetentieType = r.Vraag.Competentie.Type;
-                    rvm.VraagType = r.Vraag.type;
+                    
 
                     /* hier moet nog gezorgd worden dat de rubric kan vergeleken worden (dus soli en bedrijf antwoorden matchen)*/
                     if (r.Vraag.type.Equals(VraagType.RUBRIC))
