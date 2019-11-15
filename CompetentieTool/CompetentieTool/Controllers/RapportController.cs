@@ -65,7 +65,7 @@ namespace CompetentieTool.Controllers
                     avm.Antwoord = r.Vraag.OutputString;
                     if (r.OpenAntwoord != null && r.OpenAntwoord.Trim().Length != 0)
                     {
-                        avm.Antwoord.Replace("$$", r.OpenAntwoord);
+                        avm.Antwoord = avm.Antwoord.Replace("$$", r.OpenAntwoord);
                     }
                     else
                     {
@@ -73,17 +73,18 @@ namespace CompetentieTool.Controllers
                         {
                             if (r.OptieKeuze.Output != null && r.OptieKeuze.Output.Trim().Length != 0)
                             {
-                                avm.Antwoord.Replace("$$", r.OptieKeuze.Output);
+                                avm.Antwoord = avm.Antwoord.Replace("$$", r.OptieKeuze.Output);
                             }
                             else
                             {
-                                avm.Antwoord.Replace("$$", r.OptieKeuze.Input);
+
+                                avm.Antwoord = avm.Antwoord.Replace("$$", r.OptieKeuze.Input);
                             }
                             
                         }
                         else
                         {
-                            avm.Antwoord = "LEEG";
+                            avm.Antwoord = avm.Antwoord = "LEEG";
                         }
                            
                     }
@@ -165,10 +166,20 @@ namespace CompetentieTool.Controllers
                 totaal += i;
             }
             double percentage1 = Math.Round((totaal / grondhoudingRubrics.Count)*100, 1);
-            dataPoints1.Add(new DataPoint("", percentage1));
-            dataPoints1.Add(new DataPoint("", 100-percentage1));
-            ViewBag.Percentage1 = percentage1 + "%";
-            ViewBag.DataPoints1 = JsonConvert.SerializeObject(dataPoints1);
+            if (!Double.IsNaN(percentage1))
+            {
+                dataPoints1.Add(new DataPoint("", percentage1));
+                dataPoints1.Add(new DataPoint("", 100 - percentage1));
+                ViewBag.Percentage1 = percentage1 + "%";
+                ViewBag.DataPoints1 = JsonConvert.SerializeObject(dataPoints1);
+            }
+            else
+            {
+                dataPoints1.Add(new DataPoint("", 0));
+                ViewBag.DataPoints1 = JsonConvert.SerializeObject(dataPoints1);
+                ViewBag.Percentage1 = "Niet ondervraagd";
+            }
+
 
             double totaal2 = 0;
             foreach (var i in kennisRubrics)
@@ -176,21 +187,39 @@ namespace CompetentieTool.Controllers
                 totaal2 += i;
             }
             double percentage2 = Math.Round((totaal2 / kennisRubrics.Count)*100, 1);
-            dataPoints2.Add(new DataPoint("", percentage2));
-            dataPoints2.Add(new DataPoint("", 100 - percentage2));
-            ViewBag.Percentage2 = percentage2 + "%";
-            ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
-
+            if (!Double.IsNaN(percentage2))
+            {
+                dataPoints2.Add(new DataPoint("", percentage2));
+                dataPoints2.Add(new DataPoint("", 100 - percentage2));
+                ViewBag.Percentage2 = percentage2 + "%";
+                ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
+            }
+            else
+            {
+                ViewBag.Percentage2 = "Niet ondervraagd";
+                dataPoints2.Add(new DataPoint("", 0));
+                ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
+            }
             double totaal3 = 0;
             foreach (var i in vaardighedenRubrics)
             {
                 totaal3 += i;
             }
-            double percentage3 = Math.Round((totaal3 / vaardighedenRubrics.Count)*100, 1);
-            dataPoints3.Add(new DataPoint("", percentage3));
-            dataPoints3.Add(new DataPoint("", 100 - percentage3));
-            ViewBag.Percentage3 = percentage3 + "%";
-            ViewBag.DataPoints3 = JsonConvert.SerializeObject(dataPoints3);
+
+            double percentage3 = Math.Round((totaal3 / vaardighedenRubrics.Count) * 100, 1);
+            if (!Double.IsNaN(percentage3))
+            {
+                dataPoints3.Add(new DataPoint("", percentage3));
+                dataPoints3.Add(new DataPoint("", 100 - percentage3));
+                ViewBag.Percentage3 = percentage3 + "%";
+                ViewBag.DataPoints3 = JsonConvert.SerializeObject(dataPoints3);
+            }
+            else
+            {
+                dataPoints3.Add(new DataPoint("", 0));
+                ViewBag.DataPoints3 = JsonConvert.SerializeObject(dataPoints3);
+                ViewBag.Percentage3 = "Niet ondervraagd";
+            }
 
 
         }
