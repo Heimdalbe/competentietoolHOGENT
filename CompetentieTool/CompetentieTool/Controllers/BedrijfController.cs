@@ -56,6 +56,7 @@ namespace CompetentieTool.Controllers
         }
 
         [HttpPost]
+        [RequestSizeLimitAttribute(4000)]
         public IActionResult Create(VacatureViewModel vm)
         {
             var temp = new Vacature

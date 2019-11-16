@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompetentieTool.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191114130610_yeet")]
-    partial class yeet
+    [Migration("20191116122731_OkBoomer")]
+    partial class OkBoomer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
