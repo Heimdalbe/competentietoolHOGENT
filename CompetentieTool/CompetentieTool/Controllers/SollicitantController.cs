@@ -95,6 +95,7 @@ namespace CompetentieTool.Controllers
             IEnumerable<IVraag> vragen = _vacatureRepository.GetAllQuestions();
             IVraag vraag = null;
             Mogelijkheid optie = null;
+            ResponseGroup resgroup = null;
             // Todo vervangen door velden voornaam, achternaam, email en telefoon
             //vac.Sollicitant = (Sollicitant) _userManager.GetUserAsync(HttpContext.User).Result;
             vac.AchternaamSollicitant = model.Achternaam;
@@ -104,30 +105,32 @@ namespace CompetentieTool.Controllers
              
             foreach (var group in model.Competenties)
             {
+                
                 foreach(var comp in group.Values)
                 {
-                    foreach(var item in comp.VraagViewModels)
+                    resgroup = new ResponseGroup();
+                    foreach (var item in comp.VraagViewModels)
                     { 
                         vraag = vragen.SingleOrDefault(v => v.Id.Equals(item.VraagId));
                         if (vraag is VraagMeerkeuze)
                         {
                             optie = ((VraagMeerkeuze)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
-                            vac.Responses.Add(new Response { Vraag = vraag, OptieKeuze = optie });
+                            resgroup.Responses.Add(new Response { Vraag = vraag, OptieKeuze = optie });
                         }
                         else if( vraag is VraagRubrics)
                         {
                             optie = ((VraagRubrics)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
-                            vac.Responses.Add(new Response { Vraag = vraag, OptieKeuze = optie });
+                            resgroup.Responses.Add(new Response { Vraag = vraag, OptieKeuze = optie });
                         }
                         else
                         {
-                            vac.Responses.Add(new Response { OpenAntwoord = item.Redenering, Vraag = vraag });
+                            resgroup.Responses.Add(new Response { OpenAntwoord = item.Redenering, Vraag = vraag });
                         }
-                        
                     }
+                    resgroup.Competentie = vraag.Competentie;
+                    vac.ResponseGroup.Add(resgroup);
                 }
             }
-
             _ingevuldeVacatureRepository.Add(vac);
             return RedirectToAction("Index", "Home");
         }

@@ -9,7 +9,7 @@ namespace CompetentieTool.Models.Domain
     {
         public string Id { get; set; }
         public Vacature Vacature { get; set; }
-        public IList<Response> Responses { get; set; }
+        public IList<ResponseGroup> ResponseGroup { get; set; }
         public String VoornaamSollicitant { get; set; }
         public String AchternaamSollicitant { get; set; }
         public String EmailSollicitant { get; set; }
@@ -23,7 +23,7 @@ namespace CompetentieTool.Models.Domain
         public IngevuldeVacature()
         {
             DatumIngevuld = DateTime.Now;
-            Responses = new List<Response>();
+            ResponseGroup = new List<ResponseGroup>();
         }
     }
 }
