@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompetentieTool.Migrations
 {
-    public partial class herewegoagain : Migration
+    public partial class yeet : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
