@@ -49,14 +49,12 @@ namespace CompetentieTool.Controllers
             var temp = new VacatureViewModel();
 
             var vac = new Vacature();
-            vac.AddCompetenties(_competentieRepository.GetBasisCompetenties().ToList());
-            temp.VacatureCompetenties = vac.CompetentiesLijst.Select(c => c.CompetentieId).ToList();
 
             return View(temp);
         }
 
         [HttpPost]
-        [RequestSizeLimitAttribute(4000)]
+        [RequestSizeLimit(400000)]
         public IActionResult Create(VacatureViewModel vm)
         {
             var temp = new Vacature
@@ -65,8 +63,6 @@ namespace CompetentieTool.Controllers
                 Beschrijving = vm.Beschrijving,
             };
             temp.organisatie = (Organisatie) _userManager.GetUserAsync(HttpContext.User).Result;
-
-            var templist = new List<Competentie>();
 
             foreach (var item in vm.CompetentieGrondhoudingAanTeVullenIds)
             {
@@ -94,24 +90,7 @@ namespace CompetentieTool.Controllers
                 }
             }
 
-            foreach (var item in vm.CompetentieGrondhoudingBasisIds)
-            {
-                templist.Add(_competentieRepository.GetBy(item.Id));
-            }
-            if(vm.CompetentieKennisBasisIds != null)
-            {
-    foreach (var item in vm.CompetentieKennisBasisIds)
-                {
-                    templist.Add(_competentieRepository.GetBy(item.Id));
-                }
-            }
-            
-            foreach (var item in vm.CompetentieVaardighedenBasisIds)
-            {
-                templist.Add(_competentieRepository.GetBy(item.Id));
-            }
-
-            temp.AddCompetenties(templist);
+            temp.AddCompetenties(_competentieRepository.GetBasisCompetenties().ToList());
 
             _vacatureRepository.Add(temp);
 
@@ -140,13 +119,13 @@ namespace CompetentieTool.Controllers
                     Type = item.Type
                 });
 
-                }
+            }
             vm.CompetentieGrondhoudingAanTeVullenIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.GRONDHOUDING) && c.HeeftAanvulling).ToList();
             vm.CompetentieKennisAanTeVullenIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.KENNIS) && c.HeeftAanvulling).ToList();
             vm.CompetentieVaardighedenAanTeVullenIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.VAARDIGHEDEN) && c.HeeftAanvulling).ToList();
 
             vm.CompetentieGrondhoudingBasisIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.GRONDHOUDING) && !c.HeeftAanvulling).ToList();
-            vm.CompetentieKennisBasisIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.KENNIS) && !c.HeeftAanvulling).ToList();
+            //vm.CompetentieKennisBasisIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.KENNIS) && !c.HeeftAanvulling).ToList();
             vm.CompetentieVaardighedenBasisIds = vm.CompetentieIds.Where(c => c.Type.Equals(CompetentieType.VAARDIGHEDEN) && !c.HeeftAanvulling).ToList();
 
 

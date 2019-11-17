@@ -38,7 +38,7 @@ namespace CompetentieTool.Data.Repositories
 
         public IEnumerable<Competentie> GetBasisCompetenties()
         {
-            return GetAll().Where(c => c.IsBasisCompetentie);
+            return GetAll().Where(c => c.Aanvulling == null);
         }
 
         public CompetentieRepository(ApplicationDbContext dbContext)

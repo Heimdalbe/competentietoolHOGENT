@@ -45,46 +45,34 @@
                     @Html.EditorFor(m => m.CompetentieVaardighedenAanTeVullenIds)
                 </tbody>
             </table>
-            <h2 class="h2">Verplichte competenties</h2>
-            <h3 class="h3">Grondhouding</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Naam</th>
-                        <th scope="col">Verklaring</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @Html.EditorFor(m => m.CompetentieGrondhoudingBasisIds)
-                </tbody>
-            </table>
-            <h3 class="h3">Kennis</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Naam</th>
-                        <th scope="col">Verklaring</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @Html.EditorFor(m => m.CompetentieKennisBasisIds)
-                </tbody>
-            </table>
-            <h3 class="h3">Vaardigheden</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Naam</th>
-                        <th scope="col">Verklaring</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @Html.EditorFor(m => m.CompetentieVaardighedenBasisIds)
-                </tbody>
-            </table>
             <div class="form-group">
                 <input type="submit" value="Finaliseer" class="btn btn-default" />
             </div>
         </form>
+        <h2 class="h2">Verplichte competenties</h2>
+        <h3 class="h3">Grondhouding</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Verklaring</th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.EditorFor(m => m.CompetentieGrondhoudingBasisIds)
+            </tbody>
+        </table>
+        <h3 class="h3">Vaardigheden</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Verklaring</th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.EditorFor(m => m.CompetentieVaardighedenBasisIds)
+            </tbody>
+        </table>
     </div>
 </div>

@@ -22,13 +22,6 @@ namespace CompetentieTool.Models.ViewModels
         [Required]
         public String Beschrijving { get; set; }
 
-        [Required]
-        public ICollection<string> VacatureCompetenties { get; set; }
-
-        public Boolean IsInVacatureCompetenties(string id)
-        {
-            return !String.IsNullOrEmpty(VacatureCompetenties.FirstOrDefault(c => c.Equals(id)));
-        }
         public String UrlLink => "https://localhost:44348/Sollicitant/vragenlijst/" + Id;
 
         public List<CompetentieCheckboxViewModel> CompetentieIds { get; set; }
@@ -37,12 +30,10 @@ namespace CompetentieTool.Models.ViewModels
         public List<CompetentieCheckboxViewModel> CompetentieKennisAanTeVullenIds { get; set; }
         public List<CompetentieCheckboxViewModel> CompetentieVaardighedenAanTeVullenIds { get; set; }
         public List<CompetentieCheckboxViewModel> CompetentieGrondhoudingBasisIds { get; set; }
-        public List<CompetentieCheckboxViewModel> CompetentieKennisBasisIds { get; set; }
         public List<CompetentieCheckboxViewModel> CompetentieVaardighedenBasisIds { get; set; }
 
         public VacatureViewModel()
         {
-            VacatureCompetenties = new List<string>();
             CompetentieIds = new List<CompetentieCheckboxViewModel>();
         }
 
@@ -52,7 +43,6 @@ namespace CompetentieTool.Models.ViewModels
             Functie = temp.Functie;
             Beschrijving = temp.Beschrijving;
             CompetentieIds = new List<CompetentieCheckboxViewModel>();
-            VacatureCompetenties = temp.CompetentiesLijst.Select(c => c.CompetentieId).ToList();
         }
     }
 }
