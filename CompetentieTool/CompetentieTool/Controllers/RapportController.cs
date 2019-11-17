@@ -132,16 +132,7 @@ namespace CompetentieTool.Controllers
             }
             ICollection<Group<string, RapportViewModel>> groups = new List<Group<string, RapportViewModel>>();
             var results = models.GroupBy(m => m.CompetentieType).ToList();
-
-
-            /*
-             Hier moeten de opties van de rubric worden berekend. Als opties gelijk zijn dan 1, anders 0
-             
-             */
-             /*
-            lijst1.Add(1); lijst1.Add(1); lijst1.Add(0); lijst1.Add(1); lijst1.Add(0); lijst1.Add(1);
-            lijst2.Add(0); lijst2.Add(0); lijst2.Add(1); lijst2.Add(0); lijst2.Add(0); lijst2.Add(1); lijst2.Add(0);
-            lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(1); lijst3.Add(0); lijst3.Add(0); lijst3.Add(0);*/
+            
             FixDonutDiagrammen(lijst1, lijst2, lijst3);
 
 

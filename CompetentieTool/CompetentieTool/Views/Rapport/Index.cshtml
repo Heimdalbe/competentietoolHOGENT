@@ -182,27 +182,26 @@ window.onload = function () {
 
 
 
-        @if (!v.Antwoord.Equals("LEEG"))
-        {
-            <div class="alert alert-success">
-                <h5><strong>Vraag:</strong> @v.VraagStelling</h5>
-                @if (v.VraagType.Equals(CompetentieTool.Models.Domain.VraagType.OPEN))
-                {
-                    <h5><strong>Antwoord sollicitant:</strong></h5>
-                }
-                else
-                {
-                    <h5><strong>Keuze sollicitant:</strong></h5>
-                }
+        
+        <div class="alert alert-success">
+            <h5><strong>Vraag:</strong> @v.VraagStelling</h5>
+            @if (v.Antwoord.Equals("LEEG") || v.Antwoord.Trim().Equals(""))
+            {
+            <div class="container">
+                <h5>DE SOLLICITANT GAF GEEN ANTWOORD</h5>
+            </div>
+            }
+            else
+            {
                 <div class="container">
                     <h5>@v.Antwoord</h5>
                 </div>
+            }
 
 
 
+        </div>
 
-            </div>
-        }
 
     }
 </div>
