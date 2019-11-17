@@ -161,23 +161,41 @@ namespace CompetentieTool.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("IngevuldeVacatureId");
-
                     b.Property<string>("OpenAntwoord");
 
                     b.Property<string>("OptieKeuzeId");
+
+                    b.Property<string>("ResponseGroupId");
 
                     b.Property<string>("VraagId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IngevuldeVacatureId");
-
                     b.HasIndex("OptieKeuzeId");
+
+                    b.HasIndex("ResponseGroupId");
 
                     b.HasIndex("VraagId");
 
                     b.ToTable("Response");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.ResponseGroup", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CompetentieId");
+
+                    b.Property<string>("IngevuldeVacatureId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompetentieId");
+
+                    b.HasIndex("IngevuldeVacatureId");
+
+                    b.ToTable("ResponseGroup");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Vacature", b =>
@@ -486,17 +504,28 @@ namespace CompetentieTool.Migrations
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Response", b =>
                 {
-                    b.HasOne("CompetentieTool.Models.Domain.IngevuldeVacature")
-                        .WithMany("Responses")
-                        .HasForeignKey("IngevuldeVacatureId");
-
                     b.HasOne("CompetentieTool.Models.Domain.Mogelijkheid", "OptieKeuze")
                         .WithMany()
                         .HasForeignKey("OptieKeuzeId");
 
+                    b.HasOne("CompetentieTool.Models.Domain.ResponseGroup")
+                        .WithMany("Responses")
+                        .HasForeignKey("ResponseGroupId");
+
                     b.HasOne("CompetentieTool.Domain.IVraag", "Vraag")
                         .WithMany()
                         .HasForeignKey("VraagId");
+                });
+
+            modelBuilder.Entity("CompetentieTool.Models.Domain.ResponseGroup", b =>
+                {
+                    b.HasOne("CompetentieTool.Domain.Competentie", "Competentie")
+                        .WithMany()
+                        .HasForeignKey("CompetentieId");
+
+                    b.HasOne("CompetentieTool.Models.Domain.IngevuldeVacature")
+                        .WithMany("ResponseGroup")
+                        .HasForeignKey("IngevuldeVacatureId");
                 });
 
             modelBuilder.Entity("CompetentieTool.Models.Domain.Vacature", b =>

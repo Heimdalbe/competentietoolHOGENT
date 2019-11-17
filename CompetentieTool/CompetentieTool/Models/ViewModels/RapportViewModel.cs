@@ -16,10 +16,11 @@ namespace CompetentieTool.Models.ViewModels
         public CompetentieType CompetentieType { get; set; }
         public VraagType VraagType { get; set; }
         public string Verklaring { get; set; }
+        public IList<AntwoordViewModel> vms { get; set; }
 
         public RapportViewModel()
         {
-
+            vms = new List<AntwoordViewModel>();
         }
     }
 }

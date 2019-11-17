@@ -43,33 +43,34 @@ namespace CompetentieTool.Controllers
             Vacature vac = _vacatureRepository.GetBy(id);
 
             ICollection<CompetentieViewModel> compModels = new List<CompetentieViewModel>();
-            
-            foreach(Competentie comp in vac.Competenties)
+
+            foreach (Competentie comp in vac.Competenties)
             {
                 ICollection<IVraag> vragen = comp.Vragen.OrderBy(v => v.VraagVolgorde).ToList();
                 IList<VraagViewModel> models = new List<VraagViewModel>();
-                foreach (IVraag vraag in vragen) { 
-                VraagViewModel res = new VraagViewModel();
-                res.VraagStelling = vraag.VraagStelling;
-                res.VraagId = vraag.Id;
-                
-                if(vraag is VraagMeerkeuze vraagMeerkeuze)
+                foreach (IVraag vraag in vragen)
                 {
-                    foreach(Mogelijkheid opt in (vraagMeerkeuze).Opties)
+                    VraagViewModel res = new VraagViewModel();
+                    res.VraagStelling = vraag.VraagStelling;
+                    res.VraagId = vraag.Id;
+
+                    if (vraag is VraagMeerkeuze vraagMeerkeuze)
                     {
-                        res.Opties.Add(opt);
+                        foreach (Mogelijkheid opt in (vraagMeerkeuze).Opties)
+                        {
+                            res.Opties.Add(opt);
+                        }
                     }
-                }
-                if (vraag is VraagRubrics vraagRubrics)
-                {
-                    foreach (Mogelijkheid opt in (vraagRubrics).Opties)
+                    if (vraag is VraagRubrics vraagRubrics)
                     {
-                        res.Opties.Add(opt);
+                        foreach (Mogelijkheid opt in (vraagRubrics).Opties)
+                        {
+                            res.Opties.Add(opt);
+                        }
                     }
+                    models.Add(res);
                 }
-                models.Add(res);
-            }
-                
+
                 CompetentieViewModel compM = new CompetentieViewModel() { VraagViewModels = models, Vignet = comp.Vignet?.Beschrijving };
                 compModels.Add(compM);
             }
@@ -78,7 +79,7 @@ namespace CompetentieTool.Controllers
 
             IList<Group<string, CompetentieViewModel>> groups = new List<Group<string, CompetentieViewModel>>();
             var results = compModels.GroupBy(m => m.Vignet).ToList();
-            foreach(var item in results)
+            foreach (var item in results)
             {
                 groups.Add(new Group<string, CompetentieViewModel> { Key = item.Key, Values = item.ToList() });
             }
@@ -95,39 +96,42 @@ namespace CompetentieTool.Controllers
             IEnumerable<IVraag> vragen = _vacatureRepository.GetAllQuestions();
             IVraag vraag = null;
             Mogelijkheid optie = null;
+            ResponseGroup resgroup = null;
             // Todo vervangen door velden voornaam, achternaam, email en telefoon
             //vac.Sollicitant = (Sollicitant) _userManager.GetUserAsync(HttpContext.User).Result;
             vac.AchternaamSollicitant = model.Achternaam;
             vac.VoornaamSollicitant = model.Voornaam;
             vac.TelefoonSollicitant = model.TelefoonNummer;
             vac.EmailSollicitant = model.EmailAdres;
-             
+
             foreach (var group in model.Competenties)
             {
-                foreach(var comp in group.Values)
+
+                foreach (var comp in group.Values)
                 {
-                    foreach(var item in comp.VraagViewModels)
-                    { 
+                    resgroup = new ResponseGroup();
+                    foreach (var item in comp.VraagViewModels)
+                    {
                         vraag = vragen.SingleOrDefault(v => v.Id.Equals(item.VraagId));
                         if (vraag is VraagMeerkeuze)
                         {
                             optie = ((VraagMeerkeuze)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
-                            vac.Responses.Add(new Response { Vraag = vraag, OptieKeuze = optie });
+                            resgroup.Responses.Add(new Response { Vraag = vraag, OptieKeuze = optie });
                         }
-                        else if( vraag is VraagRubrics)
+                        else if (vraag is VraagRubrics)
                         {
                             optie = ((VraagRubrics)vraag).Opties.SingleOrDefault(c => c.Id.Equals(item.OptieKeuzeId));
-                            vac.Responses.Add(new Response { Vraag = vraag, OptieKeuze = optie });
+                            resgroup.Responses.Add(new Response { Vraag = vraag, OptieKeuze = optie });
                         }
                         else
                         {
-                            vac.Responses.Add(new Response { OpenAntwoord = item.Redenering, Vraag = vraag });
+                            resgroup.Responses.Add(new Response { OpenAntwoord = item.Redenering, Vraag = vraag });
                         }
-                        
                     }
+                    resgroup.Competentie = vraag.Competentie;
+                    vac.ResponseGroup.Add(resgroup);
                 }
             }
-
             _ingevuldeVacatureRepository.Add(vac);
             return RedirectToAction("Index", "Home");
         }
