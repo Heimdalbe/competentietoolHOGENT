@@ -41,7 +41,7 @@ namespace CompetentieTool.Controllers
             ViewBag.title = vac.Vacature.Functie;
             ViewBag.desc = vac.Vacature.Beschrijving;
             ViewBag.datum = vac.DatumIngevuld;
-            foreach (ResponseGroup rg in vac.ResponseGroup)
+            foreach (ResponseGroup rg in vac.ResponseGroup.OrderBy(o => o.Competentie.Type).ThenBy(ol => ol.Competentie.Id))
             {
                 RapportViewModel rvm = new RapportViewModel();
                 rvm.CompetentieNaam = rg.Competentie.Naam;
@@ -55,8 +55,7 @@ namespace CompetentieTool.Controllers
                 {
                     rvm.Vignet = "LEEG";
                 }
-
-                foreach (Response r in rg.Responses)
+                foreach (Response r in rg.Responses.OrderBy(r => r.Vraag.VraagVolgorde))
                 {
                     AntwoordViewModel avm = new AntwoordViewModel();
                     
