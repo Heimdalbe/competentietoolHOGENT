@@ -13,6 +13,43 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190925163856_checktest.cs" />
+    <Compile Remove="Migrations\20190925163856_checktest.Designer.cs" />
+    <Compile Remove="Migrations\20191022145934_aanvulling.cs" />
+    <Compile Remove="Migrations\20191022145934_aanvulling.Designer.cs" />
+    <Compile Remove="Migrations\20191022150037_Aanvulling.cs" />
+    <Compile Remove="Migrations\20191022150037_Aanvulling.Designer.cs" />
+    <Compile Remove="Migrations\20191027155150_OutputQuestions.cs" />
+    <Compile Remove="Migrations\20191027155150_OutputQuestions.Designer.cs" />
+    <Compile Remove="Migrations\20191027161024_init.cs" />
+    <Compile Remove="Migrations\20191027161024_init.Designer.cs" />
+    <Compile Remove="Migrations\20191027192202_Aanvullingen.cs" />
+    <Compile Remove="Migrations\20191027192202_Aanvullingen.Designer.cs" />
+    <Compile Remove="Migrations\20191027202338_Test.cs" />
+    <Compile Remove="Migrations\20191027202338_Test.Designer.cs" />
+    <Compile Remove="Migrations\20191027204350_ResponseObjects.cs" />
+    <Compile Remove="Migrations\20191027204350_ResponseObjects.Designer.cs" />
+    <Compile Remove="Migrations\20191028092425_Vragen.cs" />
+    <Compile Remove="Migrations\20191028092425_Vragen.Designer.cs" />
+    <Compile Remove="Migrations\20191028093002_Test2.cs" />
+    <Compile Remove="Migrations\20191028093002_Test2.Designer.cs" />
+    <Compile Remove="Migrations\20191029214407_Hello.cs" />
+    <Compile Remove="Migrations\20191029214407_Hello.Designer.cs" />
+    <Compile Remove="Migrations\20191029215943_Hello.cs" />
+    <Compile Remove="Migrations\20191029215943_Hello.Designer.cs" />
+    <Compile Remove="Migrations\20191029220303_Hell.cs" />
+    <Compile Remove="Migrations\20191029220303_Hell.Designer.cs" />
+    <Compile Remove="Migrations\20191104212245_tester1.cs" />
+    <Compile Remove="Migrations\20191104212245_tester1.Designer.cs" />
+    <Compile Remove="Migrations\20191113093136_ScoreAttribute.cs" />
+    <Compile Remove="Migrations\20191113093136_ScoreAttribute.Designer.cs" />
+    <Compile Remove="Migrations\20191113132632_herewegoagain.cs" />
+    <Compile Remove="Migrations\20191113132632_herewegoagain.Designer.cs" />
+    <Compile Remove="Migrations\20191114134454_FinalTest.cs" />
+    <Compile Remove="Migrations\20191114134454_FinalTest.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
