@@ -58,13 +58,13 @@ namespace CompetentieTool.Controllers
                         rvm.OptieKeuze = r.OptieKeuze.Output;
                         if(r.OpenAntwoord != null && r.OpenAntwoord.Trim().Length != 0)
                         {
-                            rvm.OptieKeuze.Replace("$$", r.OpenAntwoord);
+                            rvm.OptieKeuze = rvm.OptieKeuze.Replace("$$", r.OpenAntwoord);
                         }
                         else
                         {
                             if(r.OptieKeuze != null && r.OptieKeuze.Output.Trim().Length != 0)
                             {
-                                rvm.OptieKeuze.Replace("$$", r.OptieKeuze.Output);
+                                rvm.OptieKeuze = rvm.OptieKeuze.Replace("$$", r.OptieKeuze.Output);
                             }
                         }
                         
@@ -90,7 +90,7 @@ namespace CompetentieTool.Controllers
                 {
 
                     int result;
-                    VacatureCompetentie temp = vac.Vacature.CompetentiesLijst.Where(c => c.Competentie.Vragen.FirstOrDefault().Equals(r.Vraag)).FirstOrDefault();
+                    VacatureCompetentie temp = vac.Vacature.CompetentiesLijst.Where(c => c.Competentie.Naam.Equals(rvm.CompetentieNaam)).FirstOrDefault();
                     
                     if (r.OptieKeuze == null || temp.GeselecteerdeOptie == null)
                     {
